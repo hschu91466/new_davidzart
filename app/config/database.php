@@ -14,17 +14,6 @@ $DBPASS = $_ENV['DBPASS'];
 
 $dsn = "mysql:host={$DBHOST};port={$DBPORT};dbname={$DBNAME};charset=utf8mb4";
 
-// Diagnostics: echo what we will use, then try to connect
-/*
-echo "<pre>CONFIG IN USE:
-Host: {$DBHOST}
-Port: {$DBPORT}
-DB:   {$DBNAME}
-User: {$DBUSER}
-Pass empty? " . ($DBPASS === '' ? 'YES' : 'NO') . "
-DSN:  {$dsn}
-</pre>";
-*/
 
 try {
     $pdo = new PDO($dsn, $DBUSER, $DBPASS, [
