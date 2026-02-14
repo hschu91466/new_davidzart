@@ -1,0 +1,5 @@
+@DO NOT INCLUDE/
+.env
+.env.*
+node_modules/
+dist/

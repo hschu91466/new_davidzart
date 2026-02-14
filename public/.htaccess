@@ -1,0 +1,39 @@
+# --- Enable rewriting ---
+
+RewriteEngine On
+
+# --- Serve existing files and directories as-is ---
+
+# (Prevents rewriting for real files, images, CSS, JS, etc.)
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Pretty API → PHP shim
+
+RewriteRule ^api/gallery-images$ api/gallery-images.php [L,QSA]
+
+# --- Pretty URL for galleries ---
+
+# /galleries/<slug> -> /gallery.php?slug=<slug>
+
+RewriteRule ^galleries/([^/]+)/?$ gallery.php?slug=$1 [L,QSA]
+
+# (Optional) Force a trailing slash on /galleries to avoid 404 at /galleries
+
+# Uncomment if you want /galleries to redirect to /galleries/
+
+# RewriteRule ^galleries$ galleries/ [R=301,L]
+
+# --- (Optional) Security hardening ---
+
+# Block access to dotfiles like .env, .git, .htaccess (except this file)
+
+<FilesMatch "^\.(?!well-known/)">
+Require all denied
+</FilesMatch>
+
+# --- (Optional) Set a default index if you rely on index.php ---
+
+# DirectoryIndex index.php

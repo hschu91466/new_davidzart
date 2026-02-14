@@ -1,0 +1,438 @@
+/* ==========================================================================
+   1) DESIGN TOKENS (custom properties)
+   ========================================================================== */
+
+:root {
+  /* Brand palette */
+  --color-green: #20430c; /* Dark Green */
+  --color-green-dk: #0a2d2a; /* Deep Green */
+  --color-gold: #e4c340; /* Gold */
+  --color-brown: #554918; /* Brown */
+  --color-blue: #0e3451; /* Blue */
+
+  /* Neutrals */
+  --color-text: #111111;
+  --color-text-muted: #4c4c4c;
+  --color-surface: #ffffff;
+  --color-divider: #e5e7eb;
+
+  /* Spacing (4px baseline) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+
+  /* Radii & shadows */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+
+  /* Typography (mobile-first) */
+  --font-body:
+    "Abel", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-display: "Permanent Marker", cursive;
+
+  --fs-100: 0.875rem; /* 14px */
+  --fs-200: 1rem; /* 16px */
+  --fs-300: 1.125rem; /* 18px */
+  --fs-400: 1.25rem; /* 20px */
+  --fs-500: 1.5rem; /* 24px */
+  --fs-600: 1.75rem; /* 28px */
+  --fs-700: 2rem; /* 32px */
+}
+
+/* Type scale enhancement on tablet+ */
+@media (min-width: 640px) {
+  :root {
+    --fs-300: 1.2rem;
+    --fs-400: 1.35rem;
+    --fs-500: 1.75rem;
+    --fs-600: 2rem;
+    --fs-700: 2.5rem;
+  }
+}
+
+/* ==========================================================================
+   2) BASE (Bootstrap-aware: Bootstrap handles reset via Reboot)
+   ========================================================================== */
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--color-text);
+  background: var(--color-surface);
+  font-family: var(--font-body);
+  font-size: var(--fs-300);
+  line-height: 1.6;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Container: rely on Bootstrap’s .container; add comfy side padding */
+.container {
+  padding-inline: var(--space-4);
+}
+
+/* Minimal utilities */
+.flow > * + * {
+  margin-top: var(--space-4);
+}
+.text-center {
+  text-align: center;
+}
+
+/* ==========================================================================
+   3) TYPOGRAPHY
+   ========================================================================== */
+
+h1,
+h2,
+h3,
+.h1,
+.h2,
+.h3 {
+  margin: 0 0 0.5em;
+  line-height: 1.25;
+  color: var(--color-green);
+  font-family: var(--font-display);
+}
+
+h1,
+.h1 {
+  font-size: var(--fs-700);
+}
+h2,
+.h2 {
+  font-size: var(--fs-600);
+}
+h3,
+.h3 {
+  font-size: var(--fs-500);
+}
+
+p {
+  margin: 0 0 1em;
+}
+
+p.bio {
+  color: var(--color-text-muted);
+  font-size: var(--fs-300);
+}
+
+p.scripture {
+  font-family: var(--font-display);
+  color: var(--color-text-muted);
+  font-size: var(--fs-400);
+  margin-top: var(--space-5);
+}
+
+/* ==========================================================================
+   4) BRAND BANDS / STRIPES (your gradient + gold dividers)
+   ========================================================================== */
+
+.brand-band {
+  background: linear-gradient(
+    90deg,
+    var(--color-green-dk) 0%,
+    var(--color-surface) 100%
+  );
+  border-top: 2px solid var(--color-gold);
+  border-bottom: 2px solid var(--color-gold);
+}
+
+.stripe {
+  height: 16px;
+  background: linear-gradient(
+    90deg,
+    var(--color-green-dk) 0%,
+    var(--color-surface) 100%
+  );
+  border-top: 2px solid var(--color-gold);
+  border-bottom: 2px solid var(--color-gold);
+}
+
+/* ==========================================================================
+   5) NAVIGATION (Bootstrap navbar; themed via variables)
+   ========================================================================== */
+
+/* Use Bootstrap markup: .navbar.navbar-expand-md with .navbar-toggler and .collapse */
+.navbar {
+  padding-block: var(--space-3);
+  background: var(
+    --color-surface
+  ); /* or transparent if overlaying .brand-band */
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Toggler button */
+.navbar .navbar-toggler {
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Nav links */
+.navbar .nav-link {
+  font-weight: 700;
+  color: var(--color-blue);
+  padding: 0.75rem 1rem;
+}
+
+/* Hover/active states */
+.navbar .nav-link:hover {
+  background: color-mix(in srgb, var(--color-gold) 18%, transparent);
+  text-decoration: none;
+}
+.navbar .nav-link:active {
+  background: color-mix(in srgb, var(--color-blue) 10%, transparent);
+}
+.navbar .nav-link.active {
+  position: relative;
+  background: color-mix(in srgb, var(--color-gold) 24%, transparent);
+}
+/* Images and Media
+_____________________________________________*/
+
+.landscape {
+  max-width: 100%;
+  box-shadow: 10px 10px 5px grey;
+  border: 1px solid gray;
+}
+.portrait {
+  max-width: 75%;
+  box-shadow: 10px 10px 5px grey;
+  border: 1px solid gray;
+  display: flex;
+  justify-content: center;
+}
+
+/* Left accent bar for active link only when stacked (mobile) */
+@media (max-width: 767.98px) {
+  .navbar .nav-link.active::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 8px;
+    bottom: 8px;
+    width: 3px;
+    border-radius: 3px;
+    background: var(--color-green);
+  }
+}
+
+/* Dropdown menu theming */
+.dropdown-menu {
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-md);
+}
+.dropdown-item.active,
+.dropdown-item:active {
+  color: inherit;
+  background: color-mix(in srgb, var(--color-gold) 30%, transparent);
+}
+
+/* Keyboard/AT focus ring */
+.navbar :is(a, button):focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   6) CONTENT LAYOUT
+   ========================================================================== */
+
+.main {
+  padding-block: var(--space-6);
+}
+
+.section + .section {
+  margin-top: var(--space-7);
+}
+
+/* Optional brand card (you can use Bootstrap .card instead) */
+.card-brand {
+  background: var(--color-surface);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  padding: var(--space-5);
+}
+
+/* ==========================================================================
+   7) MEDIA (images, avatar)
+   ========================================================================== */
+
+#randomGallery .splide__slide .img-wrap {
+  width: 100%;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f5f5f5;
+}
+#randomGallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+#randomGallery .caption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: #6a6969;
+}
+
+img {
+  transition: opacity 0.15s ease;
+}
+img:hover {
+  opacity: 0.9;
+}
+
+.img-frame {
+  border: 1px solid
+    color-mix(in srgb, var(--color-text-muted) 25%, var(--color-surface));
+  box-shadow: var(--shadow-sm);
+  background: var(--color-surface);
+  border-radius: var(--radius-sm);
+}
+
+.landscape,
+.portrait {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  max-width: 100%;
+}
+
+/* Portraits a bit narrower on mobile for breathing room */
+.portrait {
+  max-width: 90%;
+  margin-inline: auto;
+}
+
+/* Avatar: fully variable-driven */
+.avatar {
+  display: block;
+  margin: var(--space-6) auto;
+  width: clamp(120px, 40%, 240px);
+  height: auto;
+  border-radius: 50%;
+  border: 4px solid var(--color-surface);
+  box-shadow: var(--shadow-md);
+}
+
+.caption {
+  font-size: var(--fs-200);
+  text-align: center;
+}
+
+/* ==========================================================================
+   8) FOOTER
+   ========================================================================== */
+
+.footer {
+  padding: var(--space-7) var(--space-4) var(--space-6);
+  color: #667;
+  border-top: 1px solid var(--color-divider);
+}
+
+.social {
+  list-style: none;
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+  padding: 0;
+  margin: 0 0 var(--space-4);
+  font-size: var(--fs-600);
+}
+.social a {
+  color: #667;
+}
+.social .facebook a:hover {
+  color: rgb(59, 89, 252);
+}
+.social .twitter a:hover {
+  color: rgb(0, 172, 237);
+}
+.social .youtube a:hover {
+  color: rgb(187, 0, 0);
+}
+
+.footer .copyright {
+  text-align: center;
+  font-size: var(--fs-100);
+  margin: 0;
+}
+
+/* ==========================================================================
+   9) RESPONSIVE ENHANCEMENTS (progressive)
+   ========================================================================== */
+
+@media (min-width: 640px) {
+  .portrait {
+    max-width: 75%;
+  }
+}
+
+@media (min-width: 768px) {
+  .navbar {
+    padding-block: var(--space-4);
+  }
+}
+
+/* Optional: increase side padding on large screens */
+@media (min-width: 1024px) {
+  .container {
+    padding-inline: var(--space-6);
+  }
+}
+
+/* ==========================================================================
+   10) MAGNIFIC POPUP POLISH (scoped, light)
+   ========================================================================== */
+
+.mfp-bg {
+  background: rgba(0, 0, 0, 0.85);
+}
+.mfp-content .mfp-title {
+  color: var(--color-surface);
+  font-size: var(--fs-200);
+}
+.mfp-arrow {
+  opacity: 0.9;
+}
+.mfp-counter {
+  color: color-mix(in srgb, var(--color-surface) 85%, black);
+}
+
+/* TEMP DEBUG (remove once fixed) */
+.brand-band,
+.navbar,
+.container,
+.row {
+  overflow: visible !important;
+}
+
+.navbar .dropdown-menu {
+  z-index: 1100 !important;
+}
+
+.navbar .dropdown-menu.show {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
