@@ -30,7 +30,7 @@ $BASE_URL = getBaseURL();
 <!-- Scripts
 –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 <!-- jQuery (required for Magnific Popup only) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" defer crossorigin="anonymous"></script>
 
 <!-- Font Awesome (kit) -->
 <script src="https://kit.fontawesome.com/e33b384274.js" crossorigin="anonymous"></script>
@@ -39,7 +39,7 @@ $BASE_URL = getBaseURL();
 <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4/dist/js/splide.min.js"></script>
 
 <!-- Magnific Popup (minified CDN) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js" defer
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <!-- Bootstrap 5 Bundle (includes Popper) -->
@@ -47,7 +47,7 @@ $BASE_URL = getBaseURL();
     crossorigin="anonymous"></script>
 
 <!-- Site JS  -->
-<script src="<?= $BASE_URL ?>/assets/js/script.js"></script>
+<script src="<?= $BASE_URL ?>/assets/js/script.js" defer></script>
 
 
 <script>

@@ -68,22 +68,31 @@ require_once $ROOT . '/app/includes/nav.php';
     <?php if (empty($images)): ?>
         <p>No images in this gallery yet.</p>
     <?php else: ?>
-        <div class="row gallery g-3">
+        <div class="row gallery g-3" id="galleryGrid">
             <?php foreach ($images as $img): ?>
+                <?php
+                // Use large/original path for the popup if you have it; fall back to file_path
+                $full = htmlspecialchars($img['full_path'] ?? $img['file_path'], ENT_QUOTES, 'UTF-8');
+                $thumb = htmlspecialchars($img['thumb_path'] ?? $img['file_path'], ENT_QUOTES, 'UTF-8');
+                $title = htmlspecialchars($img['caption'] ?? $img['title'] ?? '', ENT_QUOTES, 'UTF-8');
+                $alt   = htmlspecialchars($img['title'] ?? 'Artwork', ENT_QUOTES, 'UTF-8');
+                $orient = htmlspecialchars($img['orientation'] ?? '', ENT_QUOTES, 'UTF-8');
+                ?>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <a
-                        href="<?= htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') ?>"
-                        class="image-popup"
-                        title="<?= htmlspecialchars($img['caption'] ?? $img['title'] ?? '', ENT_QUOTES, 'UTF-8') ?>">
+                    <a href="<?= $full ?>"
+                        class="lightbox"
+                        title="<?= $title ?>">
+                        <!-- or: data-caption="<?= $title ?>" and use titleSrc below -->
                         <img
-                            src="<?= htmlspecialchars($img['file_path'], ENT_QUOTES, 'UTF-8') ?>"
-                            class="img-fluid img-frame <?= htmlspecialchars($img['orientation'] ?? '', ENT_QUOTES, 'UTF-8') ?>"
-                            alt="<?= htmlspecialchars($img['title'] ?? 'Artwork', ENT_QUOTES, 'UTF-8') ?>"
-                            loading="lazy">
+                            src="<?= $thumb ?>"
+                            class="img-fluid img-frame <?= $orient ?>"
+                            alt="<?= $alt ?>"
+                            loading="lazy" decoding="async">
                     </a>
+
                     <?php if (!empty($img['title'])): ?>
                         <div class="caption mt-2 text-center">
-                            <?= htmlspecialchars($img['title'], ENT_QUOTES, 'UTF-8') ?>
+                            <?= $alt ?>
                         </div>
                     <?php endif; ?>
                 </div>
