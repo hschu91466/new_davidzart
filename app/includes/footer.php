@@ -49,49 +49,6 @@ $BASE_URL = getBaseURL();
 <!-- Site JS  -->
 <script src="<?= $BASE_URL ?>/assets/js/script.js" defer></script>
 
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('[dbg] Bootstrap present?', !!window.bootstrap);
-        var toggle = document.getElementById('galleryDropdown');
-        if (!toggle) {
-            console.warn('[dbg] galleryDropdown not found');
-            return;
-        }
-
-        // Construct explicitly
-        var dd;
-        try {
-            dd = new bootstrap.Dropdown(toggle);
-        } catch (e) {
-            console.error('[dbg] Dropdown construct failed', e);
-            return;
-        }
-
-        // Make the click always toggle, regardless of other handlers
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault(); // avoid anchor '#'
-            e.stopPropagation(); // avoid bubbling to any doc-level handlers that might immediately close
-            dd.toggle();
-            console.log('[dbg] toggled');
-        });
-    });
-</script>
-
-<!-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        if (window.jQuery) {
-            $('.image-popup').magnificPopup({
-                type: 'image',
-                gallery: {
-                    enabled: true
-                },
-                titleSrc: 'title'
-            });
-        }
-    });
-</script> -->
-
 </body>
 
 </html>

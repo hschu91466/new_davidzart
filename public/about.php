@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+require_once dirname(__DIR__) . '/app/config/bootstrap.php';
 include_once __DIR__ . '/../app/includes/header.php';
 include_once __DIR__ . '/../app/includes/nav.php';
 ?>

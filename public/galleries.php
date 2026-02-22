@@ -3,11 +3,9 @@
 declare(strict_types=1);
 $ROOT = dirname(__DIR__);
 
-require_once $ROOT . '/app/config/database.php';
-require_once $ROOT . '/app/models/GalleryModel.php';
-require_once $ROOT . '/app/includes/header.php';
-require_once $ROOT . '/app/includes/nav.php';
-require_once $ROOT . '/app/includes/helper.php';
+require_once dirname(__DIR__) . '/app/config/bootstrap.php';
+require_once $ROOT . '/../app/includes/header.php';
+require_once $ROOT . '/../app/includes/nav.php';
 
 $galleries = [];
 try {
@@ -16,9 +14,11 @@ try {
     // If you want all active galleries instead, switch to:
     // $galleries = GalleryModel::getActive($pdo);
     $coverUrl = $galleries[0]['cover_url'] ?? null;
+    $orient = $galleries[0]['orientation'] ?? null;
 } catch (Throwable $e) {
     $galleries = [];
 }
+
 ?>
 <main class="py-4">
     <div class="container">
@@ -43,12 +43,12 @@ try {
                     <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                         <div class="card h-100 shadow-sm">
                             <!-- Optional: Add a cover image here if you have a URL -->
-                            <img src="<?= htmlspecialchars($coverUrl, ENT_QUOTES, 'UTF-8') ?>" class="card-img-top" alt="">
+                            <img src="<?= h(img_src($coverUrl ?? '', true)) ?>" class="card-img-top <?= h($orient) ?>" alt="">
                             <div class="card-body d-flex flex-column">
-                                <h2 class="h6 card-title mb-2"><?= htmlspecialchars($label, ENT_QUOTES, 'UTF-8') ?></h2>
+                                <h2 class="h6 card-title mb-2"><?= h($label) ?></h2>
                                 <div class="mt-auto">
                                     <a class="stretched-link btn btn-outline-primary btn-sm"
-                                        href="<?= htmlspecialchars($href, ENT_QUOTES, 'UTF-8') ?>">
+                                        href="<?= h($href) ?>">
                                         View gallery
                                     </a>
                                 </div>
@@ -62,4 +62,4 @@ try {
         <?php endif; ?>
     </div>
 </main>
-<?php require_once $ROOT . '/app/includes/footer.php'; ?>
+<?php require_once $ROOT . '/../app/includes/footer.php'; ?>

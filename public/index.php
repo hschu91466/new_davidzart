@@ -2,6 +2,7 @@
 // public/index.php
 declare(strict_types=1);
 
+require_once dirname(__DIR__) . '/app/config/bootstrap.php';
 
 require_once __DIR__ . '/../app/includes/header.php';
 require_once __DIR__ . '/../app/includes/nav.php';

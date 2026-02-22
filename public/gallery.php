@@ -1,104 +1,68 @@
 <?php
-
+// public/gallery.php
 declare(strict_types=1);
 
-$ROOT = dirname(__DIR__);
+require_once dirname(__DIR__) . '/app/config/bootstrap.php';
 
-// 1) Load DB first if nav uses it
-require_once $ROOT . '/app/config/database.php';
-
-// 2) Load models
-require_once $ROOT . '/app/models/GalleryModel.php';
-require_once $ROOT . '/app/models/ImageModel.php';
-
-// 3) Read slug
+// Read slug
 $slug = isset($_GET['slug']) ? trim($_GET['slug']) : '';
 if ($slug === '') {
-    http_response_code(404);
-    require_once __DIR__ . '/../app/includes/header.php';
-    require_once __DIR__ . '/../app/includes/nav.php';
-    echo "<main class='container py-5'><h2>Gallery not found</h2></main>";
-    require_once __DIR__ . '/../app/includes/footer.php';
-    exit;
+    render_404('Gallery not found.');
+    return;
 }
 
-// 4) Fetch gallery
-$gStmt = $pdo->prepare("
-    SELECT gallery_id, title, description
-    FROM galleries
-    WHERE slug = ? AND is_active = 1
-    LIMIT 1
-");
-$gStmt->execute([$slug]);
-$gallery = $gStmt->fetch();
-
+// Fetch gallery via model
+$gallery = GalleryModel::getBySlug($pdo, $slug);
 if (!$gallery) {
-    http_response_code(404);
-    require_once $ROOT . '/app/includes/header.php';
-    require_once $ROOT . '/app/includes/nav.php';
-    echo "<main class='container py-5'><h2>Gallery not found</h2></main>";
-    require_once $ROOT . '/app/includes/footer.php';
-    exit;
+    render_404('Gallery not found.');
+    return;
 }
 
-// 5) Fetch images
-$iStmt = $pdo->prepare("
-    SELECT file_path, title, caption, orientation
-    FROM images
-    WHERE gallery_id = ? AND is_active = 1
-    ORDER BY sort_order ASC, image_id ASC
-");
-$iStmt->execute([$gallery['gallery_id']]);
-$images = $iStmt->fetchAll();
-$orientation = $images[0]['orientation'] ?? null;
+// Fetch images via model
+$images = ImageModel::getByGallery($pdo, (int)$gallery['gallery_id']);
 
-// 6) Shared header + nav
-require_once $ROOT . '/app/includes/header.php';
-require_once $ROOT . '/app/includes/nav.php';
+// Shared header + nav
+require_once $ROOT . '/includes/header.php';
+require_once $ROOT . '/includes/nav.php';
 ?>
-<main class="container py-4">
 
+<main class="container py-4">
     <header class="mb-3">
-        <h2 class="mb-2"><?= htmlspecialchars($gallery['title']) ?></h2>
+        <h2 class="mb-2"><?= h($gallery['title']) ?></h2>
         <?php if (!empty($gallery['description'])): ?>
-            <p class="text-muted"><?= nl2br(htmlspecialchars($gallery['description'])) ?></p>
+            <p class="text-muted"><?= nl2br(h($gallery['description'])) ?></p>
         <?php endif; ?>
     </header>
-
     <?php if (empty($images)): ?>
         <p>No images in this gallery yet.</p>
     <?php else: ?>
         <div class="row gallery g-3" id="galleryGrid">
             <?php foreach ($images as $img): ?>
                 <?php
-                // Use large/original path for the popup if you have it; fall back to file_path
-                $full = htmlspecialchars($img['full_path'] ?? $img['file_path'], ENT_QUOTES, 'UTF-8');
-                $thumb = htmlspecialchars($img['thumb_path'] ?? $img['file_path'], ENT_QUOTES, 'UTF-8');
-                $title = htmlspecialchars($img['caption'] ?? $img['title'] ?? '', ENT_QUOTES, 'UTF-8');
-                $alt   = htmlspecialchars($img['title'] ?? 'Artwork', ENT_QUOTES, 'UTF-8');
-                $orient = htmlspecialchars($img['orientation'] ?? '', ENT_QUOTES, 'UTF-8');
+                // Title & alt fallbacks
+                $title   = $img['caption'] ?? $img['title'] ?? '';
+                $alt     = $img['title'] ?? 'Artwork';
+                $orient  = $img['orientation'] ?? '';
+
+                // Build a web-safe URL for the image
+                // If you implemented img_src(): use it; otherwise keep your web_path() + BASE joiner.
+                $src  = img_src($img['file_path']);   // e.g., '/assets/images/...'
+                $href = $src; // same for lightbox; change later if you add high-res variants
                 ?>
                 <div class="col-6 col-md-4 col-lg-3">
-                    <a href="<?= $full ?>"
-                        class="lightbox"
-                        title="<?= $title ?>">
-                        <!-- or: data-caption="<?= $title ?>" and use titleSrc below -->
+                    <a href="<?= h($href) ?>" class="lightbox" title="<?= h($title) ?>">
                         <img
-                            src="<?= $thumb ?>"
-                            class="img-fluid img-frame <?= $orient ?>"
-                            alt="<?= $alt ?>"
+                            src="<?= h($src) ?>"
+                            class="img-fluid img-frame <?= h($orient) ?>"
+                            alt="<?= h($alt) ?>"
                             loading="lazy" decoding="async">
                     </a>
-
                     <?php if (!empty($img['title'])): ?>
-                        <div class="caption mt-2 text-center">
-                            <?= $alt ?>
-                        </div>
+                        <div class="caption mt-2 text-center"><?= h($alt) ?></div>
                     <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         </div>
     <?php endif; ?>
-
 </main>
-<?php require_once $ROOT . '/app/includes/footer.php'; ?>
+<?php require_once $ROOT . '/includes/footer.php'; ?>

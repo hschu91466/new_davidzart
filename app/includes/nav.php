@@ -1,10 +1,9 @@
 <?php
-/* DEBUG START — remove after testing */
-echo "\n<!-- NAV DEBUG: file=" . __FILE__ . " time=" . date('Y-m-d H:i:s') . " -->\n";
-/* DEBUG END */
 
-/* 1) BOOTSTRAP DB + HELPERS + MODEL */
-require_once __DIR__ . '/../config/database.php';
+declare(strict_types=1);
+
+$pdo = db();                 // <<< get a guaranteed PDO
+$BASE_URL = getBaseURL();
 
 try {
     $who = [

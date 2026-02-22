@@ -1,0 +1,15 @@
+[21-Feb-2026 20:08:13 Europe/Berlin] Testing error log write...
+[21-Feb-2026 20:08:13 Europe/Berlin] --- CSRF DEBUG START ---
+[21-Feb-2026 20:08:13 Europe/Berlin] POST KEYS: 
+[21-Feb-2026 20:08:13 Europe/Berlin] POST csrf_token (raw): [missing]
+[21-Feb-2026 20:08:13 Europe/Berlin] FILES KEYS: 
+[21-Feb-2026 20:08:13 Europe/Berlin] Content-Type: [none]
+[21-Feb-2026 20:08:13 Europe/Berlin] Content-Length: [none]
+[21-Feb-2026 20:08:13 Europe/Berlin] --- CSRF DEBUG END ---
+[21-Feb-2026 20:08:13 Europe/Berlin] Galleries loaded: 6
+[21-Feb-2026 20:08:13 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[21-Feb-2026 20:08:13 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[21-Feb-2026 20:08:13 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[21-Feb-2026 20:08:13 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[21-Feb-2026 20:08:13 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[21-Feb-2026 20:08:13 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
