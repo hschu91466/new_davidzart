@@ -46,7 +46,7 @@ require_once $ROOT . '/includes/nav.php';
 
                 // Build a web-safe URL for the image
                 // If you implemented img_src(): use it; otherwise keep your web_path() + BASE joiner.
-                $src  = img_src($img['file_path']);   // e.g., '/assets/images/...'
+                $src  = img_src($img['filepath']);   // e.g., '/assets/images/...'
                 $href = $src; // same for lightbox; change later if you add high-res variants
                 ?>
                 <div class="col-6 col-md-4 col-lg-3">

@@ -19,21 +19,55 @@ final class GalleryApiController
         $galleriesParam = isset($_GET['galleries']) ? trim((string)$_GET['galleries']) : '';
         $galleries = $galleriesParam ? array_filter(array_map('trim', explode(',', $galleriesParam))) : [];
         $lightbox = isset($_GET['lightbox']) ? (string)$_GET['lightbox'] : 'original';
+        $debug    = isset($_GET['debug']);
 
         $allowedExt = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'avif'];
+
+        // Diagnostics payload
+        $diag = [
+            'params' => [
+                'limit'     => $limit,
+                'random'    => $random,
+                'gallery'   => $gallery,
+                'galleries' => $galleries,
+                'lightbox'  => $lightbox,
+            ],
+            'active_count' => 0,
+            'per_gallery'  => [],
+            'pool_before'  => 0,
+            'pool_after'   => 0,
+        ];
 
         try {
             $images = [];
 
             if ($gallery !== '') {
+                // --- Specific gallery path ---
                 $g = GalleryModel::getBySlug($this->pdo, $gallery);
                 if (!$g) {
                     http_response_code(404);
-                    echo json_encode(['error' => 'Gallery not found']);
+                    $out = ['error' => 'Gallery not found'];
+                    if ($debug) $out['debug'] = $diag;
+                    echo json_encode($out);
                     return;
                 }
+
                 $rows = ImageModel::getByGallery($this->pdo, (int)$g['gallery_id']);
-                $rows = array_values(array_filter($rows, fn($r) => isset($r['filepath']) && $this->isAllowedImage($r['filepath'], $allowedExt)));
+                if (!is_array($rows)) $rows = [];
+
+                // Diagnostics on raw rows
+                $withFilepath = array_filter($rows, fn($r) => isset($r['filepath']));
+                $allowed      = array_filter($withFilepath, fn($r) => $this->isAllowedImage($r['filepath'], $allowedExt));
+
+                $diag['per_gallery'][] = [
+                    'slug'               => $gallery,
+                    'gallery_id'         => (int)$g['gallery_id'],
+                    'rows_total'         => count($rows),
+                    'rows_with_filepath' => count($withFilepath),
+                    'rows_allowed_ext'   => count($allowed),
+                ];
+
+                $rows = array_values($allowed);
                 if ($random) shuffle($rows);
                 $rows = array_slice($rows, 0, $limit);
 
@@ -41,26 +75,48 @@ final class GalleryApiController
                     $images[] = $this->shapeImage($r, $lightbox);
                 }
             } else {
-                $active = $galleries ? $this->filterActiveBySlugs(GalleryModel::getActive($this->pdo), $galleries)
-                    : GalleryModel::getActive($this->pdo);
-                if (!$active) {
+                // --- Active galleries path ---
+                $activeAll = GalleryModel::getActive($this->pdo);
+                if (!is_array($activeAll)) $activeAll = [];
+
+                $active = $galleries ? $this->filterActiveBySlugs($activeAll, $galleries) : $activeAll;
+                $diag['active_count'] = count($active);
+
+                if (empty($active)) {
                     http_response_code(404);
-                    echo json_encode(['error' => 'No galleries found']);
+                    $out = ['error' => 'No galleries found'];
+                    if ($debug) $out['debug'] = $diag;
+                    echo json_encode($out);
                     return;
                 }
 
                 $pool = [];
                 foreach ($active as $g) {
-                    $rows = ImageModel::getByGallery($this->pdo, (int)$g['gallery_id']);
-                    foreach ($rows as $r) {
-                        if (!isset($r['filepath'])) continue;
-                        if (!$this->isAllowedImage($r['filepath'], $allowedExt)) continue;
+                    $rows = ImageModel::getByGallery($this->pdo, (int)($g['gallery_id'] ?? 0));
+                    if (!is_array($rows)) $rows = [];
+
+                    $withFilepath = array_filter($rows, fn($r) => isset($r['filepath']));
+                    $allowed      = array_filter($withFilepath, fn($r) => $this->isAllowedImage($r['filepath'], $allowedExt));
+
+                    $diag['per_gallery'][] = [
+                        'slug'               => $g['slug'] ?? null,
+                        'gallery_id'         => (int)($g['gallery_id'] ?? 0),
+                        'rows_total'         => count($rows),
+                        'rows_with_filepath' => count($withFilepath),
+                        'rows_allowed_ext'   => count($allowed),
+                    ];
+
+                    foreach ($allowed as $r) {
                         $pool[] = $r;
                     }
                 }
 
+                $diag['pool_before'] = count($pool);
+
                 if ($random) shuffle($pool);
                 $pool = array_slice($pool, 0, $limit);
+
+                $diag['pool_after'] = count($pool);
 
                 foreach ($pool as $r) {
                     $images[] = $this->shapeImage($r, $lightbox);
@@ -68,11 +124,15 @@ final class GalleryApiController
             }
 
             header('Cache-Control: no-store');
-            echo json_encode(['images' => $images]);
+            $payload = ['images' => $images];
+            if ($debug) $payload['debug'] = $diag;
+
+            echo json_encode($payload);
         } catch (Throwable $e) {
             http_response_code(500);
-            echo json_encode(['error' => 'Server error']);
-            // TODO: log $e->getMessage()
+            $payload = ['error' => 'Server error'];
+            if ($debug) $payload['exception'] = $e->getMessage();
+            echo json_encode($payload);
         }
     }
 
@@ -111,12 +171,17 @@ final class GalleryApiController
         $thumb = "{$dir}/{$name}-640.webp";
 
         $href = ($lightbox === 'large') ? $large : $url;
+        // Convert all paths to ABSOLUTE URLs using your existing helpers
+        $absUrl   = url_join(getBaseURL(), ltrim($url,   '/'));
+        $absHref  = url_join(getBaseURL(), ltrim($href,  '/'));
+        $absThumb = url_join(getBaseURL(), ltrim($thumb, '/'));
+
 
         return [
             'id'          => (int)($row['image_id'] ?? 0),
-            'url'         => $url,
-            'href'        => $href,
-            'thumb'       => $thumb,
+            'url'         => $absUrl,
+            'href'        => $absHref,
+            'thumb'       => $absThumb,
             'alt'         => $row['title'] ?? '',
             'caption'     => $row['caption'] ?? '',
             'orientation' => $row['orientation'] ?? null,

@@ -12,7 +12,24 @@ $BASE_URL = $scheme . '://' . $host . $subdir;
 
 function getBaseURL()
 {
-    global $BASE_URL;
+    global $BASE_URL; {
+        static $BASE_URL;
+
+        if ($BASE_URL !== null) {
+            return $BASE_URL;
+        }
+
+        $scheme  = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+        $host    = $_SERVER['HTTP_HOST']; // includes :port
+        $path    = rtrim(dirname($_SERVER['SCRIPT_NAME'] ?? '/'), '/\\'); // e.g., '/api' for API calls
+
+        // ✅ Ensure we never treat '/api' folder as the site's base path
+        $path    = preg_replace('#/api$#', '', $path);
+
+        $BASE_URL = $scheme . '://' . $host . $path;
+        return $BASE_URL;
+    }
+
     return $BASE_URL;
 }
 

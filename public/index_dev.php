@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 require_once dirname(__DIR__) . '/app/config/bootstrap.php';
- $pageId = 'home'; // Used by header.php to target this page from js and CSS
+$pageId = 'home'; // Used by header.php to target this page from js and CSS
 require_once __DIR__ . '/../app/includes/header.php';
 require_once __DIR__ . '/../app/includes/nav.php';
 ?>
