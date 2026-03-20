@@ -2,8 +2,15 @@
 // public/index.php
 declare(strict_types=1);
 
+
 require_once dirname(__DIR__) . '/app/config/bootstrap.php';
- $pageId = 'home'; // Used by header.php to target this page from js and CSS
+ensure_base_url_global(); // sets $BASE_URL based on /public root
+
+
+// These must be set BEFORE including header.php
+$page_title = 'Home';
+$PAGE_SLUG  = 'home';
+$pageId = 'home'; // Used by header.php to target this page from js and CSS
 require_once __DIR__ . '/../app/includes/header.php';
 require_once __DIR__ . '/../app/includes/nav.php';
 ?>

@@ -1,4 +1,6 @@
+console.log("[gallery] script.js loaded (marker at top)");
 document.addEventListener("DOMContentLoaded", async () => {
+  console.log("[gallery] data-page =", document.body?.dataset?.page);
   if (document.body.dataset.page !== "home") return; // Only run on homepage (where the gallery is)
   // === Get DOM elements ===
   const container = document.getElementById("randomGallery");
@@ -10,7 +12,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   // === Read the API endpoint from HTML (built by PHP with base_url) ===
-  const endpointUrl = container.dataset.endpoint;
+  // const endpointUrl = container.dataset.endpoint;
+  const endpointUrl = toAbsUrl(container.dataset.endpoint);
 
   if (!endpointUrl) {
     console.error("[gallery] data-endpoint missing on #randomGallery");
@@ -26,6 +29,20 @@ document.addEventListener("DOMContentLoaded", async () => {
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;")
       .replace(/'/g, "&#39;");
+  }
+
+  function toAbsUrl(u) {
+    if (!u) return "";
+    // Already absolute (http(s) or data URI)
+    if (/^(?:https?:)?\/\//i.test(u) || /^data:/i.test(u)) return u;
+
+    // Normalize
+    if (u.startsWith("/")) {
+      // '/assets/...' -> BASE_URL + '/assets/...'
+      return (window.BASE_URL || "") + u;
+    }
+    // 'assets/...' -> BASE_URL + '/assets/...'
+    return (window.BASE_URL || "") + "/" + u.replace(/^\/+/, "");
   }
 
   function coerceImages(payload) {
@@ -93,15 +110,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     // === Render Slides ===
     listEl.innerHTML = images
       .map((img, i) => {
-        const src = img.url || img.src || img.image_url || "";
+        // const src = img.url || img.src || img.image_url || "";
+        const raw = img.url || img.src || img.image_url || "";
+        const src = toAbsUrl(raw);
+
         const alt = escapeHtml(img.alt || img.title || `image-${i}`);
         const cap = img.caption
           ? `<div class="caption">${escapeHtml(img.caption)}</div>`
           : "";
         if (!src) console.warn("[gallery] Missing URL for item:", img);
 
-        const href = src; // keep as-is
-        return `
+        // const href = src; // keep as-is
+        const href = toAbsUrl(
+          img.href || img.url || img.src || img.image_url || src,
+        );
+        console.log(
+          "[gallery] BASE:",
+          window.BASE_URL,
+          "endpoint:",
+          endpointUrl,
+          "raw:",
+          raw,
+          "src:",
+          src,
+        );
+        return `        
           <li class="splide__slide">
             <a href="${href}" class="lightbox" aria-label="Open image">
               <div class="img-wrap">

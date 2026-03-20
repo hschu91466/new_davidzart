@@ -2,8 +2,14 @@
 
 declare(strict_types=1);
 
-$pdo = db();                 // <<< get a guaranteed PDO
-$BASE_URL = getBaseURL();
+require_once __DIR__ . '/helper.php';
+
+
+$pdo = db();
+// <<< get a guaranteed PDO
+if (!isset($BASE_URL)) {
+    $BASE_URL = getBaseURL();
+}
 
 try {
     $who = [
@@ -33,7 +39,11 @@ try {
 require_once __DIR__ . '/helper.php';
 require_once __DIR__ . '/../models/GalleryModel.php';
 
-$BASE_URL = getBaseURL();
+
+if (!isset($BASE_URL)) {
+    $BASE_URL = getBaseURL();
+}
+
 
 /* 2) QUICK DB COUNTS (debug) */
 try {

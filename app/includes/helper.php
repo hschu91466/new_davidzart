@@ -4,50 +4,60 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-// Derive base URL dynamically (works for :81 and subfolders)
-$scheme   = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-$host     = $_SERVER['HTTP_HOST']; // includes :81
-$subdir   = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\'); // e.g., /sites/site_backups/davidschu_new/public
-$BASE_URL = $scheme . '://' . $host . $subdir;
+// // Derive base URL dynamically (works for :81 and subfolders)
+// $scheme   = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+// $host     = $_SERVER['HTTP_HOST']; // includes :81
+// $subdir   = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\'); // e.g., /sites/site_backups/davidschu_new/public
+// $BASE_URL = $scheme . '://' . $host . $subdir;
 
-function getBaseURL()
+function getBaseURL(): string
 {
-    global $BASE_URL; {
-        static $BASE_URL;
+    // 1) Scheme + host
+    $https  = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || ((int)($_SERVER['SERVER_PORT'] ?? 0) === 443);
+    $scheme = $https ? 'https' : 'http';
+    $host   = $_SERVER['HTTP_HOST'] ?? 'localhost';
 
-        if ($BASE_URL !== null) {
-            return $BASE_URL;
-        }
-
-        $scheme  = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-        $host    = $_SERVER['HTTP_HOST']; // includes :port
-        $path    = rtrim(dirname($_SERVER['SCRIPT_NAME'] ?? '/'), '/\\'); // e.g., '/api' for API calls
-
-        // ✅ Ensure we never treat '/api' folder as the site's base path
-        $path    = preg_replace('#/api$#', '', $path);
-
-        $BASE_URL = $scheme . '://' . $host . $path;
-        return $BASE_URL;
+    // 2) If the web server's document root points to /public, base is the host root.
+    //    e.g., /var/www/site/public -> https://example.com
+    $docRoot = isset($_SERVER['DOCUMENT_ROOT']) ? str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']) : '';
+    if ($docRoot !== '' && preg_match('~/public/?$~i', $docRoot)) {
+        return rtrim("$scheme://$host", '/');
     }
 
-    return $BASE_URL;
+    // 3) Otherwise, derive the URL path up to /public in the current SCRIPT_NAME
+    //    e.g., /mysite/public/api/gallery-images.php -> /mysite/public
+    $script = isset($_SERVER['SCRIPT_NAME']) ? str_replace('\\', '/', $_SERVER['SCRIPT_NAME']) : '/';
+    if (preg_match('~^(.*/public)(?:/|$)~i', $script, $m)) {
+        return rtrim("$scheme://$host{$m[1]}", '/');
+    }
+
+    // 4) As another hint, try REQUEST_URI in case SCRIPT_NAME is rewritten
+    $uri = isset($_SERVER['REQUEST_URI']) ? (string)$_SERVER['REQUEST_URI'] : '/';
+    if (preg_match('~^(.*/public)(?:/|$)~i', $uri, $m)) {
+        return rtrim("$scheme://$host{$m[1]}", '/');
+    }
+
+    // 5) Last resort: host root (works when docroot is already /public)
+    return rtrim("$scheme://$host", '/');
 }
 
-// echo "<!-- What is BASE_URL? " . $BASE_URL . " -->\n";
 
-// Safe join: BASE_URL + /path
 function base_url(string $path = ''): string
 {
-    $base = rtrim(getBaseURL(), '/');       // you already have getBaseURL()
-    $path = '/' . ltrim($path, '/');
-    return $base . $path;
+    $base = getBaseURL();
+    return $path === '' ? $base : ($base . '/' . ltrim($path, '/'));
 }
 
-
-// app/includes/helper.php
-if (session_status() !== PHP_SESSION_ACTIVE) {
-    session_start();
+/**
+ * Ensure legacy <?= $BASE_URL ?> is set for templates.
+ */
+function ensure_base_url_global(): void
+{
+    if (!isset($GLOBALS['BASE_URL']) || $GLOBALS['BASE_URL'] === '') {
+        $GLOBALS['BASE_URL'] = getBaseURL();
+    }
 }
+
 
 function csrf_token(): string
 {
@@ -220,4 +230,65 @@ function render_404(string $message = 'Not found'): void
     require_once $ROOT . '/includes/nav.php';
     echo "<main class='container py-5'><h2>" . h($message) . "</h2></main>";
     require_once $ROOT . '/includes/footer.php';
+}
+
+function ensure_session()
+{
+    if (session_status() !== PHP_SESSION_ACTIVE) {
+        session_start();
+    }
+}
+
+function is_admin_request(): bool
+{
+    ensure_session();
+
+    // Session-based admin (will use later when login exists)
+    if (!empty($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
+        return true;
+    }
+
+    // Shared secret fallback (current method)
+    $expected = getenv('ADMIN_API_TOKEN') ?: '';
+    if ($expected !== '') {
+        $provided = '';
+        if (!empty($_SERVER['HTTP_X_ADMIN_TOKEN'])) {
+            $provided = (string)$_SERVER['HTTP_X_ADMIN_TOKEN'];
+        } elseif (!empty($_POST['admin_token'])) {
+            $provided = (string)$_POST['admin_token'];
+        }
+        if ($provided !== '' && hash_equals($expected, $provided)) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+/**
+ * Send a JSON response with status code and exit.
+ */
+function json_response(array $payload, int $statusCode = 200): void
+{
+    http_response_code($statusCode);
+    header('Content-Type: application/json; charset=utf-8');
+    echo json_encode($payload);
+    exit;
+}
+
+/**
+ * Consistent error helper (shortcut).
+ */
+function json_error(string $message, int $statusCode = 400, array $extra = []): void
+{
+    json_response(['ok' => false, 'error' => $message] + $extra, $statusCode);
+}
+
+/**
+ * Consistent success helper (shortcut).
+ */
+function json_ok(array $payload = [], int $statusCode = 200): void
+{
+    json_response(['ok' => true] + $payload, $statusCode);
 }

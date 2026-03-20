@@ -1,8 +1,12 @@
-<?php include_once __DIR__ . '/helper.php';
-$BASE_URL = getBaseURL();
+<?php
+require_once __DIR__ . '/helper.php';
+if (!isset($BASE_URL)) {
+    $BASE_URL = getBaseURL();
+}
 ?>
 <footer>
     <div class="container">
+        <hr>
         <div class="row">
             <div class="col-12">
                 <ul class="social">
@@ -45,6 +49,12 @@ $BASE_URL = getBaseURL();
 <!-- Bootstrap 5 Bundle (includes Popper) -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
     crossorigin="anonymous"></script>
+
+
+<script>
+    window.BASE_URL = "<?= h(base_url()) ?>"; // e.g., http://localhost/.../public
+</script>
+
 
 <!-- Site JS  -->
 <script src="<?= $BASE_URL ?>/assets/js/script.js" defer></script>

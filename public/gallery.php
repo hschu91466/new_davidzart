@@ -60,6 +60,9 @@ require_once $ROOT . '/includes/nav.php';
                     <?php if (!empty($img['title'])): ?>
                         <div class="caption mt-2 text-center"><?= h($alt) ?></div>
                     <?php endif; ?>
+                    <a href="/comments.php?content_type=image&content_id=<?php echo (int)$img['image_id']; ?>">
+                        Discuss this artwork
+                    </a>
                 </div>
             <?php endforeach; ?>
         </div>

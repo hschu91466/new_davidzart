@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../models/GalleryModel.php';
 require_once __DIR__ . '/../models/ImageModel.php';
+require_once __DIR__ . '/../includes/helper.php';
 
 final class GalleryApiController
 {
@@ -142,40 +143,18 @@ final class GalleryApiController
         return in_array($ext, $allowed, true);
     }
 
-    private function toWebUrl(string $path): string
-    {
-        if (preg_match('#^https?://#i', $path)) return $path;
-
-        // Remove server-side prefix(s) so we return web paths
-        $path = preg_replace('#^/sites/production/davidschu_new/public/#', '', $path);
-
-        // Normalize to project-relative (no leading slash)
-        $path = ltrim($path, '/');
-
-        // If DB sometimes stores only filenames, map to your images folder
-        if (!str_starts_with($path, 'assets/images/')) {
-            $path = 'assets/images/' . basename($path);
-        }
-
-        return $path; // e.g., 'assets/images/galleries/gallery-one/art-img12.jpg'
-    }
-
     private function shapeImage(array $row, string $lightbox): array
     {
-        $url = $this->toWebUrl($row['filepath']);
-        $name = pathinfo($url, PATHINFO_FILENAME);
-        $dir  = rtrim(dirname($url), '/');
+        $web = normalize_to_assets($row['filepath'] ?? '');
+        $url = ltrim($web, '/');
 
-        // Optional: if you generate variants
-        $large = "{$dir}/{$name}-1600.webp";
-        $thumb = "{$dir}/{$name}-640.webp";
+        $thumb = $url;
+        $href = $url;
 
-        $href = ($lightbox === 'large') ? $large : $url;
-        // Convert all paths to ABSOLUTE URLs using your existing helpers
-        $absUrl   = url_join(getBaseURL(), ltrim($url,   '/'));
-        $absHref  = url_join(getBaseURL(), ltrim($href,  '/'));
-        $absThumb = url_join(getBaseURL(), ltrim($thumb, '/'));
-
+        // Emit ABSOLUTE URLs rooted at the public base
+        $absUrl   = img_src($url,   true); // internally calls base_url() → getBaseURL()
+        $absHref  = img_src($href,  true);
+        $absThumb = img_src($thumb, true);
 
         return [
             'id'          => (int)($row['image_id'] ?? 0),
