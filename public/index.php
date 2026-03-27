@@ -15,10 +15,9 @@ require_once __DIR__ . '/../app/includes/header.php';
 require_once __DIR__ . '/../app/includes/nav.php';
 ?>
 
-<main class="main container">
+<main class="main container flow">
     <section class="section text-center">
-        <h2>Welcome</h2>
-
+        <h1 class="h1">Welcome</h1>
         <div class="splide"
             id="randomGallery"
             aria-label="Homepage Image Gallery"
@@ -28,7 +27,7 @@ require_once __DIR__ . '/../app/includes/nav.php';
             </div>
         </div>
 
-        <p class="mt-4">
+        <p>
             Explore my collection of fine art and photography. Each image is a unique expression of creativity and emotion. Click on any photo to view it in full size and discover the story behind it.
         </p>
     </section>

@@ -1,0 +1,93 @@
+@layer pages {
+  .comments-page {
+    --c-bg: var(--color-surface);
+    --c-muted: var(--color-text-muted);
+    --c-border: var(--color-divider);
+    --c-accent: var(--color-gold);
+  }
+  .comments-page .page-title {
+    margin: var(--space-7) 0 var(--space-5);
+    color: var(--color-green);
+    font-family: var(--font-display);
+  }
+  .comments-page .comment-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: var(--space-5);
+  }
+  .comments-page .comment {
+    background: var(--c-bg);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    box-shadow: var(--shadow-sm);
+  }
+  .comments-page .comment__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+    font-size: var(--fs-200);
+    color: var(--c-muted);
+  }
+  .comments-page .comment__author {
+    font-weight: 700;
+    color: var(--color-blue);
+  }
+  .comments-page .comment__body {
+    font-size: var(--fs-300);
+    line-height: 1.6;
+  }
+  .comments-page .comment--child {
+    margin-left: var(--space-6);
+    border-left: 3px solid color-mix(in srgb, var(--c-accent) 50%, transparent);
+    padding-left: var(--space-4);
+  }
+  .comments-page .comment-form {
+    margin-top: var(--space-7);
+    background: var(--c-bg);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-md);
+    padding: var(--space-5);
+    box-shadow: var(--shadow-sm);
+  }
+  .comments-page .comment-form .form-row {
+    display: grid;
+    gap: var(--space-4);
+  }
+  @media (min-width: 640px) {
+    .comments-page .comment-form .form-row--two {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .comments-page .comment-form .form-control {
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 0.8rem;
+    font-size: var(--fs-300);
+  }
+  .comments-page .comment-form .form-control:focus {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 2px;
+    border-color: var(--c-accent);
+  }
+  .comments-page .comment-form .btn-submit {
+    margin-top: var(--space-4);
+    background: var(--color-blue);
+    color: #fff;
+    border: 1px solid var(--color-blue);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 1rem;
+    font-weight: 700;
+    transition:
+      background 0.15s ease,
+      opacity 0.15s ease;
+  }
+  .comments-page .comment-form .btn-submit:hover {
+    opacity: 0.9;
+  }
+}

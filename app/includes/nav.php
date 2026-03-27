@@ -95,19 +95,19 @@ try {
 echo "<!-- GALLERIES COUNT (rendered): " . count($galleries) . " -->\n";
 ?>
 <header class="brand-band">
-    <div class="container py-3">
-        <div class="row align-items-center">
-            <div class="col-12 col-md-4">
-                <a href="<?= htmlspecialchars($BASE_URL, ENT_QUOTES, 'UTF-8') ?>/">
-                    <img src="<?= htmlspecialchars($BASE_URL, ENT_QUOTES, 'UTF-8') ?>/assets/images/site-images/20190518_142021-300x92.png"
-                        class="img-fluid" alt="David Schu signature">
-                </a>
-            </div>
-            <div class="col-12 col-md-8">
-                <p class="scripture mb-0">
-                    Let all that I am praise the Lord; with my whole heart, I will praise His holy name. Psalm 103:1
-                </p>
-            </div>
+    <div class="container band-inner">
+        <div class="brand-left">
+            <a href="<?= htmlspecialchars($BASE_URL, ENT_QUOTES, 'UTF-8') ?>/">
+                <img
+                    src="<?= htmlspecialchars($BASE_URL, ENT_QUOTES, 'UTF-8') ?>/assets/images/site-images/20190518_142021-300x92.png"
+                    alt="David Schu signature">
+            </a>
+        </div>
+
+        <div class="brand-right">
+            <p class="scripture">
+                Let all that I am praise the Lord; with my whole heart, I will praise His holy name. Psalm 103:1
+            </p>
         </div>
     </div>
 </header>
