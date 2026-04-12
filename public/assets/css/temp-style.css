@@ -1,0 +1,61 @@
+/* Nav container */
+.site-nav {
+  border-bottom: 1px solid var(--color-divider);
+  background: var(--color-surface);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Nav list */
+.nav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: var(--space-6);
+}
+
+/* Nav links */
+.nav-link {
+  position: relative;
+  padding: 0.4rem 0;
+  font-family: var(--font-body);
+  /* font-size: var(--fs-400); */
+  font-size: large;
+  font-weight: 400;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+/* Hover underline */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: var(--color-gold);
+  transition: width 0.2s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+/* Active state */
+.nav-link.is-active::after {
+  width: 100%;
+}
+
+/* Slight active text emphasis */
+.nav-link.is-active {
+  color: var(--color-text);
+}

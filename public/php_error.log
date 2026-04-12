@@ -28,3 +28,543 @@
 [23-Feb-2026 01:33:14 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
 [23-Feb-2026 01:33:14 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
 [23-Feb-2026 01:33:14 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 21:56:06 Europe/Berlin] Testing error log write...
+[27-Mar-2026 21:56:06 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 21:56:06 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 21:56:06 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 21:56:06 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 21:56:06 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 21:56:06 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 21:56:06 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 21:56:06 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 21:56:06 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 21:56:06 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 21:56:06 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 21:56:06 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 21:56:06 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 21:56:06 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:05:18 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:05:18 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:05:18 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:05:18 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:05:18 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:05:18 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:05:18 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:05:18 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:05:19 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:05:19 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:05:19 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:05:19 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:05:19 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:05:19 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:05:19 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:07:25 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:07:25 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:07:25 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:07:25 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:07:25 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:07:25 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:07:25 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:07:25 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:07:26 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:07:26 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:07:26 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:07:26 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:07:26 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:07:26 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:07:26 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:07:44 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:07:44 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:07:44 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:07:44 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:07:44 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:07:44 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:07:44 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:07:44 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:07:45 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:07:45 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:07:45 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:07:45 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:07:45 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:07:45 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:07:45 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:09:32 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:09:32 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:09:32 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:09:32 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:09:32 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:09:32 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:09:32 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:09:32 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:09:33 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:09:33 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:09:33 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:09:33 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:09:33 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:09:33 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:09:33 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:10:42 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:10:42 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:10:42 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:10:42 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:10:42 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:10:42 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:10:42 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:10:42 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:10:42 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:10:42 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:10:42 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:10:42 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:10:42 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:10:42 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:10:42 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:12:04 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:12:04 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:12:04 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:12:04 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:12:04 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:12:04 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:12:04 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:12:04 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:12:04 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:12:04 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:12:04 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:12:04 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:12:04 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:12:04 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:12:04 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:12:26 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:12:26 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:12:26 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:12:26 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:12:26 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:12:26 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:12:26 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:12:26 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:12:26 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:12:26 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:12:26 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:12:26 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:12:26 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:12:26 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:12:26 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:12:55 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:12:55 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:12:55 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:12:55 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:12:55 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:12:55 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:12:55 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:12:55 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:12:55 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:12:55 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:12:55 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:12:55 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:12:55 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:12:55 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:12:55 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:13:25 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:13:25 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:13:25 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:13:25 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:13:25 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:13:25 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:13:25 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:13:25 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:13:25 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:13:25 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:13:25 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:13:25 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:13:25 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:13:25 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:13:25 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:13:55 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:13:55 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:13:55 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:13:55 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:13:55 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:13:55 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:13:55 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:13:55 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:13:56 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:13:56 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:13:56 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:13:56 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:13:56 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:13:56 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:13:56 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:14:20 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:14:20 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:14:20 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:14:20 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:14:20 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:14:20 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:14:20 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:14:20 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:14:21 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:14:21 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:14:21 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:14:21 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:14:21 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:14:21 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:14:21 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:15:13 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:15:13 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:15:13 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:15:13 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:15:13 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:15:13 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:15:13 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:15:13 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:15:13 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:15:13 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:15:13 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:15:13 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:15:13 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:15:13 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:15:13 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:16:18 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:16:18 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:16:18 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:16:18 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:16:18 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:16:18 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:16:18 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:16:18 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:16:19 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:16:19 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:16:19 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:16:19 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:16:19 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:16:19 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:16:19 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:18:39 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:18:39 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:18:39 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:18:39 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:18:39 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:18:39 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:18:39 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:18:39 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:18:40 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:18:40 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:18:40 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:18:40 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:18:40 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:18:40 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:18:40 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:18:57 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:18:57 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:18:57 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:18:57 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:18:57 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:18:57 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:18:57 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:18:57 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:18:57 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:18:57 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:18:57 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:18:57 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:18:57 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:18:57 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:18:57 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:19:42 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:19:42 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:19:42 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:19:42 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:19:42 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:19:42 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:19:42 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:19:42 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:19:42 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:19:42 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:19:42 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:19:42 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:19:42 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:19:42 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:19:42 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:23:07 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:23:07 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:23:07 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:23:07 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:23:07 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:23:07 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:23:07 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:23:07 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:23:08 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:23:08 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:23:08 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:23:08 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:23:08 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:23:08 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:23:08 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:23:40 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:23:40 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:23:40 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:23:40 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:23:40 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:23:40 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:23:40 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:23:40 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:23:41 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:23:41 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:23:41 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:23:41 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:23:41 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:23:41 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:23:41 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:24:43 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:24:43 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:24:43 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:24:43 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:24:43 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:24:43 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:24:43 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:24:43 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:24:44 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:24:44 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:24:44 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:24:44 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:24:44 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:24:44 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:24:44 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:36:05 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:36:05 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:36:05 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:36:05 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:36:05 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:36:05 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:36:05 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:36:05 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:36:05 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:36:05 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:36:05 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:36:05 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:36:05 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:36:05 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:36:05 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:36:23 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:36:23 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:36:23 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:36:23 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:36:23 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:36:23 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:36:23 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:36:23 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:36:24 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:36:24 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:36:24 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:36:24 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:36:24 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:36:24 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:36:24 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:36:49 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:36:49 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:36:49 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:36:49 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:36:49 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:36:49 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:36:49 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:36:49 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:36:49 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:36:49 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:36:49 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:36:49 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:36:49 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:36:49 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:36:49 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:37:02 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:37:02 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:37:02 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:37:02 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:37:02 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:37:02 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:37:02 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:37:02 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:37:03 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:37:03 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:37:03 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:37:03 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:37:03 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:37:03 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:37:03 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:38:02 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:38:02 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:38:02 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:38:02 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:38:02 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:38:02 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:38:02 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:38:02 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:38:03 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:38:03 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:38:03 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:38:03 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:38:03 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:38:03 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:38:03 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:39:02 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:39:02 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:39:02 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:39:02 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:39:02 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:39:02 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:39:02 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:39:02 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:39:02 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:39:02 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:39:02 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:39:02 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:39:02 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:39:02 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:39:02 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:40:18 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:40:18 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:40:18 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:40:18 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:40:18 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:40:18 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:40:18 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:40:18 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:40:18 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:40:18 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:40:18 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:40:18 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:40:18 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:40:18 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:40:18 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:40:30 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:40:30 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:40:30 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:40:30 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:40:30 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:40:30 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:40:30 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:40:30 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:40:30 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:40:30 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:40:30 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:40:30 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:40:30 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:40:30 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:40:30 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:41:29 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:41:29 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:41:29 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:41:29 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:41:29 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:41:29 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:41:29 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:41:29 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:41:30 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:41:30 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:41:30 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:41:30 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:41:30 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:41:30 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:41:30 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:42:54 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:42:54 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:42:54 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:42:54 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:42:54 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:42:54 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:42:54 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:42:54 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:42:54 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:42:54 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:42:54 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:42:54 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:42:54 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:42:54 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:42:54 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:43:29 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:43:29 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:43:29 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:43:29 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:43:29 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:43:29 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:43:29 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:43:29 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:43:29 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:43:29 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:43:29 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:43:29 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:43:29 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:43:29 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:43:29 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:44:14 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:44:14 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:44:14 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:44:14 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:44:14 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:44:14 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:44:14 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:44:14 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:44:14 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:44:14 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:44:14 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:44:14 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:44:14 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:44:14 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:44:14 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:52:03 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:52:03 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:52:03 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:52:03 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:52:03 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:52:03 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:52:03 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:52:03 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:52:04 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:52:04 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:52:04 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:52:04 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:52:04 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:52:04 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:52:04 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:52:12 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:52:12 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:52:12 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:52:12 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:52:12 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:52:12 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:52:12 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:52:12 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:52:12 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:52:12 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:52:12 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:52:12 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:52:12 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:52:12 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:52:12 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:53:18 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:53:18 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:53:18 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:53:18 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:53:18 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:53:18 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:53:18 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:53:18 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:53:19 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:53:19 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:53:19 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:53:19 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:53:19 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:53:19 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:53:19 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0
+[27-Mar-2026 22:53:28 Europe/Berlin] Testing error log write...
+[27-Mar-2026 22:53:28 Europe/Berlin] --- CSRF DEBUG START ---
+[27-Mar-2026 22:53:28 Europe/Berlin] POST KEYS: 
+[27-Mar-2026 22:53:28 Europe/Berlin] POST csrf_token (raw): [missing]
+[27-Mar-2026 22:53:28 Europe/Berlin] FILES KEYS: 
+[27-Mar-2026 22:53:28 Europe/Berlin] Content-Type: [none]
+[27-Mar-2026 22:53:28 Europe/Berlin] Content-Length: [none]
+[27-Mar-2026 22:53:28 Europe/Berlin] --- CSRF DEBUG END ---
+[27-Mar-2026 22:53:28 Europe/Berlin] Galleries loaded: 6
+[27-Mar-2026 22:53:28 Europe/Berlin] Gallery: id=1 title=Gallery One slug=gallery-one active=1 has_images=1
+[27-Mar-2026 22:53:28 Europe/Berlin] Gallery: id=6 title=Test Gallery slug=test-gallery active=1 has_images=0
+[27-Mar-2026 22:53:28 Europe/Berlin] Gallery: id=2 title=Gallery Two slug=gallery-two active=1 has_images=1
+[27-Mar-2026 22:53:28 Europe/Berlin] Gallery: id=3 title=Gallery Three slug=gallery-three active=1 has_images=1
+[27-Mar-2026 22:53:28 Europe/Berlin] Gallery: id=4 title=Painting a Day slug=gallery-pad active=1 has_images=1
+[27-Mar-2026 22:53:28 Europe/Berlin] Gallery: id=5 title=Photography slug=gallery-photo active=1 has_images=0

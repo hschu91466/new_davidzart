@@ -17,7 +17,7 @@ require_once __DIR__ . '/../app/includes/nav.php';
 
 <main class="main container flow">
     <section class="section text-center">
-        <h1 class="h1">Welcome</h1>
+        <h3 class="section-label">Selected Works</h3>
         <div class="splide"
             id="randomGallery"
             aria-label="Homepage Image Gallery"

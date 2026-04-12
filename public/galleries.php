@@ -23,7 +23,7 @@ try {
 <main class="py-4">
     <div class="container">
         <header class="mb-4">
-            <h1 class="h3 mb-1">Galleries</h1>
+            <h3 class="section-label">Galleries</h3>
             <p class="text-muted mb-0">Browse all available galleries.</p>
         </header>
         <?php if (!empty($galleries)): ?>

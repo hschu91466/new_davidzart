@@ -58,8 +58,8 @@ class GalleryModel
         SELECT g.gallery_id, 
         g.slug, 
         g.title,
-        (select gi.file_path from images gi where gi.gallery_id = g.gallery_id order by gi.image_id asc limit 1) as cover_url,
-        (select gi.orientation from images gi where gi.gallery_id = g.gallery_id order by gi.image_id asc limit 1) as orientation
+        (select gi.file_path from images gi where gi.gallery_id = g.gallery_id and gi.orientation = 'portrait' order by gi.image_id asc limit 1) as cover_url,
+        (select gi.orientation from images gi where gi.gallery_id = g.gallery_id and gi.orientation = 'portrait' order by gi.image_id asc limit 1) as orientation
         FROM galleries g
         WHERE g.is_active = 1
           AND TRIM(COALESCE(g.slug,'')) <> ''

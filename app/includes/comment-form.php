@@ -7,6 +7,7 @@ $contentType = $_GET['content_type'] ?? 'image';
 $contentId   = (int)($_GET['content_id'] ?? 0);
 $formStartTs = time();
 ?>
+
 <form id="comment-form" method="post" action="/api/comments-create.php">
     <input type="hidden" name="csrf_token" value="<?php echo htmlspecialchars($csrf, ENT_QUOTES); ?>">
     <input type="hidden" name="form_start_ts" value="<?php echo (int)$formStartTs; ?>">

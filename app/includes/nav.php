@@ -94,9 +94,9 @@ try {
 
 echo "<!-- GALLERIES COUNT (rendered): " . count($galleries) . " -->\n";
 ?>
-<header class="brand-band">
-    <div class="container band-inner">
-        <div class="brand-left">
+<header class="brand-band site-banner">
+    <div class="container band-inner banner-inner">
+        <div class="brand-left banner-logo">
             <a href="<?= htmlspecialchars($BASE_URL, ENT_QUOTES, 'UTF-8') ?>/">
                 <img
                     src="<?= htmlspecialchars($BASE_URL, ENT_QUOTES, 'UTF-8') ?>/assets/images/site-images/20190518_142021-300x92.png"
@@ -105,58 +105,64 @@ echo "<!-- GALLERIES COUNT (rendered): " . count($galleries) . " -->\n";
         </div>
 
         <div class="brand-right">
-            <p class="scripture">
+            <p class="banner-scripture">
                 Let all that I am praise the Lord; with my whole heart, I will praise His holy name. Psalm 103:1
             </p>
         </div>
     </div>
 </header>
 
-<nav class="navbar navbar-light navbar-expand-sm">
-    <div class="container">
-        <!-- Toggler -->
-        <button class="navbar-toggler" type="button"
-            data-bs-toggle="collapse" data-bs-target="#primaryNav"
-            aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<nav class="site-nav" aria-label="Primary navigation">
+    <div class="nav-inner">
+
+        <!-- Mobile toggle (optional but preserved) -->
+        <button class="nav-toggle"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#primaryNav"
+            aria-controls="primaryNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            ☰
         </button>
 
-        <!-- Collapsible content -->
-        <div class="collapse navbar-collapse justify-content-center" id="primaryNav">
-            <ul class="navbar-nav">
-                <!-- Home -->
-                <li class="nav-item">
-                    <a class="nav-link <?= (isActive('/index.php') || (($_SERVER['REQUEST_URI'] ?? '') === '/')) ? 'active' : '' ?>"
-                        aria-current="<?= (isActive('/index.php') || (($_SERVER['REQUEST_URI'] ?? '') === '/')) ? 'page' : 'false' ?>"
-                        href="<?= htmlspecialchars($BASE_URL, ENT_QUOTES, 'UTF-8') ?>/index.php">Home</a>
+        <!-- Navigation links -->
+        <div class="collapse show-desktop" id="primaryNav">
+            <ul class="nav-list">
+
+                <li>
+                    <a class="site-nav-link <?= (isActive('/index.php') || (($_SERVER['REQUEST_URI'] ?? '') === '/')) ? 'is-active' : '' ?>"
+                        href="<?= htmlspecialchars($BASE_URL, ENT_QUOTES, 'UTF-8') ?>/index.php">
+                        Home
+                    </a>
                 </li>
 
-                <!-- About -->
-                <li class="nav-item">
-                    <a class="nav-link <?= isActive('/about.php') ? 'active' : '' ?>"
-                        href="<?= htmlspecialchars($BASE_URL, ENT_QUOTES, 'UTF-8') ?>/about.php">About</a>
+                <li>
+                    <a class="site-nav-link <?= isActive('/about.php') ? 'is-active' : '' ?>"
+                        href="<?= htmlspecialchars($BASE_URL, ENT_QUOTES, 'UTF-8') ?>/about.php">
+                        About
+                    </a>
                 </li>
 
-                <!-- Comments -->
-                <li class="nav-item">
-                    <a class="nav-link <?= isActive('/comments.php') ? 'active' : '' ?>"
-                        href="<?= htmlspecialchars($BASE_URL, ENT_QUOTES, 'UTF-8') ?>/comments.php">Comments</a>
+                <li>
+                    <a class="site-nav-link <?= isActive('/comments.php') ? 'is-active' : '' ?>"
+                        href="<?= htmlspecialchars($BASE_URL, ENT_QUOTES, 'UTF-8') ?>/comments.php">
+                        Comments
+                    </a>
                 </li>
-
-                <!-- Galleries dropdown -->
 
                 <?php
-                // Determine active state for Galleries (works for both /galleries.php and gallery detail)
                 $isGalleries = isActive('/galleries.php') || isActive('/gallery.php');
                 ?>
-                <li class="nav-item">
-                    <a class="nav-link <?= $isGalleries ? 'active' : '' ?>"
+                <li>
+                    <a class=" site-nav-link <?= $isGalleries ? 'is-active' : '' ?>"
                         href="<?= htmlspecialchars($BASE_URL, ENT_QUOTES, 'UTF-8') ?>/galleries.php">
                         Galleries
                     </a>
                 </li>
 
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container -->
+        </div>
+
+    </div>
 </nav>

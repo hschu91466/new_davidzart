@@ -3,10 +3,10 @@
 $contentType = $_GET['content_type'] ?? 'image';
 $contentId   = (int)($_GET['content_id'] ?? 0);
 ?>
-<div id="comments-container"
+<div id="comments-container" class="comments-page"
     data-type="<?php echo htmlspecialchars($contentType, ENT_QUOTES); ?>"
     data-id="<?php echo (int)$contentId; ?>">
-    <h2>Comments</h2>
+    <h3 class="section-label">Leave a Comment</h3>
     <ol id="comments-list"></ol>
     <button id="comments-loadmore" style="display:none;">Load more</button>
 </div>

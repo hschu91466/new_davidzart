@@ -137,6 +137,133 @@ final class GalleryApiController
         }
     }
 
+    public function gallery(): void
+    {
+        header('Content-Type: application/json; charset=utf-8');
+
+        $slug = isset($_GET['slug']) ? trim($_GET['slug']) : '';
+
+        if ($slug === '') {
+            http_response_code(400);
+            echo json_encode(['error' => 'Missing gallery slug']);
+            return;
+        }
+
+        try {
+            // Fetch gallery by slug
+            $gallery = GalleryModel::getBySlug($this->pdo, $slug);
+            if (!$gallery) {
+                http_response_code(404);
+                echo json_encode(['error' => 'Gallery not found']);
+                return;
+            }
+
+            // Fetch images for gallery
+            $rows = ImageModel::getByGallery(
+                $this->pdo,
+                (int)$gallery['gallery_id']
+            );
+
+            if (!is_array($rows)) {
+                $rows = [];
+            }
+
+            // Filter + order images
+            $rows = array_filter(
+                $rows,
+                fn($r) => ($r['is_active'] ?? 0) == 1 &&
+                    ($r['is_published'] ?? 0) == 1
+            );
+
+            usort(
+                $rows,
+                fn($a, $b) => ($a['sort_order'] ?? 0) <=> ($b['sort_order'] ?? 0)
+            );
+
+            $images = array_map(
+                fn($r) =>
+                $this->shapeImage($r, 'original'),
+                $rows
+            );
+
+            echo json_encode([
+                'gallery' => [
+                    'id'          => (int)$gallery['gallery_id'],
+                    'slug'        => $gallery['slug'],
+                    'title'       => $gallery['title'],
+                    'description' => $gallery['description'] ?? null
+                ],
+                'images' => $images
+            ]);
+        } catch (Throwable $e) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Server error']);
+        }
+    }
+
+    public function galleries(): void
+    {
+        header('Content-Type: application/json; charset=utf-8');
+
+        try {
+            // Fetch active galleries
+            $galleries = GalleryModel::getActive($this->pdo);
+            if (!is_array($galleries)) {
+                echo json_encode(['galleries' => []]);
+                return;
+            }
+
+            $out = [];
+
+            foreach ($galleries as $g) {
+                $coverImage = null;
+
+                // Fetch images for gallery to derive cover
+                $rows = ImageModel::getByGallery(
+                    $this->pdo,
+                    (int)$g['gallery_id']
+                );
+
+                if (is_array($rows)) {
+                    // Filter active + published images
+                    $rows = array_filter(
+                        $rows,
+                        fn($r) => ($r['is_active'] ?? 0) == 1 &&
+                            ($r['is_published'] ?? 0) == 1
+                    );
+
+                    usort(
+                        $rows,
+                        fn($a, $b) => ($a['sort_order'] ?? 0) <=> ($b['sort_order'] ?? 0)
+                    );
+
+                    if (!empty($rows)) {
+                        $img = $rows[0];
+                        $coverImage = [
+                            'image_id'   => (int)$img['image_id'],
+                            'file_path'  => normalize_to_assets($img['filepath'] ?? ''),
+                            'orientation' => $img['orientation'] ?? null
+                        ];
+                    }
+                }
+
+                $out[] = [
+                    'id'          => (int)$g['gallery_id'],
+                    'slug'        => $g['slug'],
+                    'title'       => $g['title'],
+                    'description' => $g['description'] ?? null,
+                    'cover_image' => $coverImage,
+                    'sort_order'  => isset($g['sort_order']) ? (int)$g['sort_order'] : 0,
+                ];
+            }
+
+            echo json_encode(['galleries' => $out]);
+        } catch (Throwable $e) {
+            http_response_code(500);
+            echo json_encode(['error' => 'Server error']);
+        }
+    }
+
     private function isAllowedImage(string $path, array $allowed): bool
     {
         $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
