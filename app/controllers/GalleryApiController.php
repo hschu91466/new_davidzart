@@ -226,11 +226,12 @@ final class GalleryApiController
 
                 if (is_array($rows)) {
                     // Filter active + published images
-                    $rows = array_filter(
-                        $rows,
-                        fn($r) => ($r['is_active'] ?? 0) == 1 &&
-                            ($r['is_published'] ?? 0) == 1
-                    );
+                    // $rows = array_filter(
+                    //     $rows,
+                    //     fn($r) => ($r['is_active'] ?? 0) == 1
+                    //         &&
+                    //         ($r['is_published'] ?? 0) == 1
+                    // );
 
                     usort(
                         $rows,
@@ -239,10 +240,17 @@ final class GalleryApiController
 
                     if (!empty($rows)) {
                         $img = $rows[0];
+
+                        $gallerySlug = $g['slug'];
+
+                        $filename = basename($img['filepath']);
+
+                        $coverPath = "/assets/images/galleries/{$gallerySlug}/{$filename}";
+
                         $coverImage = [
-                            'image_id'   => (int)$img['image_id'],
-                            'file_path'  => normalize_to_assets($img['filepath'] ?? ''),
-                            'orientation' => $img['orientation'] ?? null
+                            'image_id'    => (int)$img['image_id'],
+                            'file_path'   => $coverPath,
+                            'orientation' => $img['orientation'] ?? null,
                         ];
                     }
                 }
