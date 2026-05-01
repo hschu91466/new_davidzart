@@ -1,0 +1,15 @@
+# React SPA configuration (DO NOT add PHP rewrites here)
+
+DirectoryIndex index.html
+
+RewriteEngine On
+
+# ✅ Allow API requests to bypass React
+
+RewriteRule ^api/ - [L]
+
+# ✅ Serve the built React app
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ react/dist/index.html [L]

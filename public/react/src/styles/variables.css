@@ -1,0 +1,63 @@
+/* ==========================================================================
+   1) DESIGN TOKENS (custom properties)
+   ========================================================================== */
+
+:root {
+  /* Brand palette */
+  --color-green: #20430c; /* Dark Green */
+  --color-green-dk: #0a2d2a; /* Deep Green */
+  --color-gold: #e4c340; /* Gold */
+  --color-brown: #554918; /* Brown */
+  --color-blue: #0e3451; /* Blue */
+
+  /* Neutrals */
+  --color-text: #111111;
+  --color-text-muted: #4c4c4c;
+  --color-surface: #ffffff;
+  --color-divider: #e5e7eb;
+
+  /* Spacing (4px baseline) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 40px;
+
+  /* Radii & shadows */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.12);
+  --img-box-shadow: 10px 10px 5px grey;
+
+  /* Typography (mobile-first) */
+
+  --font-body:
+    "Abel", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --bs-font-sans-serif: var(
+    --font-body
+  ); /* Override Bootstrap's default sans-serif */
+  --font-display: "Permanent Marker", cursive;
+
+  --fs-100: 0.875rem; /* 14px */
+  --fs-200: 1rem; /* 16px */
+  --fs-300: 1.125rem; /* 18px */
+  --fs-400: 1.25rem; /* 20px */
+  --fs-500: 1.5rem; /* 24px */
+  --fs-600: 1.75rem; /* 28px */
+  --fs-700: 2rem; /* 32px */
+}
+
+/* Type scale enhancement on tablet+ */
+@media (min-width: 640px) {
+  :root {
+    --fs-300: 1.2rem;
+    --fs-400: 1.35rem;
+    --fs-500: 1.75rem;
+    --fs-600: 2rem;
+    --fs-700: 2.5rem;
+  }
+}
