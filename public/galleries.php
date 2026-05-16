@@ -1,11 +1,17 @@
 <?php
 
 declare(strict_types=1);
+
+header('Content-Type: application/json');
+
+// TEMP: suppress warnings breaking JSON
+ini_set('display_errors', 0);
+error_reporting(0);
+
 $ROOT = dirname(__DIR__);
 
 require_once dirname(__DIR__) . '/app/config/bootstrap.php';
-require_once $ROOT . '/../app/includes/header.php';
-require_once $ROOT . '/../app/includes/nav.php';
+
 
 $galleries = [];
 try {
@@ -18,7 +24,18 @@ try {
 } catch (Throwable $e) {
     $galleries = [];
 }
+// Detect API request (via proxy path)
+if (isset($_GET['format']) && $_GET['format'] === 'json') {
+    header('Content-Type: application/json');
 
+    echo json_encode([
+        "galleries" => $galleries
+    ]);
+
+    exit;
+}
+require_once $ROOT . '/../app/includes/header.php';
+require_once $ROOT . '/../app/includes/nav.php';
 ?>
 <main class="py-4">
     <div class="container">
@@ -33,7 +50,8 @@ try {
                     $slug = trim((string)($g['slug'] ?? ''));
                     $title = trim((string)($g['title'] ?? ''));
                     if ($slug === '') continue;
-                    $href = $BASE_URL . '/gallery.php?slug=' . rawurlencode($slug);
+                    // $href = $BASE_URL . '/gallery.php?slug=' . rawurlencode($slug);
+                    $href = '/galleries/' . rawurlencode($slug);
                     $label = $title !== '' ? $title : $slug;
                     $coverUrl = $g['cover_url'] ?? null;
                     if ($coverUrl === null || trim($coverUrl) === '') {
