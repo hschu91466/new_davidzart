@@ -10,7 +10,7 @@ function GalleryCard({ gallery, onClick }) {
     >
       {gallery.cover_image && (
         <img
-          src={`http://localhost:81/sites/production/davidschu_new/public${gallery.cover_image.file_path}`}
+          src={gallery.cover_image.url}
           alt={gallery.title}
           style={{ width: "100%", marginBottom: "0.5rem" }}
         />

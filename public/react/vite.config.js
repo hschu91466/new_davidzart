@@ -7,11 +7,10 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:81",
+        target: "http://localhost",
         changeOrigin: true,
         rewrite: (path) =>
-          path.replace(/^\/api/, "/sites/production/davidschu_new/public/api"),
-        secure: false,
+          path.replace(/^\/api/, "/Sites/production/davidschu_new/public"),
       },
     },
   },

@@ -5,7 +5,7 @@ function Header() {
       <div className="site-banner">
         <div className="banner-inner">
           <div className="banner-logo">
-            <img src="/src/assets/images/logo.png" alt="David Z Art" />
+            <img src="/assets/images/site-images/logo.png" alt="David Z Art" />
           </div>
 
           <div className="banner-scripture">

@@ -14,7 +14,7 @@ function GalleryGrid({ galleries, onSelect }) {
     >
       {galleries.map((gallery) => (
         <GalleryCard
-          key={gallery.id}
+          key={gallery.slug}
           gallery={gallery}
           onClick={() => onSelect(gallery.slug)}
         />

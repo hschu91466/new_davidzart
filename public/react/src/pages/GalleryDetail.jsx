@@ -5,9 +5,12 @@ function GalleryDetail() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState(null);
+  const gallery = data?.galleries?.find((g) => g.slug === slug);
+
+  console.log(data);
 
   useEffect(() => {
-    fetch(`/api/galleries.php?slug=${slug}`)
+    fetch(`/api/galleries.php?format=json&slug=${slug}`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch gallery");
         return res.json();
@@ -24,10 +27,10 @@ function GalleryDetail() {
         ← Back to galleries
       </button>
 
-      <h2>{data.gallery.title}</h2>
-      {data.gallery.description && <p>{data.gallery.description}</p>}
+      <h2>{gallery?.title}</h2>
+      {gallery?.description && <p>{gallery.description}</p>}
 
-      <div
+      {/* <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))",
@@ -42,7 +45,7 @@ function GalleryDetail() {
             style={{ width: "100%" }}
           />
         ))}
-      </div>
+      </div> */}
     </div>
   );
 }

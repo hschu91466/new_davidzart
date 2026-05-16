@@ -9,12 +9,13 @@ function Galleries() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/api/galleries.php")
+    fetch("/api/galleries.php?format=json")
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch galleries");
-        return res.json();
+        return res.json(); // ✅ BACK TO JSON
       })
       .then((data) => {
+        console.log("JSON:", data); // keep this
         setGalleries(data.galleries || []);
         setLoading(false);
       })
