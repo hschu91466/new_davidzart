@@ -1,11 +1,16 @@
+import BASE_URL from "../config";
 // Header.jsx
 function Header() {
+  // const BASE_URL = "http://localhost/Sites/production/davidschu_new/public";
   return (
     <header className="brand-band">
       <div className="site-banner">
         <div className="banner-inner">
           <div className="banner-logo">
-            <img src="/assets/images/site-images/logo.png" alt="David Z Art" />
+            <img
+              src={`${BASE_URL}/assets/images/site-images/logo.png`}
+              alt="David Z Art"
+            />
           </div>
 
           <div className="banner-scripture">

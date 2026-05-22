@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import GalleryGrid from "../components/GalleryGrid";
+import BASE_URL from "../config";
 
 function Galleries() {
   const [galleries, setGalleries] = useState([]);
@@ -9,7 +10,7 @@ function Galleries() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch("/api/galleries.php?format=json")
+    fetch(`${BASE_URL}/api/galleries.php?format=json`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch galleries");
         return res.json(); // ✅ BACK TO JSON

@@ -1,4 +1,10 @@
+import BASE_URL from "../config";
+
 function GalleryCard({ gallery, onClick }) {
+  const imagePath = gallery.cover_image?.file_path || gallery.cover_url || null;
+
+  const imageSrc = imagePath ? `${BASE_URL}${imagePath}` : null;
+
   return (
     <li
       style={{
@@ -8,13 +14,14 @@ function GalleryCard({ gallery, onClick }) {
       }}
       onClick={onClick}
     >
-      {gallery.cover_image && (
+      {imageSrc && (
         <img
-          src={gallery.cover_image.url}
+          src={imageSrc}
           alt={gallery.title}
           style={{ width: "100%", marginBottom: "0.5rem" }}
         />
       )}
+
       <strong>{gallery.title}</strong>
     </li>
   );
