@@ -39,7 +39,14 @@ function db(): PDO
         throw new RuntimeException('Database environment variables missing: DBNAME and/or DBUSER are empty.');
     }
 
-    $dsn = "mysql:host={$DBHOST};port={$DBPORT};dbname={$DBNAME};charset=utf8mb4";
+    // Use socket if available (production), otherwise fallback to host (local)
+    $socket = '/run/mysqld/mysqld.sock';
+
+    if (file_exists($socket)) {
+        $dsn = "mysql:unix_socket={$socket};dbname={$DBNAME};charset=utf8mb4";
+    } else {
+        $dsn = "mysql:host={$DBHOST};port={$DBPORT};dbname={$DBNAME};charset=utf8mb4";
+    }
 
     // 4) Create PDO once
     $pdo = new PDO($dsn, $DBUSER, $DBPASS, [

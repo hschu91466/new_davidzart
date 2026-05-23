@@ -5,8 +5,9 @@ declare(strict_types=1);
 header('Content-Type: application/json');
 
 // TEMP: suppress warnings breaking JSON
-ini_set('display_errors', 0);
-error_reporting(0);
+
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
 $ROOT = dirname(__DIR__);
 
@@ -25,15 +26,41 @@ try {
     $galleries = [];
 }
 // Detect API request (via proxy path)
+// if (isset($_GET['format']) && $_GET['format'] === 'json') {
+//     header('Content-Type: application/json');
+
+//     echo json_encode([
+//         "galleries" => $galleries
+//     ]);
+
+//     exit;
+// }
+
 if (isset($_GET['format']) && $_GET['format'] === 'json') {
     header('Content-Type: application/json');
 
+    $slug = $_GET['slug'] ?? null;
+
+    // ✅ CASE 1: return gallery list (no slug)
+    if (!$slug) {
+        echo json_encode([
+            "galleries" => $galleries
+        ]);
+        exit;
+    }
+
+    // ✅ CASE 2: return one gallery + images
+    $gallery = GalleryModel::getBySlug($pdo, $slug);
+    $images = GalleryModel::getImagesBySlug($pdo, $slug);
+
     echo json_encode([
-        "galleries" => $galleries
+        "gallery" => $gallery,
+        "images" => $images
     ]);
 
     exit;
 }
+
 require_once $ROOT . '/../app/includes/header.php';
 require_once $ROOT . '/../app/includes/nav.php';
 ?>

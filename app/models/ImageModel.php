@@ -6,12 +6,15 @@ class ImageModel
 {
     public static function getByGallery(PDO $pdo, int $galleryId): array
     {
-        $sql = "SELECT 
-              image_id,
-              file_path AS filepath, 
-              title,
-              caption,
-              orientation
+        $sql = "SELECT             
+            image_id,
+            file_path AS filepath,
+            title,
+            caption,
+            orientation,
+            is_active,
+            is_published,
+            sort_order            
             FROM images
             WHERE gallery_id = :gid AND is_active = 1
             ORDER BY sort_order, image_id";

@@ -1,8 +1,6 @@
 <?php
 require_once __DIR__ . '/helper.php';
-if (!isset($BASE_URL)) {
-    $BASE_URL = getBaseURL();
-}
+
 ?>
 <footer>
     <div class="container">

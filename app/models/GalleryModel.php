@@ -16,6 +16,25 @@ class GalleryModel
     return $row ?: null;
   }
 
+  public static function getImagesBySlug(PDO $pdo, string $slug): array
+  {
+    $sql = "
+        SELECT 
+            i.image_id AS id,
+            i.file_path AS url
+        FROM images i
+        JOIN galleries g 
+            ON g.gallery_id = i.gallery_id
+        WHERE g.slug = :slug
+        ORDER BY i.image_id ASC
+    ";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':slug' => $slug]);
+
+    return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
+  }
+
   public static function getActive(PDO $pdo): array
   {
     $sql = "
@@ -51,30 +70,41 @@ class GalleryModel
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC) ?: [];
   }
 
-
   public static function getActiveWithImages(PDO $pdo): array
   {
     $sql = "
-        SELECT g.gallery_id, 
-        g.slug, 
-        g.title,
-        (select gi.file_path from images gi where gi.gallery_id = g.gallery_id and gi.orientation = 'portrait' order by gi.image_id asc limit 1) as cover_url,
-        (select gi.orientation from images gi where gi.gallery_id = g.gallery_id and gi.orientation = 'portrait' order by gi.image_id asc limit 1) as orientation
-        FROM galleries g
-        WHERE g.is_active = 1
-          AND TRIM(COALESCE(g.slug,'')) <> ''
-          AND EXISTS (
-            SELECT 1
-            FROM images gi
-            WHERE gi.gallery_id = g.gallery_id
-          )
-        ORDER BY g.sort_order ASC, g.title ASC
-    ";
+    SELECT 
+      g.gallery_id, 
+      g.slug, 
+      g.title,
+      
+      (select gi.file_path 
+        from images gi 
+        where gi.gallery_id = g.gallery_id
+        order by gi.sort_order asc, gi.image_id asc 
+        limit 1) as cover_url,
+
+      (select gi.orientation 
+        from images gi 
+        where gi.gallery_id = g.gallery_id
+        order by gi.sort_order asc, gi.image_id asc 
+        limit 1) as orientation
+
+    FROM galleries g
+    WHERE g.is_active = 1
+      AND TRIM(COALESCE(g.slug,'')) <> ''
+      AND EXISTS (
+        SELECT 1
+        FROM images gi
+        WHERE gi.gallery_id = g.gallery_id
+      )
+    ORDER BY g.sort_order ASC, g.title ASC
+  ";
+
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
   }
-
 
   public static function getById(PDO $pdo, int $id): ?array
   {

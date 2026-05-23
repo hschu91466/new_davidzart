@@ -10,6 +10,8 @@ final class GalleryApiController
 {
     public function __construct(private PDO $pdo) {}
 
+
+
     public function images(): void
     {
         header('Content-Type: application/json');
@@ -50,7 +52,7 @@ final class GalleryApiController
                     $out = ['error' => 'Gallery not found'];
                     if ($debug) $out['debug'] = $diag;
                     echo json_encode($out);
-                    return;
+                    exit;
                 }
 
                 $rows = ImageModel::getByGallery($this->pdo, (int)$g['gallery_id']);
@@ -88,7 +90,7 @@ final class GalleryApiController
                     $out = ['error' => 'No galleries found'];
                     if ($debug) $out['debug'] = $diag;
                     echo json_encode($out);
-                    return;
+                    exit;
                 }
 
                 $pool = [];
@@ -129,16 +131,20 @@ final class GalleryApiController
             if ($debug) $payload['debug'] = $diag;
 
             echo json_encode($payload);
+            exit;
         } catch (Throwable $e) {
             http_response_code(500);
             $payload = ['error' => 'Server error'];
             if ($debug) $payload['exception'] = $e->getMessage();
             echo json_encode($payload);
+            exit;
         }
     }
 
     public function gallery(): void
     {
+
+
         header('Content-Type: application/json; charset=utf-8');
 
         $slug = isset($_GET['slug']) ? trim($_GET['slug']) : '';
@@ -146,7 +152,7 @@ final class GalleryApiController
         if ($slug === '') {
             http_response_code(400);
             echo json_encode(['error' => 'Missing gallery slug']);
-            return;
+            exit;
         }
 
         try {
@@ -155,7 +161,7 @@ final class GalleryApiController
             if (!$gallery) {
                 http_response_code(404);
                 echo json_encode(['error' => 'Gallery not found']);
-                return;
+                exit;
             }
 
             // Fetch images for gallery
@@ -191,18 +197,22 @@ final class GalleryApiController
                     'id'          => (int)$gallery['gallery_id'],
                     'slug'        => $gallery['slug'],
                     'title'       => $gallery['title'],
-                    'description' => $gallery['description'] ?? null
+                    'description' => $gallery['description'] ?? null,
+                    'DEBUG_MARKER' => 'gallery',
                 ],
                 'images' => $images
             ]);
+            exit;
         } catch (Throwable $e) {
             http_response_code(500);
             echo json_encode(['error' => 'Server error']);
+            exit;
         }
     }
 
     public function galleries(): void
     {
+
         header('Content-Type: application/json; charset=utf-8');
 
         try {
@@ -210,7 +220,7 @@ final class GalleryApiController
             $galleries = GalleryModel::getActive($this->pdo);
             if (!is_array($galleries)) {
                 echo json_encode(['galleries' => []]);
-                return;
+                exit;
             }
 
             $out = [];
@@ -262,13 +272,16 @@ final class GalleryApiController
                     'description' => $g['description'] ?? null,
                     'cover_image' => $coverImage,
                     'sort_order'  => isset($g['sort_order']) ? (int)$g['sort_order'] : 0,
+                    'DEBUG_MARKER' => 'out galleries',
                 ];
             }
 
             echo json_encode(['galleries' => $out]);
+            exit;
         } catch (Throwable $e) {
             http_response_code(500);
             echo json_encode(['error' => 'Server error']);
+            exit;
         }
     }
 
@@ -280,30 +293,37 @@ final class GalleryApiController
 
     private function shapeImage(array $row, string $lightbox): array
     {
+
+
         $web = normalize_to_assets($row['filepath'] ?? '');
-        $url = ltrim($web, '/');
+        // $url = ltrim($web, '/');
+        $url = '/' . ltrim($web, '/');
 
         $thumb = $url;
         $href = $url;
 
         // Emit ABSOLUTE URLs rooted at the public base
-        $absUrl   = img_src($url,   true); // internally calls base_url() → getBaseURL()
+        // $absUrl   = img_src($url,   true); // internally calls base_url() → getBaseURL()
+        $relUrl = img_src($url, false);
+        $absUrl = img_src($url, false);
         $absHref  = img_src($href,  true);
         $absThumb = img_src($thumb, true);
 
         return [
             'id'          => (int)($row['image_id'] ?? 0),
-            'url'         => $absUrl,
+            'url'         => $relUrl,
             'href'        => $absHref,
             'thumb'       => $absThumb,
             'alt'         => $row['title'] ?? '',
             'caption'     => $row['caption'] ?? '',
             'orientation' => $row['orientation'] ?? null,
+            'DEBUG_MARKER' => 'shapeImage',
         ];
     }
 
     private function filterActiveBySlugs(array $actives, array $slugs): array
     {
+
         $set = array_flip(array_map('strtolower', $slugs));
         return array_values(array_filter($actives, fn($g) => isset($g['slug']) && isset($set[strtolower($g['slug'])])));
     }

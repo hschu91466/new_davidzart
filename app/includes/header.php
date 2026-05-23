@@ -25,9 +25,6 @@ $PAGE_SLUG  = $PAGE_SLUG  ?? 'default';
 
 
     <!-- 1) Expose the base URL for front-end code -->
-    <script>
-        window.BASE_URL = <?= json_encode($BASE_URL ?? getBaseURL(), JSON_UNESCAPED_SLASHES) ?>;
-    </script>
 
     <!-- Google Fonts (load once) -->
     <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet" />
