@@ -26,7 +26,7 @@ function GalleryDetail() {
   if (!data || !data.images) return <p>Loading gallery…</p>;
 
   return (
-    <div style={{ padding: "1rem" }}>
+    <div className="container py-4 gallery-detail">
       <button onClick={() => navigate("/galleries")}>
         ← Back to galleries
       </button>
@@ -34,7 +34,7 @@ function GalleryDetail() {
       <h2>{gallery?.title}</h2>
       {gallery?.description && <p>{gallery.description}</p>}
 
-      <div id="galleryGrid">
+      <div id="galleryGrid" className="gallery-grid">
         {/* {console.log("FULL IMAGES ARRAY:", data.images)} */}
         {data.images &&
           data.images.map((img) => {
@@ -44,8 +44,8 @@ function GalleryDetail() {
             // console.log("first image from state:", data.images[0]);
             const tileClass =
               orientation === "portrait"
-                ? "tile tile--portrait"
-                : "tile tile--landscape";
+                ? "gallery-tile gallery-tile--portrait"
+                : "gallery-tile gallery-tile--landscape";
 
             return (
               <div className={tileClass} key={img.id}>

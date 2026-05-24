@@ -30,7 +30,7 @@ function Galleries() {
   if (error) return <p>Error: {error}</p>;
 
   return (
-    <div style={{ padding: "1rem" }}>
+    <div className="container py-4 gallery-detail">
       <h1>Galleries</h1>
 
       <GalleryGrid

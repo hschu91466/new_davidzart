@@ -6,19 +6,12 @@ function GalleryCard({ gallery, onClick }) {
   const imageSrc = imagePath ? `${BASE_URL}${imagePath}` : null;
 
   return (
-    <li
-      style={{
-        border: "1px solid #ccc",
-        padding: "1rem",
-        cursor: "pointer",
-      }}
-      onClick={onClick}
-    >
+    <li className="gallery-card" onClick={onClick}>
       {imageSrc && (
         <img
           src={imageSrc}
           alt={gallery.title}
-          style={{ width: "100%", marginBottom: "0.5rem" }}
+          className="gallery-card__image"
         />
       )}
 
