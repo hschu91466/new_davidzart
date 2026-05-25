@@ -6,17 +6,19 @@ function GalleryCard({ gallery, onClick }) {
   const imageSrc = imagePath ? `${BASE_URL}${imagePath}` : null;
 
   return (
-    <li className="gallery-card" onClick={onClick}>
-      {imageSrc && (
-        <img
-          src={imageSrc}
-          alt={gallery.title}
-          className="gallery-card__image"
-        />
-      )}
+    <div className="gallery-item" onClick={onClick}>
+      <div className="gallery-card">
+        {imageSrc && (
+          <img
+            src={imageSrc}
+            alt={gallery.title}
+            className="gallery-card__image"
+          />
+        )}
+      </div>
 
-      <strong>{gallery.title}</strong>
-    </li>
+      <div className="gallery-title">{gallery.title}</div>
+    </div>
   );
 }
 
