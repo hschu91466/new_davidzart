@@ -37,7 +37,9 @@
 
   --font-body:
     "Abel", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  --bs-font-sans-serif: var(--font-body); /* Override Bootstrap's default sans-serif */
+  --bs-font-sans-serif: var(
+    --font-body
+  ); /* Override Bootstrap's default sans-serif */
   --font-display: "Permanent Marker", cursive;
 
   --fs-100: 0.875rem; /* 14px */

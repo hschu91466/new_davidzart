@@ -36,7 +36,7 @@ require_once $ROOT . '/includes/nav.php';
     <?php if (empty($images)): ?>
         <p>No images in this gallery yet.</p>
     <?php else: ?>
-        <div class="row gallery g-3" id="galleryGrid">
+        <div class="gallery-grid" id="galleryGrid">
             <?php foreach ($images as $img): ?>
                 <?php
                 // Title & alt fallbacks
@@ -49,11 +49,15 @@ require_once $ROOT . '/includes/nav.php';
                 $src  = img_src($img['filepath']);   // e.g., '/assets/images/...'
                 $href = $src; // same for lightbox; change later if you add high-res variants
                 ?>
-                <div class="col-6 col-md-4 col-lg-3">
+                <?php
+                $orientation = strtolower(trim($img['orientation'] ?? 'landscape'));
+                $tileClass = "gallery-tile gallery-tile--{$orientation}";
+                ?>
+                <div class="<?= $tileClass ?>">
                     <a href="<?= h($href) ?>" class="lightbox" title="<?= h($title) ?>">
                         <img
                             src="<?= h($src) ?>"
-                            class="img-fluid img-frame <?= h($orient) ?>"
+                            class="img-frame <?= h($orient) ?>"
                             alt="<?= h($alt) ?>"
                             loading="lazy" decoding="async">
                     </a>
