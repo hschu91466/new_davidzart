@@ -5,13 +5,15 @@ import { Outlet } from "react-router-dom";
 
 export default function AppLayout() {
   return (
-    <>
+    <div className="app-container">
       <Header />
       <Navigation />
-      <main>
+
+      <main className="app-content">
         <Outlet />
       </main>
+
       <Footer />
-    </>
+    </div>
   );
 }

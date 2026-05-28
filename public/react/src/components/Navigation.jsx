@@ -15,6 +15,27 @@ function Navigation() {
               Home
             </NavLink>
           </li>
+
+          <li>
+            <NavLink
+              to="/about"
+              className={({ isActive }) =>
+                "site-nav-link" + (isActive ? " is-active" : "")
+              }
+            >
+              About
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                "site-nav-link" + (isActive ? " is-active" : "")
+              }
+            >
+              Contact
+            </NavLink>
+          </li>
           <li>
             <NavLink
               to="/galleries"

@@ -8,12 +8,7 @@ function GalleryDetail() {
   const [data, setData] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
 
-  // const gallery = data?.galleries?.find((g) => g.slug === slug);
   const gallery = data?.gallery;
-
-  // console.log(data);
-  // console.log("BASE_URL:", BASE_URL);
-
   useEffect(() => {
     fetch(`${BASE_URL}/api/galleries.php?format=json&slug=${slug}`)
       .then((res) => {

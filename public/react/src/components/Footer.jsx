@@ -1,7 +1,7 @@
 function Footer() {
   return (
-    <footer>
-      <p>
+    <footer className="brand-band">
+      <p className="footer">
         © {new Date().getFullYear()} David Schu – Fine Arts. All rights
         reserved.
       </p>
