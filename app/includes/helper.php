@@ -61,6 +61,7 @@ function ensure_base_url_global(): void
 
 function csrf_token(): string
 {
+    ensure_session();
 
     if (session_status() !== PHP_SESSION_ACTIVE) {
         session_start();

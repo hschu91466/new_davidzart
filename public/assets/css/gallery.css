@@ -1,4 +1,40 @@
 /* =========================
+   GALLERIES HEADER
+========================= */
+.gallery-header {
+  display: flex;
+  justify-content: space-between;
+}
+/* =========================
+   GALLERIES GRID
+========================= */
+
+#galleriesGrid {
+  --gap: 28px;
+
+  display: grid;
+  gap: var(--gap);
+
+  grid-template-columns: repeat(auto-fill, 220px);
+
+  justify-content: start;
+}
+
+.gallery-card {
+  width: 220px;
+
+  padding: 12px;
+
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
    GALLERY GRID
 ========================= */
 
@@ -19,6 +55,10 @@
 /* =========================
    TILE (CARD / FRAME)
 ========================= */
+.gallery-grid {
+  display: grid;
+  gap: 1rem;
+}
 
 #galleryGrid .gallery-tile {
   width: var(--short);
@@ -36,11 +76,33 @@
   justify-content: center;
 }
 
+.gallery-tile {
+  flex-direction: column;
+}
+
+.gallery-tile img {
+  width: 100%;
+  display: inline-block;
+}
+
+.tile-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.image-panel {
+  margin-top: 0.5rem;
+  padding: 0.5rem;
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+}
+
 /* =========================
    IMAGE
 ========================= */
 #galleryGrid .gallery-tile img {
-  width: auto;
+  width: 100%;
   height: auto;
   display: block;
 }
@@ -58,10 +120,153 @@
 }
 
 /* =========================
-   HOVER (optional)
+   HOVER 
 ========================= */
 #galleryGrid .gallery-tile:hover img {
   opacity: 0.95;
+}
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 1000;
+}
+
+.lightbox-content {
+  position: relative;
+
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 90vh;
+
+  display: block;
+}
+
+.lightbox-body {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.lightbox-image {
+  flex: 2;
+  max-height: 80vh;
+}
+
+.lightbox-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.lightbox-comments {
+  flex: 1;
+  max-width: 350px;
+  overflow-y: auto;
+  max-height: 80vh;
+  background: #f8f8f8;
+  padding: 1rem;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -36px;
+  right: -0px;
+
+  font-size: 2rem;
+  color: white;
+
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: fixed; /* key change */
+
+  top: 50%;
+  transform: translateY(-50%);
+
+  font-size: 2.5rem;
+  color: white;
+
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+
+  padding: 10px 14px;
+  border-radius: 6px;
+
+  cursor: pointer;
+}
+
+.lightbox-prev {
+  left: 30px;
+}
+
+.lightbox-next {
+  right: 30px;
+}
+.lightbox-comments form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.lightbox-comments input,
+.lightbox-comments textarea {
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+}
+
+.lightbox-comments button {
+  align-self: flex-start;
+}
+
+.lightbox-footer {
+  position: absolute;
+  bottom: -36px;
+  left: 0; /* anchor left */
+  right: 0; /* anchor right */
+  display: flex;
+  justify-content: space-between; /* pushes items apart */
+  align-items: center;
+  padding: 0 15px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.lightbox-meta,
+lightbox-counter {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: white;
 }
 
 /* =========================

@@ -1,3 +1,7 @@
+html,
+body {
+  height: 100%;
+}
 html {
   -webkit-text-size-adjust: 100%;
 }
@@ -8,6 +12,7 @@ body {
   font-family: var(--font-body);
   font-size: var(--fs-300);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 img,
 svg,
@@ -16,6 +21,17 @@ video {
   max-width: 100%;
   height: auto;
 }
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-content {
+  flex: 1;
+}
+
 .container {
   padding-inline: var(--space-4);
 }
@@ -60,7 +76,7 @@ p.bio {
 }
 
 /* ==========================================================================
-   4) BRAND BANDS / STRIPES (gradient + gold dividers)
+   BRAND BANDS / STRIPES (gradient + gold dividers)
    ========================================================================== */
 
 .brand-band {
@@ -157,6 +173,14 @@ p.bio {
   white-space: nowrap;
 } */
 
+.footer {
+  display: flex;
+  position: relative;
+  align-items: center;
+  left: 20px;
+  color: white;
+}
+
 /* ==========================================================================
    5) NAVIGATION (Bootstrap navbar; themed via variables)
    ========================================================================== */
@@ -167,12 +191,13 @@ p.bio {
 }
 
 .site-nav .nav-inner {
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
   padding: var(--space-4);
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #f2f2f2;
 }
 
 .site-nav .nav-list {

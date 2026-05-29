@@ -171,6 +171,7 @@ p.bio {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: #fafcfc;
 }
 
 .site-nav .nav-list {

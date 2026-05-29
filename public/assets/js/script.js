@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         const raw = img.url || img.src || img.image_url || "";
         const src = toAbsUrl(raw);
 
-        const alt = escapeHtml(img.alt || img.title || `image-${i}`);
+        const alt = escapeHtml(img.title || img.title || `image-${i}`);
         const cap = img.caption
           ? `<div class="caption">${escapeHtml(img.caption)}</div>`
           : "";

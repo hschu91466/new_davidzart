@@ -14,8 +14,7 @@ class CommentModel
       INSERT INTO comments
         (content_type, content_id, parent_id, name, email, website, body, is_approved, is_spam, ip_address, user_agent)
       VALUES
-        (:content_type, :content_id, :parent_id, :name, :email, :website, :body, :is_approved, :is_spam, :ip_address, :user_agent)
-    ";
+        (:content_type, :content_id, :parent_id, :name, :email, :website, :body, :is_approved, :is_spam, :ip_address, :user_agent)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
             ':content_type' => $data['content_type'],
@@ -70,8 +69,22 @@ class CommentModel
 
     public static function approve(PDO $pdo, int $commentId): bool
     {
-        $stmt = $pdo->prepare("UPDATE comments SET is_approved = 1 WHERE comment_id = :id");
-        return $stmt->execute([':id' => $commentId]);
+        error_log("APPROVE ID RECEIVED: " . $commentId);
+
+        $stmt = $pdo->prepare("
+        UPDATE comments 
+        SET is_approved = 1 
+        WHERE comment_id = :id
+    ");
+
+        $result = $stmt->execute([
+            'id' => $commentId
+        ]);
+
+        error_log("EXECUTE RESULT: " . ($result ? 'true' : 'false'));
+        error_log("ROW COUNT: " . $stmt->rowCount());
+
+        return $result;
     }
 
     public static function delete(PDO $pdo, int $commentId): bool

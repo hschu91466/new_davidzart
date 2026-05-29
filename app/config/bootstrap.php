@@ -5,7 +5,9 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
+header("Access-Control-Allow-Origin: http://localhost:5173");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
 
 if (session_status() !== PHP_SESSION_ACTIVE) {
     session_start();
@@ -21,7 +23,7 @@ require_once $ROOT . '/services/ImageStorage.php';
 
 // Optional: initialize $pdo explicitly for legacy pages
 $pdo = db();
-
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 // Optional: initialize $BASE_URL explicitly for legacy pages
 $BASE_URL = getBaseURL();
 

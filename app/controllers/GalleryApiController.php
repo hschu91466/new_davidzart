@@ -10,8 +10,6 @@ final class GalleryApiController
 {
     public function __construct(private PDO $pdo) {}
 
-
-
     public function images(): void
     {
         header('Content-Type: application/json');
@@ -73,6 +71,7 @@ final class GalleryApiController
                 $rows = array_values($allowed);
                 if ($random) shuffle($rows);
                 $rows = array_slice($rows, 0, $limit);
+
 
                 foreach ($rows as $r) {
                     $images[] = $this->shapeImage($r, $lightbox);
@@ -285,6 +284,64 @@ final class GalleryApiController
         }
     }
 
+    public function homeImages(): void
+    {
+        header('Content-Type: application/json');
+        try {
+            $limit = isset($_GET['limit']) ? max(1, min(20, (int)$_GET['limit'])) : 5;
+            $random = isset($_GET['random']) ? (bool)$_GET['random'] : true;
+
+            $galleries = GalleryModel::getActive($this->pdo);
+
+            if (!is_array($galleries)) {
+                echo json_encode(['images' => []]);
+                return;
+            }
+
+            $pool = [];
+
+            foreach ($galleries as $g) {
+                $rows = ImageModel::getByGallery(
+                    $this->pdo,
+                    (int)($g['gallery_id'] ?? 0)
+                );
+
+                if (!is_array($rows)) continue;
+
+                foreach ($rows as $r) {
+                    // Only include active + published like gallery()
+                    if (
+                        ($r['is_active'] ?? 0) == 1 &&
+                        ($r['is_published'] ?? 0) == 1
+                    ) {
+                        $pool[] = $r;
+                    }
+                }
+            }
+
+
+            if ($random) {
+                shuffle($pool);
+            }
+
+            $pool = array_slice($pool, 0, $limit);
+
+            $images = array_map(
+                fn($r) => $this->shapeImage($r, 'original'),
+                $pool
+            );
+
+
+            echo json_encode([
+                'images' => $images
+            ]);
+        } catch (Throwable $e) {
+
+            http_response_code(500);
+            echo json_encode(['error' => 'Server error']);
+        }
+    }
+
     private function isAllowedImage(string $path, array $allowed): bool
     {
         $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
@@ -314,8 +371,11 @@ final class GalleryApiController
             'url'         => $relUrl,
             'href'        => $absHref,
             'thumb'       => $absThumb,
-            'alt'         => $row['title'] ?? '',
+            'title'         => $row['title'] ?? '',
+            'media'         => $row['medium'] ?? '',
+            'dimensions' => $row['dimensions'] ?? '',
             'caption'     => $row['caption'] ?? '',
+            'year_created' => $row['year_created'] ?? '',
             'orientation' => $row['orientation'] ?? null,
             'DEBUG_MARKER' => 'shapeImage',
         ];
