@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import BASE_URL from "../config";
+import CommentList from "../components/comments/CommentList";
+import CommentForm from "../components/comments/CommentForm";
 
 function GalleryDetail() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [refreshKey, setRefreshKey] = useState(0);
 
   const gallery = data?.gallery;
+
   useEffect(() => {
     fetch(`${BASE_URL}/api/galleries.php?format=json&slug=${slug}`)
       .then((res) => {
@@ -21,6 +26,7 @@ function GalleryDetail() {
 
   const openLightbox = (index) => {
     setCurrentIndex(index);
+    setSelectedImage(data.images[index]);
   };
   const closeLightbox = () => {
     setCurrentIndex(null);
@@ -32,6 +38,7 @@ function GalleryDetail() {
 
   if (currentIndex !== null && data?.images) {
     const current = data.images[currentIndex];
+    console.log("CURRENT IMAGE:", currentImage);
     const imagePath = current.file_path || current.url || "";
     lightboxSrc = `${BASE_URL}${imagePath}`;
   }
@@ -66,12 +73,12 @@ function GalleryDetail() {
                 : "gallery-tile gallery-tile--landscape";
 
             return (
-              <div
-                className={tileClass}
-                onClick={() => openLightbox(index)}
-                key={img.id}
-              >
-                <img src={src} alt="Gallery image" />
+              <div className={tileClass} key={img.id}>
+                <img
+                  src={src}
+                  alt="Gallery image"
+                  onClick={() => openLightbox(index)}
+                />
               </div>
             );
           })}
@@ -99,7 +106,25 @@ function GalleryDetail() {
               ‹
             </button>
 
-            <img src={lightboxSrc} alt="" />
+            <div className="lightbox-body">
+              <div className="lightbox-image">
+                <img src={lightboxSrc} alt="" />
+              </div>
+
+              <div className="lightbox-comments">
+                {currentImage && (
+                  <>
+                    <CommentList contentId={currentImage.id} key={refreshKey} />
+
+                    <CommentForm
+                      contentId={currentImage.id}
+                      onSuccess={() => setRefreshKey((k) => k + 1)}
+                    />
+                  </>
+                )}
+              </div>
+            </div>
+
             {/* Right Arrow */}
             <button
               className="lightbox-next"
