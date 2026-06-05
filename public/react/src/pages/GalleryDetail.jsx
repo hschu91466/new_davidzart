@@ -30,17 +30,14 @@ function GalleryDetail() {
     setCurrentIndex(null);
   };
 
-  
-const currentImage =
-  currentIndex !== null && data?.images ? data.images[currentIndex] : null;
+  const currentImage =
+    currentIndex !== null && data?.images ? data.images[currentIndex] : null;
 
   let lightboxSrc = "";
 
   if (currentIndex !== null && data?.images) {
     const current = data.images[currentIndex];
-    console.log("CURRENT IMAGE:", currentImage);
-    const imagePath = current.file_path || current.url || "";
-    lightboxSrc = `${BASE_URL}${imagePath}`;
+    lightboxSrc = current.image_url || "";
   }
 
   // if (!data) return <p>Loading gallery…</p>;
@@ -62,8 +59,7 @@ const currentImage =
         {/* {console.log("FULL IMAGES ARRAY:", data.images)} */}
         {data.images &&
           data.images.map((img, index) => {
-            const imagePath = img.file_path || img.url || null;
-            const src = imagePath ? `${BASE_URL}${imagePath}` : "";
+            const src = img.image_url || "";
 
             const orientation = (img.orientation || "").toLowerCase().trim();
             // console.log("first image from state:", data.images[0]);

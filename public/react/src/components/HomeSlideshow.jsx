@@ -63,7 +63,7 @@ function HomeSlideshow() {
         </button>
         <div className="home-slideshow-image-wrapper">
           <img
-            src={currentImage.url}
+            src={currentImage.image_url}
             alt={currentImage.title}
             className={`home-slideshow-image ${isFading ? "fade-out" : ""}`}
           />

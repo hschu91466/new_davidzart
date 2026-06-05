@@ -8,7 +8,7 @@ class ImageModel
     {
         $sql = "SELECT             
             image_id,
-            file_path AS filepath,
+            file_path,
             title,
             caption,
             medium,

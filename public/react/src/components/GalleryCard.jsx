@@ -1,9 +1,5 @@
-import BASE_URL from "../config";
-
 function GalleryCard({ gallery, onClick }) {
-  const imagePath = gallery.cover_image?.file_path || gallery.cover_url || null;
-
-  const imageSrc = imagePath ? `${BASE_URL}${imagePath}` : null;
+  const imageSrc = gallery.cover_image?.image_url || null;
 
   return (
     <div className="gallery-item" onClick={onClick}>

@@ -57,14 +57,14 @@ final class GalleryApiController
                 if (!is_array($rows)) $rows = [];
 
                 // Diagnostics on raw rows
-                $withFilepath = array_filter($rows, fn($r) => isset($r['filepath']));
-                $allowed      = array_filter($withFilepath, fn($r) => $this->isAllowedImage($r['filepath'], $allowedExt));
+                $withFilepath = array_filter($rows, fn($r) => isset($r['file_path']));
+                $allowed      = array_filter($withFilepath, fn($r) => $this->isAllowedImage($r['file_path'], $allowedExt));
 
                 $diag['per_gallery'][] = [
                     'slug'               => $gallery,
                     'gallery_id'         => (int)$g['gallery_id'],
                     'rows_total'         => count($rows),
-                    'rows_with_filepath' => count($withFilepath),
+                    'rows_with_file_path' => count($withFilepath),
                     'rows_allowed_ext'   => count($allowed),
                 ];
 
@@ -97,8 +97,8 @@ final class GalleryApiController
                     $rows = ImageModel::getByGallery($this->pdo, (int)($g['gallery_id'] ?? 0));
                     if (!is_array($rows)) $rows = [];
 
-                    $withFilepath = array_filter($rows, fn($r) => isset($r['filepath']));
-                    $allowed      = array_filter($withFilepath, fn($r) => $this->isAllowedImage($r['filepath'], $allowedExt));
+                    $withFilepath = array_filter($rows, fn($r) => isset($r['file_path']));
+                    $allowed      = array_filter($withFilepath, fn($r) => $this->isAllowedImage($r['file_path'], $allowedExt));
 
                     $diag['per_gallery'][] = [
                         'slug'               => $g['slug'] ?? null,
@@ -250,15 +250,9 @@ final class GalleryApiController
                     if (!empty($rows)) {
                         $img = $rows[0];
 
-                        $gallerySlug = $g['slug'];
-
-                        $filename = basename($img['filepath']);
-
-                        $coverPath = "/assets/images/galleries/{$gallerySlug}/{$filename}";
-
                         $coverImage = [
                             'image_id'    => (int)$img['image_id'],
-                            'file_path'   => $coverPath,
+                            'image_url'   => build_image_url($img['file_path']),
                             'orientation' => $img['orientation'] ?? null,
                         ];
                     }
@@ -350,34 +344,18 @@ final class GalleryApiController
 
     private function shapeImage(array $row, string $lightbox): array
     {
-
-
-        $web = normalize_to_assets($row['filepath'] ?? '');
-        // $url = ltrim($web, '/');
-        $url = '/' . ltrim($web, '/');
-
-        $thumb = $url;
-        $href = $url;
-
-        // Emit ABSOLUTE URLs rooted at the public base
-        // $absUrl   = img_src($url,   true); // internally calls base_url() → getBaseURL()
-        $relUrl = img_src($url, false);
-        $absUrl = img_src($url, false);
-        $absHref  = img_src($href,  true);
-        $absThumb = img_src($thumb, true);
+        $filePath = $row['file_path'] ?? '';
+        $imageUrl = build_image_url($filePath);
 
         return [
-            'id'          => (int)($row['image_id'] ?? 0),
-            'url'         => $relUrl,
-            'href'        => $absHref,
-            'thumb'       => $absThumb,
-            'title'         => $row['title'] ?? '',
-            'media'         => $row['medium'] ?? '',
-            'dimensions' => $row['dimensions'] ?? '',
-            'caption'     => $row['caption'] ?? '',
+            'id'           => (int)($row['image_id'] ?? 0),
+            'image_url'    => $imageUrl,
+            'title'        => $row['title'] ?? '',
+            'media'        => $row['medium'] ?? '',
+            'dimensions'   => $row['dimensions'] ?? '',
+            'caption'      => $row['caption'] ?? '',
             'year_created' => $row['year_created'] ?? '',
-            'orientation' => $row['orientation'] ?? null,
-            'DEBUG_MARKER' => 'shapeImage',
+            'orientation'  => $row['orientation'] ?? null,
         ];
     }
 

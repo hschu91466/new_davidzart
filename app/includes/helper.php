@@ -41,6 +41,27 @@ function getBaseURL(): string
     return rtrim("$scheme://$host", '/');
 }
 
+function get_image_base_url(): string
+{
+    // Current (local assets)
+    // return rtrim(getBaseURL(), '/') . '/assets/';
+
+    // Later (Cloudflare CDN)
+    return "https://pub-a74fa48b03e04c5c8b558f051bb069dd.r2.dev/davidzart/";
+}
+
+function build_image_url(string $file_path): string
+{
+    $file_path = ltrim($file_path, '/');
+
+    // encode each segment properly (handles spaces safely)
+    $segments = explode('/', $file_path);
+    $segments = array_map('rawurlencode', $segments);
+
+    $safePath = implode('/', $segments);
+
+    return rtrim(get_image_base_url(), '/') . '/' . $safePath;
+}
 
 function base_url(string $path = ''): string
 {
@@ -102,6 +123,7 @@ function h(?string $s): string
  *  - Returns 'assets/images/...'
  *  - Collapses accidental double slashes
  */
+
 if (!function_exists('web_path')) {
     function web_path(string $path): string
     {
