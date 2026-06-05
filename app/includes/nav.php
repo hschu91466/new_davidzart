@@ -20,7 +20,10 @@ try {
         'probe_media'   => "SELECT 1 FROM schu_art.images LIMIT 1",
     ];
 
-    echo "<!-- CONNECT INFO: current_user={$who['current_user']} user()={$who['user_func']} db={$who['db']} -->\n";
+    error_log(
+        "CONNECT INFO: current_user={$who['current_user']} " .
+            "user()={$who['user_func']} db={$who['db']}"
+    );
 
     foreach ($probes as $label => $sql) {
         try {

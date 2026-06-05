@@ -1,11 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
+import BASE_URL from "../../config";
 
-const BASE_URL = "http://localhost/sites/production/davidschu_new/public";
+const CommentForm = ({ contentId }) => {
+  const { user } = useContext(AuthContext);
 
-const CommentForm = ({ contentId, onSuccess }) => {
-  const [name, setName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [comment, setComment] = useState("");
+
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState("");
 
@@ -18,34 +22,39 @@ const CommentForm = ({ contentId, onSuccess }) => {
     try {
       const response = await fetch(`${BASE_URL}/api/comments/create.php`, {
         method: "POST",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           content_id: contentId,
           content_type: "image",
-          name,
-          email,
-          comment,
+          name: user ? user.name : `${firstName} ${lastName}`.trim(),
+          email: user ? user.email : email,
+          body: comment,
         }),
       });
 
       const data = await response.json();
+      console.log("CREATE RESPONSE:", data);
 
-      if (data.ok) {
-        setMessage("Comment submitted for approval.");
+      if (response.ok) {
+        setMessage(data.message || (
+          user ? "Comment posted successfully." : "Comment submitted for approval."
+        ));
 
-        // clear form
-        setName("");
-        setEmail("");
+        if (!user) {
+          // clear form
+          setFirstName("");
+          setLastName("");
+          setEmail("");
+        }
         setComment("");
-
-        if (onSuccess) onSuccess();
       } else {
-        setMessage("Error submitting comment.");
+        setMessage(data.error || "Error submitting comment.");
       }
     } catch (error) {
-      console.error(error);
+      console.error("Error submitting comment.", error);
       setMessage("Server error.");
     } finally {
       setLoading(false);
@@ -56,21 +65,39 @@ const CommentForm = ({ contentId, onSuccess }) => {
     <form onSubmit={handleSubmit}>
       <h4>Add Comment</h4>
 
-      <input
-        type="text"
-        placeholder="Name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-        required
-      />
+      {!user && (
+        <>
+          <input
+            type="text"
+            placeholder="First name"
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            required
+          />
 
-      <input
-        type="email"
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required
-      />
+          <input
+            type="text"
+            placeholder="Last name"
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            required
+          />
+
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </>
+      )}
+
+      {user && (
+        <p>
+          Posting as: <strong>{user.name}</strong>
+        </p>
+      )}
 
       <textarea
         placeholder="Your comment..."

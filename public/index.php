@@ -3,6 +3,8 @@
 declare(strict_types=1);
 
 
+echo password_hash("test123", PASSWORD_DEFAULT);
+
 require_once dirname(__DIR__) . '/app/config/bootstrap.php';
 ensure_base_url_global(); // sets $BASE_URL based on /public root
 

@@ -67,6 +67,8 @@ if (!isset($pdo) || !($pdo instanceof PDO)) {
         $pdo = db();
     } catch (Throwable $e) {
         // Keep the error visible during local dev; hide in production.
-        exit("<pre style='color:red;'>❌ database.php failed: " . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8') . "</pre>");
+        error_log("DB connection failed: " . $e->getMessage());
+        http_response_code(500);
+        echo json_encode(["error" => "Server error"]);
     }
 }

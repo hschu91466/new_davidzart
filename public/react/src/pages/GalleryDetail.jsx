@@ -9,7 +9,6 @@ function GalleryDetail() {
   const navigate = useNavigate();
   const [data, setData] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
 
   const gallery = data?.gallery;
@@ -26,13 +25,14 @@ function GalleryDetail() {
 
   const openLightbox = (index) => {
     setCurrentIndex(index);
-    setSelectedImage(data.images[index]);
   };
   const closeLightbox = () => {
     setCurrentIndex(null);
   };
 
-  const currentImage = currentIndex !== null ? data.images[currentIndex] : null;
+  
+const currentImage =
+  currentIndex !== null && data?.images ? data.images[currentIndex] : null;
 
   let lightboxSrc = "";
 

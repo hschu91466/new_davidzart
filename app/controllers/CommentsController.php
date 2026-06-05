@@ -89,7 +89,7 @@ class CommentsController
         $contentId   = (int)($data['content_id'] ?? 0);
         $name        = trim($data['name'] ?? '');
         $email       = trim($data['email'] ?? '');
-        $comment     = trim($data['comment'] ?? '');
+        $comment     = trim($data['body'] ?? '');
 
         // --- Validation ---
         $errors = [];
@@ -127,6 +127,7 @@ class CommentsController
 
         try {
             // --- Insert via model ---
+            $isApproved = isset($_SESSION['user_id']) ? 1 : 0;
             $newId = CommentModel::create($pdo, [
                 'content_type' => $contentType,
                 'content_id'  => $contentId,
@@ -135,7 +136,7 @@ class CommentsController
                 'email'       => $email,
                 'website'     => null,
                 'body'        => $comment,
-                'is_approved' => 0, // moderation required
+                'is_approved' => $isApproved,
                 'is_spam'     => 0,
                 'ip_address'  => $_SERVER['REMOTE_ADDR'] ?? '',
                 'user_agent'  => $_SERVER['HTTP_USER_AGENT'] ?? '',
@@ -143,11 +144,14 @@ class CommentsController
 
             // update rate limit timestamp
             $_SESSION['last_comment_ts'] = time();
+            error_log("SESSION USER ID: " . ($_SESSION['user_id'] ?? 'NOT SET'));
+
+            $message = $isApproved ? 'Comment posted successfully.' : 'Thanks! Your comment is pending approval.';
 
             return [
                 'ok' => true,
                 'id' => $newId,
-                'message' => 'Thanks! Your comment is pending approval.'
+                'message' => $message,
             ];
         } catch (Throwable $e) {
             return [

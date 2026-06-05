@@ -1,7 +1,12 @@
 import BASE_URL from "../config";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { Link } from "react-router-dom";
+
 // Header.jsx
-function Header() {
-  // const BASE_URL = "http://localhost/Sites/production/davidschu_new/public";
+const Header = () => {
+  const { user, logout } = useContext(AuthContext);
+
   return (
     <header className="brand-band">
       <div className="site-banner">
@@ -18,11 +23,26 @@ function Header() {
               “ Let all that I am praise the Lord; with my whole heart, I will
               praise His holy name. Psalm 103:1 ”
             </span>
+            <div className="auth-controls">
+              {user ? (
+                <>
+                  <span className="auth-user">Welcome, {user.name}</span>
+
+                  <button className="auth-logout" onClick={logout}>
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <Link className="auth-login" to="/login">
+                  Login
+                </Link>
+              )}
+            </div>
           </div>
         </div>
       </div>
     </header>
   );
-}
+};
 
 export default Header;
