@@ -1,5 +1,5 @@
 function About() {
-  return <div className="about">Hi There</div>;
+  return <div className="container">This is my About page.</div>;
 }
 
 export default About;

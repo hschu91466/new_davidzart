@@ -26,8 +26,18 @@ function Galleries() {
       });
   }, []);
 
-  if (loading) return <p>Loading galleries…</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading)
+    return (
+      <div className="container">
+        <p>Loading galleries…</p>
+      </div>
+    );
+  if (error)
+    return (
+      <div className="container">
+        <p>Error: {error}</p>
+      </div>
+    );
 
   return (
     <div className="container py-4 gallery-detail">

@@ -9,8 +9,10 @@ const Home = () => {
 
   return (
     <>
-      {user ? <p>Welcome {user.name}</p> : <p>You are not logged in.</p>}
-      <HomeSlideshow />
+      <div className="container">
+        {user ? <p>Welcome {user.name}</p> : <p>You are not logged in.</p>}
+        <HomeSlideshow />
+      </div>
     </>
   );
 };

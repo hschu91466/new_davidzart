@@ -39,9 +39,12 @@ const CommentForm = ({ contentId }) => {
       console.log("CREATE RESPONSE:", data);
 
       if (response.ok) {
-        setMessage(data.message || (
-          user ? "Comment posted successfully." : "Comment submitted for approval."
-        ));
+        setMessage(
+          data.message ||
+            (user
+              ? "Comment posted successfully."
+              : "Comment submitted for approval."),
+        );
 
         if (!user) {
           // clear form
@@ -62,35 +65,44 @@ const CommentForm = ({ contentId }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="comment-form" onSubmit={handleSubmit}>
       <h4>Add Comment</h4>
 
       {!user && (
-        <>
+        <div className="form-row form-row--two">
           <input
+            className="form-control"
             type="text"
             placeholder="First name"
+            id="first_name"
+            autoComplete="given-name"
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
             required
           />
 
           <input
+            className="form-control"
             type="text"
             placeholder="Last name"
+            id="last_name"
+            autoComplete="family-name"
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
             required
           />
 
           <input
+            className="form-control"
             type="email"
             placeholder="Email"
+            id="email"
+            autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </>
+        </div>
       )}
 
       {user && (
@@ -99,14 +111,18 @@ const CommentForm = ({ contentId }) => {
         </p>
       )}
 
-      <textarea
-        placeholder="Your comment..."
-        value={comment}
-        onChange={(e) => setComment(e.target.value)}
-        required
-      />
+      <div className="form-row">
+        <textarea
+          className="form-control"
+          placeholder="Your comment..."
+          id="place-holder"
+          value={comment}
+          onChange={(e) => setComment(e.target.value)}
+          required
+        />
+      </div>
 
-      <button type="submit" disabled={loading}>
+      <button className="btn-submit" type="submit" disabled={loading}>
         {loading ? "Submitting..." : "Submit"}
       </button>
 

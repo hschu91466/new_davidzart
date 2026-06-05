@@ -45,14 +45,6 @@ $PAGE_SLUG  = $PAGE_SLUG  ?? 'default';
         crossorigin="anonymous"
         referrerpolicy="no-referrer" />
 
-    <!-- Your mobile-first, variable-driven styles (load last so you can override vendors) -->
-    <link rel="stylesheet" href="<?= h(base_url('assets/css/style.css')) ?>">
-    <link rel="stylesheet" href="<?= h(base_url('assets/css/gallery.css')) ?>">
-    <link rel="stylesheet" href="<?= h(base_url('assets/css/comments.css')) ?>">
-    <link rel="stylesheet" href="<?= h(base_url('assets/css/home-splide.css')) ?>">
-    <link rel="stylesheet" href="<?= h(base_url('assets/css/tokens.css')) ?>">
-
-
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="<?= h(base_url('assets/images/favicon.png')) ?>"
         </head>
