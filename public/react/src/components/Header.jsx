@@ -1,4 +1,4 @@
-import BASE_URL from "../config";
+import { BASE_URL, CDN_BASE } from "../config";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { Link } from "react-router-dom";
@@ -6,16 +6,15 @@ import { Link } from "react-router-dom";
 // Header.jsx
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
+  const CDN_BASE =
+    "https://pub-a74fa48b03e04c5c8b558f051bb069dd.r2.dev/davidzart";
 
   return (
     <header className="brand-band">
       <div className="site-banner">
         <div className="banner-inner">
           <div className="banner-logo">
-            <img
-              src={`${BASE_URL}/assets/images/site-images/logo.png`}
-              alt="David Z Art"
-            />
+            <img src={`${CDN_BASE}/site-images/logo.png`} alt="David Z Art" />
           </div>
 
           <div className="banner-scripture">

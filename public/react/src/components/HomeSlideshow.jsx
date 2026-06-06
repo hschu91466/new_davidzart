@@ -1,4 +1,4 @@
-import BASE_URL from "../config";
+import { BASE_URL, CDN_BASE } from "../config";
 import { useEffect, useState } from "react";
 
 function HomeSlideshow() {

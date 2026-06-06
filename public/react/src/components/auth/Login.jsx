@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import BASE_URL from "../../config";
+import { BASE_URL, CDN_BASE } from "../../config";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 

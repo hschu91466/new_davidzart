@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import BASE_URL from "../../config";
+import { BASE_URL, CDN_BASE } from "../../config";
 
 const CommentForm = ({ contentId }) => {
   const { user } = useContext(AuthContext);

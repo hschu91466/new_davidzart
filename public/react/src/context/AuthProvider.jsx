@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import BASE_URL from "../config";
+import { BASE_URL, CDN_BASE } from "../config";
 import { AuthContext } from "./AuthContext";
 import { useNavigate } from "react-router-dom";
 

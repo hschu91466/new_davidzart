@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import BASE_URL from "../../config";
+import { BASE_URL, CDN_BASE } from "../../config";
 import { AuthContext } from "../../context/AuthContext";
 
 const Register = () => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import BASE_URL from "../config";
+import { BASE_URL, CDN_BASE } from "../config";
 import CommentList from "../components/comments/CommentList";
 import CommentForm from "../components/comments/CommentForm";
 
