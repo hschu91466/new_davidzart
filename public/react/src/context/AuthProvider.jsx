@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BASE_URL, CDN_BASE } from "../config";
 import { AuthContext } from "./AuthContext";
 import { useNavigate } from "react-router-dom";
+import { getSession } from "../services/auth";
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -10,17 +11,10 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch(`${BASE_URL}/api/auth/me.php`, {
-          credentials: "include",
-        });
-        const data = "";
-        // const data = await response.json();
-        const text = await response.text();
-        console.log("AUTH RAW RESPONSE:", text);
-
+        const data = await getSession();
         setUser(data.user);
-      } catch (err) {
-        console.error("Auth error:", err);
+      } catch (error) {
+        console.error("Auth error:", error);
       } finally {
         setLoading(false);
       }

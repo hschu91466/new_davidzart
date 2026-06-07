@@ -8,6 +8,7 @@ import "./styles/brand/brand.css";
 import "./styles/features/comments.css";
 import "./styles/features/home.css";
 import "./styles/features/gallery.css";
+import "./styles/features/admin.css";
 
 import App from "./App.jsx";
 

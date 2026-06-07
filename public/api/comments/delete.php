@@ -6,6 +6,7 @@ $controller = new CommentsController();
 
 $data = json_decode(file_get_contents('php://input'), true);
 
+
 $id = (int)(
     $data['comment_id']
     ?? $data['id']
@@ -14,8 +15,6 @@ $id = (int)(
     ?? 0
 );
 
-error_log("Approve received ID: " . $id);
-
-$response = $controller->approve($id);
+$response = $controller->delete($id);
 
 json_response($response);

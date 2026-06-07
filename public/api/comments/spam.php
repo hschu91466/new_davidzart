@@ -1,4 +1,5 @@
 <?php
+
 require_once __DIR__ . '/../../../app/config/bootstrap.php';
 require_once __DIR__ . '/../../../app/controllers/CommentsController.php';
 
@@ -14,8 +15,6 @@ $id = (int)(
     ?? 0
 );
 
-error_log("Approve received ID: " . $id);
-
-$response = $controller->approve($id);
+$response = $controller->spam($id);
 
 json_response($response);
