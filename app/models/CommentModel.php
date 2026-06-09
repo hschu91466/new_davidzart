@@ -124,14 +124,28 @@ class CommentModel
     public static function listByStatus(PDO $pdo, string $status, int $offset = 0, int $limit = 20): array
     {
         $where = "1=1";
+
         if ($status === 'pending') {
-            $where = "is_approved = 0 AND is_spam = 0";
+            $where = "c.is_approved = 0 AND c.is_spam = 0";
+        } elseif ($status === 'approved') {
+            $where = "c.is_approved = 1 AND c.is_spam = 0";
         } elseif ($status === 'spam') {
-            $where = "is_spam = 1";
+            $where = "c.is_spam = 1";
         }
+
         $sql = "
-      SELECT comment_id, content_type, content_id, name, email, body, is_approved, is_spam, created_at
-      FROM comments
+      SELECT 
+      c.comment_id, 
+      c.content_type, 
+      c.content_id, c.name, 
+      c.email, 
+      c.body, 
+      c.is_approved, 
+      c.is_spam, 
+      c.created_at,
+      i.title
+      FROM comments c
+      Left Join images i on c.content_id = i.image_id
       WHERE $where
       ORDER BY created_at DESC
       LIMIT :limit OFFSET :offset

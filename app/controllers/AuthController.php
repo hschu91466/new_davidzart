@@ -21,8 +21,14 @@ class AuthController
         }
 
         // ✅ Session logic belongs here (business logic)
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['role'] = $user['role'];
+
+        $_SESSION['user'] = [
+            'id' => $user['id'],
+            'email' => $user['email'],
+            'first_name' => $user['first_name'],
+            'last_name' => $user['last_name'],
+            'role' => $user['role']
+        ];
 
         return [
             "message" => "Login successful",

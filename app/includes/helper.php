@@ -262,33 +262,14 @@ function ensure_session()
     }
 }
 
-function is_admin_request(): bool
+function require_admin(): void
 {
     ensure_session();
 
-    // Session-based admin (will use later when login exists)
-    if (!empty($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
-        return true;
+    if (!isset($_SESSION['user']) || ($_SESSION['user']['role'] ?? '') !== 'admin') {
+        json_error('Unauthorized', 403);
     }
-
-    // Shared secret fallback (current method)
-    $expected = getenv('ADMIN_API_TOKEN') ?: '';
-    if ($expected !== '') {
-        $provided = '';
-        if (!empty($_SERVER['HTTP_X_ADMIN_TOKEN'])) {
-            $provided = (string)$_SERVER['HTTP_X_ADMIN_TOKEN'];
-        } elseif (!empty($_POST['admin_token'])) {
-            $provided = (string)$_POST['admin_token'];
-        }
-        if ($provided !== '' && hash_equals($expected, $provided)) {
-            return true;
-        }
-    }
-
-    return false;
 }
-
-
 /**
  * Send a JSON response with status code and exit.
  */

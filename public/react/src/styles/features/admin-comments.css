@@ -1,0 +1,101 @@
+/* ===== Page Container ===== */
+.comments-page {
+  padding: 1rem;
+}
+
+/* ===== Heading ===== */
+.comments-page h2 {
+  margin-bottom: 10px;
+}
+
+/* ===== Tabs ===== */
+.comment-tabs {
+  margin-bottom: 1rem;
+}
+
+.comment-tabs button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.comment-tabs button.active {
+  background: #333;
+  color: white;
+  font-weight: bold;
+}
+
+/* ===== Table ===== */
+.comments-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comments-table th {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 2px solid #ddd;
+}
+
+.comments-table td {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Row hover */
+.comments-table tr:hover {
+  background: #fafafa;
+}
+
+/* ===== Actions ===== */
+.comment-actions button {
+  margin-right: 6px;
+  padding: 4px 8px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* ===== Buttons ===== */
+.btn-approve {
+  background: #4caf50;
+  color: white;
+}
+
+.btn-spam {
+  background: #ff9800;
+  color: white;
+}
+
+.btn-delete {
+  background: #f44336;
+  color: white;
+}
+
+/* ===== Status Badges ===== */
+.status-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+/* Pending */
+.status-badge.pending {
+  background-color: #777;
+}
+
+/* Approved */
+.status-badge.approved {
+  background-color: #4caf50;
+}
+
+/* Spam */
+.status-badge.spam {
+  background-color: #ff9800;
+}

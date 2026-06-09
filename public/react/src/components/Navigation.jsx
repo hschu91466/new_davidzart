@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function Navigation() {
+  const { user } = useContext(AuthContext);
+
   return (
     <nav className="site-nav">
       <div className="nav-inner">
@@ -46,6 +50,18 @@ function Navigation() {
               Galleries
             </NavLink>
           </li>
+          {user?.role === "admin" && (
+            <li>
+              <NavLink
+                to="/admin"
+                className={({ isActive }) =>
+                  "site-nav-link admin-link" + (isActive ? " is-active" : "")
+                }
+              >
+                Admin
+              </NavLink>
+            </li>
+          )}
         </ul>
       </div>
     </nav>

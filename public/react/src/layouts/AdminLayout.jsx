@@ -1,10 +1,16 @@
 import { Outlet, Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const AdminLayout = () => {
   const { logout } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/home");
+  };
 
   return (
     <div className="admin-layout">
@@ -13,6 +19,15 @@ const AdminLayout = () => {
 
         <nav className="admin-nav">
           <ul>
+            <li>
+              <NavLink
+                to="/"
+                end
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Home
+              </NavLink>
+            </li>
             <li>
               <NavLink
                 to="/admin"
@@ -28,7 +43,7 @@ const AdminLayout = () => {
                 to="/admin/galleries"
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
-                Galleries
+                Manage Galleries
               </NavLink>
             </li>
 
@@ -37,14 +52,14 @@ const AdminLayout = () => {
                 to="/admin/comments"
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
-                Comments
+                Moderate Comments
               </NavLink>
             </li>
           </ul>
         </nav>
-        <button onClick={logout}>Logout</button>
+        <button onClick={handleLogout}>Logout</button>
+        <button onClick={() => navigate("/home")}> Go Home</button>
       </aside>
-
       <main className="admin-main">
         <Outlet />
       </main>

@@ -39,3 +39,8 @@
   color: white;
   font-weight: bold;
 }
+
+.site-nav-link.admin-link {
+  color: red;
+  font-weight: 600;
+}
