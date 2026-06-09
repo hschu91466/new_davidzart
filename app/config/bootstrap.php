@@ -18,15 +18,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
     http_response_code(200);
     exit();
 }
+
 if (session_status() !== PHP_SESSION_ACTIVE) {
+
+    session_set_cookie_params([
+        'lifetime' => 0,
+        'path' => '/',          // ✅ CRITICAL FIX
+        'domain' => '',
+        'secure' => false,      // ✅ fine for localhost
+        'httponly' => true,
+        'samesite' => 'Lax'     // ✅ important for dev setups
+    ]);
+
     session_start();
 }
+
 
 $ROOT = dirname(__DIR__); // /app
 require_once $ROOT . '/config/database.php'; // db(), $pdo
 require_once $ROOT . '/includes/helper.php';
-// require_once $ROOT . '/models/GalleryModel.php';
-// require_once $ROOT . '/models/ImageModel.php';
 require_once $ROOT . '/services/ImageUploadService.php';
 require_once $ROOT . '/services/ImageStorage.php';
 

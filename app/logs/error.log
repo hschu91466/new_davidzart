@@ -1,8 +1,5 @@
-
-
-[09-Jun-2026 02:55:25 Europe/Berlin] SESSION USER ID: NOT SET
-[09-Jun-2026 02:56:07 Europe/Berlin] SESSION CONTENT:
-[09-Jun-2026 02:56:07 Europe/Berlin] Array
+[09-Jun-2026 16:01:41 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 16:01:41 Europe/Berlin] Array
 (
     [user] => Array
         (
@@ -15,8 +12,8 @@
 
 )
 
-[09-Jun-2026 02:56:08 Europe/Berlin] SESSION CONTENT:
-[09-Jun-2026 02:56:08 Europe/Berlin] Array
+[09-Jun-2026 16:01:41 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 16:01:41 Europe/Berlin] Array
 (
     [user] => Array
         (
@@ -29,8 +26,14 @@
 
 )
 
-[09-Jun-2026 02:56:15 Europe/Berlin] SESSION CONTENT:
-[09-Jun-2026 02:56:15 Europe/Berlin] Array
+[09-Jun-2026 16:01:58 Europe/Berlin] SESSION CONTENT LOGIN:
+[09-Jun-2026 16:01:58 Europe/Berlin] Array
+(
+)
+
+[09-Jun-2026 16:01:59 Europe/Berlin] SESSION USER ID: NOT SET
+[09-Jun-2026 16:02:03 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 16:02:03 Europe/Berlin] Array
 (
     [user] => Array
         (
@@ -43,8 +46,8 @@
 
 )
 
-[09-Jun-2026 02:56:17 Europe/Berlin] SESSION CONTENT:
-[09-Jun-2026 02:56:17 Europe/Berlin] Array
+[09-Jun-2026 16:02:04 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 16:02:04 Europe/Berlin] Array
 (
     [user] => Array
         (
@@ -57,8 +60,8 @@
 
 )
 
-[09-Jun-2026 02:56:19 Europe/Berlin] SESSION CONTENT:
-[09-Jun-2026 02:56:19 Europe/Berlin] Array
+[09-Jun-2026 20:17:02 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:17:02 Europe/Berlin] Array
 (
     [user] => Array
         (
@@ -71,8 +74,8 @@
 
 )
 
-[09-Jun-2026 02:56:20 Europe/Berlin] SESSION CONTENT:
-[09-Jun-2026 02:56:20 Europe/Berlin] Array
+[09-Jun-2026 20:17:02 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:17:02 Europe/Berlin] Array
 (
     [user] => Array
         (
@@ -85,6 +88,437 @@
 
 )
 
-[09-Jun-2026 03:00:31 Europe/Berlin] SESSION USER ID: NOT SET
-[09-Jun-2026 03:00:33 Europe/Berlin] SESSION USER ID: NOT SET
-[09-Jun-2026 03:00:46 Europe/Berlin] SESSION USER ID: NOT SET
+[09-Jun-2026 20:18:03 Europe/Berlin] SESSION CONTENT LOGIN:
+[09-Jun-2026 20:18:03 Europe/Berlin] Array
+(
+)
+
+[09-Jun-2026 20:18:03 Europe/Berlin] SESSION USER ID: NOT SET
+[09-Jun-2026 20:18:13 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:18:13 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[09-Jun-2026 20:18:13 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:18:13 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[09-Jun-2026 20:18:20 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:18:20 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[09-Jun-2026 20:18:20 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:18:20 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[09-Jun-2026 20:19:24 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:19:24 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[09-Jun-2026 20:19:24 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:19:24 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[09-Jun-2026 20:20:53 Europe/Berlin] SESSION CONTENT LOGIN:
+[09-Jun-2026 20:20:53 Europe/Berlin] Array
+(
+)
+
+[09-Jun-2026 20:20:53 Europe/Berlin] SESSION USER ID: NOT SET
+[09-Jun-2026 20:21:11 Europe/Berlin] SESSION USER ID: NOT SET
+[09-Jun-2026 20:21:24 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:21:24 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+    [last_comment_ts] => 1781029271
+)
+
+[09-Jun-2026 20:21:25 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:21:25 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+    [last_comment_ts] => 1781029271
+)
+
+[09-Jun-2026 20:25:38 Europe/Berlin] SESSION USER ID: NOT SET
+[09-Jun-2026 20:30:38 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:30:38 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+    [last_comment_ts] => 1781029538
+)
+
+[09-Jun-2026 20:30:38 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:30:38 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+    [last_comment_ts] => 1781029538
+)
+
+[09-Jun-2026 20:30:48 Europe/Berlin] SESSION USER:
+[09-Jun-2026 20:30:48 Europe/Berlin] Array
+(
+    [id] => 6
+    [email] => holly.schu14@gmail.com
+    [first_name] => Holly
+    [last_name] => Schu
+    [role] => admin
+)
+
+[09-Jun-2026 20:35:07 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:35:07 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+    [last_comment_ts] => 1781029848
+)
+
+[09-Jun-2026 20:35:07 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:35:07 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+    [last_comment_ts] => 1781029848
+)
+
+[09-Jun-2026 20:35:14 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:35:14 Europe/Berlin] Array
+(
+)
+
+[09-Jun-2026 20:35:14 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:35:14 Europe/Berlin] Array
+(
+)
+
+[09-Jun-2026 20:35:21 Europe/Berlin] SESSION CONTENT LOGIN:
+[09-Jun-2026 20:35:21 Europe/Berlin] Array
+(
+)
+
+[09-Jun-2026 20:35:21 Europe/Berlin] SESSION USER ID: NOT SET
+[09-Jun-2026 20:35:28 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:35:28 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[09-Jun-2026 20:35:29 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:35:29 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[09-Jun-2026 20:35:56 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:35:56 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[09-Jun-2026 20:36:03 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:36:03 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[09-Jun-2026 20:36:04 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:36:04 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[09-Jun-2026 20:36:36 Europe/Berlin] SESSION USER:
+[09-Jun-2026 20:36:36 Europe/Berlin] Array
+(
+    [id] => 6
+    [email] => holly.schu14@gmail.com
+    [first_name] => Holly
+    [last_name] => Schu
+    [role] => admin
+)
+
+[09-Jun-2026 20:37:14 Europe/Berlin] SESSION USER:
+[09-Jun-2026 20:37:14 Europe/Berlin] 
+[09-Jun-2026 20:37:26 Europe/Berlin] SESSION CONTENT LOGIN:
+[09-Jun-2026 20:37:26 Europe/Berlin] Array
+(
+    [last_comment_ts] => 1781030234
+)
+
+[09-Jun-2026 20:37:26 Europe/Berlin] SESSION USER ID: NOT SET
+[09-Jun-2026 20:38:45 Europe/Berlin] SESSION USER:
+[09-Jun-2026 20:38:45 Europe/Berlin] Array
+(
+    [id] => 2
+    [email] => denver@here.com
+    [first_name] => John
+    [last_name] => Denver
+    [role] => user
+)
+
+[09-Jun-2026 20:38:57 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:38:57 Europe/Berlin] Array
+(
+    [last_comment_ts] => 1781030325
+    [user] => Array
+        (
+            [id] => 2
+            [email] => denver@here.com
+            [first_name] => John
+            [last_name] => Denver
+            [role] => user
+        )
+
+)
+
+[09-Jun-2026 20:38:57 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:38:57 Europe/Berlin] Array
+(
+    [last_comment_ts] => 1781030325
+    [user] => Array
+        (
+            [id] => 2
+            [email] => denver@here.com
+            [first_name] => John
+            [last_name] => Denver
+            [role] => user
+        )
+
+)
+
+[09-Jun-2026 20:39:33 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:39:33 Europe/Berlin] Array
+(
+    [last_comment_ts] => 1781030325
+    [user] => Array
+        (
+            [id] => 2
+            [email] => denver@here.com
+            [first_name] => John
+            [last_name] => Denver
+            [role] => user
+        )
+
+)
+
+[09-Jun-2026 20:39:33 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:39:33 Europe/Berlin] Array
+(
+    [last_comment_ts] => 1781030325
+    [user] => Array
+        (
+            [id] => 2
+            [email] => denver@here.com
+            [first_name] => John
+            [last_name] => Denver
+            [role] => user
+        )
+
+)
+
+[09-Jun-2026 20:39:54 Europe/Berlin] SESSION CONTENT LOGIN:
+[09-Jun-2026 20:39:54 Europe/Berlin] Array
+(
+)
+
+[09-Jun-2026 20:39:54 Europe/Berlin] SESSION USER ID: NOT SET
+[09-Jun-2026 20:45:33 Europe/Berlin] SESSION CONTENT LOGIN:
+[09-Jun-2026 20:45:33 Europe/Berlin] Array
+(
+)
+
+[09-Jun-2026 20:45:33 Europe/Berlin] SESSION USER ID: NOT SET
+[09-Jun-2026 20:45:54 Europe/Berlin] SESSION USER:
+[09-Jun-2026 20:45:54 Europe/Berlin] Array
+(
+    [id] => 2
+    [email] => denver@here.com
+    [first_name] => John
+    [last_name] => Denver
+    [role] => user
+)
+
+[09-Jun-2026 20:45:58 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:45:58 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 2
+            [email] => denver@here.com
+            [first_name] => John
+            [last_name] => Denver
+            [role] => user
+        )
+
+    [last_comment_ts] => 1781030754
+)
+
+[09-Jun-2026 20:45:58 Europe/Berlin] SESSION CONTENT:
+[09-Jun-2026 20:45:58 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 2
+            [email] => denver@here.com
+            [first_name] => John
+            [last_name] => Denver
+            [role] => user
+        )
+
+    [last_comment_ts] => 1781030754
+)
+
+[09-Jun-2026 20:47:30 Europe/Berlin] SESSION USER:
+[09-Jun-2026 20:47:30 Europe/Berlin] 
+[09-Jun-2026 20:47:46 Europe/Berlin] SESSION CONTENT LOGIN:
+[09-Jun-2026 20:47:46 Europe/Berlin] Array
+(
+    [last_comment_ts] => 1781030850
+)
+
+[09-Jun-2026 20:47:46 Europe/Berlin] SESSION USER ID: NOT SET

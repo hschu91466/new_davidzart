@@ -45,31 +45,20 @@ class AuthController
 
     public static function logout(): array
     {
+        $_SESSION = [];
         session_destroy();
         return ["message" => "Logged out"];
     }
 
     public static function currentUser(PDO $pdo): ?array
     {
-        if (!isset($_SESSION['user_id'])) {
+        if (!isset($_SESSION['user'])) {
             return null;
         }
 
-        $user = UserModel::getById($pdo, (int)$_SESSION['user_id']);
-
-        if (!$user) {
-            return null;
-        }
-
-        return [
-            "id" => $user['id'],
-            "email" => $user['email'],
-            "first_name" => $user['first_name'] ?? '',
-            "last_name"  => $user['last_name'] ?? '',
-            "name" => trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? '')),
-            "role" => $user['role']
-        ];
+        return $_SESSION['user'];
     }
+
 
     public static function register(PDO $pdo, array $data): array
     {
@@ -124,8 +113,13 @@ class AuthController
 
         $userId = UserModel::create($pdo, $email, $firstName, $lastName, $passwordHash, "user");
 
-        $_SESSION['user_id'] = $userId;
-        $_SESSION['role'] = 'user';
+        $_SESSION['user'] = [
+            'id' => $userId,
+            'email' => $email,
+            'first_name' => $firstName,
+            'last_name' => $lastName,
+            'role' => 'user'
+        ];
 
         return [
             "ok" => true,

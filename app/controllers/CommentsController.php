@@ -127,7 +127,10 @@ class CommentsController
 
         try {
             // --- Insert via model ---
-            $isApproved = isset($_SESSION['user_id']) ? 1 : 0;
+            $isLoggedIn = isset($_SESSION['user']);
+
+            $isApproved = $isLoggedIn ? 1 : 0;
+
             $newId = CommentModel::create($pdo, [
                 'content_type' => $contentType,
                 'content_id'  => $contentId,
@@ -144,7 +147,9 @@ class CommentsController
 
             // update rate limit timestamp
             $_SESSION['last_comment_ts'] = time();
-            error_log("SESSION USER ID: " . ($_SESSION['user_id'] ?? 'NOT SET'));
+
+            error_log("SESSION USER:");
+            error_log(print_r($_SESSION['user'] ?? null, true));
 
             $message = $isApproved ? 'Comment posted successfully.' : 'Thanks! Your comment is pending approval.';
 

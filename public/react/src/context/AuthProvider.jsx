@@ -12,9 +12,17 @@ export const AuthProvider = ({ children }) => {
     const checkAuth = async () => {
       try {
         const data = await getSession();
-        setUser(data.user);
+
+        console.log("SESSION DATA:", data);
+
+        if (data.ok && data.user) {
+          setUser(data.user); // logged in
+        } else {
+          setUser(null); // not logged in
+        }
       } catch (error) {
         console.error("Auth error:", error);
+        setUser(null);
       } finally {
         setLoading(false);
       }

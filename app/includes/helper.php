@@ -80,36 +80,36 @@ function ensure_base_url_global(): void
 }
 
 
-function csrf_token(): string
-{
-    ensure_session();
+// function csrf_token(): string
+// {
+//     ensure_session();
 
-    if (session_status() !== PHP_SESSION_ACTIVE) {
-        session_start();
-    }
+//     if (session_status() !== PHP_SESSION_ACTIVE) {
+//         session_start();
+//     }
 
-    if (empty($_SESSION['csrf_token'])) {
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-    }
-    return $_SESSION['csrf_token'];
-}
+//     if (empty($_SESSION['csrf_token'])) {
+//         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+//     }
+//     return $_SESSION['csrf_token'];
+// }
 
-function csrf_validate(?string $token, bool $rotateOnSuccess = false): bool
-{
-    if (session_status() !== PHP_SESSION_ACTIVE) {
-        session_start();
-    }
-    $sessionToken = $_SESSION['csrf_token'] ?? '';
-    if (!$token || !$sessionToken) {
-        return false;
-    }
-    $ok = hash_equals($sessionToken, $token);
-    if ($ok && $rotateOnSuccess) {
-        // rotate to reduce replay
-        $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
-    }
-    return $ok;
-}
+// function csrf_validate(?string $token, bool $rotateOnSuccess = false): bool
+// {
+//     if (session_status() !== PHP_SESSION_ACTIVE) {
+//         session_start();
+//     }
+//     $sessionToken = $_SESSION['csrf_token'] ?? '';
+//     if (!$token || !$sessionToken) {
+//         return false;
+//     }
+//     $ok = hash_equals($sessionToken, $token);
+//     if ($ok && $rotateOnSuccess) {
+//         // rotate to reduce replay
+//         $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+//     }
+//     return $ok;
+// }
 
 function h(?string $s): string
 {
@@ -258,6 +258,16 @@ function render_404(string $message = 'Not found'): void
 function ensure_session()
 {
     if (session_status() !== PHP_SESSION_ACTIVE) {
+
+        session_set_cookie_params([
+            'lifetime' => 0,
+            'path' => '/',          // ✅ IMPORTANT
+            'domain' => '',         // ✅ correct for localhost
+            'secure' => false,      // ✅ keep false locally
+            'httponly' => true,
+            'samesite' => 'Lax'     // ✅ IMPORTANT
+        ]);
+
         session_start();
     }
 }
