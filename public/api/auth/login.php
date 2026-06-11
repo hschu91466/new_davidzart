@@ -12,7 +12,7 @@ error_log("SESSION CONTENT LOGIN:");
 error_log(print_r($_SESSION, true));
 
 
-$data = json_decode(file_get_contents("php://input"), true);
+$data = json_decode(file_get_contents("php://input"), true) ?? [];
 
 $email = $data['email'] ?? '';
 $password = $data['password'] ?? '';

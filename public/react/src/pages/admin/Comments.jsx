@@ -86,7 +86,7 @@ const Comments = () => {
         <button onClick={() => setStatus("spam")}>Spam</button>
       </div>
 
-      {comments.length === 0 ? (
+      {!comments || comments.length === 0 ? (
         <p>No comments found.</p>
       ) : (
         <table

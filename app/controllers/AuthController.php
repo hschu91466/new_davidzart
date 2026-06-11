@@ -20,6 +20,13 @@ class AuthController
             return ["error" => "Invalid credentials"];
         }
 
+        if (!$user['is_approved']) {
+            return [
+                "ok" => false,
+                "error" => "Account pending approval"
+            ];
+        }
+
         // ✅ Session logic belongs here (business logic)
 
         $_SESSION['user'] = [

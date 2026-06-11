@@ -1,19 +1,20 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AppLayout from "./layouts/AppLayout";
+import AdminLayout from "./layouts/AdminLayout";
 import Home from "./pages/Home";
 import Galleries from "./pages/Galleries";
 import GalleryDetail from "./pages/GalleryDetail";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
-import Login from "./components/auth/Login";
-import AdminLogin from "./pages/admin/Login";
-import { AuthProvider } from "./context/AuthProvider";
-import Register from "./components/auth/Register";
-import Dashboard from "./pages/admin/Dashboard";
-import ProtectedRoute from "./components/ProtectedRoute";
-import AdminLayout from "./layouts/AdminLayout";
 import AdminGalleries from "./pages/admin/Galleries";
 import AdminComments from "./pages/admin/Comments";
+import Dashboard from "./pages/admin/Dashboard";
+import AdminLogin from "./pages/admin/Login";
+import AdminUsers from "./pages/admin/Users";
+import Login from "./components/auth/Login";
+import { AuthProvider } from "./context/AuthProvider";
+import Register from "./components/auth/Register";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
   return (
@@ -44,6 +45,7 @@ function App() {
             <Route index element={<Dashboard />} />
             <Route path="/admin/galleries" element={<AdminGalleries />} />
             <Route path="/admin/comments" element={<AdminComments />} />
+            <Route path="/admin/users" element={<AdminUsers />} />
           </Route>
         </Routes>
       </AuthProvider>

@@ -21,15 +21,6 @@ const AdminLayout = () => {
           <ul>
             <li>
               <NavLink
-                to="/"
-                end
-                className={({ isActive }) => (isActive ? "active" : "")}
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
                 to="/admin"
                 end
                 className={({ isActive }) => (isActive ? "active" : "")}
@@ -53,6 +44,14 @@ const AdminLayout = () => {
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
                 Moderate Comments
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
+                to="/admin/users"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Manage Users
               </NavLink>
             </li>
           </ul>

@@ -291,4 +291,38 @@ class CommentsController
             ];
         }
     }
+
+    public function getCommentCount(array $params): array
+    {
+        try {
+            global $pdo;
+
+            $stmt = $pdo->query("
+        SELECT 
+            SUM(CASE WHEN is_approved = 0 THEN 1 ELSE 0 END) AS pending,
+            SUM(CASE WHEN is_approved = 1 THEN 1 ELSE 0 END) AS approved,
+            COUNT(*) AS total
+        FROM comments
+        WHERE is_spam = 0
+    ");
+
+            $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return
+                [
+                    "ok" => true,
+                    "counts" => [
+                        'pending' => (int)$result['pending'],
+                        'approved' => (int)$result['approved'],
+                        'total' => (int)$result['total']
+                    ]
+                ];
+        } catch (Throwable $e) {
+            http_response_code(500);
+
+            return [
+                'error' => 'Failed to load counts'
+            ];
+        }
+    }
 }

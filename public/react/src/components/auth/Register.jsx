@@ -1,5 +1,5 @@
-import { useState, useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { Link } from "react-router-dom";
 import { BASE_URL, CDN_BASE } from "../../config";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -13,8 +13,6 @@ const Register = () => {
 
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
-  const { setUser } = useContext(AuthContext);
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({
@@ -38,20 +36,16 @@ const Register = () => {
       });
 
       const data = await response.json();
-      console.log("REGISTER RESPONSE:", data);
 
       if (response.ok && data.ok) {
-        if (response.ok && data.ok) {
-          setUser(data.user); // ✅ store user globally
-          navigate("/galleries"); // ✅ redirect immediately
-          // ✅ clear form
-          setForm({
-            first_name: "",
-            last_name: "",
-            email: "",
-            password: "",
-          });
-        }
+        setMessage("Account created. Awaiting approval.");
+        // ✅ clear form
+        setForm({
+          first_name: "",
+          last_name: "",
+          email: "",
+          password: "",
+        });
       } else {
         if (data.errors) {
           setMessage(data.errors.join(", "));
@@ -59,8 +53,8 @@ const Register = () => {
           setMessage(data.error || "Registration failed");
         }
       }
-    } catch (err) {
-      console.error("Register error:", err);
+    } catch (error) {
+      console.error("Register error:", error);
       setMessage("Something went wrong");
     } finally {
       setLoading(false);

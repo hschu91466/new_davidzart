@@ -9,7 +9,7 @@ class UserModel
      */
     public static function getByEmail(PDO $pdo, string $email): ?array
     {
-        $sql = "SELECT id, email, first_name, last_name, password_hash, role FROM users WHERE email = :email LIMIT 1";
+        $sql = "SELECT id, email, first_name, last_name, password_hash, role, is_approved, approved_at, approved_by, last_login_at FROM users WHERE email = :email LIMIT 1";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([':email' => $email]);
 

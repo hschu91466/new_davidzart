@@ -5,9 +5,12 @@ declare(strict_types=1);
 require_once __DIR__ . '/../../../app/config/bootstrap.php';
 require_once __DIR__ . '/../../../app/controllers/AuthController.php';
 
-session_start();
+$rawInput = file_get_contents('php://input');
+$data = json_decode($rawInput, true) ?? [];
 
-$data = json_decode(file_get_contents("php://input"), true);
+error_log("RAW INPUT: " . $rawInput);
+error_log("PARSED DATA: " . print_r($data, true));
+
 
 $response = AuthController::register($pdo, $data);
 
