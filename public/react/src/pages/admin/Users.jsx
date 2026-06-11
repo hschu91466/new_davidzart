@@ -21,6 +21,48 @@ const Users = () => {
     loadUsers();
   }, [status]);
 
+  const approve = async (userId) => {
+    try {
+      setApprovingId(userId);
+
+      await axios.post("/api/users/approve.php", {
+        user_id: userId,
+      });
+
+      // small delay for smoother UX
+      setTimeout(() => {
+        setUsers((prev) => prev.filter((u) => u.id !== userId));
+        setApprovingId(null);
+      }, 800);
+    } catch (err) {
+      console.error("Error approving user", err);
+      setApprovingId(null);
+    }
+  };
+
+  const deleteUser = async (userId) => {
+    try {
+      setApprovingId(userId);
+
+      await axios.post("/api/users/delete.php", {
+        user_id: userId,
+      });
+
+      // small delay for smoother UX
+      setTimeout(() => {
+        setUsers((prev) => prev.filter((u) => u.id !== userId));
+        setApprovingId(null);
+      }, 800);
+    } catch (err) {
+      console.error("Error denying user", err);
+      setApprovingId(null);
+    }
+  };
+
+  const confirmDelete = () => {
+    return window.confirm("Are you sure you want to delete this user?");
+  };
+
   return (
     <div>
       <h1>Manage Users</h1>
@@ -38,6 +80,7 @@ const Users = () => {
               <th>Name</th>
               <th>Email</th>
               <th>Status</th>
+              {status === "pending" && <th>Actions</th>}
               <th>Created</th>
             </tr>
           </thead>
@@ -53,28 +96,20 @@ const Users = () => {
                   {!user.is_approved && (
                     <button
                       disabled={approvingId === user.id}
-                      onClick={async () => {
-                        try {
-                          setApprovingId(user.id);
-
-                          await axios.post("/api/users/approve.php", {
-                            user_id: user.id,
-                          });
-
-                          // small delay for smoother UX
-                          setTimeout(() => {
-                            setUsers((prev) =>
-                              prev.filter((u) => u.id !== user.id),
-                            );
-                            setApprovingId(null);
-                          }, 800);
-                        } catch (err) {
-                          console.error("Error approving user", err);
-                          setApprovingId(null);
-                        }
-                      }}
+                      onClick={() => approve(user.id)}
                     >
                       {approvingId === user.id ? "Approving..." : "Approve"}
+                    </button>
+                  )}
+                  {!user.is_approved && (
+                    <button
+                      disabled={approvingId === user.id}
+                      onClick={() => {
+                        if (!confirmDelete()) return;
+                        deleteUser(user.id);
+                      }}
+                    >
+                      {approvingId === user.id ? "Denying..." : "Deny"}
                     </button>
                   )}
                 </td>

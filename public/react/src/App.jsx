@@ -9,11 +9,12 @@ import Contact from "./pages/Contact";
 import AdminGalleries from "./pages/admin/Galleries";
 import AdminComments from "./pages/admin/Comments";
 import Dashboard from "./pages/admin/Dashboard";
-import AdminLogin from "./pages/admin/Login";
+// import AdminLogin from "../../../@DO NOT INCLUDE/AdminLogin";
 import AdminUsers from "./pages/admin/Users";
-import Login from "./components/auth/Login";
+import RegistryConf from "./pages/auth/RegistryConfirmation";
+import Login from "./pages/auth/Login";
 import { AuthProvider } from "./context/AuthProvider";
-import Register from "./components/auth/Register";
+import Register from "./pages/auth/Register";
 import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
@@ -30,9 +31,10 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
+            <Route path="/registryconfirmation" element={<RegistryConf />} />
           </Route>
 
-          <Route path="/admin/login" element={<AdminLogin />} />
+          {/* <Route path="/admin/login" element={<AdminLogin />} /> */}
 
           <Route
             path="/admin"
@@ -43,9 +45,9 @@ function App() {
             }
           >
             <Route index element={<Dashboard />} />
-            <Route path="/admin/galleries" element={<AdminGalleries />} />
-            <Route path="/admin/comments" element={<AdminComments />} />
-            <Route path="/admin/users" element={<AdminUsers />} />
+            <Route path="galleries" element={<AdminGalleries />} />
+            <Route path="comments" element={<AdminComments />} />
+            <Route path="users" element={<AdminUsers />} />
           </Route>
         </Routes>
       </AuthProvider>

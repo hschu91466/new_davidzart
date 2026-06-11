@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BASE_URL, CDN_BASE } from "../../config";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -13,6 +13,7 @@ const Register = () => {
 
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({
@@ -38,13 +39,15 @@ const Register = () => {
       const data = await response.json();
 
       if (response.ok && data.ok) {
-        setMessage("Account created. Awaiting approval.");
         // ✅ clear form
         setForm({
           first_name: "",
           last_name: "",
           email: "",
           password: "",
+        });
+        navigate("/registryconfirmation", {
+          state: { message: "Account created.  Awaiting approval." },
         });
       } else {
         if (data.errors) {
@@ -62,7 +65,7 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-container">
+    <div className="auth-container container">
       <form onSubmit={handleSubmit} className="auth-form">
         <h3>Create Account</h3>
 

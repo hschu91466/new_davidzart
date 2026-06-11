@@ -51,7 +51,6 @@ const Login = () => {
 
       if (response.ok && !data.error) {
         setMessage("Login successful");
-
         setUser(data.user);
         navigate(location.state?.from || "/home");
       } else {
@@ -64,7 +63,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="container">
       <h3>Login</h3>
 
       <form onSubmit={handleSubmit}>

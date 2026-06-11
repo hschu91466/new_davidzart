@@ -66,4 +66,36 @@ class UserController
             ];
         }
     }
+
+    public function delete(array $data): array
+    {
+        global $pdo;
+
+        $userId = (int)($data['user_id'] ?? 0);
+
+        if ($userId <= 0) {
+            return [
+                'ok' => false,
+                'error' => 'Invalid user ID'
+            ];
+        }
+
+        try {
+            $stmt = $pdo->prepare("DELETE FROM users WHERE id = :id");
+
+            $stmt->execute([
+                ':id' => $userId
+            ]);
+
+            return [
+                'ok' => true,
+                'message' => 'User deleted successfully'
+            ];
+        } catch (Throwable $e) {
+            return [
+                'ok' => false,
+                'error' => 'Failed to delete user'
+            ];
+        }
+    }
 }
