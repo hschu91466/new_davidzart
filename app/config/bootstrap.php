@@ -37,14 +37,12 @@ if (session_status() !== PHP_SESSION_ACTIVE) {
 $ROOT = dirname(__DIR__); // /app
 require_once $ROOT . '/config/database.php'; // db(), $pdo
 require_once $ROOT . '/includes/helper.php';
-require_once $ROOT . '/services/ImageUploadService.php';
-require_once $ROOT . '/services/ImageStorage.php';
+require_once $ROOT . '/../vendor/autoload.php';
+
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
+$dotenv->load();
 
 // Optional: initialize $pdo explicitly for legacy pages
 $pdo = db();
 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-// Optional: initialize $BASE_URL explicitly for legacy pages
-$BASE_URL = getBaseURL();
-
-$errors = [];
-$flash = null;

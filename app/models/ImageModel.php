@@ -26,14 +26,12 @@ class ImageModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-
     public static function nextSortOrder(PDO $pdo, int $galleryId): int
     {
         $stmt = $pdo->prepare("SELECT COALESCE(MAX(sort_order), 0) + 1 AS next_sort FROM images WHERE gallery_id = :gid");
         $stmt->execute([':gid' => $galleryId]);
         return (int) $stmt->fetchColumn();
     }
-
 
     public static function create(PDO $pdo, array $data): int
     {

@@ -1,74 +1,41 @@
 <?php
-// app/services/ImageStorage.php
 
-class ImageStorage
+declare(strict_types=1);
+
+use Aws\S3\S3Client;
+
+function getR2Client(): S3Client
 {
-    private string $baseDir;     // filesystem base: .../public/assets/images/galleries
-    private string $publicBase;  // web path base: /assets/images/galleries
+    return new S3Client([
+        'region' => 'auto',
+        'version' => 'latest',
 
-    /**
-     * @param string $publicRootDir Absolute path to your /public directory
-     */
-    public function __construct(string $publicRootDir)
-    {
-        $this->baseDir = rtrim($publicRootDir, DIRECTORY_SEPARATOR)
-            . DIRECTORY_SEPARATOR . 'assets'
-            . DIRECTORY_SEPARATOR . 'images'
-            . DIRECTORY_SEPARATOR . 'galleries';
+        'endpoint' => $_ENV['ENDPOINT'],
 
-        $this->publicBase = '/assets/images/galleries';
-    }
+        'credentials' => [
+            // ✅ THESE ARE STRINGS — not $_ENV
+            'key'    => $_ENV['KEY'],
+            'secret' => $_ENV['SECRET'],
+        ],
+    ]);
+}
 
-    /**
-     * Ensure /public/assets/images/galleries/<slug>/ exists and is writable.
-     * @throws RuntimeException
-     */
-    public function ensureGalleryDir(string $slug): string
-    {
-        $destDir = $this->baseDir . DIRECTORY_SEPARATOR . $slug . DIRECTORY_SEPARATOR;
-        if (!is_dir($destDir)) {
-            if (!mkdir($destDir, 0775, true) && !is_dir($destDir)) {
-                throw new RuntimeException('Failed to create destination directory.');
-            }
-            @chmod($destDir, 0775);
-        }
-        if (!is_writable($destDir)) {
-            throw new RuntimeException('Destination directory not writable.');
-        }
-        return $destDir;
-    }
+function uploadToR2(string $tmpFile, string $path): bool
+{
+    $client = getR2Client();
+    $bucket = 'sites';
 
-    /**
-     * Generate a safe, unique filename with the provided extension.
-     */
-    public function generateFilename(string $ext): string
-    {
-        try {
-            return date('Ymd_His') . '_' . bin2hex(random_bytes(6)) . '.' . $ext;
-        } catch (\Throwable $e) {
-            return date('Ymd_His') . '_' . substr(sha1(uniqid('', true)), 0, 12) . '.' . $ext;
-        }
-    }
+    try {
+        $client->putObject([
+            'Bucket' => $bucket,
+            'Key' => $path,
+            'SourceFile' => $tmpFile,
+            'ACL' => 'public-read',
+        ]);
 
-    /**
-     * Move the uploaded tmp file into /public/assets/images/galleries/<slug>/<filename>
-     * Returns [destPath (filesystem), publicPath (/assets/...)].
-     * @throws RuntimeException
-     */
-    public function moveUploaded(string $tmpPath, string $slug, string $filename): array
-    {
-        if (!is_uploaded_file($tmpPath)) {
-            throw new RuntimeException('Upload temp file is invalid.');
-        }
-
-        $destDir  = $this->ensureGalleryDir($slug);
-        $destPath = $destDir . $filename;
-
-        if (!move_uploaded_file($tmpPath, $destPath)) {
-            throw new RuntimeException('Could not move uploaded file.');
-        }
-
-        $publicPath = "{$this->publicBase}/{$slug}/{$filename}";
-        return [$destPath, $publicPath];
+        return true;
+    } catch (Exception $e) {
+        error_log("R2 Upload Error: " . $e->getMessage());
+        return false;
     }
 }
