@@ -13,3 +13,6 @@ RewriteRule ^api/ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^ react/dist/index.html [L]
+
+php_value upload_max_filesize 20M
+php_value post_max_size 20M

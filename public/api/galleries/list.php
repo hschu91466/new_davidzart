@@ -7,4 +7,6 @@ require_once __DIR__ . '/../../../app/models/GalleryModel.php';
 
 $galleries = GalleryModel::getActive($pdo);
 
-echo json_encode($galleries);
+// echo json_encode($galleries);
+
+json_ok($galleries);

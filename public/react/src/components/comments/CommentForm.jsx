@@ -122,7 +122,7 @@ const CommentForm = ({ contentId }) => {
         />
       </div>
 
-      <button className="btn-submit" type="submit" disabled={loading}>
+      <button className="btn btn-submit" type="submit" disabled={loading}>
         {loading ? "Submitting..." : "Submit"}
       </button>
 

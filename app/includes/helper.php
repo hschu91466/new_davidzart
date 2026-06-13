@@ -43,9 +43,13 @@ function json_response(array $payload, int $statusCode = 200): void
     exit;
 }
 
-function json_ok(array $payload = [], int $statusCode = 200): void
+function json_ok($data = []): void
 {
-    json_response(['ok' => true] + $payload, $statusCode);
+    echo json_encode([
+        'ok' => true,
+        'data' => $data
+    ]);
+    exit;
 }
 
 function json_error(string $message, int $statusCode = 400, array $extra = []): void
@@ -101,4 +105,3 @@ function h(?string $s): string
 {
     return htmlspecialchars($s ?? '', ENT_QUOTES, 'UTF-8');
 }
-

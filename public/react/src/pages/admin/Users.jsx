@@ -66,9 +66,19 @@ const Users = () => {
   return (
     <div>
       <h1>Manage Users</h1>
-      <div>
-        <button onClick={() => setStatus("pending")}>Pending</button>
-        <button onClick={() => setStatus("approved")}>Approved</button>
+      <div className="button-group">
+        <button
+          className="btn btn-primary"
+          onClick={() => setStatus("pending")}
+        >
+          Pending
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={() => setStatus("approved")}
+        >
+          Approved
+        </button>
       </div>
 
       {users.length === 0 ? (
@@ -95,6 +105,7 @@ const Users = () => {
                 <td>
                   {!user.is_approved && (
                     <button
+                      className="btn btn-approve btn-sm"
                       disabled={approvingId === user.id}
                       onClick={() => approve(user.id)}
                     >
@@ -103,6 +114,7 @@ const Users = () => {
                   )}
                   {!user.is_approved && (
                     <button
+                      className="btn btn-delete btn-sm"
                       disabled={approvingId === user.id}
                       onClick={() => {
                         if (!confirmDelete()) return;

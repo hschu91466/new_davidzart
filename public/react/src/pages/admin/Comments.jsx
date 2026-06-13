@@ -80,10 +80,25 @@ const Comments = () => {
   return (
     <div className="comments-page">
       <h2>Comments</h2>
-      <div className="comments-tabs" style={{ marginBottom: "1rem" }}>
-        <button onClick={() => setStatus("pending")}>Pending</button>
-        <button onClick={() => setStatus("approved")}>Approved</button>
-        <button onClick={() => setStatus("spam")}>Spam</button>
+      <div
+        className="button-group comments-tabs"
+        style={{ marginBottom: "1rem" }}
+      >
+        <button
+          className="btn btn-primary"
+          onClick={() => setStatus("pending")}
+        >
+          Pending
+        </button>
+        <button
+          className="btn btn-primary"
+          onClick={() => setStatus("approved")}
+        >
+          Approved
+        </button>
+        <button className="btn btn-primary" onClick={() => setStatus("spam")}>
+          Spam
+        </button>
       </div>
 
       {!comments || comments.length === 0 ? (
@@ -135,21 +150,21 @@ const Comments = () => {
 
                   <td className="comment-actions">
                     <button
-                      className="btn-approve"
+                      className="btn btn-approve btn-sm"
                       onClick={() => handleApprove(comment.comment_id)}
                     >
                       Approve
                     </button>
 
                     <button
-                      className="btn-spam"
+                      className="btn btn-spam btn-sm"
                       onClick={() => handleSpam(comment.comment_id)}
                     >
                       Spam
                     </button>
 
                     <button
-                      className="btn-delete"
+                      className="btn btn-delete btn-sm"
                       onClick={() => handleDelete(comment.comment_id)}
                     >
                       Delete

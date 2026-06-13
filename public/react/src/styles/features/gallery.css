@@ -71,3 +71,33 @@
 #galleryGrid .gallery-tile:hover img {
   opacity: 0.95;
 }
+
+/* ==========================================================================
+   Image Grid
+   ========================================================================== */
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+}
+
+.image-card {
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  padding: 8px;
+}
+
+.image-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+.image-card:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}

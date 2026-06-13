@@ -47,7 +47,7 @@ function GalleryDetail() {
   return (
     <div className="container py-4 gallery-detail">
       <div className="gallery-header">
-        <button onClick={() => navigate("/galleries")}>
+        <button className="btn" onClick={() => navigate("/galleries")}>
           ← Back to galleries
         </button>
 

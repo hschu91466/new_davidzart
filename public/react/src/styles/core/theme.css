@@ -6,6 +6,7 @@
   /* Brand palette */
   --color-green: #20430c; /* Dark Green */
   --color-green-dk: #0a2d2a; /* Deep Green */
+  --color-green-light: #6f9f4a;
   --color-gold: #e4c340; /* Gold */
   --color-brown: #554918; /* Brown */
   --color-blue: #0e3451; /* Blue */
@@ -107,6 +108,73 @@ p {
 p.bio {
   color: var(--color-text-muted);
   font-size: var(--fs-300);
+}
+
+.button-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-divider);
+  background: var(--color-surface);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background: var(--color-green);
+  color: #fff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background: var(--color-green-light);
+}
+
+.btn-sm {
+  padding: 5px 8px;
+  font-size: 0.8rem;
+}
+
+.btn-block {
+  width: 100%;
+}
+
+/* ==========================================================================
+   Form Controls
+   ========================================================================== */
+
+.form-select {
+  padding: 8px 12px;
+  font-size: 0.9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-divider);
+  background: var(--color-surface);
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.form-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* focus state */
+.form-select:focus {
+  outline: 2px solid var(--color-green-light);
+  outline-offset: 1px;
+}
+
+/* hover */
+.form-select:hover {
+  border-color: var(--color-green);
 }
 
 /* Type scale enhancement on tablet+ */

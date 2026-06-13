@@ -56,8 +56,15 @@ const AdminLayout = () => {
             </li>
           </ul>
         </nav>
-        <button onClick={handleLogout}>Logout</button>
-        <button onClick={() => navigate("/home")}> Go Home</button>
+        <div className="button-group">
+          <button className="btn btn-primary" onClick={handleLogout}>
+            Logout
+          </button>
+          <button className="btn btn-primary" onClick={() => navigate("/home")}>
+            {" "}
+            Go Home
+          </button>
+        </div>
       </aside>
       <main className="admin-main">
         <Outlet />

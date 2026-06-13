@@ -27,7 +27,7 @@ const Header = () => {
                 <>
                   <span className="auth-user">Welcome, {user.name}</span>
 
-                  <button className="auth-logout" onClick={logout}>
+                  <button className="btn auth-logout" onClick={logout}>
                     Logout
                   </button>
                 </>

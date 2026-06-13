@@ -14,7 +14,7 @@ require_once __DIR__ . '/../../app/includes/nav.php';
     <section id="sec-pending">
         <h2>Pending</h2>
         <div id="pending-list"></div>
-        <button id="pending-more" style="display:none;">Load more</button>
+        <button className="btn" id="pending-more" style="display:none;">Load more</button>
     </section>
 
     <hr>
@@ -22,7 +22,7 @@ require_once __DIR__ . '/../../app/includes/nav.php';
     <section id="sec-spam">
         <h2>Spam</h2>
         <div id="spam-list"></div>
-        <button id="spam-more" style="display:none;">Load more</button>
+        <button className="btn" id="spam-more" style="display:none;">Load more</button>
     </section>
 </main>
 <?php
@@ -110,12 +110,12 @@ require_once __DIR__ . '/../../app/includes/footer.php';
         <div style="margin:4px 0;">${c.body_html}</div>
         <div class="actions" style="display:flex; gap:.5rem; flex-wrap:wrap;">
           ${status === 'pending'
-            ? `<button data-action="approve">Approve</button>
-               <button data-action="spam">Mark spam</button>`
-            : `<button data-action="unspam">Unspam</button>
-               <button data-action="approve">Approve</button>`}
-          <button data-action="unapprove">Unapprove</button>
-          <button data-action="delete" style="color:#b00020;">Delete</button>
+            ? `<button className="btn" data-action="approve">Approve</button>
+               <button className="btn" data-action="spam">Mark spam</button>`
+            : `<button className="btn" data-action="unspam">Unspam</button>
+               <button className="btn" data-action="approve">Approve</button>`}
+          <button className="btn" data-action="unapprove">Unapprove</button>
+          <button className="btn" data-action="delete" style="color:#b00020;">Delete</button>
         </div>
       `;
                 ul.appendChild(li);

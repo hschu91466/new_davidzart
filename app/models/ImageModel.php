@@ -26,6 +26,28 @@ class ImageModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function getById(PDO $pdo, int $imageId): ?array
+    {
+        $sql = "SELECT
+            image_id,
+            file_path,
+            title,
+            caption,
+            medium,
+            dimensions,
+            year_created,
+            orientation,
+            is_active,
+            is_published,
+            sort_order            
+            FROM images
+            WHERE image_id = :imgid; ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':imgid' => $imageId]);
+        $image = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $image ?: null;
+    }
+
     public static function nextSortOrder(PDO $pdo, int $galleryId): int
     {
         $stmt = $pdo->prepare("SELECT COALESCE(MAX(sort_order), 0) + 1 AS next_sort FROM images WHERE gallery_id = :gid");
@@ -62,5 +84,16 @@ class ImageModel
         ]);
 
         return (int) $pdo->lastInsertId();
+    }
+
+    public static function delete(PDO $pdo, int $id): bool
+    {
+        $sql = "DELETE FROM images WHERE image_id = :id";
+
+        $stmt = $pdo->prepare($sql);
+
+        return $stmt->execute([
+            ':id' => $id
+        ]);
     }
 }

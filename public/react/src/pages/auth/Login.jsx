@@ -89,7 +89,11 @@ const Login = () => {
           />
         </div>
 
-        <button type="submit" style={{ marginTop: "10px" }}>
+        <button
+          className="btn btn-primary"
+          type="submit"
+          style={{ marginTop: "10px" }}
+        >
           Login
         </button>
         <Link className="auth-register" to="/register">

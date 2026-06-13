@@ -77,6 +77,7 @@ function handleImageUpload(array $file, PDO $pdo): array
 
     return [
         'ok' => true,
-        'url' => $imageUrl
+        'url' => $imageUrl,
+        'imageId' => $imageId,
     ];
 }
