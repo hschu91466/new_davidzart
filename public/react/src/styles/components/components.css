@@ -17,11 +17,14 @@
 }
 
 .site-nav .nav-list {
+  display: flex;
+  gap: var(--space-6);
   list-style: none;
   margin: 0;
   padding: 0;
-  display: flex;
-  gap: var(--space-6);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 .site-nav .site-nav-link {
@@ -53,54 +56,75 @@
   transform: scaleX(1);
 }
 
+.nav-toggle {
+  display: none;
+}
+
+#primaryNav {
+  display: block !important;
+}
+
+.show-desktop {
+  display: block;
+}
+
 /* ==========================================================================
    AUTH CONTROLS
    ========================================================================== */
 .auth-controls {
-  margin-top: 6px;
-  font-size: var(--fs-200);
-  font-style: normal;
-  font-variant: normal;
-  font-weight: 400;
-  font-family: var(--font-body);
-  letter-spacing: normal;
-  color: var(--color-text);
+  margin-top: var(--space-3);
 }
 
-/* user text */
 .auth-user {
-  margin-right: 10px;
-}
-
-/* logout button */
-.auth-logout {
-  margin-left: 8px;
-  cursor: pointer;
+  border-right: 2px solid var(--color-gold);
+  padding-right: 8px;
+  margin-right: 8px;
+  font-weight: 600;
+  text-shadow: var(--shadow-gold);
 }
 
 /* login link */
 .auth-login {
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 400;
 }
+
+/* logout button */
+.auth-logout {
+  cursor: pointer;
+}
+
+.auth-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--color-green);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   GENERAL UI
+   ========================================================================== */
 
 .footer {
   width: 100%;
 }
 
-/* Mobile */
 .section-label {
   margin: var(--space-7) auto var(--space-5);
   padding: 1.5em 0.75em;
   text-align: left;
-
   font-family: var(--font-body);
   font-size: var(--fs-100);
   font-weight: 400;
-
   letter-spacing: 0.18em;
   text-transform: uppercase;
-
   color: var(--color-text-muted);
 }
 
@@ -112,11 +136,9 @@
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.9);
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   z-index: 1000;
 }
 
@@ -129,7 +151,6 @@
 .lightbox-content img {
   max-width: 100%;
   max-height: 90vh;
-
   display: block;
 }
 
@@ -159,6 +180,24 @@
   padding: 1rem;
 }
 
+.lightbox-comments form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.lightbox-comments input,
+.lightbox-comments textarea {
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+}
+
+.lightbox-comments button {
+  align-self: flex-start;
+}
+
 .lightbox-close {
   position: absolute;
   top: -36px;
@@ -178,7 +217,7 @@
 
 .lightbox-prev,
 .lightbox-next {
-  position: fixed; /* key change */
+  position: fixed;
   top: 50%;
   transform: translateY(-50%);
   font-size: 2.5rem;
@@ -197,31 +236,14 @@
 .lightbox-next {
   right: 30px;
 }
-.lightbox-comments form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 1rem;
-}
-
-.lightbox-comments input,
-.lightbox-comments textarea {
-  width: 100%;
-  padding: 0.4rem;
-  border: 1px solid #ccc;
-}
-
-.lightbox-comments button {
-  align-self: flex-start;
-}
 
 .lightbox-footer {
   position: absolute;
   bottom: -36px;
-  left: 0; /* anchor left */
-  right: 0; /* anchor right */
+  left: 0;
+  right: 0;
   display: flex;
-  justify-content: space-between; /* pushes items apart */
+  justify-content: space-between;
   align-items: center;
   padding: 0 15px;
   color: white;
@@ -236,35 +258,40 @@
   color: white;
 }
 
-.show-desktop {
-  display: block;
-}
-
-.nav-toggle {
-  display: none;
-}
-
-#primaryNav {
-  display: block !important;
-}
-
 /* Mobile: nav collapsed, toggle shown */
 @media (max-width: 639.98px) {
+  /* NAVIGATION */
   .nav-inner {
     flex-direction: column;
   }
-
   .show-desktop {
     display: none;
   }
-
-  .collapse.show {
+  .nav-toggle {
     display: block;
   }
-  
+
   .nav-list {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-list.open {
+    display: flex;
     flex-direction: column;
     gap: var(--space-4);
     text-align: center;
+  }
+  .collapse.show {
+    display: block;
+  }
+
+  /* AUTH */
+  .auth-controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
   }
 }

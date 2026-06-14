@@ -85,18 +85,21 @@ const Comments = () => {
         style={{ marginBottom: "1rem" }}
       >
         <button
-          className="btn btn-primary"
+          className={`btn btn-tab ${status === "pending" ? "btn-active" : "btn-tab"}`}
           onClick={() => setStatus("pending")}
         >
           Pending
         </button>
         <button
-          className="btn btn-primary"
+          className={`btn btn-tab ${status === "approved" ? "btn-active" : "btn-tab"}`}
           onClick={() => setStatus("approved")}
         >
           Approved
         </button>
-        <button className="btn btn-primary" onClick={() => setStatus("spam")}>
+        <button
+          className={`btn btn-tab ${status === "spam" ? "btn-active" : "btn-tab"}`}
+          onClick={() => setStatus("spam")}
+        >
           Spam
         </button>
       </div>
@@ -111,7 +114,7 @@ const Comments = () => {
           <thead>
             <tr>
               <th>Status</th>
-              <th>ID</th>
+              {/* <th>ID</th> */}
               <th>Author</th>
               <th>Comment</th>
               <th>Image</th>
@@ -138,7 +141,7 @@ const Comments = () => {
                   </td>
 
                   {/* ✅ THEN THE REST */}
-                  <td>{comment.comment_id}</td>
+                  {/* <td>{comment.comment_id}</td> */}
                   <td>{comment.name}</td>
                   <td>{comment.body}</td>
 
@@ -148,7 +151,7 @@ const Comments = () => {
                     <small>ID: {comment.content_id}</small>
                   </td>
 
-                  <td className="comment-actions">
+                  <td className="comment-actions button-group">
                     <button
                       className="btn btn-approve btn-sm"
                       onClick={() => handleApprove(comment.comment_id)}

@@ -86,6 +86,27 @@ class ImageModel
         return (int) $pdo->lastInsertId();
     }
 
+    public static function update(PDO $pdo, array $data): bool
+    {
+
+        $sql = "UPDATE images
+            SET 
+                title = :title,
+                caption = :caption,
+                year_created = :year_created,
+            WHERE image_id = :image_id";
+
+
+        $stmt = $pdo->prepare($sql);
+
+        return $stmt->execute([
+            ':title' => $data['title'],
+            ':caption' => $data['caption'],
+            ':year_created' => $data['year_created'],
+            ':image_id' => $data['image_id'],
+        ]);
+    }
+
     public static function delete(PDO $pdo, int $id): bool
     {
         $sql = "DELETE FROM images WHERE image_id = :id";

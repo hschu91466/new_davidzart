@@ -5,8 +5,8 @@
 }
 
 .app-content {
-  flex: 1;  
-  padding-top: var(--space-6); 
+  flex: 1;
+  padding-top: var(--space-6);
 }
 
 .container {
@@ -26,39 +26,37 @@
    Gallery structure
    ========================================================================== */
 
+.grid-base {
+  display: grid;
+}
+
+/* List of galleries (overview page) */
 #galleriesGrid {
   --gap: 28px;
-
   display: grid;
   gap: var(--gap);
-
-  grid-template-columns: repeat(auto-fill, 220px);
-
-  justify-content: start;
+  grid-template-columns: repeat(auto-fit, 220px);
+  justify-content: center;
 }
 
+/* Images inside a single gallery (detail page) */
 #galleryGrid {
   --gap: 2.5em;
-
-  display: grid;
   gap: var(--gap);
-
-  grid-template-columns: repeat(auto-fill, var(--short));
-
+  grid-template-columns: repeat(auto-fit, 220px);
   justify-content: center;
-
   max-width: calc((var(--short) * 5) + (var(--gap) * 4));
   margin: 0 auto;
-}
-
-.gallery-grid {
-  display: grid;
-  gap: 1rem;
 }
 
 @media (max-width: 639px) {
   #galleryGrid {
     --short: 160px;
+    justify-content: center;
+  }
+  #galleriesGrid {
+    display: grid;
+    justify-content: center;
   }
 }
 
@@ -67,7 +65,6 @@
     --short: 200px;
   }
 }
-
 @media (min-width: 1024px) {
   #galleryGrid {
     --short: 240px;

@@ -68,13 +68,13 @@ const Users = () => {
       <h1>Manage Users</h1>
       <div className="button-group">
         <button
-          className="btn btn-primary"
+          className={`btn btn-tab ${status === "pending" ? "btn-active" : "btn-tab"}`}
           onClick={() => setStatus("pending")}
         >
           Pending
         </button>
         <button
-          className="btn btn-primary"
+          className={`btn btn-tab ${status === "approved" ? "btn-active" : "btn-tab"}`}
           onClick={() => setStatus("approved")}
         >
           Approved

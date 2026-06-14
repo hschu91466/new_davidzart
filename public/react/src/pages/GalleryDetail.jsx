@@ -47,7 +47,10 @@ function GalleryDetail() {
   return (
     <div className="container py-4 gallery-detail">
       <div className="gallery-header">
-        <button className="btn" onClick={() => navigate("/galleries")}>
+        <button
+          className="btn btn-primary"
+          onClick={() => navigate("/galleries")}
+        >
           ← Back to galleries
         </button>
 
@@ -55,7 +58,7 @@ function GalleryDetail() {
         {gallery?.description && <p>{gallery.description}</p>}
       </div>
 
-      <div id="galleryGrid" className="gallery-grid">
+      <div id="galleryGrid" className="grid-base">
         {/* {console.log("FULL IMAGES ARRAY:", data.images)} */}
         {data.images &&
           data.images.map((img, index) => {

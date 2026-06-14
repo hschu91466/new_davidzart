@@ -34,6 +34,30 @@ const Galleries = () => {
     }
   };
 
+  const handleChange = (id, field, value) => {
+    setImages((prev) =>
+      prev.map((img) =>
+        img.image_id === id ? { ...img, [field]: value } : img,
+      ),
+    );
+  };
+
+  const handleSave = async (img) => {
+    try {
+      await axios.post("/api/images/update.php", {
+        image_id: img.image_id,
+        title: img.title,
+        caption: img.caption,
+        year_created: img.year_created,
+      });
+      console.log("Saved");
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  // const handleEdit = () => {};
+
   const handleDelete = async (imageId) => {
     const confirmed = window.confirm("Delete this image?");
     if (!confirmed) return;
@@ -85,18 +109,8 @@ const Galleries = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container gallery-detail">
       <h2>Galleries Page</h2>
-
-      {/* {galleries.length === 0 ? (
-        <p>No galleries found</p>
-      ) : (
-        <ul>
-          {galleries.map((gallery) => (
-            <li key={gallery.gallery_id}>{gallery.title}</li>
-          ))}
-        </ul>
-      )} */}
       <div className="form-group">
         <select
           className="form-select"
@@ -115,7 +129,6 @@ const Galleries = () => {
       <button className="btn btn-primary" onClick={uploadImage}>
         Upload
       </button>
-      <h4></h4>
       {images.length === 0 ? (
         <p>Select a gallery to manage it's images.</p>
       ) : (
@@ -123,12 +136,50 @@ const Galleries = () => {
           {images.map((img) => (
             <div className="image-card" key={img.image_id}>
               <img src={img.url} alt="" />
-              <button
-                className="btn delete-btn"
-                onClick={() => handleDelete(img.image_id)}
-              >
-                Delete
-              </button>
+              <div className="form-group">
+                <input
+                  type="text"
+                  value={img.title || ""}
+                  onChange={(e) =>
+                    handleChange(img.image_id, "title", e.target.value)
+                  }
+                  placeholder="Title"
+                />
+
+                <textarea
+                  value={img.caption || ""}
+                  onChange={(e) =>
+                    handleChange(img.image_id, "caption", e.target.value)
+                  }
+                  placeholder="Caption"
+                />
+
+                <input
+                  type="text"
+                  value={img.year_created || ""}
+                  onChange={(e) =>
+                    handleChange(img.image_id, "year_created", e.target.value)
+                  }
+                  placeholder="Year"
+                />
+                {/* <button className="btn btn-sm" onClick={() => handleEdit(img)}>
+                Edit
+              </button> */}
+
+                <button
+                  className="btn btn-approve btn-sm"
+                  onClick={() => handleSave(img)}
+                >
+                  Save
+                </button>
+
+                <button
+                  className="btn btn-delete btn-sm delete-btn"
+                  onClick={() => handleDelete(img.image_id)}
+                >
+                  Delete
+                </button>
+              </div>
             </div>
           ))}
         </div>

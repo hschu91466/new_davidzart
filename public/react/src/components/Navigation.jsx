@@ -1,14 +1,18 @@
 import { NavLink } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 function Navigation() {
   const { user } = useContext(AuthContext);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <nav className="site-nav">
       <div className="nav-inner">
-        <ul className="nav-list">
+        <button className="nav-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+          ☰
+        </button>
+        <ul className={`nav-list ${menuOpen ? "open" : ""}`}>
           <li>
             <NavLink
               to="/"
