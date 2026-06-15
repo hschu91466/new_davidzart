@@ -84,52 +84,54 @@ const Users = () => {
       {users.length === 0 ? (
         <p>No Users Found</p>
       ) : (
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Email</th>
-              <th>Status</th>
-              {status === "pending" && <th>Actions</th>}
-              <th>Created</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user) => (
-              <tr key={user.id}>
-                <td>
-                  {user.first_name} {user.last_name}
-                </td>
-                <td>{user.email}</td>
-                <td>{user.is_approved ? "Approved" : "Pending"}</td>
-                <td>
-                  {!user.is_approved && (
-                    <button
-                      className="btn btn-approve btn-sm"
-                      disabled={approvingId === user.id}
-                      onClick={() => approve(user.id)}
-                    >
-                      {approvingId === user.id ? "Approving..." : "Approve"}
-                    </button>
-                  )}
-                  {!user.is_approved && (
-                    <button
-                      className="btn btn-delete btn-sm"
-                      disabled={approvingId === user.id}
-                      onClick={() => {
-                        if (!confirmDelete()) return;
-                        deleteUser(user.id);
-                      }}
-                    >
-                      {approvingId === user.id ? "Denying..." : "Deny"}
-                    </button>
-                  )}
-                </td>
-                <td>{user.created_at}</td>
+        <div className="table-wrapper">
+          <table className="table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Status</th>
+                {status === "pending" && <th>Actions</th>}
+                <th>Created</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {users.map((user) => (
+                <tr key={user.id}>
+                  <td>
+                    {user.first_name} {user.last_name}
+                  </td>
+                  <td>{user.email}</td>
+                  <td>{user.is_approved ? "Approved" : "Pending"}</td>
+                  <td>
+                    {!user.is_approved && (
+                      <button
+                        className="btn btn-approve btn-sm"
+                        disabled={approvingId === user.id}
+                        onClick={() => approve(user.id)}
+                      >
+                        {approvingId === user.id ? "Approving..." : "Approve"}
+                      </button>
+                    )}
+                    {!user.is_approved && (
+                      <button
+                        className="btn btn-delete btn-sm"
+                        disabled={approvingId === user.id}
+                        onClick={() => {
+                          if (!confirmDelete()) return;
+                          deleteUser(user.id);
+                        }}
+                      >
+                        {approvingId === user.id ? "Denying..." : "Deny"}
+                      </button>
+                    )}
+                  </td>
+                  <td>{user.created_at}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

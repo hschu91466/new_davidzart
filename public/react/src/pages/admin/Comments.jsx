@@ -107,77 +107,79 @@ const Comments = () => {
       {!comments || comments.length === 0 ? (
         <p>No comments found.</p>
       ) : (
-        <table
-          className="comments-table"
-          style={{ width: "100%", borderCollapse: "collapse" }}
-        >
-          <thead>
-            <tr>
-              <th>Status</th>
-              {/* <th>ID</th> */}
-              <th>Author</th>
-              <th>Comment</th>
-              <th>Image</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
+        <div className="table-wrapper">
+          <table
+            className="table"
+            style={{ width: "100%", borderCollapse: "collapse" }}
+          >
+            <thead>
+              <tr>
+                <th>Status</th>
+                {/* <th>ID</th> */}
+                <th>Author</th>
+                <th>Comment</th>
+                <th>Image</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
 
-          <tbody>
-            {comments.map((comment) => {
-              const isApproved = Number(comment.is_approved) === 1;
-              const isSpam = Number(comment.is_spam) === 1;
+            <tbody>
+              {comments.map((comment) => {
+                const isApproved = Number(comment.is_approved) === 1;
+                const isSpam = Number(comment.is_spam) === 1;
 
-              return (
-                <tr key={comment.comment_id}>
-                  {/* ✅ STATUS FIRST (matches header) */}
-                  <td>
-                    <span
-                      className={`status-badge ${
-                        isSpam ? "spam" : isApproved ? "approved" : "pending"
-                      }`}
-                    >
-                      {isSpam ? "Spam" : isApproved ? "Approved" : "Pending"}
-                    </span>
-                  </td>
+                return (
+                  <tr key={comment.comment_id}>
+                    {/* ✅ STATUS FIRST (matches header) */}
+                    <td>
+                      <span
+                        className={`status-badge ${
+                          isSpam ? "spam" : isApproved ? "approved" : "pending"
+                        }`}
+                      >
+                        {isSpam ? "Spam" : isApproved ? "Approved" : "Pending"}
+                      </span>
+                    </td>
 
-                  {/* ✅ THEN THE REST */}
-                  {/* <td>{comment.comment_id}</td> */}
-                  <td>{comment.name}</td>
-                  <td>{comment.body}</td>
+                    {/* ✅ THEN THE REST */}
+                    {/* <td>{comment.comment_id}</td> */}
+                    <td>{comment.name}</td>
+                    <td>{comment.body}</td>
 
-                  <td>
-                    <strong>{comment.title || "Untitled Image"}</strong>
-                    <br />
-                    <small>ID: {comment.content_id}</small>
-                  </td>
+                    <td>
+                      <strong>{comment.title || "Untitled Image"}</strong>
+                      <br />
+                      <small>ID: {comment.content_id}</small>
+                    </td>
 
-                  <td className="comment-actions button-group">
-                    <button
-                      className="btn btn-approve btn-sm"
-                      onClick={() => handleApprove(comment.comment_id)}
-                    >
-                      Approve
-                    </button>
+                    <td className="comment-actions button-group">
+                      <button
+                        className="btn btn-approve btn-sm"
+                        onClick={() => handleApprove(comment.comment_id)}
+                      >
+                        Approve
+                      </button>
 
-                    <button
-                      className="btn btn-spam btn-sm"
-                      onClick={() => handleSpam(comment.comment_id)}
-                    >
-                      Spam
-                    </button>
+                      <button
+                        className="btn btn-spam btn-sm"
+                        onClick={() => handleSpam(comment.comment_id)}
+                      >
+                        Spam
+                      </button>
 
-                    <button
-                      className="btn btn-delete btn-sm"
-                      onClick={() => handleDelete(comment.comment_id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                      <button
+                        className="btn btn-delete btn-sm"
+                        onClick={() => handleDelete(comment.comment_id)}
+                      >
+                        Delete
+                      </button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

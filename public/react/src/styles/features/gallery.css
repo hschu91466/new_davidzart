@@ -121,9 +121,10 @@
 .image-card img {
   width: 100%;
   aspect-ratio: 1 / 1;
-  height: 140px;
+  height: auto;
   object-fit: cover;
   display: block;
+  margin-bottom: 8px;
 }
 
 .image-card:hover {

@@ -7,6 +7,7 @@ const Galleries = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [file, setFile] = useState(null);
+  const [saving, setSaving] = useState(false);
 
   const uploadImage = async () => {
     if (!file) return;
@@ -43,6 +44,7 @@ const Galleries = () => {
   };
 
   const handleSave = async (img) => {
+    setSaving(true);
     try {
       await axios.post("/api/images/update.php", {
         image_id: img.image_id,
@@ -165,20 +167,21 @@ const Galleries = () => {
                 {/* <button className="btn btn-sm" onClick={() => handleEdit(img)}>
                 Edit
               </button> */}
-
-                <button
-                  className="btn btn-approve btn-sm"
-                  onClick={() => handleSave(img)}
-                >
-                  Save
-                </button>
-
-                <button
-                  className="btn btn-delete btn-sm delete-btn"
-                  onClick={() => handleDelete(img.image_id)}
-                >
-                  Delete
-                </button>
+                <div className="form-actions">
+                  <button
+                    className="btn btn-approve btn-sm"
+                    onClick={() => handleSave(img)}
+                    disabled={saving}
+                  >
+                    {saving ? "Saving..." : "Save"}
+                  </button>
+                  <button
+                    className="btn btn-delete btn-sm delete-btn"
+                    onClick={() => handleDelete(img.image_id)}
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           ))}

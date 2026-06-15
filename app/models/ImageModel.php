@@ -93,7 +93,7 @@ class ImageModel
             SET 
                 title = :title,
                 caption = :caption,
-                year_created = :year_created,
+                year_created = :year_created
             WHERE image_id = :image_id";
 
 

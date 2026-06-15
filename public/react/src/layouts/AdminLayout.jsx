@@ -1,5 +1,5 @@
 import { Outlet, Link } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { NavLink, useNavigate } from "react-router-dom";
 
@@ -12,9 +12,17 @@ const AdminLayout = () => {
     navigate("/home");
   };
 
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
   return (
     <div className="admin-layout">
-      <aside className="admin-sidebar">
+      <button
+        className="sidebar-toggle"
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+      >
+        ☰
+      </button>
+      <aside className={`admin-sidebar ${sidebarOpen ? "open" : ""}`}>
         <h3>Admin</h3>
 
         <nav className="admin-nav">

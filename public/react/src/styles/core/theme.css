@@ -73,6 +73,13 @@ body {
   line-height: 1.6;
   overflow-x: hidden;
 }
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 img,
 svg,
 video {
@@ -166,14 +173,52 @@ p.bio {
 }
 
 /* ==========================================================================
+   Tables
+   ========================================================================== */
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+}
+
+.table th,
+.table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--color-divider);
+  text-align: left;
+  font-size: var(--fs-200);
+}
+
+.table th {
+  font-weight: 600;
+  background: var(--color-lt-gray);
+}
+
+.table tr:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* ==========================================================================
    Form Controls
    ========================================================================== */
 
 .form-group {
   display: flex;
+  flex-direction: column;
   gap: 8px;
   margin-bottom: var(--space-3);
   flex-wrap: wrap;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 6px;
 }
 
 .form-select {
@@ -204,7 +249,7 @@ select {
   padding: 6px 8px;
   border: 1px solid var(--color-divider);
   border-radius: 4px;
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-size: var(--fs-200);
   background: #fff;
   color: var(--color-text);

@@ -1,16 +1,22 @@
 .admin-layout {
-  display: flex;
+  display: grid;
   min-height: 100vh;
+  grid-template-columns: 220px 1fr;
 }
 
 .admin-sidebar {
   width: 200px;
-  background: #f4f4f4;
+  background: var(--color-lt-gray);
+  padding: var(--space-4);
   padding: 1rem;
+  transition: all 0.2s ease;
+}
+
+.sidebar-toggle {
+  display: none;
 }
 
 .admin-main {
-  flex: 1;
   padding: 1rem;
 }
 
@@ -43,4 +49,24 @@
 .site-nav-link.admin-link {
   color: red;
   font-weight: 600;
+}
+
+@media (max-width: 639.98px) {
+  .admin-layout {
+    grid-template-columns: 1fr; /* ✅ remove sidebar column */
+  }
+
+  .admin-sidebar {
+    display: none; /* hidden by default */
+    width: 100%;
+  }
+
+  .admin-sidebar.open {
+    display: block; /* show when toggled */
+  }
+
+  .sidebar-toggle {
+    display: block;
+    margin-bottom: var(--space-3);
+  }
 }
