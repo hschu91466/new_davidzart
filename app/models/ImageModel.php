@@ -93,7 +93,9 @@ class ImageModel
             SET 
                 title = :title,
                 caption = :caption,
-                year_created = :year_created
+                year_created = :year_created,
+                medium = :medium,
+                dimensions = :dimensions
             WHERE image_id = :image_id";
 
 
@@ -104,6 +106,8 @@ class ImageModel
             ':caption' => $data['caption'],
             ':year_created' => $data['year_created'],
             ':image_id' => $data['image_id'],
+            ':medium' => $data['medium'],
+            ':dimensions' => $data['dimensions'],
         ]);
     }
 

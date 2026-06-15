@@ -7,7 +7,7 @@ const Galleries = () => {
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [file, setFile] = useState(null);
-  const [saving, setSaving] = useState(false);
+  const [savingId, setSavingId] = useState(null);
 
   const uploadImage = async () => {
     if (!file) return;
@@ -44,17 +44,21 @@ const Galleries = () => {
   };
 
   const handleSave = async (img) => {
-    setSaving(true);
+    setSavingId(img.image_id);
     try {
       await axios.post("/api/images/update.php", {
         image_id: img.image_id,
         title: img.title,
         caption: img.caption,
         year_created: img.year_created,
+        medium: img.medium,
+        dimensions: img.dimensions,
       });
       console.log("Saved");
     } catch (error) {
       console.error(error);
+    } finally {
+      setSavingId(null);
     }
   };
 
@@ -164,6 +168,23 @@ const Galleries = () => {
                   }
                   placeholder="Year"
                 />
+                <input
+                  type="text"
+                  value={img.medium || ""}
+                  onChange={(e) =>
+                    handleChange(img.image_id, "medium", e.target.value)
+                  }
+                  placeholder="Medium"
+                />
+                <input
+                  type="text"
+                  value={img.dimensions || ""}
+                  onChange={(e) =>
+                    handleChange(img.image_id, "dimensions", e.target.value)
+                  }
+                  placeholder="Dimensions"
+                />
+
                 {/* <button className="btn btn-sm" onClick={() => handleEdit(img)}>
                 Edit
               </button> */}
@@ -171,9 +192,9 @@ const Galleries = () => {
                   <button
                     className="btn btn-approve btn-sm"
                     onClick={() => handleSave(img)}
-                    disabled={saving}
+                    disabled={savingId === img.image_id}
                   >
-                    {saving ? "Saving..." : "Save"}
+                    {savingId === img.image_id ? "Saving..." : "Save"}
                   </button>
                   <button
                     className="btn btn-delete btn-sm delete-btn"

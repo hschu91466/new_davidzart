@@ -1030,3 +1030,121 @@ Stack trace:
 
 )
 
+[15-Jun-2026 22:45:41 Europe/Berlin] SESSION CONTENT:
+[15-Jun-2026 22:45:41 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[15-Jun-2026 22:45:41 Europe/Berlin] SESSION CONTENT:
+[15-Jun-2026 22:45:41 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[15-Jun-2026 22:59:30 Europe/Berlin] SESSION CONTENT:
+[15-Jun-2026 22:59:30 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[15-Jun-2026 22:59:30 Europe/Berlin] SESSION CONTENT:
+[15-Jun-2026 22:59:30 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[15-Jun-2026 22:59:44 Europe/Berlin] SESSION CONTENT:
+[15-Jun-2026 22:59:44 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[15-Jun-2026 22:59:44 Europe/Berlin] SESSION CONTENT:
+[15-Jun-2026 22:59:44 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[15-Jun-2026 23:05:11 Europe/Berlin] SESSION CONTENT:
+[15-Jun-2026 23:05:11 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[15-Jun-2026 23:05:11 Europe/Berlin] SESSION CONTENT:
+[15-Jun-2026 23:05:11 Europe/Berlin] Array
+(
+    [user] => Array
+        (
+            [id] => 6
+            [email] => holly.schu14@gmail.com
+            [first_name] => Holly
+            [last_name] => Schu
+            [role] => admin
+        )
+
+)
+
+[15-Jun-2026 23:05:28 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'WHERE image_id = ?' at line 8 in C:\xampp\htdocs\Sites\production\davidschu_new\app\models\ImageModel.php:102
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\models\ImageModel.php(102): PDO->prepare('UPDATE images\r\n...')
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\images\update.php(16): ImageModel::update(Object(PDO), Array)
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\models\ImageModel.php on line 102
