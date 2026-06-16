@@ -9,7 +9,7 @@ const BannerQuote = () => {
     "Let all that I am praise the Lord; with my whole heart, I will praise His holy name. Psalm 103:1",
   ];
   const [quoteIndex, setQuoteIndex] = useState(0);
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {

@@ -78,6 +78,16 @@ function GalleryDetail() {
                   alt="Gallery image"
                   onClick={() => openLightbox(index)}
                 />
+
+                <div className="image-meta">
+                  {img.title && <div className="image-title">{img.title}</div>}
+                  {img.caption && (
+                    <div className="image-caption">{img.caption}</div>
+                  )}
+                  {img.year_created && (
+                    <div className="image-year">{img.year_created}</div>
+                  )}
+                </div>
               </div>
             );
           })}

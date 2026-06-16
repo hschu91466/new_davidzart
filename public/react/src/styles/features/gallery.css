@@ -131,3 +131,22 @@
   transform: scale(1.02);
   transition: transform 0.2s ease;
 }
+
+.image-meta {
+  margin-top: 6px;
+  text-align: center;
+}
+
+.image-title {
+  font-weight: 600;
+}
+
+.image-caption {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.image-year {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
