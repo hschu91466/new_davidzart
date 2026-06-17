@@ -48,10 +48,11 @@ function GalleryDetail() {
     <div className="container py-4 gallery-detail">
       <div className="gallery-header">
         <button
-          className="btn btn-primary"
+          className="btn btn-primary back-btn"
           onClick={() => navigate("/galleries")}
         >
-          ← Back to galleries
+          <span className="back-icon">←</span>
+          <span className="back-text">Back to galleries</span>
         </button>
 
         <h2>{gallery?.title}</h2>
