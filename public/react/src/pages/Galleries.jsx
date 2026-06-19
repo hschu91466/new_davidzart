@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import GalleryGrid from "../components/GalleryGrid";
+import GalleryGrid from "../components/galleries/GalleryGrid";
 import { BASE_URL, CDN_BASE } from "../config";
 
 function Galleries() {

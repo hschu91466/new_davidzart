@@ -8,30 +8,91 @@ const Galleries = () => {
   const [loading, setLoading] = useState(true);
   const [file, setFile] = useState(null);
   const [savingId, setSavingId] = useState(null);
+  const [uploading, setUploading] = useState(false);
+  const [uploadMessage, setUploadMessage] = useState(false);
+
+  const handleFileSelect = (e) => {
+    const selectedFile = e.target.files[0];
+    setFile(selectedFile);
+
+    if (selectedFile) {
+      setUploadMessage(
+        `File: ${selectedFile.name} | Type: ${selectedFile.type} | Size: ${(
+          selectedFile.size /
+          1024 /
+          1024
+        ).toFixed(2)} MB`,
+      );
+    }
+  };
 
   const uploadImage = async () => {
-    if (!file) return;
+    if (!file) {
+      setUploadMessage("Please select a file.");
+      return;
+    }
+
+    if (!galleryId) {
+      setUploadMessage("Please select a gallery.");
+      return;
+    }
 
     const formData = new FormData();
     formData.append("image", file);
     formData.append("gallery_id", galleryId);
+
+    let timeoutId;
+
     try {
-      const res = await axios.post("/api/images/upload.php", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
+      setUploading(true);
+      setUploadMessage("Uploading... 0%");
+
+      // ✅ fallback timeout (prevents permanent stuck state)
+      timeoutId = setTimeout(() => {
+        setUploadMessage("Upload taking too long ❌");
+        setUploading(false);
+      }, 45000);
+
+      await axios.post("/api/images/upload.php", formData, {
+        timeout: 60000,
+        onUploadProgress: (progressEvent) => {
+          if (progressEvent.total) {
+            const percent = Math.round(
+              (progressEvent.loaded * 100) / progressEvent.total,
+            );
+            setUploadMessage(`Uploading... ${percent}%`);
+          }
         },
       });
-      console.log("Upload success", res.data.data);
+
+      clearTimeout(timeoutId);
+
+      setUploadMessage("Upload successful ✅");
       setFile(null);
 
-      if (galleryId) {
-        const res = await axios.get(
-          `/api/images/list.php?gallery_id=${galleryId}`,
-        );
-        setImages(res.data.data);
-      }
+      const res = await axios.get(
+        `/api/images/list.php?gallery_id=${galleryId}`,
+      );
+      setImages(res.data.data);
+
+      // ✅ optional: auto-clear success message
+      setTimeout(() => {
+        setUploadMessage("");
+      }, 3000);
     } catch (error) {
+      clearTimeout(timeoutId);
+
       console.error("Upload error:", error);
+
+      if (error.response?.status === 413) {
+        setUploadMessage("File too large ❌");
+      } else if (error.code === "ECONNABORTED") {
+        setUploadMessage("Upload timed out ❌");
+      } else {
+        setUploadMessage(error.response?.data?.message || "Upload failed ❌");
+      }
+    } finally {
+      setUploading(false); // ✅ ALWAYS runs if request resolves
     }
   };
 
@@ -131,10 +192,16 @@ const Galleries = () => {
           ))}
         </select>
       </div>
-      <input type="file" onChange={(e) => setFile(e.target.files[0])} />
-      <button className="btn btn-primary" onClick={uploadImage}>
-        Upload
+      {/* <input type="file" onChange={(e) => setFile(e.target.files[0])} /> */}
+      <input type="file" onChange={handleFileSelect} />
+      <button
+        className="btn btn-primary"
+        onClick={uploadImage}
+        disabled={uploading}
+      >
+        {uploading ? "Uploading..." : "Upload"}
       </button>
+      {uploadMessage && <div className="upload-status">{uploadMessage}</div>}
       {images.length === 0 ? (
         <p>Select a gallery to manage it's images.</p>
       ) : (

@@ -11,11 +11,12 @@ import AdminComments from "./pages/admin/Comments";
 import Dashboard from "./pages/admin/Dashboard";
 // import AdminLogin from "../../../@DO NOT INCLUDE/AdminLogin";
 import AdminUsers from "./pages/admin/Users";
+import AdminMessages from "./pages/admin/Messages";
 import RegistryConf from "./pages/auth/RegistryConfirmation";
 import Login from "./pages/auth/Login";
 import { AuthProvider } from "./context/AuthProvider";
 import Register from "./pages/auth/Register";
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
             <Route path="galleries" element={<AdminGalleries />} />
             <Route path="comments" element={<AdminComments />} />
             <Route path="users" element={<AdminUsers />} />
+            <Route path="messages" element={<AdminMessages />} />
           </Route>
         </Routes>
       </AuthProvider>

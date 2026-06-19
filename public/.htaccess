@@ -37,3 +37,8 @@ Require all denied
 # --- (Optional) Set a default index if you rely on index.php ---
 
 # DirectoryIndex index.php
+
+php_value upload_max_filesize 20M
+php_value post_max_size 25M
+
+LimitRequestBody 26214400

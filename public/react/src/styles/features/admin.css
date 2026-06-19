@@ -51,6 +51,12 @@
   font-weight: 600;
 }
 
+.upload-status {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--color-green);
+}
+
 @media (max-width: 639.98px) {
   .admin-layout {
     grid-template-columns: 1fr; /* ✅ remove sidebar column */

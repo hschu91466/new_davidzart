@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
-import HomeSlideshow from "../components/HomeSlideshow";
+import HomeSlideshow from "../components/home/HomeSlideshow";
 
 const Home = () => {
   const { loading } = useContext(AuthContext);

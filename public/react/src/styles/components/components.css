@@ -303,13 +303,46 @@
   margin-bottom: var(--space-4);
 }
 
+/* =========================
+   CONTACT
+========================= */
+
+.contact-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.contact-status {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--color-green);
+}
+
+.message-cell {
+  max-width: 300px;
+  word-wrap: break-word;
+}
+
+.status-badge.pending {
+  background: #f0ad4e;
+}
+
+.status-badge.approved {
+  background: #5cb85c;
+}
+
+.row-unread {
+  background-color: #fff8e1; /* subtle highlight */
+}
+
 @media (max-width: 1200px) {
   .about-layout {
     grid-template-columns: 1fr;
   }
 
   .container {
-    padding: 0 var(--space-5);
+    padding: var(--space-5);
   }
 
   .about-image {

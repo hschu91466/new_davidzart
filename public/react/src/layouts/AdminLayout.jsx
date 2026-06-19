@@ -62,6 +62,14 @@ const AdminLayout = () => {
                 Manage Users
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to="/admin/messages"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Manage Messages
+              </NavLink>
+            </li>
           </ul>
         </nav>
         <div className="button-group">
