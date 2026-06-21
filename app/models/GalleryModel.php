@@ -140,4 +140,58 @@ class GalleryModel
     $stmt = $pdo->query($sql);
     return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
   }
+
+  private static function generateSlug(string $title): string
+  {
+    $slug = strtolower(trim($title));
+    $slug = preg_replace('/[^a-z0-9]+/', '-', $slug);
+    return trim($slug, '-');
+  }
+
+  private static function generateUniqueSlug(PDO $pdo, string $title): string
+  {
+    $baseSlug = self::generateSlug($title);
+    $slug = $baseSlug;
+    $i = 1;
+
+    while (self::slugExists($pdo, $slug)) {
+      $slug = $baseSlug . '-' . $i;
+      $i++;
+    }
+
+    return $slug;
+  }
+
+  private static function slugExists(PDO $pdo, string $slug): bool
+  {
+    $stmt = $pdo->prepare("SELECT 1 FROM galleries WHERE slug = :slug");
+    $stmt->execute([':slug' => $slug]);
+    return (bool) $stmt->fetchColumn();
+  }
+
+  public static function createGallery(PDO $pdo, array $data): int
+  {
+    $slug = self::generateUniqueSlug($pdo, $data['title']);
+    $title = trim($data['title']);
+
+    if (empty($title)) {
+      throw new Exception("Gallery title is required");
+    }
+
+    $sql = "INSERT INTO galleries (slug, title, description)VALUES (:slug, :title, :description);";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([
+      ':slug' => $slug,
+      ':title' => $title,
+      ':description' => $data['description'] ?? null,
+    ]);
+
+    return (int) $pdo->lastInsertId();
+  }
+
+  // public static function deleteGallery(PDO $pdo, int $gallery_id) : bool {
+  //   $stmt = $pdo->prepare("DELETE FROM galleries WHERE gallery_id = :id");
+  //   return $stmt->execute([':id' => $gallery_id]);
+  // }
 }

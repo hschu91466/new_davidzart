@@ -45,7 +45,6 @@ class ContactModel
         return $stmt->execute([':id' => $id]);
     }
 
-
     public static function deleteMessage(PDO $pdo, int $id): bool
     {
 

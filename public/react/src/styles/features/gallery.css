@@ -44,6 +44,16 @@
   margin-top: 0.5rem;
 }
 
+.gallery-select-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.gallery-select-row select {
+  flex: 1;
+}
+
 /* =========================
    IMAGE
 ========================= */

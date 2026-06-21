@@ -365,4 +365,33 @@ final class GalleryApiController
         $set = array_flip(array_map('strtolower', $slugs));
         return array_values(array_filter($actives, fn($g) => isset($g['slug']) && isset($set[strtolower($g['slug'])])));
     }
+
+    public function create(array $data): array
+    {
+        $title = trim($data['title'] ?? '');
+
+        if (empty($title)) {
+            return [
+                'success' => false,
+                'message' => 'Gallery title is required'
+            ];
+        }
+
+        try {
+            $galleryId = GalleryModel::createGallery($this->pdo, [
+                'title' => $title,
+                'description' => $data['description'] ?? null,
+            ]);
+
+            return [
+                'success' => true,
+                'gallery_id' => $galleryId
+            ];
+        } catch (Exception $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+    }
 }

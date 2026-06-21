@@ -10,10 +10,56 @@ const Galleries = () => {
   const [savingId, setSavingId] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadMessage, setUploadMessage] = useState(false);
+  const [showNewGallery, setShowNewGallery] = useState(false);
+  const [newGalleryTitle, setNewGalleryTitle] = useState("");
+  const [newGalleryDescription, setNewGalleryDescription] = useState("");
+  const [creatingGallery, setCreatingGallery] = useState(false);
 
+  const handleCreateGallery = async () => {
+    if (!newGalleryTitle.trim()) {
+      alert("Gallery title is required");
+      return;
+    }
+
+    try {
+      setCreatingGallery(true);
+
+      const res = await axios.post("/api/galleries/create.php", {
+        title: newGalleryTitle,
+        description: newGalleryDescription,
+      });
+
+      const newId = res.data.gallery_id;
+
+      // refresh galleries list
+      const galleriesRes = await axios.get("/api/galleries/list.php");
+      setGalleries(galleriesRes.data.data);
+
+      // auto-select new gallery
+      setGalleryId(newId);
+
+      // reset form
+      setNewGalleryTitle("");
+      setNewGalleryDescription("");
+      setShowNewGallery(false);
+    } catch (error) {
+      console.error("Create gallery error:", error);
+      alert("Failed to create gallery");
+    } finally {
+      setCreatingGallery(false);
+    }
+  };
   const handleFileSelect = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
+
+    const MAX_SIZE_MB = 20;
+
+    if (selectedFile.size > MAX_SIZE_MB * 1024 * 1024) {
+      setUploadMessage(`File too large (max ${MAX_SIZE_MB}MB)`);
+      setFile(null);
+      return;
+    }
 
     if (selectedFile) {
       setUploadMessage(
@@ -32,7 +78,7 @@ const Galleries = () => {
       return;
     }
 
-    if (!galleryId) {
+    if (!galleryId && galleryId != 0) {
       setUploadMessage("Please select a gallery.");
       return;
     }
@@ -69,6 +115,7 @@ const Galleries = () => {
 
       setUploadMessage("Upload successful ✅");
       setFile(null);
+      document.querySelector('input[type="file"]').value = "";
 
       const res = await axios.get(
         `/api/images/list.php?gallery_id=${galleryId}`,
@@ -85,7 +132,7 @@ const Galleries = () => {
       console.error("Upload error:", error);
 
       if (error.response?.status === 413) {
-        setUploadMessage("File too large ❌");
+        setUploadMessage("File too large. ❌");
       } else if (error.code === "ECONNABORTED") {
         setUploadMessage("Upload timed out ❌");
       } else {
@@ -179,18 +226,62 @@ const Galleries = () => {
     <div className="container gallery-detail">
       <h2>Galleries Page</h2>
       <div className="form-group">
-        <select
-          className="form-select"
-          value={galleryId || ""}
-          onChange={(e) => setGalleryId(e.target.value)}
-        >
-          <option value="">Select Gallery</option>
-          {galleries.map((g) => (
-            <option key={g.gallery_id} value={g.gallery_id}>
-              {g.title}
-            </option>
-          ))}
-        </select>
+        {showNewGallery && (
+          <div className="form-group" style={{ marginTop: "10px" }}>
+            <input
+              type="text"
+              placeholder="Gallery title"
+              value={newGalleryTitle}
+              onChange={(e) => setNewGalleryTitle(e.target.value)}
+            />
+
+            <textarea
+              placeholder="Description (optional)"
+              value={newGalleryDescription}
+              onChange={(e) => setNewGalleryDescription(e.target.value)}
+            />
+
+            <div style={{ marginTop: "5px" }}>
+              <button
+                className="btn btn-primary btn-sm"
+                onClick={handleCreateGallery}
+                disabled={creatingGallery}
+              >
+                {creatingGallery ? "Creating..." : "Create"}
+              </button>
+
+              <button
+                className="btn btn-secondary btn-sm"
+                onClick={() => setShowNewGallery(false)}
+                style={{ marginLeft: "5px" }}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
+        <div className="gallery-select-row">
+          <select
+            className="form-select"
+            value={galleryId || ""}
+            onChange={(e) => setGalleryId(Number(e.target.value))}
+          >
+            <option value="">Select Gallery</option>
+            {galleries.map((g) => (
+              <option key={g.gallery_id} value={g.gallery_id}>
+                {g.title}
+              </option>
+            ))}
+          </select>
+
+          <button
+            type="button"
+            className="btn btn-primary btn-sm"
+            onClick={() => setShowNewGallery((prev) => !prev)}
+          >
+            + Create New Gallery
+          </button>
+        </div>
       </div>
       {/* <input type="file" onChange={(e) => setFile(e.target.files[0])} /> */}
       <input type="file" onChange={handleFileSelect} />
