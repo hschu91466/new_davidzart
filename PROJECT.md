@@ -58,7 +58,7 @@ new_davidzart/
 │   │   └── database.php         # DB connection
 │   ├── controllers/
 │   │   ├── AuthController.php   # User auth endpoints
-│   │   ├── GalleryApiController.php
+│   │   ├── GalleryController.php
 │   │   └── HomeController.php
 │   ├── models/
 │   │   ├── GalleryModel.php

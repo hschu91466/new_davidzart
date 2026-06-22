@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import axios from "../../services/axios";
 
 const Galleries = () => {
@@ -14,6 +14,11 @@ const Galleries = () => {
   const [newGalleryTitle, setNewGalleryTitle] = useState("");
   const [newGalleryDescription, setNewGalleryDescription] = useState("");
   const [creatingGallery, setCreatingGallery] = useState(false);
+  const [editingGallery, setEditingGallery] = useState(false);
+  const [editTitle, setEditTitle] = useState("");
+  const [editDescription, setEditDescription] = useState("");
+  const [savingGallery, setSavingGallery] = useState(false);
+  const selectRef = useRef(null);
 
   const handleCreateGallery = async () => {
     if (!newGalleryTitle.trim()) {
@@ -49,6 +54,65 @@ const Galleries = () => {
       setCreatingGallery(false);
     }
   };
+  const handleStartEditGallery = () => {
+    if (!galleryId) return;
+
+    const selected = galleries.find((g) => g.gallery_id === galleryId);
+    if (!selected) return;
+
+    console.log("Selected gallery:", selected);
+    setEditTitle(selected.title || "");
+    setEditDescription(selected.description || "");
+    setEditingGallery(true);
+  };
+  const handleDeactivateGallery = async () => {
+    if (!galleryId) return;
+
+    const confirmed = window.confirm("Deactivate this gallery?");
+    if (!confirmed) return;
+
+    try {
+      await axios.post("/api/galleries/toggle.php", {
+        gallery_id: galleryId,
+        is_active: 0,
+      });
+      const res = await axios.get("/api/galleries/list.php");
+      setGalleries(res.data.data);
+
+      setGalleryId(null);
+      setImages([]);
+    } catch (error) {
+      console.error("Deactivate failed", error);
+      alert("Failed to deactivate gallery");
+    }
+  };
+  const handleUpdateGallery = async () => {
+    if (!editTitle.trim()) {
+      alert("Title is required");
+      return;
+    }
+
+    try {
+      setSavingGallery(true);
+
+      await axios.post("/api/galleries/update.php", {
+        gallery_id: galleryId,
+        title: editTitle,
+        description: editDescription,
+      });
+
+      // ✅ refresh list
+      const res = await axios.get("/api/galleries/list.php");
+      setGalleries(res.data.data);
+
+      setEditingGallery(false);
+    } catch (err) {
+      console.error("Update failed", err);
+      alert("Failed to update gallery");
+    } finally {
+      setSavingGallery(false);
+    }
+  };
   const handleFileSelect = (e) => {
     const selectedFile = e.target.files[0];
     setFile(selectedFile);
@@ -71,7 +135,6 @@ const Galleries = () => {
       );
     }
   };
-
   const uploadImage = async () => {
     if (!file) {
       setUploadMessage("Please select a file.");
@@ -142,7 +205,6 @@ const Galleries = () => {
       setUploading(false); // ✅ ALWAYS runs if request resolves
     }
   };
-
   const handleChange = (id, field, value) => {
     setImages((prev) =>
       prev.map((img) =>
@@ -150,7 +212,6 @@ const Galleries = () => {
       ),
     );
   };
-
   const handleSave = async (img) => {
     setSavingId(img.image_id);
     try {
@@ -169,9 +230,26 @@ const Galleries = () => {
       setSavingId(null);
     }
   };
+  const handleMoveGallery = async (direction) => {
+    if (!galleryId) return;
 
-  // const handleEdit = () => {};
+    try {
+      await axios.post("/api/galleries/move.php", {
+        gallery_id: galleryId,
+        direction,
+      });
 
+      const res = await axios.get("/api/galleries/list.php");
+      setGalleries(res.data.data);
+
+      // ✅ restore focus AFTER render
+      setTimeout(() => {
+        selectRef.current?.focus();
+      }, 0);
+    } catch (err) {
+      console.error("Move failed", err);
+    }
+  };
   const handleDelete = async (imageId) => {
     const confirmed = window.confirm("Delete this image?");
     if (!confirmed) return;
@@ -260,8 +338,42 @@ const Galleries = () => {
             </div>
           </div>
         )}
+        {editingGallery && (
+          <div className="form-group">
+            <input
+              type="text"
+              value={editTitle}
+              onChange={(e) => setEditTitle(e.target.value)}
+              placeholder="Gallery title"
+            />
+
+            <textarea
+              value={editDescription}
+              onChange={(e) => setEditDescription(e.target.value)}
+              placeholder="Description"
+            />
+
+            <div>
+              <button
+                className="btn btn-primary btn-sm"
+                onClick={handleUpdateGallery}
+                disabled={savingGallery}
+              >
+                {savingGallery ? "Saving..." : "Save"}
+              </button>
+
+              <button
+                className="btn btn-secondary btn-sm"
+                onClick={() => setEditingGallery(false)}
+              >
+                Cancel
+              </button>
+            </div>
+          </div>
+        )}
         <div className="gallery-select-row">
           <select
+            ref={selectRef}
             className="form-select"
             value={galleryId || ""}
             onChange={(e) => setGalleryId(Number(e.target.value))}
@@ -276,10 +388,47 @@ const Galleries = () => {
 
           <button
             type="button"
-            className="btn btn-primary btn-sm"
+            className="btn btn-small"
             onClick={() => setShowNewGallery((prev) => !prev)}
+            title="Create new gallery"
           >
-            + Create New Gallery
+            +
+          </button>
+
+          <button
+            type="button"
+            className="btn btn-small"
+            onClick={handleStartEditGallery}
+            disabled={!galleryId}
+            title="Edit gallery"
+          >
+            Edit
+          </button>
+          <button
+            type="button"
+            className="btn btn-small"
+            onClick={handleDeactivateGallery}
+            disabled={!galleryId}
+            title="Deactivate gallery"
+          >
+            Delete
+          </button>
+          <button
+            className="btn btn-small"
+            onClick={() => handleMoveGallery("up")}
+            disabled={!galleryId}
+            title="Move up"
+          >
+            ↑
+          </button>
+
+          <button
+            className="btn btn-small"
+            onClick={() => handleMoveGallery("down")}
+            disabled={!galleryId}
+            title="Move down"
+          >
+            ↓
           </button>
         </div>
       </div>

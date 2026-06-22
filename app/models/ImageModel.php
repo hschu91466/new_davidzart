@@ -121,4 +121,71 @@ class ImageModel
             ':id' => $id
         ]);
     }
+
+    public static function move(PDO $pdo, int $imageId, int $galleryId, string $direction): bool
+    {
+        $sql = "
+        SELECT image_id, sort_order
+        FROM images
+        WHERE image_id = :image_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':image_id' => $imageId]);
+        $current = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$current) return false;
+
+        $currentSort = (int)$current['sort_order'];
+
+        // ✅ find neighbor (same gallery only)
+        if ($direction === 'up') {
+            $stmt = $pdo->prepare("
+      SELECT image_id, sort_order
+      FROM images
+      WHERE gallery_id = :gallery_id
+        AND sort_order < :sort
+      ORDER BY sort_order DESC
+      LIMIT 1");
+        } else {
+            $stmt = $pdo->prepare("
+      SELECT image_id, sort_order
+      FROM images
+      WHERE gallery_id = :gallery_id
+        AND sort_order > :sort
+      ORDER BY sort_order ASC
+      LIMIT 1");
+        }
+
+        $stmt->execute([
+            ':gallery_id' => $galleryId,
+            ':sort' => $currentSort
+        ]);
+
+        $neighbor = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if (!$neighbor) return false;
+
+        // ✅ swap sort_order
+        try {
+            $pdo->beginTransaction();
+
+            $stmt = $pdo->prepare("UPDATE images SET sort_order = :sort WHERE image_id = :id");
+
+            $stmt->execute([
+                ':sort' => $neighbor['sort_order'],
+                ':id' => $current['image_id'],
+            ]);
+
+            $stmt->execute([
+                ':sort' => $currentSort,
+                ':id' => $neighbor['image_id'],
+            ]);
+
+            $pdo->commit();
+        } catch (Exception $e) {
+            $pdo->rollBack();
+            throw $e;
+        }
+
+        return true;
+    }
 }

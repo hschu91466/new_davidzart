@@ -6,7 +6,7 @@ require_once __DIR__ . '/../models/GalleryModel.php';
 require_once __DIR__ . '/../models/ImageModel.php';
 require_once __DIR__ . '/../includes/helper.php';
 
-final class GalleryApiController
+final class GalleryController
 {
     public function __construct(private PDO $pdo) {}
 
@@ -387,6 +387,82 @@ final class GalleryApiController
                 'success' => true,
                 'gallery_id' => $galleryId
             ];
+        } catch (Exception $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+    }
+
+    public function update(array $data): array
+    {
+        error_log(print_r($data, true));
+        $galleryId = $data['gallery_id'] ?? null;
+        $title = trim($data['title'] ?? '');
+
+        if (!$galleryId || empty($title)) {
+            return [
+                'success' => false,
+                'message' => 'Gallery ID and title are required'
+            ];
+        };
+
+
+        try {
+            GalleryModel::updateGallery($this->pdo, $data);
+
+            return [
+                'success' => true
+            ];
+        } catch (Exception $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+    }
+
+    public function toggle(array $data): array
+    {
+        $galleryId = $data['gallery_id'] ?? null;
+        $isActive = $data['is_active'] ?? null;
+
+        if (!$galleryId || $isActive === null) {
+            return ([
+                'success' => false,
+                'message' => 'Invalid request'
+            ]);
+        }
+        try {
+                GalleryModel::toggleGallery($this->pdo, (int)$galleryId, (int)$isActive);
+                return[
+                    'success' => true,
+                ];
+        } catch (Exception $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+    }
+
+    public function move(array $data): array
+    {
+        $galleryId = $data['gallery_id'] ?? null;
+        $direction = $data['direction'] ?? null;
+
+        if (!$galleryId || !in_array($direction, ['up', 'down'])) {
+            return [
+                'success' => false,
+                'message' => 'Invalid request'
+            ];
+        }
+
+        try {
+            GalleryModel::moveGallery($this->pdo, (int)$galleryId, $direction);
+
+            return ['success' => true];
         } catch (Exception $e) {
             return [
                 'success' => false,

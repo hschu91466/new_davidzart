@@ -32,7 +32,7 @@ if (!isset($pdo) || !($pdo instanceof PDO)) {
 // --------------------------------------------------
 // Route request
 // --------------------------------------------------
-$controller = new GalleryApiController($pdo);
+$controller = new GalleryController($pdo);
 
 $path = rtrim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 $path = preg_replace('#^/api#', '', $path);

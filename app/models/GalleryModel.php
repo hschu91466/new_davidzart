@@ -38,11 +38,11 @@ class GalleryModel
   public static function getActive(PDO $pdo): array
   {
     $sql = "
-        SELECT gallery_id, slug, title
+        SELECT gallery_id, slug, title, description
         FROM galleries
         WHERE is_active = 1
           AND TRIM(COALESCE(slug,'')) <> ''
-        ORDER BY sort_order ASC, title ASC
+        ORDER BY sort_order IS NULL, sort_order ASC, title ASC
     ";
     return $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC) ?: [];
   }
@@ -72,9 +72,7 @@ class GalleryModel
 
   public static function getActiveWithImages(PDO $pdo): array
   {
-    $sql = "
-    SELECT 
-      g.gallery_id, 
+    $sql = "SELECT g.gallery_id, 
       g.slug, 
       g.title,
       
@@ -98,8 +96,7 @@ class GalleryModel
         FROM images gi
         WHERE gi.gallery_id = g.gallery_id
       )
-    ORDER BY g.sort_order ASC, g.title ASC
-  ";
+    ORDER BY g.sort_order ASC, g.title ASC";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute();
@@ -171,27 +168,113 @@ class GalleryModel
 
   public static function createGallery(PDO $pdo, array $data): int
   {
-    $slug = self::generateUniqueSlug($pdo, $data['title']);
     $title = trim($data['title']);
 
     if (empty($title)) {
       throw new Exception("Gallery title is required");
     }
 
-    $sql = "INSERT INTO galleries (slug, title, description)VALUES (:slug, :title, :description);";
+    $slug = self::generateUniqueSlug($pdo, $title);
+
+    // ✅ get next sort order
+    $stmt = $pdo->query("SELECT MAX(sort_order) FROM galleries");
+    $nextSort = ((int)$stmt->fetchColumn()) + 1;
+
+    $sql = "
+    INSERT INTO galleries (slug, title, description, sort_order)
+    VALUES (:slug, :title, :description, :sort_order)";
 
     $stmt = $pdo->prepare($sql);
     $stmt->execute([
       ':slug' => $slug,
       ':title' => $title,
       ':description' => $data['description'] ?? null,
+      ':sort_order' => $nextSort,
     ]);
 
     return (int) $pdo->lastInsertId();
   }
 
-  // public static function deleteGallery(PDO $pdo, int $gallery_id) : bool {
-  //   $stmt = $pdo->prepare("DELETE FROM galleries WHERE gallery_id = :id");
-  //   return $stmt->execute([':id' => $gallery_id]);
-  // }
+  public static function updateGallery(PDO $pdo, array $data): bool
+  {
+    $sql = "UPDATE galleries SET title = :title, description = :description WHERE gallery_id = :gallery_id";
+    $stmt = $pdo->prepare($sql);
+    return $stmt->execute([
+      ':title' => trim($data['title']),
+      ':description' => $data['description'] ?? null,
+      ':gallery_id' => $data['gallery_id'],
+    ]);
+  }
+
+  public static function toggleGallery(PDO $pdo, int $galleryId, int $isActive): bool
+  {
+    $sql = "UPDATE galleries SET is_active = :is_active WHERE gallery_id = :gallery_id";
+
+    $stmt = $pdo->prepare($sql);
+
+    return $stmt->execute([
+      ':is_active' => $isActive,
+      ':gallery_id' => $galleryId,
+    ]);
+  }
+
+  public static function moveGallery(PDO $pdo, int $galleryId, string $direction): bool
+  {
+    $sql = "SELECT gallery_id, sort_order FROM galleries WHERE gallery_id = :gallery_id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([':gallery_id' => $galleryId]);
+    $current = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$current) return false;
+
+    $currentSort = (int)$current['sort_order'];
+
+    if ($direction === 'up') {
+
+      $stmt = $pdo->prepare("
+      SELECT gallery_id, sort_order
+      FROM galleries
+      WHERE sort_order < :sort
+        AND is_active = 1
+      ORDER BY sort_order DESC
+      LIMIT 1");
+    } else {
+      $stmt = $pdo->prepare("
+      SELECT gallery_id, sort_order
+      FROM galleries
+      WHERE sort_order > :sort
+        AND is_active = 1
+      ORDER BY sort_order ASC
+      LIMIT 1");
+    }
+
+    $stmt->execute([':sort' => $currentSort]);
+    $neighbor = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$neighbor) return false;
+
+    try {
+      $pdo->beginTransaction();
+
+      $stmt = $pdo->prepare("
+    UPDATE galleries SET sort_order = :sort WHERE gallery_id = :id");
+
+      $stmt->execute([
+        ':sort' => $neighbor['sort_order'],
+        ':id' => $current['gallery_id'],
+      ]);
+
+      $stmt->execute([
+        ':sort' => $currentSort,
+        ':id' => $neighbor['gallery_id'],
+      ]);
+
+      $pdo->commit();
+    }
+    catch (Exception $e) {
+      $pdo->rollBack();
+      throw $e;
+    }  
+    return true;
+  }
 }
