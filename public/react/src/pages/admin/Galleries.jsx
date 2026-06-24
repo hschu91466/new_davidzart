@@ -1,15 +1,16 @@
 import { useEffect, useState, useRef } from "react";
 import axios from "../../services/axios";
+import ImageUpload from "../../components/galleries/ImageUpload";
 
 const Galleries = () => {
   const [galleries, setGalleries] = useState([]);
   const [galleryId, setGalleryId] = useState(null);
   const [images, setImages] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [file, setFile] = useState(null);
+  // const [file, setFile] = useState(null);
   const [savingId, setSavingId] = useState(null);
-  const [uploading, setUploading] = useState(false);
-  const [uploadMessage, setUploadMessage] = useState(false);
+  // const [uploading, setUploading] = useState(false);
+  // const [uploadMessage, setUploadMessage] = useState(false);
   const [showNewGallery, setShowNewGallery] = useState(false);
   const [newGalleryTitle, setNewGalleryTitle] = useState("");
   const [newGalleryDescription, setNewGalleryDescription] = useState("");
@@ -18,6 +19,7 @@ const Galleries = () => {
   const [editTitle, setEditTitle] = useState("");
   const [editDescription, setEditDescription] = useState("");
   const [savingGallery, setSavingGallery] = useState(false);
+  const [movingImageId, setMovingImageId] = useState(null);
   const selectRef = useRef(null);
 
   const handleCreateGallery = async () => {
@@ -113,98 +115,126 @@ const Galleries = () => {
       setSavingGallery(false);
     }
   };
-  const handleFileSelect = (e) => {
-    const selectedFile = e.target.files[0];
-    setFile(selectedFile);
-
-    const MAX_SIZE_MB = 20;
-
-    if (selectedFile.size > MAX_SIZE_MB * 1024 * 1024) {
-      setUploadMessage(`File too large (max ${MAX_SIZE_MB}MB)`);
-      setFile(null);
-      return;
-    }
-
-    if (selectedFile) {
-      setUploadMessage(
-        `File: ${selectedFile.name} | Type: ${selectedFile.type} | Size: ${(
-          selectedFile.size /
-          1024 /
-          1024
-        ).toFixed(2)} MB`,
-      );
-    }
-  };
-  const uploadImage = async () => {
-    if (!file) {
-      setUploadMessage("Please select a file.");
-      return;
-    }
-
-    if (!galleryId && galleryId != 0) {
-      setUploadMessage("Please select a gallery.");
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append("image", file);
-    formData.append("gallery_id", galleryId);
-
-    let timeoutId;
-
+  const handleMoveImage = async (imageId, direction) => {
     try {
-      setUploading(true);
-      setUploadMessage("Uploading... 0%");
-
-      // ✅ fallback timeout (prevents permanent stuck state)
-      timeoutId = setTimeout(() => {
-        setUploadMessage("Upload taking too long ❌");
-        setUploading(false);
-      }, 45000);
-
-      await axios.post("/api/images/upload.php", formData, {
-        timeout: 60000,
-        onUploadProgress: (progressEvent) => {
-          if (progressEvent.total) {
-            const percent = Math.round(
-              (progressEvent.loaded * 100) / progressEvent.total,
-            );
-            setUploadMessage(`Uploading... ${percent}%`);
-          }
-        },
+      setMovingImageId(imageId);
+      await axios.post("/api/images/move.php", {
+        image_id: imageId,
+        gallery_id: galleryId,
+        direction,
       });
 
-      clearTimeout(timeoutId);
+      const currentScroll = window.scrollY;
 
-      setUploadMessage("Upload successful ✅");
-      setFile(null);
-      document.querySelector('input[type="file"]').value = "";
+      // after setImages
+      setTimeout(() => {
+        window.scrollTo({ top: currentScroll });
+      }, 0);
 
+      // ✅ reload images
       const res = await axios.get(
         `/api/images/list.php?gallery_id=${galleryId}`,
       );
+
       setImages(res.data.data);
-
-      // ✅ optional: auto-clear success message
-      setTimeout(() => {
-        setUploadMessage("");
-      }, 3000);
     } catch (error) {
-      clearTimeout(timeoutId);
-
-      console.error("Upload error:", error);
-
-      if (error.response?.status === 413) {
-        setUploadMessage("File too large. ❌");
-      } else if (error.code === "ECONNABORTED") {
-        setUploadMessage("Upload timed out ❌");
-      } else {
-        setUploadMessage(error.response?.data?.message || "Upload failed ❌");
-      }
+      console.error("Move image failed", error);
     } finally {
-      setUploading(false); // ✅ ALWAYS runs if request resolves
+      setMovingImageId(null);
     }
   };
+  // const handleFileSelect = (e) => {
+  //   const selectedFile = e.target.files[0];
+  //   setFile(selectedFile);
+
+  //   const MAX_SIZE_MB = 20;
+
+  //   if (selectedFile.size > MAX_SIZE_MB * 1024 * 1024) {
+  //     setUploadMessage(`File too large (max ${MAX_SIZE_MB}MB)`);
+  //     setFile(null);
+  //     return;
+  //   }
+
+  //   if (selectedFile) {
+  //     setUploadMessage(
+  //       `File: ${selectedFile.name} | Type: ${selectedFile.type} | Size: ${(
+  //         selectedFile.size /
+  //         1024 /
+  //         1024
+  //       ).toFixed(2)} MB`,
+  //     );
+  //   }
+  // };
+  // const uploadImage = async () => {
+  //   if (!file) {
+  //     setUploadMessage("Please select a file.");
+  //     return;
+  //   }
+
+  //   if (!galleryId && galleryId != 0) {
+  //     setUploadMessage("Please select a gallery.");
+  //     return;
+  //   }
+
+  //   const formData = new FormData();
+  //   formData.append("image", file);
+  //   formData.append("gallery_id", galleryId);
+
+  //   let timeoutId;
+
+  //   try {
+  //     setUploading(true);
+  //     setUploadMessage("Uploading... 0%");
+
+  //     // ✅ fallback timeout (prevents permanent stuck state)
+  //     timeoutId = setTimeout(() => {
+  //       setUploadMessage("Upload taking too long ❌");
+  //       setUploading(false);
+  //     }, 45000);
+
+  //     await axios.post("/api/images/upload.php", formData, {
+  //       timeout: 60000,
+  //       onUploadProgress: (progressEvent) => {
+  //         if (progressEvent.total) {
+  //           const percent = Math.round(
+  //             (progressEvent.loaded * 100) / progressEvent.total,
+  //           );
+  //           setUploadMessage(`Uploading... ${percent}%`);
+  //         }
+  //       },
+  //     });
+
+  //     clearTimeout(timeoutId);
+
+  //     setUploadMessage("Upload complete");
+  //     setFile(null);
+  //     document.querySelector('input[type="file"]').value = "";
+
+  //     const res = await axios.get(
+  //       `/api/images/list.php?gallery_id=${galleryId}`,
+  //     );
+  //     setImages(res.data.data);
+
+  //     // ✅ optional: auto-clear success message
+  //     setTimeout(() => {
+  //       setUploadMessage("");
+  //     }, 3000);
+  //   } catch (error) {
+  //     clearTimeout(timeoutId);
+
+  //     console.error("Upload error:", error);
+
+  //     if (error.response?.status === 413) {
+  //       setUploadMessage("File too large. ❌");
+  //     } else if (error.code === "ECONNABORTED") {
+  //       setUploadMessage("Upload timed out ❌");
+  //     } else {
+  //       setUploadMessage(error.response?.data?.message || "Upload failed ❌");
+  //     }
+  //   } finally {
+  //     setUploading(false); // ✅ ALWAYS runs if request resolves
+  //   }
+  // };
   const handleChange = (id, field, value) => {
     setImages((prev) =>
       prev.map((img) =>
@@ -233,6 +263,8 @@ const Galleries = () => {
   const handleMoveGallery = async (direction) => {
     if (!galleryId) return;
 
+    if (movingImageId) return;
+
     try {
       await axios.post("/api/galleries/move.php", {
         gallery_id: galleryId,
@@ -259,6 +291,20 @@ const Galleries = () => {
       setImages((prev) => prev.filter((img) => img.image_id !== imageId));
     } catch (error) {
       console.error("Delete Error:", error);
+    }
+  };
+
+  const fetchImages = async () => {
+    if (!galleryId) return;
+
+    try {
+      const res = await axios.get(
+        `/api/images/list.php?gallery_id=${galleryId}`,
+      );
+
+      setImages(res.data.data);
+    } catch (error) {
+      console.error("Error fetching images", error);
     }
   };
 
@@ -299,6 +345,21 @@ const Galleries = () => {
   if (loading) {
     return <div>Loading galleries ...</div>;
   }
+
+  const refreshImages = async () => {
+    if (!galleryId) return;
+
+    try {
+      const res = await axios.get(
+        `/api/images/list.php?gallery_id=${galleryId}`,
+      );
+      setImages(res.data.data);
+    } catch (error) {
+      console.error("Error refreshing images:", error);
+    }
+  };
+
+  const maxSort = Math.max(...images.map((img) => img.sort_order ?? 0));
 
   return (
     <div className="container gallery-detail">
@@ -432,18 +493,11 @@ const Galleries = () => {
           </button>
         </div>
       </div>
-      {/* <input type="file" onChange={(e) => setFile(e.target.files[0])} /> */}
-      <input type="file" onChange={handleFileSelect} />
-      <button
-        className="btn btn-primary"
-        onClick={uploadImage}
-        disabled={uploading}
-      >
-        {uploading ? "Uploading..." : "Upload"}
-      </button>
-      {uploadMessage && <div className="upload-status">{uploadMessage}</div>}
+
+      <ImageUpload galleryId={galleryId} onUploadSuccess={refreshImages} />
+
       {images.length === 0 ? (
-        <p>Select a gallery to manage it's images.</p>
+        <p>Select a gallery to view and manage its images.</p>
       ) : (
         <div className="image-grid">
           {images.map((img) => (
@@ -491,11 +545,30 @@ const Galleries = () => {
                   }
                   placeholder="Dimensions"
                 />
-
-                {/* <button className="btn btn-sm" onClick={() => handleEdit(img)}>
-                Edit
-              </button> */}
                 <div className="form-actions">
+                  <button
+                    className="btn btn-sm move-btn"
+                    onClick={() => handleMoveImage(img.image_id, "up")}
+                    disabled={
+                      movingImageId === img.image_id ||
+                      (img.sort_order ?? 0) === 1
+                    }
+                    title="Move up"
+                  >
+                    {movingImageId === img.image_id ? "..." : "↑"}
+                  </button>
+                  <button
+                    className="btn btn-sm move-btn"
+                    onClick={() => handleMoveImage(img.image_id, "down")}
+                    disabled={
+                      movingImageId === img.image_id ||
+                      (img.sort_order ?? 0) === maxSort
+                    }
+                    title="Move down"
+                  >
+                    {movingImageId === img.image_id ? "..." : "↓"}
+                  </button>
+
                   <button
                     className="btn btn-approve btn-sm"
                     onClick={() => handleSave(img)}

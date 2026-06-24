@@ -39,8 +39,7 @@ class ContactModel
         $stmt = $pdo->prepare("
         UPDATE contact_messages
         SET is_read = 1
-        WHERE message_id = :id
-    ");
+        WHERE message_id = :id");
 
         return $stmt->execute([':id' => $id]);
     }
@@ -50,8 +49,7 @@ class ContactModel
 
         $stmt = $pdo->prepare("
         DELETE FROM contact_messages
-        WHERE message_id = :id
-    ");
+        WHERE message_id = :id");
 
         return $stmt->execute([':id' => $id]);
     }

@@ -173,6 +173,17 @@ p.bio {
   width: 100%;
 }
 
+.move-btn {
+  width: 28px;
+  padding: 0;
+  text-align: center;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* ==========================================================================
    Tables
    ========================================================================== */
@@ -220,6 +231,8 @@ p.bio {
   display: flex;
   justify-content: space-around;
   margin-top: 6px;
+  gap: 6px;
+  align-items: center;
 }
 
 .form-select {

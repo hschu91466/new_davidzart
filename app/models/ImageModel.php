@@ -20,7 +20,7 @@ class ImageModel
             sort_order            
             FROM images
             WHERE gallery_id = :gid AND is_active = 1
-            ORDER BY sort_order, image_id";
+            ORDER BY sort_order ASC, image_id";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([':gid' => $galleryId]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -124,10 +124,10 @@ class ImageModel
 
     public static function move(PDO $pdo, int $imageId, int $galleryId, string $direction): bool
     {
-        $sql = "
-        SELECT image_id, sort_order
+        $sql = "SELECT image_id, sort_order
         FROM images
         WHERE image_id = :image_id";
+
         $stmt = $pdo->prepare($sql);
         $stmt->execute([':image_id' => $imageId]);
         $current = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -138,21 +138,25 @@ class ImageModel
 
         // ✅ find neighbor (same gallery only)
         if ($direction === 'up') {
-            $stmt = $pdo->prepare("
-      SELECT image_id, sort_order
-      FROM images
-      WHERE gallery_id = :gallery_id
-        AND sort_order < :sort
-      ORDER BY sort_order DESC
-      LIMIT 1");
+
+            $sql = "SELECT image_id, sort_order
+                FROM images
+                WHERE gallery_id = :gallery_id
+                    AND sort_order < :sort
+                ORDER BY sort_order DESC
+                LIMIT 1";
+
+            $stmt = $pdo->prepare($sql);
         } else {
-            $stmt = $pdo->prepare("
-      SELECT image_id, sort_order
-      FROM images
-      WHERE gallery_id = :gallery_id
-        AND sort_order > :sort
-      ORDER BY sort_order ASC
-      LIMIT 1");
+
+            $sql = "SELECT image_id, sort_order
+                FROM images
+                WHERE gallery_id = :gallery_id
+                    AND sort_order > :sort
+                ORDER BY sort_order ASC
+                LIMIT 1";
+
+            $stmt = $pdo->prepare($sql);
         }
 
         $stmt->execute([
