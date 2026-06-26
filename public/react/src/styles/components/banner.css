@@ -1,0 +1,131 @@
+/* ==========================================================================
+   BANNER / BRAND BANDS (gradient + gold dividers)
+   Renamed from brand.css — this is a structural component that USES
+   brand tokens, it doesn't define them. Token values live in
+   core/tokens.css.
+   ========================================================================== */
+
+.brand-band {
+  position: relative;
+  background: linear-gradient(
+    90deg,
+    var(--color-green-dk) 0%,
+    var(--color-surface) 100%
+  );
+  border-top: 2px solid var(--color-gold);
+  border-bottom: 2px solid var(--color-gold);
+}
+
+.brand-band::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1.5rem;
+  height: 2px;
+}
+
+.brand-band .band-inner {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.brand-band .brand-left,
+.brand-band .brand-right {
+  flex: 1 1 100%;
+}
+
+.stripe {
+  height: 16px;
+  background: linear-gradient(
+    90deg,
+    var(--color-green-dk) 0%,
+    var(--color-surface) 100%
+  );
+  border-top: 2px solid var(--color-gold);
+  border-bottom: 2px solid var(--color-gold);
+}
+
+.site-banner {
+  background: linear-gradient(
+    90deg,
+    var(--color-green-dk) 0%,
+    var(--color-green) 50%,
+    var(--color-banner-fade) 100%
+  );
+  border-top: 2px solid var(--color-gold);
+  border-bottom: 2px solid var(--color-gold);
+}
+
+.banner-inner {
+  display: grid;
+  grid-template-columns: 20% 60% 20%;
+  align-items: center;
+  padding: 0 var(--space-4);
+}
+
+.banner-logo {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.banner-logo img {
+  max-height: 70px;
+  width: auto;
+  filter: drop-shadow(0 0 1px rgba(238, 231, 231, 0.85))
+    drop-shadow(0 0 2px rgba(238, 231, 231, 0.6));
+}
+
+.quote-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.quote-text {
+  text-align: center;
+  max-width: 500px;
+  white-space: normal;
+  word-break: break-word;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
+}
+
+.banner-quote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0;
+  text-align: center;
+  margin-top: var(--space-5);
+  font-family: "Libre Baskerville", serif;
+  font-variant-caps: small-caps;
+  letter-spacing: 0.03em;
+  font-size: var(--fs-300);
+  color: #fff;
+  font-style: italic;
+  text-shadow:
+    0 0 2px rgba(0, 0, 0, 0.9),
+    0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+@media (max-width: 639.98px) {
+  .banner-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 12px var(--space-3);
+  }
+
+  .banner-quote {
+    align-items: center;
+    text-align: center;
+    max-width: 100%;
+    margin-top: var(--space-2);
+    justify-content: center;
+  }
+
+  .banner-logo {
+    margin-bottom: var(--space-3);
+    justify-content: center;
+  }
+}

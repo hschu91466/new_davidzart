@@ -1,0 +1,29 @@
+/* ==========================================================================
+   STATUS BADGES
+   NOTE: This merges two previously conflicting definitions of
+   .status-badge (one in old components.css for contact messages,
+   one in old admin-comments.css for comment moderation). Both now
+   share one definition driven by tokens, so colors stay consistent
+   site-wide and update automatically with the brand palette.
+   ========================================================================== */
+
+.status-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+.status-badge.pending {
+  background-color: var(--color-status-pending);
+}
+
+.status-badge.approved {
+  background-color: var(--color-status-approved);
+}
+
+.status-badge.spam {
+  background-color: var(--color-status-spam);
+}

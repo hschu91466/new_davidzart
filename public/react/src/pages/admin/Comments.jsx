@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "../../services/axios";
 import { approveComment } from "../../services/comments";
-import "../../styles/features/admin-comments.css";
 
 const Comments = () => {
   const [comments, setComments] = useState([]);

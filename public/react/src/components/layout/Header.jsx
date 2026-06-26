@@ -7,8 +7,8 @@ import BannerQuote from "../home/BannerQuote";
 // Header.jsx
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
-  const CDN_BASE =
-    "https://pub-a74fa48b03e04c5c8b558f051bb069dd.r2.dev/davidzart";
+  // const CDN_BASE =
+  //   "https://pub-a74fa48b03e04c5c8b558f051bb069dd.r2.dev/davidzart";
 
   return (
     <header className="brand-band">

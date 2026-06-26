@@ -1,0 +1,65 @@
+/* ==========================================================================
+   ADMIN — COMMENT MODERATION PAGE
+   NOTE: renamed the page wrapper from .comments-page to
+   .admin-comments-page. The original public comments.css also scopes
+   everything under .comments-page — same class name, two completely
+   different pages (public comment list vs admin moderation table).
+   That's a third naming collision worth knowing about even though it
+   happened not to cause visible bugs (the two pages probably never
+   render at the same time). Update the admin page markup to use
+   .admin-comments-page instead of .comments-page.
+   ========================================================================== */
+
+.admin-comments-page {
+  padding: 1rem;
+}
+
+.admin-comments-page h2 {
+  margin-bottom: 10px;
+}
+
+/* ===== Tabs ===== */
+.comment-tabs {
+  margin-bottom: 1rem;
+}
+
+.comment-tabs button {
+  margin-right: 8px;
+  padding: 6px 12px;
+  border: 1px solid var(--color-divider);
+  background: var(--color-lt-gray);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+
+.comment-tabs button.active {
+  background: var(--color-text);
+  color: white;
+  font-weight: bold;
+}
+
+/* ===== Table ===== */
+.comments-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comments-table th {
+  text-align: left;
+  padding: 10px;
+  border-bottom: 2px solid var(--color-divider);
+}
+
+.comments-table td {
+  padding: 10px;
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.comments-table tr:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Buttons (.btn-approve / .btn-spam / .btn-delete) and badges
+   (.status-badge) now live in components/buttons.css and
+   components/badges.css since they're shared, tokenized UI pieces —
+   not admin-only. */

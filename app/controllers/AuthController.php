@@ -6,6 +6,7 @@ require_once __DIR__ . '/../models/UserModel.php';
 
 class AuthController
 {
+
     public static function login(PDO $pdo, string $email, string $password): array
     {
         if (empty($email) || empty($password)) {

@@ -8,7 +8,7 @@ error_reporting(E_ALL);
 
 
 require_once __DIR__ . '/../../app/config/bootstrap.php';
-require_once __DIR__ . '/../../app/controllers/GalleryController.php';
+require_once __DIR__ . '/../../app/controllers/ImageController.php';
 
-$controller = new GalleryController($pdo);
+$controller = new ImageController($pdo);
 $controller->homeImages();

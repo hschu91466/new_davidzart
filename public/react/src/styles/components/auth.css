@@ -1,0 +1,47 @@
+/* ==========================================================================
+   AUTH CONTROLS
+   ========================================================================== */
+
+.auth-controls {
+  margin-top: var(--space-3);
+}
+
+.auth-user {
+  border-right: 2px solid var(--color-gold);
+  padding-right: 8px;
+  margin-right: 8px;
+  font-weight: 600;
+  text-shadow: var(--shadow-gold);
+}
+
+.auth-login {
+  text-decoration: none;
+  font-weight: 400;
+}
+
+.auth-logout {
+  cursor: pointer;
+}
+
+.auth-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--color-green);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.auth-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 639.98px) {
+  .auth-controls {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-2);
+    margin-top: var(--space-2);
+  }
+}

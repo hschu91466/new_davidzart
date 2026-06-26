@@ -1,0 +1,78 @@
+/* ==========================================================================
+   ADMIN LAYOUT / SIDEBAR
+   Hardcoded colors from the original admin.css have been tokenized
+   so the admin panel follows the brand palette per site.
+   ========================================================================== */
+
+.admin-layout {
+  display: grid;
+  min-height: 100vh;
+  grid-template-columns: 220px 1fr;
+}
+
+.admin-sidebar {
+  width: 200px;
+  background: var(--color-lt-gray);
+  padding: 1rem;
+  transition: all 0.2s ease;
+}
+
+.sidebar-toggle {
+  display: none;
+}
+
+.admin-main {
+  padding: 1rem;
+}
+
+.admin-nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+.admin-nav li {
+  margin-bottom: 10px;
+}
+
+.admin-sidebar button {
+  margin-top: 20px;
+}
+
+.admin-nav a {
+  display: block;
+  padding: 8px;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.admin-nav a.active {
+  background-color: var(--color-text);
+  color: white;
+  font-weight: bold;
+}
+
+.upload-status {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: var(--color-green);
+}
+
+@media (max-width: 639.98px) {
+  .admin-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-sidebar {
+    display: none;
+    width: 100%;
+  }
+
+  .admin-sidebar.open {
+    display: block;
+  }
+
+  .sidebar-toggle {
+    display: block;
+    margin-bottom: var(--space-3);
+  }
+}

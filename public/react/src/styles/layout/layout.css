@@ -1,0 +1,122 @@
+/* ==========================================================================
+   APP SHELL
+   ========================================================================== */
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-content {
+  flex: 1;
+  padding-top: var(--space-4);
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 var(--space-2);
+}
+
+.flow > * + * {
+  margin-top: var(--space-4);
+}
+
+.text-center {
+  text-align: center;
+}
+
+.section-label {
+  margin: var(--space-7) auto var(--space-5);
+  padding: 1.5em 0.75em;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: var(--fs-100);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.hero-quote {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 650px;
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+/* ==========================================================================
+   ABOUT PAGE
+   ========================================================================== */
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: var(--space-4);
+}
+
+/* ==========================================================================
+   CONTACT PAGE
+   ========================================================================== */
+
+.contact-page {
+  max-width: 600px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.contact-status {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--color-green);
+}
+
+@media (max-width: 1200px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: var(--space-5);
+  }
+
+  .about-image {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 639.98px) {
+  .about-image {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .about-text {
+    max-width: 650px;
+  }
+
+  .back-text {
+    display: none;
+  }
+
+  .back-icon {
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,95 @@
+/* ==========================================================================
+   HOME PAGE — SLIDESHOW
+   ========================================================================== */
+
+.home-slideshow {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.home-slideshow-card {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.home-slideshow-image {
+  width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.home-slideshow-image.fade-out {
+  opacity: 0;
+}
+
+.home-slideshow-image.fade-in {
+  opacity: 1;
+}
+
+.home-slideshow-image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-slideshow-card .nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.home-slideshow-card .prev {
+  left: 20px;
+}
+
+.home-slideshow-card .next {
+  right: 20px;
+}
+
+.home-slideshow-title {
+  text-align: center;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* ==========================================================================
+   HOME PAGE — ROTATING QUOTE
+   RENAMED from .quote-text. The old components.css also had a
+   .quote-text rule (transition/opacity/min-height for a fading quote
+   rotator) that collided with the *different* .quote-text used in
+   banner.css (static banner caption styling). Since they served two
+   different UI pieces, this one is renamed to .rotating-quote-text —
+   update the markup on the home page to match.
+   ========================================================================== */
+
+.rotating-quote-text {
+  transition: opacity 0.5s ease;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+.fade-out {
+  opacity: 0;
+}

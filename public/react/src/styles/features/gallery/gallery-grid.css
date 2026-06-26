@@ -1,0 +1,49 @@
+/* ==========================================================================
+   GALLERY GRID STRUCTURE
+   Moved out of the old layout.css — gallery-specific, not general layout.
+   ========================================================================== */
+
+.grid-base {
+  display: grid;
+}
+
+/* List of galleries (overview page) */
+#galleriesGrid {
+  --gap: 28px;
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, 220px);
+  justify-content: center;
+}
+
+/* Images inside a single gallery (detail page) */
+#galleryGrid {
+  --gap: 2.5em;
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, 220px);
+  justify-content: center;
+  max-width: calc((var(--short) * 5) + (var(--gap) * 4));
+  margin: 0 auto;
+}
+
+@media (max-width: 639px) {
+  #galleryGrid {
+    --short: 160px;
+    justify-content: center;
+  }
+  #galleriesGrid {
+    display: grid;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  #galleryGrid {
+    --short: 200px;
+  }
+}
+@media (min-width: 1024px) {
+  #galleryGrid {
+    --short: 240px;
+  }
+}

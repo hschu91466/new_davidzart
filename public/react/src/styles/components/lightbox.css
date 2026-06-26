@@ -1,0 +1,129 @@
+/* ==========================================================================
+   LIGHTBOX
+   ========================================================================== */
+
+.lightbox-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.lightbox-content img {
+  max-width: 100%;
+  max-height: 90vh;
+  display: block;
+}
+
+.lightbox-body {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.lightbox-image {
+  flex: 2;
+  max-height: 80vh;
+}
+
+.lightbox-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.lightbox-comments {
+  flex: 1;
+  max-width: 350px;
+  overflow-y: auto;
+  max-height: 80vh;
+  background: #f8f8f8;
+  padding: 1rem;
+}
+
+.lightbox-comments form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.lightbox-comments input,
+.lightbox-comments textarea {
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+}
+
+.lightbox-comments button {
+  align-self: flex-start;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: -36px;
+  right: -0px;
+  font-size: 2rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.lightbox-prev,
+.lightbox-next {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2.5rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  padding: 10px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.lightbox-prev {
+  left: 30px;
+}
+
+.lightbox-next {
+  right: 30px;
+}
+
+.lightbox-footer {
+  position: absolute;
+  bottom: -36px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.lightbox-meta,
+.lightbox-counter {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: white;
+}
