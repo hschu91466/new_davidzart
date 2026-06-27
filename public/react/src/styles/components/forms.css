@@ -1,6 +1,96 @@
 /* ==========================================================================
    FORM CONTROLS
    ========================================================================== */
+.form-container {
+  max-width: 500px;
+  margin: var(--space-5) auto;
+  padding: var(--space-4);
+  background-color: #f9f9f9;
+  border: 1px solid var(--color-divider);
+  border-radius: 8px;
+}
+
+/* Smaller container for login/register */
+.form-container--compact {
+  width: fit-content;
+  margin: 10vh auto;
+  padding: var(--space-5);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border: 1px solid var(--color-divider);
+  border-radius: 8px;
+}
+
+.form-container--compact input {
+  width: 220px;
+}
+
+.form-container--medium {
+  width: fit-content;
+  margin: 10vh auto;
+  padding: var(--space-6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  background-color: white;
+  border: 1px solid var(--color-divider);
+  border-radius: 8px;
+}
+
+.form-container--register input {
+  width: 280px;
+}
+
+.form-login-link {
+  text-align: center;
+  margin-top: var(--space-4);
+  font-size: var(--fs-200);
+  color: var(--color-text-muted);
+}
+
+.form-login-link .auth-register {
+  margin-left: var(--space-2);
+}
+
+/* Form title inside container */
+.form-container h3,
+.form-container h2 {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+  color: var(--color-text);
+}
+
+/* Adjust form-group spacing inside container */
+.form-container .form-group {
+  margin-bottom: var(--space-4);
+}
+
+.form-container .form-group:last-of-type {
+  margin-bottom: var(--space-5);
+}
+
+/* Submit button styling inside form */
+.form-container .btn-primary {
+  width: 100%;
+}
+
+/* Messages inside form container */
+.form-container .form-message {
+  padding: var(--space-3);
+  margin-bottom: var(--space-4);
+  border-radius: 4px;
+  font-size: var(--fs-200);
+}
+
+.form-container .form-message--success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.form-container .form-message--error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
 
 .form-group {
   display: flex;

@@ -4,8 +4,6 @@ require_once __DIR__ . '/../../../app/controllers/CommentsController.php';
 
 require_admin();
 
-$controller = new CommentsController();
-
 $data = json_decode(file_get_contents('php://input'), true);
 
 $id = (int)(
@@ -16,8 +14,7 @@ $id = (int)(
     ?? 0
 );
 
-error_log("Approve received ID: " . $id);
-
+$controller = new CommentsController($pdo);
 $response = $controller->approve($id);
 
 json_response($response);

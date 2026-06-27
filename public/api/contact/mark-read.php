@@ -7,8 +7,7 @@ require_once __DIR__ . '/../../../app/controllers/ContactController.php';
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-$controller = new ContactController();
-
-$response = $controller->markRead($pdo, $data);
+$controller = new ContactController($pdo);
+$response = $controller->markRead($data);
 
 json_response($response);

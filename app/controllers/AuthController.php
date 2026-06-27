@@ -7,17 +7,22 @@ require_once __DIR__ . '/../models/UserModel.php';
 class AuthController
 {
 
-    public static function login(PDO $pdo, string $email, string $password): array
+    private PDO $pdo;
+
+    public function __construct(PDO $pdo)
+    {
+        $this->pdo = $pdo;
+    }
+
+    public function login(string $email, string $password): array
     {
         if (empty($email) || empty($password)) {
-            http_response_code(400);
             return ["error" => "Email and password required"];
         }
 
-        $user = UserModel::getByEmail($pdo, $email);
+        $user = UserModel::getByEmail($this->pdo, $email);
 
         if (!$user || !password_verify($password, $user['password_hash'])) {
-            http_response_code(401);
             return ["error" => "Invalid credentials"];
         }
 
@@ -51,24 +56,32 @@ class AuthController
         ];
     }
 
-    public static function logout(): array
+    public function logout(): array
     {
         $_SESSION = [];
         session_destroy();
         return ["message" => "Logged out"];
     }
 
-    public static function currentUser(PDO $pdo): ?array
+    public function currentUser(): ?array
     {
         if (!isset($_SESSION['user'])) {
-            return null;
+            return ['ok' => false, 'user' => null];
         }
 
-        return $_SESSION['user'];
+        $user = $_SESSION['user'];
+
+        $user['name'] = trim(($user['first_name'] ?? '') . ' ' . ($user['last_name'] ?? ''));
+
+
+        return [
+            'ok' => true,
+            'user' => $user
+        ];
     }
 
 
-    public static function register(PDO $pdo, array $data): array
+    public function register(array $data): array
     {
 
         $firstName = trim($data['first_name'] ?? '');
@@ -104,7 +117,7 @@ class AuthController
 
 
         // Check if email already exists
-        $existing = UserModel::getByEmail($pdo, $email);
+        $existing = UserModel::getByEmail($this->pdo, $email);
 
         if ($existing) {
             return [
@@ -119,7 +132,7 @@ class AuthController
 
         //Create User
 
-        $userId = UserModel::create($pdo, $email, $firstName, $lastName, $passwordHash, "user");
+        $userId = UserModel::create($this->pdo, $email, $firstName, $lastName, $passwordHash, "user");
 
         $_SESSION['user'] = [
             'id' => $userId,

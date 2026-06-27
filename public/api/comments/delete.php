@@ -4,10 +4,7 @@ require_once __DIR__ . '/../../../app/controllers/CommentsController.php';
 
 require_admin();
 
-$controller = new CommentsController();
-
 $data = json_decode(file_get_contents('php://input'), true);
-
 
 $id = (int)(
     $data['comment_id']
@@ -17,6 +14,7 @@ $id = (int)(
     ?? 0
 );
 
+$controller = new CommentsController($pdo);
 $response = $controller->delete($id);
 
 json_response($response);

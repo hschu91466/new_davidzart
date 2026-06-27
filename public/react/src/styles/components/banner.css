@@ -95,6 +95,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 100px;
   padding: 8px 0;
   text-align: center;
   margin-top: var(--space-5);

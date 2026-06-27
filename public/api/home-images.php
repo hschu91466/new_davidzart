@@ -11,4 +11,6 @@ require_once __DIR__ . '/../../app/config/bootstrap.php';
 require_once __DIR__ . '/../../app/controllers/ImageController.php';
 
 $controller = new ImageController($pdo);
-$controller->homeImages();
+$response = $controller->homeImages();
+
+json_response($response);

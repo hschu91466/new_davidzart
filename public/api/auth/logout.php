@@ -5,6 +5,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/../../../app/config/bootstrap.php';
 require_once __DIR__ . '/../../../app/controllers/AuthController.php';
 
-$response = AuthController::logout();
+$controller = new AuthController($pdo);
+$response = $controller->logout();
 
-echo json_encode($response);
+json_response($response);

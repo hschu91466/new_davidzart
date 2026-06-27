@@ -8,24 +8,31 @@ require_once __DIR__ . '/../includes/helper.php';
 
 class ImageService
 {
-    public static function deleteImage(int $imageId, PDO $pdo): void
+    public static function deleteImage(int $imageId, PDO $pdo): array
     {
-        $image = ImageModel::getById($pdo, $imageId);
+        try {
+            $image = ImageModel::getById($pdo, $imageId);
 
-        if (!$image) {
-            json_error('Image not found');
+            if (!$image) {
+                return ['success' => false, 'message' => 'Image not found'];
+            }
+
+            // // ✅ Build R2 path
+            $site = $_ENV['SITE_NAME'];
+            $fullPath = $site . '/' . $image['file_path'];
+
+            // ✅ Delete from R2
+            $deleted = deleteFromR2($fullPath);
+            if (!$deleted) {
+                return ['success' => false, 'message' => 'Failed to delete from storage'];
+            }
+
+            // ✅ Delete from DB
+            ImageModel::delete($pdo, $imageId);
+
+            return ['success' => true, 'message' => 'Image deleted successfully'];
+        } catch (Exception $e) {
+            return ['success' => false, 'message' => $e->getMessage()];
         }
-
-        // ✅ Build R2 path
-        $site = $_ENV['SITE_NAME'];
-        $fullPath = $site . '/' . $image['file_path'];
-
-        // ✅ Delete from R2
-        deleteFromR2($fullPath);
-
-        // ✅ Delete from DB
-        ImageModel::delete($pdo, $imageId);
-
-        json_ok(['message' => 'Image deleted']);
     }
 }

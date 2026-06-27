@@ -7,8 +7,7 @@ require_once __DIR__ . '/../../../app/controllers/UserController.php';
 
 require_admin();
 
-$controller = new UserController();
+$controller = new UserController($pdo);
 $response = $controller->listAdmin($_GET);
 
-header('Content-Type: application/json');
-echo json_encode($response);
+json_response($response);

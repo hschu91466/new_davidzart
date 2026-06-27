@@ -3,10 +3,9 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../../../app/config/bootstrap.php';
-require_once __DIR__ . '/../../../app/models/GalleryModel.php';
+require_once __DIR__ . '/../../../app/controllers/GalleryController.php';
 
-$galleries = GalleryModel::getActive($pdo);
+$controller = new GalleryController($pdo);
+$response = $controller->galleries();
 
-// echo json_encode($galleries);
-
-json_ok($galleries);
+json_response($response);

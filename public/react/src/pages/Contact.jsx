@@ -48,7 +48,7 @@ const Contact = () => {
 
   return (
     <div>
-      <div className="container contact-page">
+      <div className="form-container">
         <h2>Contact</h2>
         <p>
           Feel free to reach out with questions, comments, or inquiries about
@@ -56,14 +56,16 @@ const Contact = () => {
         </p>
 
         <form onSubmit={handleSubmit} className="form-group">
-          <input
-            type="text"
-            name="name"
-            value={form.name}
-            onChange={handleChange}
-            placeholder="Your Name"
-          />
-
+          <div className="form-group">
+            <input
+              type="text"
+              name="name"
+              value={form.name}
+              onChange={handleChange}
+              placeholder="Your Name"
+            />
+          </div>
+<div className="form-group">
           <input
             type="email"
             name="email"
@@ -71,7 +73,8 @@ const Contact = () => {
             onChange={handleChange}
             placeholder="Your Email"
           />
-
+</div>
+<div className="form-group">
           <textarea
             name="message"
             value={form.message}
@@ -79,7 +82,7 @@ const Contact = () => {
             placeholder="Your Message"
             rows="4"
           />
-
+</div>
           <button
             disabled={status === "Sending..."}
             className="btn btn-primary"

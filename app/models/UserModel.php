@@ -17,7 +17,6 @@ class UserModel
 
         return $user ?: null;
     }
-
     /**
      * Get user by ID (used for session validation)
      */
@@ -31,7 +30,6 @@ class UserModel
 
         return $user ?: null;
     }
-
     /**
      * Create a new user (for future use: registration)
      */
@@ -48,5 +46,44 @@ class UserModel
         ]);
 
         return (int)$pdo->lastInsertId();
+    }
+
+    public static function delete(PDO $pdo, int $id): bool
+    {
+
+        $sql = "DELETE FROM users WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+
+        return $stmt->execute([':id' => $id]);
+    }
+
+    public static function listByStatus(PDO $pdo, string $status): array
+    {
+        if ($status === 'approved') {
+            $sql = "SELECT id, email, first_name, last_name, role, is_approved, created_at FROM users WHERE is_approved = 1 ORDER BY created_at DESC";
+        } else {
+            $sql = "SELECT id, email, first_name, last_name, role, is_approved, created_at FROM users WHERE is_approved = 0 ORDER BY created_at DESC";
+        }
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
+    }
+
+    public static function approve(PDO $pdo, int $userId, int $adminId): bool
+    {
+        $sql = "UPDATE users
+            SET is_approved = 1,
+                approved_at = NOW(),
+                approved_by = :admin_id
+            WHERE id = :id";
+
+        $stmt = $pdo->prepare($sql);
+
+        return $stmt->execute([
+            ':id' => $userId,
+            ':admin_id' => $adminId
+        ]);
     }
 }

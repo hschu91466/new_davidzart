@@ -42,13 +42,29 @@ class ImageController
         );
     }
 
-    public function delete(int $imageId, PDO $pdo): void
+    public static function deleteImage(int $imageId, PDO $pdo): array
     {
-        if (!$imageId) {
-            json_error('Missing image_id');
-        }
+        try {
+            error_log("DELETE: Starting for imageId=$imageId");
 
-        ImageService::deleteImage($imageId, $pdo);
+            $image = ImageModel::getById($pdo, $imageId);
+            error_log("DELETE: Image found = " . ($image ? 'yes' : 'no'));
+
+            if (!$image) {
+                return ['success' => false, 'message' => 'Image not found'];
+            }
+
+            error_log("DELETE: About to call ImageModel::delete");
+
+            ImageModel::delete($pdo, $imageId);
+
+            error_log("DELETE: Success");
+
+            return ['success' => true, 'message' => 'Image deleted successfully'];
+        } catch (Exception $e) {
+            error_log("DELETE EXCEPTION: " . $e->getMessage());
+            return ['success' => false, 'message' => $e->getMessage()];
+        }
     }
 
     public function move(array $data): array
@@ -78,16 +94,46 @@ class ImageController
         }
     }
 
-    public function images(): void
+    public function update(array $data): array
     {
-        header('Content-Type: application/json');
+        $imageId = $data['image_id'] ?? null;
 
+        if (!$imageId) {
+            return [
+                'success' => false,
+                'message' => 'Image ID required'
+            ];
+        }
+
+        try {
+            $success = ImageModel::update($this->pdo, $data);
+
+            if ($success) {
+                return [
+                    'success' => true,
+                    'message' => 'Image updated'
+                ];
+            }
+
+            return [
+                'success' => false,
+                'message' => 'Image not found'
+            ];
+        } catch (Exception $e) {
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
+        }
+    }
+
+    public function images(): array
+    {
         $limit    = isset($_GET['limit']) ? max(1, min(100, (int)$_GET['limit'])) : 12;
         $random   = isset($_GET['random']) ? (bool)$_GET['random'] : true;
         $gallery  = isset($_GET['gallery']) ? trim((string)$_GET['gallery']) : '';
         $galleriesParam = isset($_GET['galleries']) ? trim((string)$_GET['galleries']) : '';
         $galleries = $galleriesParam ? array_filter(array_map('trim', explode(',', $galleriesParam))) : [];
-        $debug    = isset($_GET['debug']);
 
         $allowedExt = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'avif'];
 
@@ -112,11 +158,7 @@ class ImageController
                 // --- Specific gallery path ---
                 $g = GalleryModel::getBySlug($this->pdo, $gallery);
                 if (!$g) {
-                    http_response_code(404);
-                    $out = ['error' => 'Gallery not found'];
-                    if ($debug) $out['debug'] = $diag;
-                    echo json_encode($out);
-                    exit;
+                    return ['error' => 'Gallery not found'];
                 }
 
                 $rows = ImageModel::getByGallery($this->pdo, (int)$g['gallery_id']);
@@ -151,11 +193,7 @@ class ImageController
                 $diag['active_count'] = count($active);
 
                 if (empty($active)) {
-                    http_response_code(404);
-                    $out = ['error' => 'No galleries found'];
-                    if ($debug) $out['debug'] = $diag;
-                    echo json_encode($out);
-                    exit;
+                    return ['error' => 'No galleries found'];
                 }
 
                 $pool = [];
@@ -191,24 +229,15 @@ class ImageController
                 }
             }
 
-            header('Cache-Control: no-store');
-            $payload = ['images' => $images];
-            if ($debug) $payload['debug'] = $diag;
-
-            echo json_encode($payload);
-            exit;
+            return ['images' => $images];
         } catch (Throwable $e) {
-            http_response_code(500);
-            $payload = ['error' => 'Server error'];
-            if ($debug) $payload['exception'] = $e->getMessage();
-            echo json_encode($payload);
-            exit;
+
+            return ['error' => 'Server error'];
         }
     }
 
-    public function homeImages(): void
+    public function homeImages(): array
     {
-        header('Content-Type: application/json');
         try {
             $limit = isset($_GET['limit']) ? max(1, min(20, (int)$_GET['limit'])) : 5;
             $random = isset($_GET['random']) ? (bool)$_GET['random'] : true;
@@ -216,8 +245,7 @@ class ImageController
             $galleries = GalleryModel::getActive($this->pdo);
 
             if (!is_array($galleries)) {
-                echo json_encode(['images' => []]);
-                return;
+                return ['images' => []];
             }
 
             $pool = [];
@@ -254,22 +282,19 @@ class ImageController
             );
 
 
-            echo json_encode([
+            return [
                 'images' => $images
-            ]);
+            ];
         } catch (Throwable $e) {
 
-            http_response_code(500);
-            echo json_encode(['error' => 'Server error']);
+            return ['error' => 'Server error'];
         }
     }
-
     private function isAllowedImage(string $path, array $allowed): bool
     {
         $ext = strtolower(pathinfo($path, PATHINFO_EXTENSION));
         return in_array($ext, $allowed, true);
     }
-
     private function shapeImage(array $row): array
     {
         $filePath = $row['file_path'] ?? '';
@@ -291,5 +316,24 @@ class ImageController
 
         $set = array_flip(array_map('strtolower', $slugs));
         return array_values(array_filter($actives, fn($g) => isset($g['slug']) && isset($set[strtolower($g['slug'])])));
+    }
+    public function listByGallery(int $galleryId): array
+    {
+        if ($galleryId <= 0) {
+            return ['error' => 'Missing gallery_id'];
+        }
+
+        try {
+            $images = ImageModel::getByGallery($this->pdo, $galleryId);
+
+            // Add URLs to each image
+            foreach ($images as &$row) {
+                $row['url'] = build_image_url($row['file_path']);
+            }
+
+            return ['images' => $images];
+        } catch (Exception $e) {
+            return ['error' => 'Failed to load images'];
+        }
     }
 }

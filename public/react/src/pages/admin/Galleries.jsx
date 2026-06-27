@@ -40,7 +40,7 @@ const Galleries = () => {
 
       // refresh galleries list
       const galleriesRes = await axios.get("/api/galleries/list.php");
-      setGalleries(galleriesRes.data.data);
+      setGalleries(galleriesRes.data.galleries);
 
       // auto-select new gallery
       setGalleryId(newId);
@@ -78,7 +78,7 @@ const Galleries = () => {
         is_active: 0,
       });
       const res = await axios.get("/api/galleries/list.php");
-      setGalleries(res.data.data);
+      setGalleries(res.data.galleries);
 
       setGalleryId(null);
       setImages([]);
@@ -104,7 +104,7 @@ const Galleries = () => {
 
       // ✅ refresh list
       const res = await axios.get("/api/galleries/list.php");
-      setGalleries(res.data.data);
+      setGalleries(res.data.galleries);
 
       setEditingGallery(false);
     } catch (err) {
@@ -135,7 +135,7 @@ const Galleries = () => {
         `/api/images/list.php?gallery_id=${galleryId}`,
       );
 
-      setImages(res.data.data);
+      setImages(res.data.images);
     } catch (error) {
       console.error("Move image failed", error);
     } finally {
@@ -188,7 +188,7 @@ const Galleries = () => {
       });
 
       const res = await axios.get("/api/galleries/list.php");
-      setGalleries(res.data.data);
+      setGalleries(res.data.galleries);
     } catch (error) {
       console.error("Move failed", error);
     } finally {
@@ -200,7 +200,7 @@ const Galleries = () => {
     const fetchGalleries = async () => {
       try {
         const res = await axios.get("/api/galleries/list.php");
-        setGalleries(res.data.data);
+        setGalleries(res.data.galleries);
       } catch (error) {
         console.error("Error fetching galleries:", error);
       } finally {
@@ -217,7 +217,7 @@ const Galleries = () => {
         const res = await axios.get(
           `/api/images/list.php?gallery_id=${galleryId}`,
         );
-        setImages(res.data.data);
+        setImages(res.data.images);
       } catch (error) {
         console.error("Error fetching images", error);
       }
@@ -278,7 +278,7 @@ const Galleries = () => {
             `/api/images/list.php?gallery_id=${galleryId}`,
           );
 
-          setImages(res.data.data);
+          setImages(res.data.images);
         }}
       />
 

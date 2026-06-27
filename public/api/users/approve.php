@@ -9,8 +9,7 @@ require_admin();
 
 $data = json_decode(file_get_contents('php://input'), true);
 
-$controller = new UserController();
+$controller = new UserController($pdo);
 $response = $controller->approve($data);
 
-header('Content-Type: application/json');
-echo json_encode($response);
+json_response($response);

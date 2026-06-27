@@ -11,12 +11,12 @@ ensure_session();
 error_log("SESSION CONTENT LOGIN:");
 error_log(print_r($_SESSION, true));
 
-
 $data = json_decode(file_get_contents("php://input"), true) ?? [];
 
 $email = $data['email'] ?? '';
 $password = $data['password'] ?? '';
 
-$response = AuthController::login($pdo, $email, $password);
+$controller = new AuthController($pdo);
+$response = $controller->login($email, $password);
 
-echo json_encode($response);
+json_response($response);

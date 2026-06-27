@@ -9,36 +9,32 @@ require_once __DIR__ . '/ImageController.php';
 
 final class GalleryController
 {
-    public function __construct(private PDO $pdo) {}
+    private PDO $pdo;
 
-
-    public function gallery(): void
+    public function __construct(PDO $pdo)
     {
+        $this->pdo = $pdo;
+    }
 
-
-        header('Content-Type: application/json; charset=utf-8');
-
+    public function gallery(): array
+    {
         $slug = isset($_GET['slug']) ? trim($_GET['slug']) : '';
 
         if ($slug === '') {
-            http_response_code(400);
-            echo json_encode(['error' => 'Missing gallery slug']);
-            exit;
+            return ['error' => 'Missing gallery slug'];
         }
 
         try {
             // Fetch gallery by slug
             $gallery = GalleryModel::getBySlug($this->pdo, $slug);
             if (!$gallery) {
-                http_response_code(404);
-                echo json_encode(['error' => 'Gallery not found']);
-                exit;
+                return ['error' => 'Gallery not found'];
             }
 
             $imageController = new ImageController($this->pdo);
             $images = $imageController->getShapedImagesForGallery((int)$gallery['gallery_id']);
 
-            echo json_encode([
+            return [
                 'gallery' => [
                     'id'          => (int)$gallery['gallery_id'],
                     'slug'        => $gallery['slug'],
@@ -46,26 +42,19 @@ final class GalleryController
                     'description' => $gallery['description'] ?? null,
                 ],
                 'images' => $images
-            ]);
-            exit;
+            ];
         } catch (Throwable $e) {
-            http_response_code(500);
-            echo json_encode(['error' => 'Server error']);
-            exit;
+            return ['error' => 'Server error'];
         }
     }
 
-    public function galleries(): void
+    public function galleries(): array
     {
-
-        header('Content-Type: application/json; charset=utf-8');
-
         try {
             // Fetch active galleries
             $galleries = GalleryModel::getActive($this->pdo);
             if (!is_array($galleries)) {
-                echo json_encode(['galleries' => []]);
-                exit;
+                return ['galleries' => []];
             }
 
             $out = [];
@@ -97,7 +86,7 @@ final class GalleryController
                 }
 
                 $out[] = [
-                    'id'          => (int)$g['gallery_id'],
+                    'gallery_id'          => (int)$g['gallery_id'],
                     'slug'        => $g['slug'],
                     'title'       => $g['title'],
                     'description' => $g['description'] ?? null,
@@ -106,12 +95,9 @@ final class GalleryController
                 ];
             }
 
-            echo json_encode(['galleries' => $out]);
-            exit;
+            return ['galleries' => $out];
         } catch (Throwable $e) {
-            http_response_code(500);
-            echo json_encode(['error' => 'Server error']);
-            exit;
+            return ['error' => 'Server error'];
         }
     }
 
@@ -146,7 +132,6 @@ final class GalleryController
 
     public function update(array $data): array
     {
-        error_log(print_r($data, true));
         $galleryId = $data['gallery_id'] ?? null;
         $title = trim($data['title'] ?? '');
 

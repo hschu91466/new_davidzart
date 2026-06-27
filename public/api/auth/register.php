@@ -6,12 +6,10 @@ require_once __DIR__ . '/../../../app/config/bootstrap.php';
 require_once __DIR__ . '/../../../app/controllers/AuthController.php';
 
 $rawInput = file_get_contents('php://input');
+
 $data = json_decode($rawInput, true) ?? [];
 
-error_log("RAW INPUT: " . $rawInput);
-error_log("PARSED DATA: " . print_r($data, true));
+$controller = new AuthController($pdo);
+$response = $controller->register($data);
 
-
-$response = AuthController::register($pdo, $data);
-
-echo json_encode($response);
+json_response($response);

@@ -6,8 +6,10 @@ require_once __DIR__ . '/../../app/controllers/GalleryController.php';
 // Assuming bootstrap.php exposes $pdo
 $controller = new GalleryController($pdo);
 
+
 if (isset($_GET['slug'])) {
-    $controller->gallery();
+    $response = $controller->gallery();
 } else {
-    $controller->galleries();
+    $response = $controller->galleries();
 }
+json_response($response);

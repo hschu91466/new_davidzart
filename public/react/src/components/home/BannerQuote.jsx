@@ -26,7 +26,9 @@ const BannerQuote = () => {
 
   return (
     <div className="quote-container">
-      <div className={`quote-text ${visible ? "fade-in" : "fade-out"}`}>
+      <div
+        className={`rotating-quote-text ${visible ? "fade-in" : "fade-out"}`}
+      >
         {quotes[quoteIndex]}
       </div>
     </div>

@@ -63,11 +63,11 @@ const Login = () => {
   };
 
   return (
-    <div className="container">
+    <div className="form-container form-container--compact">
       <h3>Login</h3>
 
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-group">
           <label>Email:</label>
           <input
             type="email"
@@ -78,7 +78,7 @@ const Login = () => {
           />
         </div>
 
-        <div style={{ marginTop: "10px" }}>
+        <div className="form-group">
           <label>Password:</label>
           <input
             type="password"
@@ -89,11 +89,7 @@ const Login = () => {
           />
         </div>
 
-        <button
-          className="btn btn-primary"
-          type="submit"
-          style={{ marginTop: "10px" }}
-        >
+        <button className="btn btn-primary" type="submit">
           Login
         </button>
         <Link className="auth-register" to="/register">

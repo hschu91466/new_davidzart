@@ -5,10 +5,9 @@ require_once __DIR__ . '/../../../app/controllers/GalleryController.php';
 
 require_admin();
 
-$controller = new GalleryController($pdo);
-
 $data = json_decode(file_get_contents('php://input'), true);
 
+$controller = new GalleryController($pdo);
 $response = $controller->update($data ?? []);
 
 json_response($response);

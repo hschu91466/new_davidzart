@@ -7,6 +7,10 @@ ini_set('error_log', __DIR__ . '/../logs/error.log');
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
+// // Test if error_log works
+// error_log("TEST: Error log is working");
+// echo "Check your error log file";
+
 header("Access-Control-Allow-Origin: http://localhost:5173");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");

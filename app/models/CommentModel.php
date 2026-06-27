@@ -69,7 +69,6 @@ class CommentModel
 
     public static function approve(PDO $pdo, int $commentId): bool
     {
-        error_log("APPROVE ID RECEIVED: " . $commentId);
 
         $stmt = $pdo->prepare("
         UPDATE comments 
@@ -80,9 +79,6 @@ class CommentModel
         $result = $stmt->execute([
             'id' => $commentId
         ]);
-
-        error_log("EXECUTE RESULT: " . ($result ? 'true' : 'false'));
-        error_log("ROW COUNT: " . $stmt->rowCount());
 
         return $result;
     }

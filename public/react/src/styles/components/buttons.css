@@ -26,6 +26,12 @@
   border: none;
 }
 
+.btn-primary:focus,
+.btn-tab:focus {
+  outline: 2px solid var(--color-green);
+  outline-offset: 2px;
+}
+
 .btn-primary:hover,
 .btn-tab:hover {
   background: var(--color-green-light);

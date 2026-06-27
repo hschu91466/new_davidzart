@@ -6,13 +6,15 @@ require_once __DIR__ . '/../models/CommentModel.php';
 
 class CommentsController
 {
-    /**
-     * Get approved comments for a specific content item
-     */
+    private PDO $pdo;
+
+    public function __construct(PDO $pdo)
+    {
+        $this->pdo = $pdo;
+    }
+
     public function list(array $params): array
     {
-        global $pdo;
-
         // --- Input handling ---
         $contentType = $params['content_type'] ?? 'image';
         $contentId   = (int)($params['content_id'] ?? 0);
@@ -32,7 +34,7 @@ class CommentsController
         try {
             // --- Model calls ---
             $rows = CommentModel::listByContent(
-                $pdo,
+                $this->pdo,
                 $contentType,
                 $contentId,
                 $offset,
@@ -41,7 +43,7 @@ class CommentsController
             );
 
             $total = CommentModel::countByContent(
-                $pdo,
+                $this->pdo,
                 $contentType,
                 $contentId,
                 true
@@ -65,24 +67,10 @@ class CommentsController
         }
     }
 
-    /**
-     * Create a new comment
-     */
     public function create(array $data): array
     {
-        global $pdo;
-
 
         ensure_session();
-
-        // CSRF check - disabled until adding admin
-        // $csrfToken = $data['csrf_token'] ?? '';
-        // if (!csrf_validate($csrfToken)) {
-        //     return [
-        //         'ok' => false,
-        //         'error' => 'Invalid session token.'
-        //     ];
-        // }
 
         // --- Input handling ---
         $contentType = $data['content_type'] ?? 'image';
@@ -131,7 +119,7 @@ class CommentsController
 
             $isApproved = $isLoggedIn ? 1 : 0;
 
-            $newId = CommentModel::create($pdo, [
+            $newId = CommentModel::create($this->pdo, [
                 'content_type' => $contentType,
                 'content_id'  => $contentId,
                 'parent_id'   => null,
@@ -148,9 +136,6 @@ class CommentsController
             // update rate limit timestamp
             $_SESSION['last_comment_ts'] = time();
 
-            error_log("SESSION USER:");
-            error_log(print_r($_SESSION['user'] ?? null, true));
-
             $message = $isApproved ? 'Comment posted successfully.' : 'Thanks! Your comment is pending approval.';
 
             return [
@@ -166,13 +151,8 @@ class CommentsController
         }
     }
 
-    /**
-     * Approve a comment (admin only)
-     */
     public function approve(int $id): array
     {
-        global $pdo;
-        error_log("APPROVE ID: " . $id);
         // --- Basic validation ---
         if ($id <= 0) {
             return [
@@ -181,16 +161,10 @@ class CommentsController
             ];
         }
 
-        // --- Admin check ---
-        // if (!is_admin_request()) {
-        //     return [
-        //         'ok' => false,
-        //         'error' => 'Unauthorized'
-        //     ];
-        // }
+
 
         try {
-            $ok = CommentModel::approve($pdo, $id);
+            $ok = CommentModel::approve($this->pdo, $id);
 
             if (!$ok) {
                 return [
@@ -211,13 +185,8 @@ class CommentsController
         }
     }
 
-    /**
-     * Delete comment
-     */
-
     public function delete(int $id): array
     {
-        global $pdo;
 
         if ($id <= 0) {
             return [
@@ -226,13 +195,8 @@ class CommentsController
             ];
         }
 
-        // TEMP: bypass admin until auth wired
-        // if (!is_admin_request()) {
-        //     return ['ok' => false, 'error' => 'Unauthorized'];
-        // }
-
         try {
-            $ok = CommentModel::delete($pdo, $id);
+            $ok = CommentModel::delete($this->pdo, $id);
             return [
                 'ok' => $ok,
                 'id' => $id
@@ -247,8 +211,6 @@ class CommentsController
 
     public function spam(int $id): array
     {
-        global $pdo;
-
         if ($id <= 0) {
             return [
                 'ok' => false,
@@ -257,7 +219,7 @@ class CommentsController
         }
 
         try {
-            $ok = CommentModel::markSpam($pdo, $id);
+            $ok = CommentModel::markSpam($this->pdo, $id);
 
             return [
                 'ok' => $ok,
@@ -273,12 +235,10 @@ class CommentsController
 
     public function listAdmin(array $params): array
     {
-        global $pdo;
-
         $status = $params['status'] ?? 'pending';
 
         try {
-            $rows = CommentModel::listByStatus($pdo, $status);
+            $rows = CommentModel::listByStatus($this->pdo, $status);
 
             return [
                 'ok' => true,
@@ -292,12 +252,11 @@ class CommentsController
         }
     }
 
-    public function getCommentCount(array $params): array
+    public function getCommentCount(): array
     {
         try {
-            global $pdo;
 
-            $stmt = $pdo->query("
+            $stmt = $this->pdo->query("
         SELECT 
             SUM(CASE WHEN is_approved = 0 THEN 1 ELSE 0 END) AS pending,
             SUM(CASE WHEN is_approved = 1 THEN 1 ELSE 0 END) AS approved,
@@ -318,8 +277,6 @@ class CommentsController
                     ]
                 ];
         } catch (Throwable $e) {
-            http_response_code(500);
-
             return [
                 'error' => 'Failed to load counts'
             ];

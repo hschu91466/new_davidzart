@@ -7,12 +7,9 @@ require_once __DIR__ . '/../../../app/controllers/CommentsController.php';
 
 require_admin();
 
-// Get query parameters
 $params = $_GET;
 
-// Call controller
-$controller = new CommentsController();
-$response = $controller->getCommentCount($params);
+$controller = new CommentsController($pdo);
+$response = $controller->getCommentCount();
 
-// Return JSON
 echo json_encode($response);

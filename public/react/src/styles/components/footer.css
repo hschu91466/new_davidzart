@@ -1,8 +1,18 @@
-/* ==========================================================================
-   FOOTER
-   ========================================================================== */
+footer {
+  padding: var(--spacing-lg) var(--spacing-md);
+  margin-top: var(--spacing-xl);
+}
 
-.footer {
-  width: 100%;
-  padding: 20px 0;
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.copyright {
+  color: #eee; /* Light text for contrast on gradient */
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
 }

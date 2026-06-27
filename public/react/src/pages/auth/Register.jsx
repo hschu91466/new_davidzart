@@ -65,54 +65,67 @@ const Register = () => {
   };
 
   return (
-    <div className="auth-container container">
-      <form onSubmit={handleSubmit} className="auth-form">
+    <div className="form-container">
+      <form onSubmit={handleSubmit} className="form-group">
         <h3>Create Account</h3>
 
-        <input
-          type="text"
-          name="first_name"
-          placeholder="First name"
-          value={form.first_name}
-          onChange={handleChange}
-          required
-        />
+        <div className="form-group">
+          <label>First Name:</label>
+          <input
+            type="text"
+            name="first_name"
+            value={form.first_name}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-        <input
-          type="text"
-          name="last_name"
-          placeholder="Last name"
-          value={form.last_name}
-          onChange={handleChange}
-          required
-        />
+        <div className="form-group">
+          <label>Last Name:</label>
+          <input
+            type="text"
+            name="last_name"
+            value={form.last_name}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          value={form.email}
-          onChange={handleChange}
-          required
-        />
+        <div className="form-group">
+          <label>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={form.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={form.password}
-          onChange={handleChange}
-          required
-        />
+        <div className="form-group">
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={form.password}
+            onChange={handleChange}
+            required
+          />
+        </div>
 
         <button className="btn btn-primary" type="submit" disabled={loading}>
           {loading ? "Creating..." : "Register"}
         </button>
 
-        {message && <p>{message}</p>}
+        {message && (
+          <p className="form-message form-message--success">{message}</p>
+        )}
 
-        <p>
-          Already have an account? <Link to="/login">Login</Link>
+        <p style={{ textAlign: "center", marginTop: "var(--space-4)" }}>
+          Already have an account?{" "}
+          <Link to="/login" className="auth-register">
+            Login
+          </Link>
         </p>
       </form>
     </div>
