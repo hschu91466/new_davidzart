@@ -4,7 +4,6 @@ import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import BannerQuote from "../home/BannerQuote";
 
-// Header.jsx
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
 
@@ -12,7 +11,12 @@ const Header = () => {
     <header className="brand-band">
       <div className="banner-inner">
         <div className="banner-logo">
-          <img src={`${CDN_BASE}/site-images/logo.png`} alt="David Z Art" />
+          <Link to="/" aria-label="Home">
+            <img
+              src={`${CDN_BASE}/site-images/logo.png`}
+              alt="David Z Art logo"
+            />
+          </Link>
         </div>
 
         <div className="banner-quote">
@@ -22,13 +26,23 @@ const Header = () => {
         <div className="auth-controls">
           {user ? (
             <>
-              <span className="auth-user">Welcome, {user.name}</span>
-              <button className="auth-link" onClick={logout}>
+              <span className="auth-user" role="status">
+                Welcome, {user.name}
+              </span>
+              <button
+                className="auth-link"
+                onClick={logout}
+                aria-label="Logout from account"
+              >
                 Logout
               </button>
             </>
           ) : (
-            <Link className="auth-link" to="/login">
+            <Link
+              className="auth-link"
+              to="/login"
+              aria-label="Login to your account"
+            >
               Login
             </Link>
           )}

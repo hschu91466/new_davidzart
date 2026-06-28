@@ -38,14 +38,11 @@ const Galleries = () => {
 
       const newId = res.data.gallery_id;
 
-      // refresh galleries list
       const galleriesRes = await axios.get("/api/galleries/list.php");
       setGalleries(galleriesRes.data.galleries);
 
-      // auto-select new gallery
       setGalleryId(newId);
 
-      // reset form
       setNewGalleryTitle("");
       setNewGalleryDescription("");
       setShowNewGallery(false);
@@ -56,6 +53,7 @@ const Galleries = () => {
       setCreatingGallery(false);
     }
   };
+
   const handleStartEditGallery = () => {
     if (!galleryId) return;
 
@@ -66,6 +64,7 @@ const Galleries = () => {
     setEditDescription(selected.description || "");
     setEditingGallery(true);
   };
+
   const handleDeactivateGallery = async () => {
     if (!galleryId) return;
 
@@ -87,6 +86,7 @@ const Galleries = () => {
       alert("Failed to deactivate gallery");
     }
   };
+
   const handleUpdateGallery = async () => {
     if (!editTitle.trim()) {
       alert("Title is required");
@@ -102,7 +102,6 @@ const Galleries = () => {
         description: editDescription,
       });
 
-      // ✅ refresh list
       const res = await axios.get("/api/galleries/list.php");
       setGalleries(res.data.galleries);
 
@@ -114,6 +113,7 @@ const Galleries = () => {
       setSavingGallery(false);
     }
   };
+
   const handleMoveImage = async (imageId, direction) => {
     try {
       setMovingImageId(imageId);
@@ -125,12 +125,10 @@ const Galleries = () => {
 
       const currentScroll = window.scrollY;
 
-      // after setImages
       setTimeout(() => {
         window.scrollTo({ top: currentScroll });
       }, 0);
 
-      // ✅ reload images
       const res = await axios.get(
         `/api/images/list.php?gallery_id=${galleryId}`,
       );
@@ -142,6 +140,7 @@ const Galleries = () => {
       setMovingImageId(null);
     }
   };
+
   const handleChange = (id, field, value) => {
     setImages((prev) =>
       prev.map((img) =>
@@ -149,6 +148,7 @@ const Galleries = () => {
       ),
     );
   };
+
   const handleSave = async (img) => {
     setSavingId(img.image_id);
     try {
@@ -166,6 +166,7 @@ const Galleries = () => {
       setSavingId(null);
     }
   };
+
   const handleDelete = async (imageId) => {
     const confirmed = window.confirm("Delete this image?");
     if (!confirmed) return;
@@ -177,6 +178,7 @@ const Galleries = () => {
       console.error("Delete Error:", error);
     }
   };
+
   const handleMoveGallery = async (direction) => {
     if (!galleryId) return;
 
@@ -226,13 +228,17 @@ const Galleries = () => {
   }, [galleryId]);
 
   if (loading) {
-    return <div>Loading galleries ...</div>;
+    return (
+      <div role="status" aria-live="polite">
+        Loading galleries ...
+      </div>
+    );
   }
 
   return (
     <div className="container gallery-detail">
-      <h2>Galleries Page</h2>
-      <div className="form-group">
+      <h1>Manage Galleries</h1>
+      <div className="form-group" role="region" aria-label="Gallery management">
         <GallerySelector
           galleries={galleries}
           selectedGalleryId={galleryId}
@@ -271,19 +277,21 @@ const Galleries = () => {
         )}
       </div>
 
-      <ImageUpload
-        galleryId={galleryId}
-        onUploadSuccess={async () => {
-          const res = await axios.get(
-            `/api/images/list.php?gallery_id=${galleryId}`,
-          );
+      <div role="region" aria-label="Image upload">
+        <ImageUpload
+          galleryId={galleryId}
+          onUploadSuccess={async () => {
+            const res = await axios.get(
+              `/api/images/list.php?gallery_id=${galleryId}`,
+            );
 
-          setImages(res.data.images);
-        }}
-      />
+            setImages(res.data.images);
+          }}
+        />
+      </div>
 
       {images.length === 0 ? (
-        <p>Select a gallery to view and manage its images.</p>
+        <p role="status">Select a gallery to view and manage its images.</p>
       ) : (
         <ImageGrid
           images={images}

@@ -28,18 +28,22 @@
 
 @media (max-width: 639px) {
   #galleryGrid {
+    --short: 350px;
+    justify-content: center;
+    grid-template-columns: 1fr;
+  }
+
+
+  #galleriesGrid {
     --short: 160px;
     justify-content: center;
-  }
-  #galleriesGrid {
-    display: grid;
-    justify-content: center;
+    grid-template-columns: 1fr;
   }
 }
 
 @media (min-width: 640px) and (max-width: 1023px) {
   #galleryGrid {
-    --short: 200px;
+    --short: 160px;
   }
 }
 @media (min-width: 1024px) {

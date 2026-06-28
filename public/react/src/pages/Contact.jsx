@@ -49,49 +49,70 @@ const Contact = () => {
   return (
     <div>
       <div className="form-container">
-        <h2>Contact</h2>
+        <h1>Contact</h1>
         <p>
           Feel free to reach out with questions, comments, or inquiries about
           artwork.
         </p>
 
-        <form onSubmit={handleSubmit} className="form-group">
+        <form
+          onSubmit={handleSubmit}
+          className="form-group"
+          aria-label="Contact form"
+        >
           <div className="form-group">
+            <label htmlFor="name">Your Name</label>
             <input
+              id="name"
               type="text"
               name="name"
               value={form.name}
               onChange={handleChange}
               placeholder="Your Name"
+              required
+              aria-required="true"
             />
           </div>
-<div className="form-group">
-          <input
-            type="email"
-            name="email"
-            value={form.email}
-            onChange={handleChange}
-            placeholder="Your Email"
-          />
-</div>
-<div className="form-group">
-          <textarea
-            name="message"
-            value={form.message}
-            onChange={handleChange}
-            placeholder="Your Message"
-            rows="4"
-          />
-</div>
+          <div className="form-group">
+            <label htmlFor="email">Your Email</label>
+            <input
+              id="email"
+              type="email"
+              name="email"
+              value={form.email}
+              onChange={handleChange}
+              placeholder="Your Email"
+              required
+              aria-required="true"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="message">Your Message</label>
+            <textarea
+              id="message"
+              name="message"
+              value={form.message}
+              onChange={handleChange}
+              placeholder="Your Message"
+              rows="4"
+              required
+              aria-required="true"
+            />
+          </div>
           <button
             disabled={status === "Sending..."}
             className="btn btn-primary"
+            aria-busy={status === "Sending..."}
           >
             {status === "Sending..." ? "Sending..." : "Send Message"}
           </button>
         </form>
 
-        {status && <div>{status}</div>}
+        {status && (
+          <div role="status" aria-live="polite" aria-atomic="true">
+            {status}
+          </div>
+        )}
       </div>
     </div>
   );

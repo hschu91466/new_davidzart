@@ -27,7 +27,6 @@ const Messages = () => {
     }
   };
 
-  // ✅ MARK AS READ
   const handleMarkRead = async (id) => {
     try {
       const res = await axios.post("/api/contact/mark-read.php", {
@@ -46,7 +45,6 @@ const Messages = () => {
     }
   };
 
-  // ✅ DELETE
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this message?")) return;
 
@@ -75,16 +73,28 @@ const Messages = () => {
   });
 
   if (loading) {
-    return <div>Loading messages...</div>;
+    return (
+      <div role="status" aria-live="polite">
+        Loading messages...
+      </div>
+    );
   }
 
   return (
     <div className="messages-page">
-      <h2>Messages</h2>
-      <div className="button-group" style={{ marginBottom: "1rem" }}>
+      <h1>Contact Messages</h1>
+      <div
+        className="button-group"
+        style={{ marginBottom: "1rem" }}
+        role="tablist"
+        aria-label="Filter messages by status"
+      >
         <button
           className={`btn btn-tab ${filter === "all" ? "btn-active" : ""}`}
           onClick={() => setFilter("all")}
+          role="tab"
+          aria-selected={filter === "all"}
+          aria-controls="messages-table"
         >
           All ({messages.length})
         </button>
@@ -92,6 +102,9 @@ const Messages = () => {
         <button
           className={`btn btn-tab ${filter === "new" ? "btn-active" : ""}`}
           onClick={() => setFilter("new")}
+          role="tab"
+          aria-selected={filter === "new"}
+          aria-controls="messages-table"
         >
           New ({messages.filter((m) => !Number(m.is_read)).length})
         </button>
@@ -99,23 +112,30 @@ const Messages = () => {
         <button
           className={`btn btn-tab ${filter === "read" ? "btn-active" : ""}`}
           onClick={() => setFilter("read")}
+          role="tab"
+          aria-selected={filter === "read"}
+          aria-controls="messages-table"
         >
           Read ({messages.filter((m) => Number(m.is_read)).length})
         </button>
       </div>
       {!messages || messages.length === 0 ? (
-        <p>No messages found.</p>
+        <p role="status">No messages found.</p>
       ) : (
         <div className="table-wrapper">
-          <table className="table">
+          <table
+            id="messages-table"
+            className="table"
+            aria-label="Contact form messages"
+          >
             <thead>
               <tr>
-                <th>Status</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Message</th>
-                <th>Date</th>
-                <th>Actions</th>
+                <th scope="col">Status</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Message</th>
+                <th scope="col">Date</th>
+                <th scope="col">Actions</th>
               </tr>
             </thead>
 
@@ -124,8 +144,10 @@ const Messages = () => {
                 const isRead = Number(msg.is_read) === 1;
 
                 return (
-                  <tr key={msg.message_id} className={!isRead ? "row-unread" : ""}>
-                    {/* ✅ STATUS */}
+                  <tr
+                    key={msg.message_id}
+                    className={!isRead ? "row-unread" : ""}
+                  >
                     <td>
                       <span
                         className={`status-badge ${
@@ -136,22 +158,24 @@ const Messages = () => {
                       </span>
                     </td>
 
-                    {/* ✅ DATA */}
                     <td>{msg.name}</td>
                     <td>{msg.email}</td>
 
                     <td className="message-cell">{msg.message}</td>
 
                     <td>
-                      <small>{msg.created_at}</small>
+                      {new Date(msg.created_at).toLocaleString(undefined, {
+                        dateStyle: "medium",
+                        timeStyle: "short",
+                      })}
                     </td>
 
-                    {/* ✅ ACTIONS */}
                     <td className="button-group">
                       {!isRead && (
                         <button
                           className="btn btn-approve btn-sm"
                           onClick={() => handleMarkRead(msg.message_id)}
+                          aria-label={`Mark message from ${msg.name} as read`}
                         >
                           Mark Read
                         </button>
@@ -160,6 +184,7 @@ const Messages = () => {
                       <button
                         className="btn btn-delete btn-sm"
                         onClick={() => handleDelete(msg.message_id)}
+                        aria-label={`Delete message from ${msg.name}`}
                       >
                         Delete
                       </button>

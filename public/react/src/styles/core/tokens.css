@@ -7,15 +7,15 @@
 
 :root {
   /* Brand palette */
-  --color-green: #20430c;       /* Dark Green */
-  --color-green-dk: #0a2d2a;    /* Deep Green */
+  --color-green: #20430c; /* Dark Green */
+  --color-green-dk: #0a2d2a; /* Deep Green */
   --color-green-light: #6f9f4a;
   --color-gold: rgb(228, 195, 64);
   --color-brown: #554918;
   --color-blue: #0e3451;
   --color-lt-gray: #f2f2f2;
 
-  /* Used by .site-banner gradient — was hardcoded, now a token */
+  /* Used by .site-banner gradient  */
   --color-banner-fade: #cfd6d6;
 
   /* Neutrals */
@@ -39,6 +39,8 @@
   --space-6: 24px;
   --space-7: 32px;
   --space-8: 40px;
+  --space-md: 80px;
+  --space-lg: 100px;
 
   /* Radii & shadows */
   --radius-sm: 6px;
@@ -46,11 +48,13 @@
   --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.06);
   --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12), 0 10px 24px rgba(0, 0, 0, 0.18);
   --shadow-lg: 0 6px 12px rgba(0, 0, 0, 0.15), 0 16px 32px rgba(0, 0, 0, 0.2);
-  --shadow-gold: 0 6px 12px rgba(0, 0, 0, 0.15), 0 16px 32px rgba(228, 195, 64, 0.2);
+  --shadow-gold:
+    0 6px 12px rgba(0, 0, 0, 0.15), 0 16px 32px rgba(228, 195, 64, 0.2);
   --img-box-shadow: 10px 10px 5px grey;
 
   /* Typography (mobile-first) */
-  --font-body: "Abel", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-body:
+    "Abel", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   --bs-font-sans-serif: var(--font-body); /* Bootstrap override */
   --font-display: "Comic Neue", "Trebuchet MS", "Segoe UI", sans-serif;
 

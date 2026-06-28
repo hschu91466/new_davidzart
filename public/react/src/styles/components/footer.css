@@ -1,6 +1,6 @@
 footer {
-  padding: var(--spacing-lg) var(--spacing-md);
-  margin-top: var(--spacing-xl);
+  padding: var(--space-5);
+  margin-top: var(--space-6);
 }
 
 .footer-content {

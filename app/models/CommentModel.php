@@ -46,7 +46,7 @@ class CommentModel
       WHERE content_type = :type
         AND content_id = :id
         $approveClause
-      ORDER BY created_at ASC
+      ORDER BY created_at DESC
       LIMIT :limit OFFSET :offset
     ";
         $stmt = $pdo->prepare($sql);
@@ -144,8 +144,7 @@ class CommentModel
       Left Join images i on c.content_id = i.image_id
       WHERE $where
       ORDER BY created_at DESC
-      LIMIT :limit OFFSET :offset
-    ";
+      LIMIT :limit OFFSET :offset";
         $stmt = $pdo->prepare($sql);
         $stmt->bindValue(':limit', $limit, PDO::PARAM_INT);
         $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);

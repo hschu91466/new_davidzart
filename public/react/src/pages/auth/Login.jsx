@@ -12,6 +12,7 @@ const Login = () => {
 
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const { setUser } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -28,6 +29,7 @@ const Login = () => {
 
     setMessage("");
     setError("");
+    setLoading(true);
 
     try {
       const response = await fetch(`${BASE_URL}/api/auth/login.php`, {
@@ -44,9 +46,6 @@ const Login = () => {
 
       const data = await response.json();
 
-      // const text = await response.text();
-      // console.log("RAW RESPONSE:", text);
-
       console.log("LOGIN RESPONSE:", data);
 
       if (response.ok && !data.error) {
@@ -59,46 +58,72 @@ const Login = () => {
     } catch (err) {
       console.error("Login error:", err);
       setError("Something went wrong");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="form-container form-container--compact">
-      <h3>Login</h3>
+      <h1>Login</h1>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} aria-label="Login form">
         <div className="form-group">
-          <label>Email:</label>
+          <label htmlFor="email">Email:</label>
           <input
+            id="email"
             type="email"
             name="email"
             value={form.email}
             onChange={handleChange}
             required
+            aria-required="true"
+            aria-describedby={error ? "login-error" : undefined}
           />
         </div>
 
         <div className="form-group">
-          <label>Password:</label>
+          <label htmlFor="password">Password:</label>
           <input
+            id="password"
             type="password"
             name="password"
             value={form.password}
             onChange={handleChange}
             required
+            aria-required="true"
+            aria-describedby={error ? "login-error" : undefined}
           />
         </div>
 
-        <button className="btn btn-primary" type="submit">
-          Login
+        <button
+          className="btn btn-primary"
+          type="submit"
+          disabled={loading}
+          aria-busy={loading}
+        >
+          {loading ? "Logging in..." : "Login"}
         </button>
         <Link className="auth-register" to="/register">
           Create new account
         </Link>
       </form>
 
-      {message && <p style={{ color: "green" }}>{message}</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {message && (
+        <p role="status" aria-live="polite" style={{ color: "green" }}>
+          {message}
+        </p>
+      )}
+      {error && (
+        <p
+          id="login-error"
+          role="alert"
+          aria-live="assertive"
+          style={{ color: "red" }}
+        >
+          {error}
+        </p>
+      )}
     </div>
   );
 };

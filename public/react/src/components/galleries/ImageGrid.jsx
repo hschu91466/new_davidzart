@@ -10,11 +10,11 @@ const ImageGrid = ({
   movingImageId,
 }) => {
   if (images.length === 0) {
-    return <p>Select a gallery to view and manage its images.</p>;
+    return <p role="status">Select a gallery to view and manage its images.</p>;
   }
 
   return (
-    <div className="image-grid">
+    <div className="image-grid" role="region" aria-label="Image editor">
       {images.map((img) => (
         <ImageCard
           key={img.image_id}

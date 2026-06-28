@@ -1,21 +1,27 @@
-function GalleryCard({ gallery, onClick }) {
+const GalleryCard = ({ gallery, onClick, role }) => {
   const imageSrc = gallery.cover_image?.image_url || null;
 
   return (
-    <div className="gallery-item" onClick={onClick}>
+    <button
+      className="gallery-item"
+      onClick={onClick}
+      role={role || "button"}
+      aria-label={`View ${gallery.title} gallery`}
+    >
       <div className="gallery-card">
         {imageSrc && (
           <img
             src={imageSrc}
-            alt={gallery.title}
+            alt=""
             className="gallery-card__image"
+            aria-hidden="true"
           />
         )}
       </div>
 
       <div className="gallery-title">{gallery.title}</div>
-    </div>
+    </button>
   );
-}
+};
 
 export default GalleryCard;

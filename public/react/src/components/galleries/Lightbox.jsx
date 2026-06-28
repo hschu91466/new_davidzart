@@ -18,26 +18,38 @@ const Lightbox = ({
   const lightboxSrc = `${BASE_URL}${imagePath}`;
 
   return (
-    <div className="lightbox-overlay" onClick={onClose}>
+    <div
+      className="lightbox-overlay"
+      onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Image viewer"
+    >
       <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
-        {/* Close */}
-        <button className="lightbox-close" onClick={onClose}>
-          x
+        <button
+          className="lightbox-close"
+          onClick={onClose}
+          aria-label="Close image viewer"
+        >
+          ×
         </button>
 
-        {/* Left arrow */}
         <button
           className="lightbox-prev"
           onClick={() =>
             setCurrentIndex((currentIndex - 1 + images.length) % images.length)
           }
+          aria-label="Previous image"
         >
           ‹
         </button>
 
         <div className="lightbox-body">
           <div className="lightbox-image">
-            <img src={lightboxSrc} alt="" />
+            <img
+              src={lightboxSrc}
+              alt={currentImage.title || "Gallery image"}
+            />
           </div>
 
           <div className="lightbox-comments">
@@ -50,10 +62,10 @@ const Lightbox = ({
           </div>
         </div>
 
-        {/* Right arrow */}
         <button
           className="lightbox-next"
           onClick={() => setCurrentIndex((currentIndex + 1) % images.length)}
+          aria-label="Next image"
         >
           ›
         </button>
@@ -66,7 +78,7 @@ const Lightbox = ({
             {currentImage.dimensions ? `, ${currentImage.dimensions}` : ""}
           </div>
 
-          <div className="lightbox-counter">
+          <div className="lightbox-counter" aria-live="polite">
             {currentIndex + 1} / {images.length}
           </div>
         </div>

@@ -37,18 +37,26 @@ const Dashboard = () => {
       <p>Welcome {user?.first_name}</p>
       <p>Use the navigation on the left to manage your site content.</p>
 
-      <div>
+      <div role="region" aria-label="Quick statistics">
         {loading ? (
-          <p>Loading...</p>
+          <p role="status" aria-live="polite">
+            Loading...
+          </p>
         ) : (
           <>
             <p>
-              <Link to="/admin/comments?status=pending">
+              <Link
+                to="/admin/comments?status=pending"
+                aria-label="View pending comments"
+              >
                 Pending Comments: {counts.pending}
               </Link>
             </p>
             <p>
-              <Link to="/admin/comments?status=approved">
+              <Link
+                to="/admin/comments?status=approved"
+                aria-label="View approved comments"
+              >
                 Approved Comments: {counts.approved}
               </Link>
             </p>

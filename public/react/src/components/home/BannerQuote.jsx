@@ -25,7 +25,13 @@ const BannerQuote = () => {
   }, []);
 
   return (
-    <div className="quote-container">
+    <div
+      className="quote-container"
+      role="region"
+      aria-label="Rotating quotes"
+      aria-live="polite"
+      aria-atomic="true"
+    >
       <div
         className={`rotating-quote-text ${visible ? "fade-in" : "fade-out"}`}
       >

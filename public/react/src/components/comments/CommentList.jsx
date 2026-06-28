@@ -3,12 +3,14 @@ import { BASE_URL, CDN_BASE } from "../../config";
 
 const CommentList = ({ contentId }) => {
   const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (!contentId) return;
 
     const fetchComments = async () => {
       try {
+        setLoading(true);
         const response = await fetch(
           `${BASE_URL}/api/comments/list.php?content_id=${contentId}`,
         );
@@ -20,35 +22,45 @@ const CommentList = ({ contentId }) => {
         }
       } catch (error) {
         console.error("Error fetching comments:", error);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchComments();
   }, [contentId]);
 
-  return (
-    <div>
-      {/* <h6>Comments</h6> */}
+  if (loading) {
+    return (
+      <p role="status" aria-live="polite">
+        Loading comments…
+      </p>
+    );
+  }
 
+  return (
+    <div role="region" aria-label="Comments">
       {comments.length === 0 ? (
-        <p>No comments yet</p>
+        <p role="status">No comments yet</p>
       ) : (
-        comments.map((comment) => (
-          <div key={comment.comment_id} className="comment">
-            <div className="comment-header">
-              <strong>{comment.name}</strong>
-              <div>
-                <span className="comment-date">
-                  {new Date(comment.created_at).toLocaleString(undefined, {
-                    dateStyle: "medium",
-                    timeStyle: "short",
-                  })}
-                </span>
+        <ol className="comment-list">
+          {comments.map((comment) => (
+            <li key={comment.comment_id} className="comment">
+              <div className="comment-header">
+                <strong>{comment.name}</strong>
+                <div>
+                  <span className="comment-date" aria-label="Posted on">
+                    {new Date(comment.created_at).toLocaleString(undefined, {
+                      dateStyle: "medium",
+                      timeStyle: "short",
+                    })}
+                  </span>
+                </div>
               </div>
-            </div>
-            <p>{comment.body}</p>
-          </div>
-        ))
+              <p>{comment.body}</p>
+            </li>
+          ))}
+        </ol>
       )}
     </div>
   );

@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { BASE_URL, CDN_BASE } from "../../config";
 
-const CommentForm = ({ contentId }) => {
+const CommentForm = ({ contentId, onSuccess }) => {
   const { user } = useContext(AuthContext);
 
   const [firstName, setFirstName] = useState("");
@@ -47,12 +47,15 @@ const CommentForm = ({ contentId }) => {
         );
 
         if (!user) {
-          // clear form
           setFirstName("");
           setLastName("");
           setEmail("");
         }
         setComment("");
+
+        if (onSuccess) {
+          onSuccess();
+        }
       } else {
         setMessage(data.error || "Error submitting comment.");
       }
@@ -65,68 +68,98 @@ const CommentForm = ({ contentId }) => {
   };
 
   return (
-    <form className="comment-form" onSubmit={handleSubmit}>
-      <h4>Add Comment</h4>
+    <form
+      className="comment-form"
+      onSubmit={handleSubmit}
+      aria-label="Add comment"
+    >
+      <h3>Add Comment</h3>
 
       {!user && (
-        <div className="form-row form-row--two">
-          <input
-            className="form-control"
-            type="text"
-            placeholder="First name"
-            id="first_name"
-            autoComplete="given-name"
-            value={firstName}
-            onChange={(e) => setFirstName(e.target.value)}
-            required
-          />
+        <fieldset>
+          <legend>Your Information</legend>
+          <div className="form-row form-row--two">
+            <div>
+              <label htmlFor="first_name">First Name</label>
+              <input
+                className="form-control"
+                type="text"
+                placeholder="First name"
+                id="first_name"
+                autoComplete="given-name"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+                aria-required="true"
+              />
+            </div>
 
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Last name"
-            id="last_name"
-            autoComplete="family-name"
-            value={lastName}
-            onChange={(e) => setLastName(e.target.value)}
-            required
-          />
+            <div>
+              <label htmlFor="last_name">Last Name</label>
+              <input
+                className="form-control"
+                type="text"
+                placeholder="Last name"
+                id="last_name"
+                autoComplete="family-name"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+                aria-required="true"
+              />
+            </div>
 
-          <input
-            className="form-control"
-            type="email"
-            placeholder="Email"
-            id="email"
-            autoComplete="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
+            <div>
+              <label htmlFor="email">Email</label>
+              <input
+                className="form-control"
+                type="email"
+                placeholder="Email"
+                id="email"
+                autoComplete="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                aria-required="true"
+              />
+            </div>
+          </div>
+        </fieldset>
       )}
 
       {user && (
-        <p>
+        <p role="status">
           Posting as: <strong>{user.name}</strong>
         </p>
       )}
 
       <div className="form-row">
+        <label htmlFor="comment-body">Your Comment</label>
         <textarea
           className="form-control"
           placeholder="Your comment..."
-          id="place-holder"
+          id="comment-body"
           value={comment}
           onChange={(e) => setComment(e.target.value)}
           required
+          aria-required="true"
         />
       </div>
 
-      <button className="btn btn-submit" type="submit" disabled={loading}>
+      <button
+        className="btn btn-submit"
+        type="submit"
+        disabled={loading}
+        aria-busy={loading}
+      >
         {loading ? "Submitting..." : "Submit"}
       </button>
 
-      {message && <p>{message}</p>}
+      {message && (
+        <p role="status" aria-live="polite" aria-atomic="true">
+          {message}
+        </p>
+      )}
     </form>
   );
 };

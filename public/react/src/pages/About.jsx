@@ -6,7 +6,7 @@ function About() {
       <div className="about-image">
         <img
           src={`${CDN_BASE}/site-images/FB_IMG_1656795141955.jpg`}
-          alt="David Schu"
+          alt="David Schu, artist"
         />
       </div>
       <div className="about-text">

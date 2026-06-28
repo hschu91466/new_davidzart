@@ -1,14 +1,14 @@
-function Footer() {
+const Footer = () => {
   return (
     <footer className="brand-band footer">
       <p className="container footer-content">
-        <div className="copyright">
+        <span className="copyright">
           © {new Date().getFullYear()} David Schu – Fine Arts. All rights
           reserved.
-        </div>
+        </span>
       </p>
     </footer>
   );
-}
+};
 
 export default Footer;

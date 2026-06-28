@@ -5,16 +5,20 @@ const Users = () => {
   const [users, setUsers] = useState([]);
   const [status, setStatus] = useState("pending");
   const [approvingId, setApprovingId] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadUsers = async () => {
       try {
+        setLoading(true);
         const res = await axios.get(
           `/api/users/admin-list.php?status=${status}`,
         );
         setUsers(res.data.users ?? []);
       } catch (error) {
         console.error("Error loading users", error);
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -29,7 +33,6 @@ const Users = () => {
         user_id: userId,
       });
 
-      // small delay for smoother UX
       setTimeout(() => {
         setUsers((prev) => prev.filter((u) => u.id !== userId));
         setApprovingId(null);
@@ -48,7 +51,6 @@ const Users = () => {
         user_id: userId,
       });
 
-      // small delay for smoother UX
       setTimeout(() => {
         setUsers((prev) => prev.filter((u) => u.id !== userId));
         setApprovingId(null);
@@ -63,36 +65,58 @@ const Users = () => {
     return window.confirm("Are you sure you want to delete this user?");
   };
 
+  if (loading) {
+    return (
+      <div role="status" aria-live="polite">
+        Loading users...
+      </div>
+    );
+  }
+
   return (
     <div>
       <h1>Manage Users</h1>
-      <div className="button-group">
+      <div
+        className="button-group"
+        role="tablist"
+        aria-label="Filter users by approval status"
+      >
         <button
           className={`btn btn-tab ${status === "pending" ? "btn-active" : "btn-tab"}`}
           onClick={() => setStatus("pending")}
+          role="tab"
+          aria-selected={status === "pending"}
+          aria-controls="users-table"
         >
           Pending
         </button>
         <button
           className={`btn btn-tab ${status === "approved" ? "btn-active" : "btn-tab"}`}
           onClick={() => setStatus("approved")}
+          role="tab"
+          aria-selected={status === "approved"}
+          aria-controls="users-table"
         >
           Approved
         </button>
       </div>
 
       {users.length === 0 ? (
-        <p>No Users Found</p>
+        <p role="status">No users found</p>
       ) : (
         <div className="table-wrapper">
-          <table className="table">
+          <table
+            id="users-table"
+            className="table"
+            aria-label="Users awaiting approval"
+          >
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Status</th>
-                {status === "pending" && <th>Actions</th>}
-                <th>Created</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Status</th>
+                <th scope="col">Created</th>
+                {status === "pending" && <th scope="col">Actions</th>}
               </tr>
             </thead>
             <tbody>
@@ -102,13 +126,22 @@ const Users = () => {
                     {user.first_name} {user.last_name}
                   </td>
                   <td>{user.email}</td>
+
                   <td>{user.is_approved ? "Approved" : "Pending"}</td>
+                  <td>
+                    {new Date(user.created_at).toLocaleString(undefined, {
+                      dateStyle: "medium",
+                      timeStyle: "short",
+                    })}
+                  </td>
                   <td>
                     {!user.is_approved && (
                       <button
                         className="btn btn-approve btn-sm"
                         disabled={approvingId === user.id}
                         onClick={() => approve(user.id)}
+                        aria-label={`Approve ${user.first_name} ${user.last_name}`}
+                        aria-busy={approvingId === user.id}
                       >
                         {approvingId === user.id ? "Approving..." : "Approve"}
                       </button>
@@ -121,12 +154,13 @@ const Users = () => {
                           if (!confirmDelete()) return;
                           deleteUser(user.id);
                         }}
+                        aria-label={`Deny ${user.first_name} ${user.last_name}`}
+                        aria-busy={approvingId === user.id}
                       >
                         {approvingId === user.id ? "Denying..." : "Deny"}
                       </button>
                     )}
                   </td>
-                  <td>{user.created_at}</td>
                 </tr>
               ))}
             </tbody>

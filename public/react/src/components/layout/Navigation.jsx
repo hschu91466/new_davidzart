@@ -2,23 +2,34 @@ import { NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 
-function Navigation() {
+const Navigation = () => {
   const { user } = useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
-    <nav className="site-nav">
+    <nav className="site-nav" aria-label="Main navigation">
       <div className="nav-inner">
-        <button className="nav-toggle" onClick={() => setMenuOpen(!menuOpen)}>
+        <button
+          className="nav-toggle"
+          onClick={toggleMenu}
+          aria-label="Toggle navigation menu"
+          aria-expanded={menuOpen}
+          aria-controls="nav-list"
+        >
           ☰
         </button>
-        <ul className={`nav-list ${menuOpen ? "open" : ""}`}>
+        <ul className={`nav-list ${menuOpen ? "open" : ""}`} id="nav-list">
           <li>
             <NavLink
               to="/"
               className={({ isActive }) =>
                 "site-nav-link" + (isActive ? " is-active" : "")
               }
+              aria-current={({ isActive }) => (isActive ? "page" : undefined)}
             >
               Home
             </NavLink>
@@ -30,30 +41,36 @@ function Navigation() {
               className={({ isActive }) =>
                 "site-nav-link" + (isActive ? " is-active" : "")
               }
+              aria-current={({ isActive }) => (isActive ? "page" : undefined)}
             >
               About
             </NavLink>
           </li>
+
           <li>
             <NavLink
               to="/contact"
               className={({ isActive }) =>
                 "site-nav-link" + (isActive ? " is-active" : "")
               }
+              aria-current={({ isActive }) => (isActive ? "page" : undefined)}
             >
               Contact
             </NavLink>
           </li>
+
           <li>
             <NavLink
               to="/galleries"
               className={({ isActive }) =>
                 "site-nav-link" + (isActive ? " is-active" : "")
               }
+              aria-current={({ isActive }) => (isActive ? "page" : undefined)}
             >
               Galleries
             </NavLink>
           </li>
+
           {user?.role === "admin" && (
             <li>
               <NavLink
@@ -61,6 +78,7 @@ function Navigation() {
                 className={({ isActive }) =>
                   "site-nav-link admin-link" + (isActive ? " is-active" : "")
                 }
+                aria-current={({ isActive }) => (isActive ? "page" : undefined)}
               >
                 Admin
               </NavLink>
@@ -70,6 +88,6 @@ function Navigation() {
       </div>
     </nav>
   );
-}
+};
 
 export default Navigation;

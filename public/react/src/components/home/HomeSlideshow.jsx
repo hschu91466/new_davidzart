@@ -1,7 +1,7 @@
 import { BASE_URL, CDN_BASE } from "../../config";
 import { useEffect, useState } from "react";
 
-function HomeSlideshow() {
+const HomeSlideshow = () => {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
@@ -34,7 +34,11 @@ function HomeSlideshow() {
   }, [images.length]);
 
   if (images.length === 0) {
-    return <div>Loading...</div>;
+    return (
+      <div role="status" aria-live="polite">
+        Loading...
+      </div>
+    );
   }
 
   const currentImage = images[currentIndex];
@@ -56,9 +60,18 @@ function HomeSlideshow() {
   };
 
   return (
-    <div className="home-slideshow">
+    <div
+      className="home-slideshow"
+      role="region"
+      aria-label="Featured image slideshow"
+      aria-live="polite"
+    >
       <div className="home-slideshow-card">
-        <button className="nav prev" onClick={prevSlide}>
+        <button
+          className="nav prev"
+          onClick={prevSlide}
+          aria-label="Previous image"
+        >
           ‹
         </button>
         <div className="home-slideshow-image-wrapper">
@@ -68,14 +81,26 @@ function HomeSlideshow() {
             className={`home-slideshow-image ${isFading ? "fade-out" : ""}`}
           />
         </div>
-        <button className="nav next" onClick={nextSlide}>
+        <button
+          className="nav next"
+          onClick={nextSlide}
+          aria-label="Next image"
+        >
           ›
         </button>
 
         <div className="home-slideshow-title">{currentImage.title}</div>
+
+        <div
+          className="slideshow-counter"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          Image {currentIndex + 1} of {images.length}
+        </div>
       </div>
     </div>
   );
-}
+};
 
 export default HomeSlideshow;

@@ -39,7 +39,6 @@ const Register = () => {
       const data = await response.json();
 
       if (response.ok && data.ok) {
-        // ✅ clear form
         setForm({
           first_name: "",
           last_name: "",
@@ -47,7 +46,7 @@ const Register = () => {
           password: "",
         });
         navigate("/registryconfirmation", {
-          state: { message: "Account created.  Awaiting approval." },
+          state: { message: "Account created. Awaiting approval." },
         });
       } else {
         if (data.errors) {
@@ -66,62 +65,86 @@ const Register = () => {
 
   return (
     <div className="form-container">
-      <form onSubmit={handleSubmit} className="form-group">
-        <h3>Create Account</h3>
+      <form
+        onSubmit={handleSubmit}
+        className="form-group"
+        aria-label="Registration form"
+      >
+        <h1>Create Account</h1>
 
         <div className="form-group">
-          <label>First Name:</label>
+          <label htmlFor="first_name">First Name:</label>
           <input
+            id="first_name"
             type="text"
             name="first_name"
             value={form.first_name}
             onChange={handleChange}
             required
+            aria-required="true"
           />
         </div>
 
         <div className="form-group">
-          <label>Last Name:</label>
+          <label htmlFor="last_name">Last Name:</label>
           <input
+            id="last_name"
             type="text"
             name="last_name"
             value={form.last_name}
             onChange={handleChange}
             required
+            aria-required="true"
           />
         </div>
 
         <div className="form-group">
-          <label>Email:</label>
+          <label htmlFor="reg-email">Email:</label>
           <input
+            id="reg-email"
             type="email"
             name="email"
             value={form.email}
             onChange={handleChange}
             required
+            aria-required="true"
           />
         </div>
 
         <div className="form-group">
-          <label>Password:</label>
+          <label htmlFor="reg-password">Password:</label>
           <input
+            id="reg-password"
             type="password"
             name="password"
             value={form.password}
             onChange={handleChange}
             required
+            aria-required="true"
           />
         </div>
 
-        <button className="btn btn-primary" type="submit" disabled={loading}>
+        <button
+          className="btn btn-primary"
+          type="submit"
+          disabled={loading}
+          aria-busy={loading}
+        >
           {loading ? "Creating..." : "Register"}
         </button>
 
         {message && (
-          <p className="form-message form-message--success">{message}</p>
+          <p
+            className="form-message form-message--success"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            {message}
+          </p>
         )}
 
-        <p style={{ textAlign: "center", marginTop: "var(--space-4)" }}>
+        <p>
           Already have an account?{" "}
           <Link to="/login" className="auth-register">
             Login

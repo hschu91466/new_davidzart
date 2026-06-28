@@ -13,10 +13,10 @@ function Galleries() {
     fetch(`${BASE_URL}/api/galleries.php?format=json`)
       .then((res) => {
         if (!res.ok) throw new Error("Failed to fetch galleries");
-        return res.json(); // ✅ BACK TO JSON
+        return res.json();
       })
       .then((data) => {
-        console.log("JSON:", data); // keep this
+        console.log("JSON:", data);
         setGalleries(data.galleries || []);
         setLoading(false);
       })
@@ -29,13 +29,17 @@ function Galleries() {
   if (loading)
     return (
       <div className="container">
-        <p>Loading galleries…</p>
+        <p role="status" aria-live="polite">
+          Loading galleries…
+        </p>
       </div>
     );
   if (error)
     return (
       <div className="container">
-        <p>Error: {error}</p>
+        <p role="alert" aria-live="assertive">
+          Error: {error}
+        </p>
       </div>
     );
 
@@ -46,6 +50,7 @@ function Galleries() {
       <GalleryGrid
         galleries={galleries}
         onSelect={(slug) => navigate(`/galleries/${slug}`)}
+        aria-label="Available galleries"
       />
     </div>
   );

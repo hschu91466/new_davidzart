@@ -31,3 +31,46 @@
 (
 )
 
+[27-Jun-2026 17:21:44 Europe/Berlin] SESSION CONTENT LOGIN:
+[27-Jun-2026 17:21:44 Europe/Berlin] Array
+(
+)
+
+[28-Jun-2026 14:24:35 Europe/Berlin] SESSION CONTENT LOGIN:
+[28-Jun-2026 14:24:35 Europe/Berlin] Array
+(
+)
+
+[29-Jun-2026 00:52:38 Europe/Berlin] SESSION CONTENT LOGIN:
+[29-Jun-2026 00:52:38 Europe/Berlin] Array
+(
+)
+
+[29-Jun-2026 01:01:49 Europe/Berlin] SESSION CONTENT LOGIN:
+[29-Jun-2026 01:01:49 Europe/Berlin] Array
+(
+)
+
+[29-Jun-2026 01:06:02 Europe/Berlin] SESSION CONTENT LOGIN:
+[29-Jun-2026 01:06:02 Europe/Berlin] Array
+(
+)
+
+[29-Jun-2026 01:12:05 Europe/Berlin] DELETE.PHP CALLED
+[29-Jun-2026 01:12:05 Europe/Berlin] DELETE: imageId = 257
+[29-Jun-2026 01:12:05 Europe/Berlin] DELETE ERROR: Call to undefined method ImageController::delete() | C:\xampp\htdocs\Sites\production\davidschu_new\public\api\images\delete.php:24
+[29-Jun-2026 01:12:31 Europe/Berlin] DELETE.PHP CALLED
+[29-Jun-2026 01:12:31 Europe/Berlin] DELETE: imageId = 257
+[29-Jun-2026 01:12:31 Europe/Berlin] DELETE ERROR: Call to undefined method ImageController::delete() | C:\xampp\htdocs\Sites\production\davidschu_new\public\api\images\delete.php:24
+[29-Jun-2026 01:12:34 Europe/Berlin] DELETE.PHP CALLED
+[29-Jun-2026 01:12:34 Europe/Berlin] DELETE: imageId = 256
+[29-Jun-2026 01:12:34 Europe/Berlin] DELETE ERROR: Call to undefined method ImageController::delete() | C:\xampp\htdocs\Sites\production\davidschu_new\public\api\images\delete.php:24
+[29-Jun-2026 01:12:38 Europe/Berlin] DELETE.PHP CALLED
+[29-Jun-2026 01:12:38 Europe/Berlin] DELETE: imageId = 258
+[29-Jun-2026 01:12:38 Europe/Berlin] DELETE ERROR: Call to undefined method ImageController::delete() | C:\xampp\htdocs\Sites\production\davidschu_new\public\api\images\delete.php:24
+[29-Jun-2026 01:14:20 Europe/Berlin] SESSION CONTENT LOGIN:
+[29-Jun-2026 01:14:20 Europe/Berlin] Array
+(
+    [last_comment_ts] => 1782688439
+)
+

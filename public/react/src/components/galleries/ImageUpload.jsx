@@ -52,7 +52,6 @@ const ImageUpload = ({ galleryId, onUploadSuccess }) => {
       setUploading(true);
       setUploadMessage("Uploading... 0%");
 
-      // ✅ fallback timeout (prevents permanent stuck state)
       timeoutId = setTimeout(() => {
         setUploadMessage("Upload taking too long ❌");
         setUploading(false);
@@ -82,7 +81,6 @@ const ImageUpload = ({ galleryId, onUploadSuccess }) => {
 
       document.querySelector('input[type="file"]').value = "";
 
-      // ✅ optional: auto-clear success message
       setTimeout(() => {
         setUploadMessage("");
       }, 3000);
@@ -99,21 +97,39 @@ const ImageUpload = ({ galleryId, onUploadSuccess }) => {
         setUploadMessage(error.response?.data?.message || "Upload failed ❌");
       }
     } finally {
-      setUploading(false); // ✅ ALWAYS runs if request resolves
+      setUploading(false);
     }
   };
 
   return (
     <>
-      <input type="file" onChange={handleFileSelect} />
+      <label htmlFor="image-file">Select Image File</label>
+      <input
+        id="image-file"
+        type="file"
+        onChange={handleFileSelect}
+        aria-describedby="upload-status"
+        accept="image/*"
+      />
       <button
         className="btn btn-primary"
         onClick={uploadImage}
         disabled={uploading}
+        aria-busy={uploading}
       >
         {uploading ? "Uploading..." : "Upload"}
       </button>
-      {uploadMessage && <div className="upload-status">{uploadMessage}</div>}
+      {uploadMessage && (
+        <div
+          id="upload-status"
+          className="upload-status"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+        >
+          {uploadMessage}
+        </div>
+      )}
     </>
   );
 };

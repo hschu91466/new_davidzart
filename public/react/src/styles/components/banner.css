@@ -61,13 +61,14 @@
 .banner-inner {
   display: grid;
   grid-template-columns: 20% 60% 20%;
+  justify-content: center;
   align-items: center;
   padding: 0 var(--space-4);
 }
 
 .banner-logo {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
 }
 
 .banner-logo img {
@@ -96,7 +97,7 @@
   justify-content: center;
   align-items: center;
   min-height: 100px;
-  padding: 8px 0;
+  padding: 5px 0;
   text-align: center;
   margin-top: var(--space-5);
   font-family: "Libre Baskerville", serif;
@@ -121,12 +122,18 @@
     align-items: center;
     text-align: center;
     max-width: 100%;
-    margin-top: var(--space-2);
+    min-height: auto;
+    padding: 0;
+    margin-top: var(--space-1);
     justify-content: center;
   }
 
   .banner-logo {
     margin-bottom: var(--space-3);
-    justify-content: center;
+    justify-content: flex-start;
+  }
+
+  .banner-logo img {
+    max-height: 65px;
   }
 }

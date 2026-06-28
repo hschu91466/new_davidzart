@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { BASE_URL, CDN_BASE } from "../config";
-import CommentList from "../components/comments/CommentList";
-import CommentForm from "../components/comments/CommentForm";
+import ImageCommentModal from "../components/comments/ImageCommentModal";
 
 function GalleryDetail() {
   const { slug } = useParams();
@@ -10,6 +9,7 @@ function GalleryDetail() {
   const [data, setData] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
   const [refreshKey, setRefreshKey] = useState(0);
+  const [expandedImageId, setExpandedImageId] = useState(null);
 
   const gallery = data?.gallery;
 
@@ -30,6 +30,10 @@ function GalleryDetail() {
     setCurrentIndex(null);
   };
 
+  const toggleComments = (imageId) => {
+    setExpandedImageId(expandedImageId === imageId ? null : imageId);
+  };
+
   const currentImage =
     currentIndex !== null && data?.images ? data.images[currentIndex] : null;
 
@@ -40,8 +44,12 @@ function GalleryDetail() {
     lightboxSrc = current.image_url || "";
   }
 
-  // if (!data) return <p>Loading gallery…</p>;
-  if (!data || !data.images) return <p>Loading gallery…</p>;
+  if (!data || !data.images)
+    return (
+      <p role="status" aria-live="polite">
+        Loading gallery…
+      </p>
+    );
   console.log("Images:", data.images[currentIndex]);
 
   return (
@@ -50,44 +58,64 @@ function GalleryDetail() {
         <button
           className="btn btn-primary back-btn"
           onClick={() => navigate("/galleries")}
+          aria-label="Back to galleries"
         >
-          <span className="back-icon">←</span>
+          <span className="back-icon" aria-hidden="true">
+            ←
+          </span>
           <span className="back-text">Back to galleries</span>
         </button>
 
-        <h2>{gallery?.title}</h2>
+        <h1>{gallery?.title}</h1>
         {gallery?.description && <p>{gallery.description}</p>}
       </div>
 
-      <div id="galleryGrid" className="grid-base">
-        {/* {console.log("FULL IMAGES ARRAY:", data.images)} */}
+      <div
+        id="galleryGrid"
+        className="grid-base"
+        role="grid"
+        aria-label="Gallery images"
+      >
         {data.images &&
           data.images.map((img, index) => {
             const src = img.image_url || "";
 
             const orientation = (img.orientation || "").toLowerCase().trim();
-            // console.log("first image from state:", data.images[0]);
             const tileClass =
               orientation === "portrait"
                 ? "gallery-tile gallery-tile--portrait"
                 : "gallery-tile gallery-tile--landscape";
 
             return (
-              <div className={tileClass} key={img.id}>
-                <img
-                  src={src}
-                  alt="Gallery image"
+              <div className={tileClass} key={img.id} role="gridcell">
+                <button
                   onClick={() => openLightbox(index)}
-                />
-
-                <div className="image-meta">
-                  {img.title && <div className="image-title">{img.title}</div>}
-                  {img.caption && (
-                    <div className="image-caption">{img.caption}</div>
-                  )}
-                  {img.year_created && (
-                    <div className="image-year">{img.year_created}</div>
-                  )}
+                  aria-label={`View ${img.title || "image"} in fullscreen`}
+                  className="tile-image-btn"
+                >
+                  <img src={src} alt={img.title || "Gallery image"} />
+                </button>
+                <div className="tile-footer">
+                  <div className="image-meta">
+                    {img.title && (
+                      <div className="image-title">{img.title}</div>
+                    )}
+                    {img.caption && (
+                      <div className="image-caption">{img.caption}</div>
+                    )}
+                    {img.year_created && (
+                      <div className="image-year">{img.year_created}</div>
+                    )}
+                  </div>
+                  <button
+                    className="image-comment-btn"
+                    onClick={() => toggleComments(img.id)}
+                    aria-label={`View comments for ${img.title || "image"}`}
+                    aria-expanded={expandedImageId === img.id}
+                    title="View comments"
+                  >
+                    💬
+                  </button>
                 </div>
               </div>
             );
@@ -95,16 +123,24 @@ function GalleryDetail() {
       </div>
 
       {currentIndex !== null && (
-        <div className="lightbox-overlay" onClick={closeLightbox}>
+        <div
+          className="lightbox-overlay"
+          onClick={closeLightbox}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Image viewer"
+        >
           <div
             className="lightbox-content"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
-            <button className="lightbox-close" onClick={closeLightbox}>
-              x
+            <button
+              className="lightbox-close"
+              onClick={closeLightbox}
+              aria-label="Close image viewer"
+            >
+              ×
             </button>
-            {/* Left Arrow */}
             <button
               className="lightbox-prev"
               onClick={() =>
@@ -112,35 +148,26 @@ function GalleryDetail() {
                   (currentIndex - 1 + data.images.length) % data.images.length,
                 )
               }
+              aria-label="Previous image"
             >
               ‹
             </button>
 
             <div className="lightbox-body">
               <div className="lightbox-image">
-                <img src={lightboxSrc} alt="" />
-              </div>
-
-              <div className="lightbox-comments">
-                {currentImage && (
-                  <>
-                    <CommentList contentId={currentImage.id} key={refreshKey} />
-
-                    <CommentForm
-                      contentId={currentImage.id}
-                      onSuccess={() => setRefreshKey((k) => k + 1)}
-                    />
-                  </>
-                )}
+                <img
+                  src={lightboxSrc}
+                  alt={currentImage?.title || "Gallery image"}
+                />
               </div>
             </div>
 
-            {/* Right Arrow */}
             <button
               className="lightbox-next"
               onClick={() =>
                 setCurrentIndex((currentIndex + 1) % data.images.length)
               }
+              aria-label="Next image"
             >
               ›
             </button>
@@ -153,13 +180,23 @@ function GalleryDetail() {
                 {currentImage?.media ? `, ${currentImage.media}` : ""}
                 {currentImage?.dimensions ? `, ${currentImage.dimensions}` : ""}
               </div>
-              <div className="lightbox-counter">
+              <div className="lightbox-counter" aria-live="polite">
                 {currentIndex + 1} / {data.images.length}
               </div>
             </div>
           </div>
         </div>
       )}
+      <ImageCommentModal
+        image={
+          expandedImageId
+            ? data.images.find((img) => img.id === expandedImageId)
+            : null
+        }
+        onClose={() => setExpandedImageId(null)}
+        refreshKey={refreshKey}
+        setRefreshKey={setRefreshKey}
+      />
     </div>
   );
 }
