@@ -85,7 +85,9 @@ class CommentModel
 
     public static function delete(PDO $pdo, int $commentId): bool
     {
-        $stmt = $pdo->prepare("DELETE FROM comments WHERE comment_id = :id");
+        $sql = "DELETE FROM comments WHERE comment_id = :id";
+
+        $stmt = $pdo->prepare($sql);
         return $stmt->execute([':id' => $commentId]);
     }
 

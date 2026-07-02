@@ -22,7 +22,7 @@ class UserModel
      */
     public static function getById(PDO $pdo, int $id): ?array
     {
-        $sql = "SELECT id, email, first_name, last_name, role FROM users WHERE id = :id LIMIT 1";
+        $sql = "SELECT id, email, first_name, last_name, role, password_hash FROM users WHERE id = :id LIMIT 1";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([':id' => $id]);
 
@@ -84,6 +84,16 @@ class UserModel
         return $stmt->execute([
             ':id' => $userId,
             ':admin_id' => $adminId
+        ]);
+    }
+
+    public static function updatePassword(PDO $pdo, int $userId, string $passwordHash): bool
+    {
+        $sql = "UPDATE users SET password_hash = :hash WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        return $stmt->execute([
+            ':hash' => $passwordHash,
+            ':id' => $userId
         ]);
     }
 }

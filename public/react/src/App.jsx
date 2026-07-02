@@ -9,10 +9,10 @@ import Contact from "./pages/Contact";
 import AdminGalleries from "./pages/admin/Galleries";
 import AdminComments from "./pages/admin/Comments";
 import Dashboard from "./pages/admin/Dashboard";
-// import AdminLogin from "../../../@DO NOT INCLUDE/AdminLogin";
 import AdminUsers from "./pages/admin/Users";
 import AdminMessages from "./pages/admin/Messages";
 import RegistryConf from "./pages/auth/RegistryConfirmation";
+import ChangePassword from "./pages/auth/ChangePassword";
 import Login from "./pages/auth/Login";
 import { AuthProvider } from "./context/AuthProvider";
 import Register from "./pages/auth/Register";
@@ -33,9 +33,15 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/registryconfirmation" element={<RegistryConf />} />
+            <Route
+              path="/change-password"
+              element={
+                <ProtectedRoute>
+                  <ChangePassword />
+                </ProtectedRoute>
+              }
+            />
           </Route>
-
-          {/* <Route path="/admin/login" element={<AdminLogin />} /> */}
 
           <Route
             path="/admin"

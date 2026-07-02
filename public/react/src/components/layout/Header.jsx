@@ -1,11 +1,12 @@
 import { BASE_URL, CDN_BASE } from "../../config";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import BannerQuote from "../home/BannerQuote";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   return (
     <header className="brand-band">
@@ -25,18 +26,39 @@ const Header = () => {
 
         <div className="auth-controls">
           {user ? (
-            <>
-              <span className="auth-user" role="status">
-                Welcome, {user.name}
-              </span>
+            <div className="user-menu">
               <button
-                className="auth-link"
-                onClick={logout}
-                aria-label="Logout from account"
+                className="user-menu-toggle"
+                onClick={() => setUserMenuOpen(!userMenuOpen)}
+                aria-label="User menu"
+                aria-expanded={userMenuOpen}
+                aria-controls="user-dropdown"
               >
-                Logout
+                Welcome, {user.name} ▼
               </button>
-            </>
+
+              {userMenuOpen && (
+                <div className="user-dropdown" id="user-dropdown">
+                  <Link
+                    to="/change-password"
+                    className="dropdown-link"
+                    onClick={() => setUserMenuOpen(false)}
+                  >
+                    Change Password
+                  </Link>
+                  <button
+                    className="dropdown-link dropdown-logout"
+                    onClick={() => {
+                      logout();
+                      setUserMenuOpen(false);
+                    }}
+                    aria-label="Logout from account"
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
+            </div>
           ) : (
             <Link
               className="auth-link"

@@ -21,7 +21,7 @@ try {
     }
 
     $controller = new ImageController($pdo);
-    $response = $controller->delete($imageId);
+    $response = $controller->deleteImage($imageId);
 
     error_log("DELETE response: " . print_r($response, true));  // Debug log
 

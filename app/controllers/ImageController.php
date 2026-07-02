@@ -42,12 +42,12 @@ class ImageController
         );
     }
 
-    public static function deleteImage(int $imageId, PDO $pdo): array
+    public function deleteImage(int $imageId): array
     {
         try {
             error_log("DELETE: Starting for imageId=$imageId");
 
-            $image = ImageModel::getById($pdo, $imageId);
+            $image = ImageModel::getById($this->pdo, $imageId);
             error_log("DELETE: Image found = " . ($image ? 'yes' : 'no'));
 
             if (!$image) {
@@ -56,7 +56,7 @@ class ImageController
 
             error_log("DELETE: About to call ImageModel::delete");
 
-            ImageModel::delete($pdo, $imageId);
+            ImageModel::delete($this->pdo, $imageId);
 
             error_log("DELETE: Success");
 

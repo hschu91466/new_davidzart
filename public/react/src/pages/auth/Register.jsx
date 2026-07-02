@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { BASE_URL, CDN_BASE } from "../../config";
-import { AuthContext } from "../../context/AuthContext";
+import { BASE_URL } from "../../config";
 
 const Register = () => {
   const [form, setForm] = useState({
@@ -9,10 +8,14 @@ const Register = () => {
     last_name: "",
     email: "",
     password: "",
+    confirmPassword: "",
   });
 
   const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -22,9 +25,56 @@ const Register = () => {
     });
   };
 
+  const validateForm = () => {
+    setError("");
+
+    if (!form.first_name.trim()) {
+      setError("First name is required");
+      return false;
+    }
+
+    if (!form.last_name.trim()) {
+      setError("Last name is required");
+      return false;
+    }
+
+    if (!form.email.trim()) {
+      setError("Email is required");
+      return false;
+    }
+
+    if (!form.password) {
+      setError("Password is required");
+      return false;
+    }
+
+    if (!form.confirmPassword) {
+      setError("Please confirm your password");
+      return false;
+    }
+
+    if (form.password !== form.confirmPassword) {
+      setError("Passwords do not match");
+      return false;
+    }
+
+    if (form.password.length < 8) {
+      setError("Password must be at least 8 characters");
+      return false;
+    }
+
+    return true;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setMessage("");
+    setError("");
+
+    if (!validateForm()) {
+      return;
+    }
+
     setLoading(true);
 
     try {
@@ -33,7 +83,14 @@ const Register = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(form),
+        credentials: "include",
+        body: JSON.stringify({
+          first_name: form.first_name,
+          last_name: form.last_name,
+          email: form.email,
+          password: form.password,
+          confirmPassword: form.confirmPassword,
+        }),
       });
 
       const data = await response.json();
@@ -44,20 +101,21 @@ const Register = () => {
           last_name: "",
           email: "",
           password: "",
+          confirmPassword: "",
         });
         navigate("/registryconfirmation", {
           state: { message: "Account created. Awaiting approval." },
         });
       } else {
         if (data.errors) {
-          setMessage(data.errors.join(", "));
+          setError(data.errors.join(", "));
         } else {
-          setMessage(data.error || "Registration failed");
+          setError(data.error || "Registration failed");
         }
       }
     } catch (error) {
       console.error("Register error:", error);
-      setMessage("Something went wrong");
+      setError("Something went wrong");
     } finally {
       setLoading(false);
     }
@@ -113,15 +171,51 @@ const Register = () => {
 
         <div className="form-group">
           <label htmlFor="reg-password">Password:</label>
-          <input
-            id="reg-password"
-            type="password"
-            name="password"
-            value={form.password}
-            onChange={handleChange}
-            required
-            aria-required="true"
-          />
+          <div className="password-input-wrapper">
+            <input
+              id="reg-password"
+              type={showPassword ? "text" : "password"}
+              name="password"
+              value={form.password}
+              onChange={handleChange}
+              required
+              aria-required="true"
+            />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowPassword(!showPassword)}
+              title={showPassword ? "Hide password" : "Show password"}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+              tabIndex={-1}
+            >
+              {showPassword ? "👁️" : "🙈"}
+            </button>
+          </div>
+        </div>
+        <div className="form-group">
+          <label htmlFor="reg-confirm-password">Confirm Password:</label>
+          <div className="password-input-wrapper">
+            <input
+              id="reg-confirm-password"
+              type={showConfirmPassword ? "text" : "password"}
+              name="confirmPassword"
+              value={form.confirmPassword}
+              onChange={handleChange}
+              required
+              aria-required="true"
+            />
+            <button
+              type="button"
+              className="password-toggle"
+              onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+              aria-label={
+                showConfirmPassword ? "Hide password" : "Show password"
+              }
+            >
+              {showPassword ? "👁️" : "🙈"}
+            </button>
+          </div>
         </div>
 
         <button
@@ -132,6 +226,17 @@ const Register = () => {
         >
           {loading ? "Creating..." : "Register"}
         </button>
+
+        {error && (
+          <p
+            className="form-message form-message--error"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+          >
+            {error}
+          </p>
+        )}
 
         {message && (
           <p

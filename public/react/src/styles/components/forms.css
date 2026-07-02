@@ -35,8 +35,14 @@
   border-radius: 8px;
 }
 
-.form-container--register input {
-  width: 280px;
+.form-container--register .password-input-wrapper {
+  width: 100%;
+}
+
+.form-container--register .password-input-wrapper input {
+  width: 100% !important;
+  padding-right: 45px;
+  box-sizing: border-box;
 }
 
 .form-login-link {
@@ -97,7 +103,6 @@
   flex-direction: column;
   gap: 8px;
   margin-bottom: var(--space-3);
-  flex-wrap: wrap;
 }
 
 .form-actions {
@@ -162,6 +167,44 @@ label {
 .form-row {
   display: grid;
   gap: var(--space-4);
+}
+
+.password-input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+  padding-right: 45px;
+  box-sizing: border-box;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px 8px;
+  flex-shrink: 0;
+}
+
+.password-toggle:hover {
+  color: #333;
+}
+.form-container--register .password-input-wrapper {
+  width: 100%;
+}
+
+.form-container--register .password-input-wrapper input {
+  max-width: 100%;
+  padding-right: 45px;
+  box-sizing: border-box;
 }
 
 @media (min-width: 640px) {

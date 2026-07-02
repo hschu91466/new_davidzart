@@ -66,16 +66,28 @@ class UserController
         }
     }
 
-    public function delete(int $userId): array
+    public function delete(array $data): array
     {
+        $userId = (int)($data['user_id'] ?? 0);
+
+        if ($userId <= 0) {
+            return [
+                'success' => false,
+                'message' => 'Invalid user ID'
+            ];
+        }
         try {
-            $success = UserModel::delete($this->pdo, $userId);
-            if ($success) {
-                return ['ok' => true, 'message' => 'User deleted successfully'];
-            }
-            return ['ok' => false, 'error' => 'User not found'];
+            UserModel::delete($this->pdo, $userId);
+
+            return [
+                'success' => true,
+                'message' => 'User deleted successfully'
+            ];
         } catch (Exception $e) {
-            return ['ok' => true, 'message' => 'Failed to delete user'];
+            return [
+                'success' => false,
+                'message' => $e->getMessage()
+            ];
         }
     }
 }

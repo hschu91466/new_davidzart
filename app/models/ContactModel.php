@@ -27,8 +27,7 @@ class ContactModel
         $stmt = $pdo->query("
         SELECT message_id, name, email, message, created_at, is_read
         FROM contact_messages
-        ORDER BY created_at DESC
-    ");
+        ORDER BY created_at DESC");
 
         return $stmt->fetchAll();
     }
@@ -46,10 +45,8 @@ class ContactModel
 
     public static function deleteMessage(PDO $pdo, int $id): bool
     {
-
-        $stmt = $pdo->prepare("
-        DELETE FROM contact_messages
-        WHERE message_id = :id");
+        $sql = "DELETE FROM contact_messages WHERE message_id = :id";
+        $stmt = $pdo->prepare($sql);
 
         return $stmt->execute([':id' => $id]);
     }
