@@ -45,7 +45,7 @@
   justify-content: center;
   max-width: 650px;
   margin: 0 auto;
-  padding-bottom: 20px;
+  padding-bottom: var(--space-5);
 }
 
 /* ==========================================================================
@@ -55,19 +55,19 @@
 .about-layout {
   display: grid;
   grid-template-columns: 300px 1fr;
-  gap: 30px;
+  gap: var(--space-6);
   align-items: start;
 }
 
 .about-image img {
   width: 100%;
-  border-radius: 6px;
+  border-radius: var(--space-2);
 }
 
 .back-btn {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: var(--space-1);
   margin-bottom: var(--space-4);
 }
 
@@ -78,13 +78,13 @@
 .contact-page {
   max-width: 600px;
   margin: 0 auto;
-  padding-top: 20px;
+  padding-top: var(--space-5);
 }
 
 .contact-status {
-  margin-top: 10px;
+  margin-top: var(--space-2);
   font-size: 0.9rem;
-  color: var(--color-green);
+  color: var(--color-primary);
 }
 
 @media (max-width: 1200px) {

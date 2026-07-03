@@ -31,16 +31,16 @@
 }
 
 .admin-nav li {
-  margin-bottom: 10px;
+  margin-bottom: var(--space-3);
 }
 
 .admin-sidebar button {
-  margin-top: 20px;
+  margin-top: var(--space-5);
 }
 
 .admin-nav a {
   display: block;
-  padding: 8px;
+  padding: var(--space-2);
   text-decoration: none;
   color: var(--color-text);
 }
@@ -52,9 +52,9 @@
 }
 
 .upload-status {
-  margin-top: 8px;
+  margin-top: var(--space-2);
   font-size: 0.9rem;
-  color: var(--color-green);
+  color: var(--color-primary);
 }
 
 @media (max-width: 639.98px) {

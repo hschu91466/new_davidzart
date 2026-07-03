@@ -7,7 +7,7 @@
 }
 
 .auth-user {
-  border-right: 2px solid var(--color-gold);
+  border-right: 2px solid var(--color-accent);
   padding-right: 8px;
   margin-right: 8px;
   font-weight: 600;
@@ -28,7 +28,7 @@
   border: none;
   padding: 0;
   font: inherit;
-  color: var(--color-green);
+  color: var(--color-primary);
   cursor: pointer;
   text-decoration: none;
 }

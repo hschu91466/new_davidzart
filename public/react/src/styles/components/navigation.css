@@ -44,7 +44,7 @@
   bottom: -4px;
   width: 100%;
   height: 2px;
-  background: var(--color-gold);
+  background: var(--color-accent);
   transform: scaleX(0);
   transform-origin: left center;
   transition: transform 0.18s ease;

@@ -7,13 +7,14 @@
 
 .brand-band {
   position: relative;
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
-    var(--color-green-dk) 0%,
+    var(--color-primary-dk) 0%,
     var(--color-surface) 100%
-  );
-  border-top: 2px solid var(--color-gold);
-  border-bottom: 2px solid var(--color-gold);
+  ); */
+  background: var(--banner-gradient);
+  border-top: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
 }
 
 .brand-band::after {
@@ -40,22 +41,22 @@
   height: 16px;
   background: linear-gradient(
     90deg,
-    var(--color-green-dk) 0%,
+    var(--color-primary-dk) 0%,
     var(--color-surface) 100%
   );
-  border-top: 2px solid var(--color-gold);
-  border-bottom: 2px solid var(--color-gold);
+  border-top: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
 }
 
 .site-banner {
   background: linear-gradient(
     90deg,
-    var(--color-green-dk) 0%,
-    var(--color-green) 50%,
+    var(--color-primary-dk) 0%,
+    var(--color-primary) 50%,
     var(--color-banner-fade) 100%
   );
-  border-top: 2px solid var(--color-gold);
-  border-bottom: 2px solid var(--color-gold);
+  border-top: 2px solid var(--color-accent);
+  border-bottom: 2px solid var(--color-accent);
 }
 
 .banner-inner {

@@ -1,22 +1,26 @@
 /* ==========================================================================
    DESIGN TOKENS
-   This is the ONLY file that should need to change for a new site:
-   colors, fonts, spacing scale. Everything else in /styles references
-   these variables instead of hardcoded values.
-   ========================================================================== */
+      This is the ONLY file that should need to change for a new site:
+         colors, fonts, spacing scale. Everything else in /styles references
+            these variables instead of hardcoded values.
+               ========================================================================== */
 
 :root {
   /* Brand palette */
-  --color-green: #20430c; /* Dark Green */
-  --color-green-dk: #0a2d2a; /* Deep Green */
-  --color-green-light: #6f9f4a;
-  --color-gold: rgb(228, 195, 64);
-  --color-brown: #554918;
-  --color-blue: #0e3451;
+  --color-primary: #20430c; /* Dark Green */
+  --color-primary-dk: #0a2d2a; /* Deep Green */
+  --color-primary-light: #6f9f4a;
+  --color-accent: #e4c340;
+  --color-secondary: #0e3451;
   --color-lt-gray: #f2f2f2;
 
   /* Used by .site-banner gradient  */
   --color-banner-fade: #cfd6d6;
+  --banner-gradient: linear-gradient(
+    90deg,
+    var(--color-primary-dk) 0%,
+    var(--color-surface) 100%
+  );
 
   /* Neutrals */
   --color-text: #111111;

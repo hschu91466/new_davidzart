@@ -124,12 +124,12 @@
 }
 
 .form-select:focus {
-  outline: 2px solid var(--color-green-light);
+  outline: 2px solid var(--color-primary-light);
   outline-offset: 1px;
 }
 
 .form-select:hover {
-  border-color: var(--color-green);
+  border-color: var(--color-primary);
 }
 
 input,
@@ -149,7 +149,7 @@ input:focus,
 textarea:focus,
 select:focus {
   outline: none;
-  border-color: var(--color-green);
+  border-color: var(--color-primary);
   box-shadow: 0 0 0 1px rgba(76, 122, 45, 0.3);
 }
 

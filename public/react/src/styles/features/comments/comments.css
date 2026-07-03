@@ -6,12 +6,12 @@
   --c-bg: var(--color-surface);
   --c-muted: var(--color-text-muted);
   --c-border: var(--color-divider);
-  --c-accent: var(--color-gold);
+  --c-accent: var(--color-accent);
 }
 
 .comments-page .page-title {
   margin: var(--space-7) 0 var(--space-5);
-  color: var(--color-green);
+  color: var(--color-primary);
   font-family: var(--font-display);
 }
 
@@ -42,7 +42,7 @@
 
 .comments-page .comment__author {
   font-weight: 700;
-  color: var(--color-blue);
+  color: var(--color-secondary);
 }
 
 .comments-page .comment__body {
@@ -97,9 +97,9 @@
 
 .comments-page #comments-loadmore {
   margin-top: var(--space-5);
-  background: var(--color-blue);
+  background: var(--color-secondary);
   color: #fff;
-  border: 1px solid var(--color-blue);
+  border: 1px solid var(--color-secondary);
   border-radius: var(--radius-sm);
   padding: 0.6rem 1rem;
   font-weight: 700;
@@ -128,9 +128,9 @@
 
 .comments-page .comment-form .btn-submit {
   margin-top: var(--space-4);
-  background: var(--color-blue);
+  background: var(--color-secondary);
   color: #fff;
-  border: 1px solid var(--color-blue);
+  border: 1px solid var(--color-secondary);
   border-radius: var(--radius-sm);
   padding: 0.6rem 1rem;
   font-weight: 700;
@@ -141,6 +141,10 @@
 
 .comments-page .comment-form .btn-submit:hover {
   opacity: 0.9;
+}
+
+.comments-page .comments-tabs {
+  margin-bottom: "1rem";
 }
 
 /* Modal Overlay */
@@ -159,20 +163,20 @@
 
 .modal-content {
   background: white;
-  border-radius: 8px;
+  border-radius: var(--space-2);
   max-width: 500px;
   width: 90%;
   max-height: 80vh;
   overflow-y: auto;
   position: relative;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 var(--space-1) var(--space-5) rgba(0, 0, 0, 0.15);
 }
 
 /* Close Button */
 .modal-close {
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: var(--space-3);
+  right: var(--space-3);
   background: transparent;
   border: none;
   font-size: 28px;
@@ -192,7 +196,7 @@
 
 /* Image Tile in Modal */
 .modal-image-tile {
-  padding: 20px;
+  padding: var(--space-5);
   border-bottom: 1px solid #eee;
 }
 
@@ -206,7 +210,7 @@
 
 /* Comments Section in Modal */
 .modal-comments {
-  padding: 20px;
+  padding: var(--space-5);
 }
 
 @media (min-width: 640px) {

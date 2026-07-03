@@ -9,33 +9,24 @@
 
 /* List of galleries (overview page) */
 #galleriesGrid {
-  --gap: 28px;
+  gap: var(--space-7);
   display: grid;
-  gap: var(--gap);
   grid-template-columns: repeat(auto-fit, 220px);
   justify-content: center;
 }
 
 /* Images inside a single gallery (detail page) */
 #galleryGrid {
-  --gap: 2.5em;
-  gap: var(--gap);
-  grid-template-columns: repeat(auto-fit, 220px);
+  gap: 1em;
+  grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   max-width: calc((var(--short) * 5) + (var(--gap) * 4));
   margin: 0 auto;
 }
 
 @media (max-width: 639px) {
-  #galleryGrid {
-    --short: 350px;
-    justify-content: center;
-    grid-template-columns: 1fr;
-  }
-
-
+  #galleryGrid,
   #galleriesGrid {
-    --short: 160px;
     justify-content: center;
     grid-template-columns: 1fr;
   }
@@ -43,11 +34,13 @@
 
 @media (min-width: 640px) and (max-width: 1023px) {
   #galleryGrid {
-    --short: 160px;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 600px;
   }
 }
 @media (min-width: 1024px) {
   #galleryGrid {
-    --short: 240px;
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 1200px;
   }
 }
