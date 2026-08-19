@@ -81,7 +81,7 @@ const Comments = () => {
   }
 
   return (
-    <div className="comments-page">
+    <div className="admin-comments-page">
       <h1>Moderate Comments</h1>
       <div
         className="button-group comments-tabs"
@@ -125,11 +125,11 @@ const Comments = () => {
           <table
             id="comments-table"
             className="table"
-            style={{ width: "100%", borderCollapse: "collapse" }}
             aria-label="Comments for moderation"
+            role="table"
           >
             <thead>
-              <tr>
+              <tr role="row">
                 <th scope="col">Status</th>
                 <th scope="col">Author</th>
                 <th scope="col">Comment</th>
@@ -145,8 +145,8 @@ const Comments = () => {
                 const isSpam = Number(comment.is_spam) === 1;
 
                 return (
-                  <tr key={comment.comment_id}>
-                    <td>
+                  <tr key={comment.comment_id} role="row">
+                    <td role="cell" data-label="Status">
                       <span
                         className={`status-badge ${
                           isSpam ? "spam" : isApproved ? "approved" : "pending"
@@ -156,21 +156,33 @@ const Comments = () => {
                       </span>
                     </td>
 
-                    <td>{comment.name}</td>
-                    <td>{comment.body}</td>
+                    <td role="cell" data-label="Author">
+                      {comment.name}
+                    </td>
+                    <td
+                      role="cell"
+                      data-label="Comment"
+                      className="message-cell"
+                    >
+                      {comment.body}
+                    </td>
 
-                    <td>
+                    <td role="cell" data-label="Image">
                       <strong>{comment.title || "Untitled Image"}</strong>
                       <br />
                       <small>ID: {comment.content_id}</small>
                     </td>
-                    <td>
+                    <td role="cell" data-label="Created">
                       {new Date(comment.created_at).toLocaleString(undefined, {
                         dateStyle: "medium",
                         timeStyle: "short",
                       })}
                     </td>
-                    <td className="comment-actions button-group">
+                    <td
+                      role="cell"
+                      data-label="Actions"
+                      className="comment-actions button-group"
+                    >
                       <button
                         className="btn btn-approve btn-sm"
                         onClick={() => handleApprove(comment.comment_id)}

@@ -2,7 +2,7 @@ import { BASE_URL, CDN_BASE } from "../../config";
 import { useState, useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
-import BannerQuote from "../home/BannerQuote";
+import BannerQuote from "../quotes/BannerQuote";
 
 const Header = () => {
   const { user, logout } = useContext(AuthContext);

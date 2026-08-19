@@ -127,9 +127,10 @@ const Messages = () => {
             id="messages-table"
             className="table"
             aria-label="Contact form messages"
+            role="table"
           >
             <thead>
-              <tr>
+              <tr role="row">
                 <th scope="col">Status</th>
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
@@ -146,9 +147,10 @@ const Messages = () => {
                 return (
                   <tr
                     key={msg.message_id}
+                    role="row"
                     className={!isRead ? "row-unread" : ""}
                   >
-                    <td>
+                    <td role="cell" data-label="Status">
                       <span
                         className={`status-badge ${
                           isRead ? "approved" : "pending"
@@ -158,19 +160,33 @@ const Messages = () => {
                       </span>
                     </td>
 
-                    <td>{msg.name}</td>
-                    <td>{msg.email}</td>
+                    <td role="cell" data-label="Name">
+                      {msg.name}
+                    </td>
+                    <td role="cell" data-label="Email">
+                      {msg.email}
+                    </td>
 
-                    <td className="message-cell">{msg.message}</td>
+                    <td
+                      role="cell"
+                      data-label="Message"
+                      className="message-cell"
+                    >
+                      {msg.message}
+                    </td>
 
-                    <td>
+                    <td role="cell" data-label="Date">
                       {new Date(msg.created_at).toLocaleString(undefined, {
                         dateStyle: "medium",
                         timeStyle: "short",
                       })}
                     </td>
 
-                    <td className="button-group">
+                    <td
+                      role="cell"
+                      data-label="Actions"
+                      className="button-group"
+                    >
                       {!isRead && (
                         <button
                           className="btn btn-approve btn-sm"

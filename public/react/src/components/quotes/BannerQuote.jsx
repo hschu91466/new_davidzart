@@ -1,17 +1,26 @@
 import { useState, useEffect } from "react";
+import { getQuotes } from "../../services/quotes";
 
 const BannerQuote = () => {
-  const quotes = [
-    "Art enables us to find ourselves and lose ourselves at the same time.",
-    "Every artist was first an amateur.",
-    "Creativity takes courage.",
-    "The purpose of art is washing the dust of daily life off our souls.",
-    "Let all that I am praise the Lord; with my whole heart, I will praise His holy name. Psalm 103:1",
-  ];
+  const [quotes, setQuotes] = useState([]);
   const [quoteIndex, setQuoteIndex] = useState(0);
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
+    const loadQuotes = async () => {
+      try {
+        const data = await getQuotes();
+        setQuotes(data);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    loadQuotes();
+  }, []);
+
+  useEffect(() => {
+    if (quotes.length < 2) return;
+
     const interval = setInterval(() => {
       setVisible(false);
 
@@ -22,7 +31,11 @@ const BannerQuote = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [quotes]);
+
+  if (quotes.length === 0) return null;
+
+  const current = quotes[quoteIndex];
 
   return (
     <div
@@ -35,7 +48,10 @@ const BannerQuote = () => {
       <div
         className={`rotating-quote-text ${visible ? "fade-in" : "fade-out"}`}
       >
-        {quotes[quoteIndex]}
+        {current.text}
+        {current.author && (
+          <span className="rotating-quote-author">{current.author}</span>
+        )}
       </div>
     </div>
   );

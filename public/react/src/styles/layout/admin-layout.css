@@ -8,20 +8,52 @@
   display: grid;
   min-height: 100vh;
   grid-template-columns: 220px 1fr;
+  grid-template-rows: 56px 1fr;
+  grid-template-areas:
+    "topbar topbar"
+    "sidebar main";
+}
+
+.admin-topbar {
+  grid-area: topbar;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-3);
+  background: var(--color-lt-gray);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.admin-topbar-actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.sidebar-toggle {
+  display: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: none;
+  border-radius: var(--space-1);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
 }
 
 .admin-sidebar {
+  grid-area: sidebar;
   width: 200px;
   background: var(--color-lt-gray);
   padding: 1rem;
   transition: all 0.2s ease;
 }
 
-.sidebar-toggle {
-  display: none;
-}
-
 .admin-main {
+  grid-area: main;
   padding: 1rem;
 }
 
@@ -32,10 +64,6 @@
 
 .admin-nav li {
   margin-bottom: var(--space-3);
-}
-
-.admin-sidebar button {
-  margin-top: var(--space-5);
 }
 
 .admin-nav a {
@@ -60,11 +88,23 @@
 @media (max-width: 639.98px) {
   .admin-layout {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "topbar"
+      "main";
+    position: relative;
   }
 
   .admin-sidebar {
     display: none;
-    width: 100%;
+    position: absolute;
+    top: 56px;
+    right: 0;
+    width: auto;
+    max-width: 80vw;
+    min-width: max-content;
+    z-index: 20;
+    box-shadow: -2px 4px 10px rgba(0, 0, 0, 0.15);
+    border-radius: var(--space-1);
   }
 
   .admin-sidebar.open {
@@ -73,6 +113,5 @@
 
   .sidebar-toggle {
     display: block;
-    margin-bottom: var(--space-3);
   }
 }

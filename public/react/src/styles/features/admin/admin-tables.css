@@ -1,0 +1,497 @@
+/* ============================================================
+   ADMIN TABLES — combined stylesheet
+   Merged from admin-messages.css, admin-comments.css,
+   admin-quotes.css, admin-users.css (Option 1 consolidation).
+   Each page keeps its own wrapper class and rules below —
+   no JSX changes were needed for this merge.
+   ============================================================ */
+
+/* -------------------- MESSAGES -------------------- */
+/* ==========================================================================
+   ADMIN — MESSAGES PAGE
+   Desktop: standard table (shared .table styles from components/tables.css).
+   Mobile: table is visually restructured into a stacked "mail app" card
+   list — name as title, message preview below, date last. ARIA roles on
+   the table/rows/cells in Messages.jsx preserve screen reader semantics
+   even though the visual display is no longer a literal table.
+   ========================================================================== */
+
+.messages-page {
+  padding: 1rem;
+}
+
+.messages-page h1 {
+  margin-bottom: var(--space-3);
+}
+
+#messages-table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 0;
+}
+
+#messages-table th,
+#messages-table td {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+#messages-table .message-cell {
+  white-space: normal;
+}
+
+@media (max-width: 639.98px) {
+  /* Hide the header row visually but keep it in the accessibility tree */
+  .messages-page #messages-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  .messages-page #messages-table,
+  .messages-page #messages-table tbody,
+  .messages-page #messages-table tr,
+  .messages-page #messages-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .messages-page #messages-table tr {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-3);
+    margin-bottom: var(--space-3);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--space-1);
+    background: var(--color-surface);
+  }
+
+  .messages-page #messages-table td {
+    border: none;
+    padding: 0;
+  }
+
+  /* Status badge — small, top-right of the card */
+  .messages-page #messages-table td[data-label="Status"] {
+    order: 0;
+    align-self: flex-end;
+    margin-bottom: var(--space-1);
+  }
+
+  /* Name — the "title" of the card, like a mail app sender/subject line */
+  .messages-page #messages-table td[data-label="Name"] {
+    order: 1;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-1);
+  }
+
+  .messages-page #messages-table td[data-label="Email"] {
+    order: 2;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  /* Message preview — the "body" of the card */
+  .messages-page #messages-table td[data-label="Message"] {
+    order: 3;
+    line-height: 1.45;
+    margin-bottom: var(--space-2);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Date — small and muted, like a mail app timestamp */
+  .messages-page #messages-table td[data-label="Date"] {
+    order: 4;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-3);
+  }
+
+  .messages-page #messages-table td[data-label="Actions"] {
+    order: 5;
+  }
+
+  .messages-page #messages-table td[data-label="Actions"].button-group {
+    display: flex;
+    gap: var(--space-2);
+  }
+}
+
+/* -------------------- COMMENTS -------------------- */
+/* ==========================================================================
+   ADMIN — COMMENT MODERATION PAGE
+   NOTE: renamed the page wrapper from .comments-page to
+   .admin-comments-page. The original public comments.css also scopes
+   everything under .comments-page — same class name, two completely
+   different pages (public comment list vs admin moderation table).
+   That's a third naming collision worth knowing about even though it
+   happened not to cause visible bugs (the two pages probably never
+   render at the same time). Update the admin page markup to use
+   .admin-comments-page instead of .comments-page.
+   ========================================================================== */
+
+.admin-comments-page {
+  padding: 1rem;
+}
+
+.admin-comments-page h2 {
+  margin-bottom: var(--space-3);
+}
+
+/* ===== Tabs ===== */
+.comment-tabs {
+  margin-bottom: 1rem;
+}
+
+.comment-tabs button {
+  margin-right: var(--space-2);
+  padding: var(--space-3) var(--space-3);
+  border: 1px solid var(--color-divider);
+  background: var(--color-lt-gray);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+}
+
+.comment-tabs button.active {
+  background: var(--color-text);
+  color: white;
+  font-weight: bold;
+}
+
+/* ===== Table ===== */
+.comments-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.comments-table th {
+  text-align: left;
+  padding: var(--space-2);
+  border-bottom: 2px solid var(--color-divider);
+}
+
+.comments-table td {
+  padding: var(--space-3);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.comments-table tr:hover {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* Buttons (.btn-approve / .btn-spam / .btn-delete) and badges
+   (.status-badge) now live in components/buttons.css and
+   components/badges.css since they're shared, tokenized UI pieces —
+   not admin-only. */
+
+#comments-table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 0;
+}
+
+#comments-table th,
+#comments-table td {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+@media (max-width: 639.98px) {
+  .admin-comments-page #comments-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  .admin-comments-page #comments-table,
+  .admin-comments-page #comments-table tbody,
+  .admin-comments-page #comments-table tr,
+  .admin-comments-page #comments-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-comments-page #comments-table tr {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-3);
+    margin-bottom: var(--space-3);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--space-1);
+    background: var(--color-surface);
+  }
+
+  .admin-comments-page #comments-table td {
+    border: none;
+    padding: 0;
+  }
+
+  /* Status badge — top-right of the card */
+  .admin-comments-page #comments-table td[data-label="Status"] {
+    order: 0;
+    align-self: flex-end;
+    margin-bottom: var(--space-1);
+  }
+
+  /* Author — the "title" of the card */
+  .admin-comments-page #comments-table td[data-label="Author"] {
+    order: 1;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-1);
+  }
+
+  /* Comment body — the "text" of the card */
+  .admin-comments-page #comments-table td[data-label="Comment"] {
+    order: 2;
+    line-height: 1.45;
+    margin-bottom: var(--space-2);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Which image the comment belongs to — secondary meta */
+  .admin-comments-page #comments-table td[data-label="Image"] {
+    order: 3;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-1);
+  }
+
+  /* Created date — small and muted, last before actions */
+  .admin-comments-page #comments-table td[data-label="Created"] {
+    order: 4;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-3);
+  }
+
+  .admin-comments-page #comments-table td[data-label="Actions"] {
+    order: 5;
+  }
+
+  .admin-comments-page #comments-table td[data-label="Actions"].button-group {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+}
+
+/* -------------------- QUOTES -------------------- */
+/* ==========================================================================
+   ADMIN — QUOTES PAGE
+   Same responsive pattern as admin-messages.css: desktop keeps the
+   shared .table styles, mobile restructures into stacked cards.
+   ========================================================================== */
+
+.quotes-page {
+  padding: 1rem;
+}
+
+.quotes-page h1 {
+  margin-bottom: var(--space-3);
+}
+
+#quotes-table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 0;
+}
+
+#quotes-table th,
+#quotes-table td {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+@media (max-width: 639.98px) {
+  .quotes-page #quotes-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  .quotes-page #quotes-table,
+  .quotes-page #quotes-table tbody,
+  .quotes-page #quotes-table tr,
+  .quotes-page #quotes-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .quotes-page #quotes-table tr {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-3);
+    margin-bottom: var(--space-3);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--space-1);
+    background: var(--color-surface);
+  }
+
+  .quotes-page #quotes-table td {
+    border: none;
+    padding: 0;
+  }
+
+  /* Status badge — top-right of the card */
+  .quotes-page #quotes-table td[data-label="Status"] {
+    order: 0;
+    align-self: flex-end;
+    margin-bottom: var(--space-1);
+  }
+
+  /* Quote text — the "title" of the card */
+  .quotes-page #quotes-table td[data-label="Quote"] {
+    order: 1;
+    font-style: italic;
+    line-height: 1.4;
+    margin-bottom: var(--space-1);
+  }
+
+  /* Author — styled like the site's rotating-quote-author accent line */
+  .quotes-page #quotes-table td[data-label="Author"] {
+    order: 2;
+    font-size: 0.85em;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: var(--space-2);
+  }
+
+  .quotes-page #quotes-table td[data-label="Sort Order"] {
+    order: 3;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  .quotes-page #quotes-table td[data-label="Actions"] {
+    order: 4;
+  }
+
+  .quotes-page #quotes-table td[data-label="Actions"].button-group {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+}
+
+/* -------------------- USERS -------------------- */
+/* ==========================================================================
+   ADMIN — USERS PAGE
+   Same responsive pattern as admin-messages.css: desktop keeps the
+   shared .table styles, mobile restructures into stacked cards.
+   ========================================================================== */
+
+.admin-users-page {
+  padding: 1rem;
+}
+
+.admin-users-page h1 {
+  margin-bottom: var(--space-3);
+}
+
+#users-table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 0;
+}
+
+#users-table th,
+#users-table td {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+@media (max-width: 639.98px) {
+  .admin-users-page #users-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  .admin-users-page #users-table,
+  .admin-users-page #users-table tbody,
+  .admin-users-page #users-table tr,
+  .admin-users-page #users-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-users-page #users-table tr {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-3);
+    margin-bottom: var(--space-3);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--space-1);
+    background: var(--color-surface);
+  }
+
+  .admin-users-page #users-table td {
+    border: none;
+    padding: 0;
+  }
+
+  /* Status badge — top-right of the card */
+  .admin-users-page #users-table td[data-label="Status"] {
+    order: 0;
+    align-self: flex-end;
+    margin-bottom: var(--space-1);
+  }
+
+  /* Name — the "title" of the card */
+  .admin-users-page #users-table td[data-label="Name"] {
+    order: 1;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin-bottom: var(--space-1);
+  }
+
+  .admin-users-page #users-table td[data-label="Email"] {
+    order: 2;
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  /* Created date — small and muted */
+  .admin-users-page #users-table td[data-label="Created"] {
+    order: 3;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+  }
+
+  .admin-users-page #users-table td[data-label="Actions"] {
+    order: 4;
+  }
+
+  .admin-users-page #users-table td[data-label="Actions"].button-group {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+}

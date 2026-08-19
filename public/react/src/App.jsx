@@ -11,12 +11,15 @@ import AdminComments from "./pages/admin/Comments";
 import Dashboard from "./pages/admin/Dashboard";
 import AdminUsers from "./pages/admin/Users";
 import AdminMessages from "./pages/admin/Messages";
+import AdminQuotes from "./pages/admin/Quotes";
 import RegistryConf from "./pages/auth/RegistryConfirmation";
 import ChangePassword from "./pages/auth/ChangePassword";
 import Login from "./pages/auth/Login";
 import { AuthProvider } from "./context/AuthProvider";
 import Register from "./pages/auth/Register";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+import TestingChecklist from "./pages/admin/TestingChecklist";
+import PublicSiteReview from "./pages/admin/PublicSiteReview";
 
 function App() {
   return (
@@ -56,6 +59,12 @@ function App() {
             <Route path="comments" element={<AdminComments />} />
             <Route path="users" element={<AdminUsers />} />
             <Route path="messages" element={<AdminMessages />} />
+            <Route path="quotes" element={<AdminQuotes />} />
+            <Route
+              path="/admin/admin-checklist"
+              element={<TestingChecklist />}
+            />
+            <Route path="/admin/public-review" element={<PublicSiteReview />} />
           </Route>
         </Routes>
       </AuthProvider>

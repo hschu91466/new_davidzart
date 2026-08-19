@@ -1,10 +1,11 @@
-import { BASE_URL, CDN_BASE } from "../../config";
+import { BASE_URL } from "../../config";
 import { useEffect, useState } from "react";
 
 const HomeSlideshow = () => {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     fetch(`${BASE_URL}/api/home-images.php`)
@@ -19,7 +20,7 @@ const HomeSlideshow = () => {
   }, []);
 
   useEffect(() => {
-    if (images.length === 0) return;
+    if (images.length === 0 || isPaused) return;
 
     const interval = setInterval(() => {
       setIsFading(true);
@@ -31,7 +32,7 @@ const HomeSlideshow = () => {
     }, 8000);
 
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [images.length, isPaused]);
 
   if (images.length === 0) {
     return (
@@ -59,35 +60,75 @@ const HomeSlideshow = () => {
     }, 300);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "ArrowLeft") prevSlide();
+    if (e.key === "ArrowRight") nextSlide();
+  };
+
   return (
     <div
       className="home-slideshow"
       role="region"
       aria-label="Featured image slideshow"
-      aria-live="polite"
+      tabIndex={0}
+      onKeyDown={handleKeyDown}
     >
       <div className="home-slideshow-card">
-        <button
-          className="nav prev"
-          onClick={prevSlide}
-          aria-label="Previous image"
-        >
-          ‹
-        </button>
         <div className="home-slideshow-image-wrapper">
           <img
             src={currentImage.image_url}
             alt={currentImage.title}
             className={`home-slideshow-image ${isFading ? "fade-out" : ""}`}
           />
+
+          <button
+            className="nav prev desktop-nav"
+            onClick={prevSlide}
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+          <button
+            className="nav next desktop-nav"
+            onClick={nextSlide}
+            aria-label="Next image"
+          >
+            ›
+          </button>
+          <button
+            className="nav pause desktop-nav"
+            onClick={() => setIsPaused((prev) => !prev)}
+            aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
+            aria-pressed={isPaused}
+          >
+            {isPaused ? "▶" : "⏸"}
+          </button>
         </div>
-        <button
-          className="nav next"
-          onClick={nextSlide}
-          aria-label="Next image"
-        >
-          ›
-        </button>
+
+        <div className="home-slideshow-controls-mobile">
+          <button
+            className="nav prev"
+            onClick={prevSlide}
+            aria-label="Previous image"
+          >
+            ‹
+          </button>
+          <button
+            className="nav pause"
+            onClick={() => setIsPaused((prev) => !prev)}
+            aria-label={isPaused ? "Play slideshow" : "Pause slideshow"}
+            aria-pressed={isPaused}
+          >
+            {isPaused ? "▶" : "⏸"}
+          </button>
+          <button
+            className="nav next"
+            onClick={nextSlide}
+            aria-label="Next image"
+          >
+            ›
+          </button>
+        </div>
 
         <div className="home-slideshow-title">{currentImage.title}</div>
 

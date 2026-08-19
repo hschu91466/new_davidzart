@@ -58,35 +58,41 @@ const GallerySelector = ({
       >
         Delete
       </button>
-      <button
-        className="btn btn-small"
-        onClick={() => onMove(selectedGalleryId, "up")}
-        disabled={!selectedGalleryId || movingId === selectedGalleryId}
-        aria-label="Move gallery up"
-        aria-busy={isMoving}
+      <div
+        className="gallery-move-group"
+        role="group"
+        aria-label="Move gallery"
       >
-        ↑
-      </button>
-      <button
-        className="btn btn-small"
-        onClick={() => onMove(selectedGalleryId, "down")}
-        disabled={!selectedGalleryId || movingId === selectedGalleryId}
-        aria-label="Move gallery down"
-        aria-busy={isMoving}
-      >
-        ↓
-      </button>
-      {selectedGallery && (
-        <div
-          className="gallery-position-label"
-          role="status"
-          aria-live="polite"
+        <button
+          className="btn btn-small"
+          onClick={() => onMove(selectedGalleryId, "up")}
+          disabled={!selectedGalleryId || movingId === selectedGalleryId}
+          aria-label="Move gallery up"
+          aria-busy={isMoving}
         >
-          {isMoving
-            ? "Moving..."
-            : `${selectedGallery.title} (${selectedIndex + 1} of ${galleries.length})`}
-        </div>
-      )}
+          ↑
+        </button>
+        <button
+          className="btn btn-small"
+          onClick={() => onMove(selectedGalleryId, "down")}
+          disabled={!selectedGalleryId || movingId === selectedGalleryId}
+          aria-label="Move gallery down"
+          aria-busy={isMoving}
+        >
+          ↓
+        </button>
+        {selectedGallery && (
+          <div
+            className="gallery-position-label"
+            role="status"
+            aria-live="polite"
+          >
+            {isMoving
+              ? "Moving..."
+              : `${selectedGallery.title} (${selectedIndex + 1} of ${galleries.length})`}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

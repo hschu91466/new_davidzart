@@ -74,7 +74,7 @@ const Users = () => {
   }
 
   return (
-    <div>
+    <div className="admin-users-page">
       <h1>Manage Users</h1>
       <div
         className="button-group"
@@ -109,9 +109,10 @@ const Users = () => {
             id="users-table"
             className="table"
             aria-label="Users awaiting approval"
+            role="table"
           >
             <thead>
-              <tr>
+              <tr role="row">
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Status</th>
@@ -121,46 +122,62 @@ const Users = () => {
             </thead>
             <tbody>
               {users.map((user) => (
-                <tr key={user.id}>
-                  <td>
+                <tr key={user.id} role="row">
+                  <td role="cell" data-label="Name">
                     {user.first_name} {user.last_name}
                   </td>
-                  <td>{user.email}</td>
+                  <td role="cell" data-label="Email">
+                    {user.email}
+                  </td>
 
-                  <td>{user.is_approved ? "Approved" : "Pending"}</td>
-                  <td>
+                  <td role="cell" data-label="Status">
+                    <span
+                      className={`status-badge ${
+                        user.is_approved ? "approved" : "pending"
+                      }`}
+                    >
+                      {user.is_approved ? "Approved" : "Pending"}
+                    </span>
+                  </td>
+                  <td role="cell" data-label="Created">
                     {new Date(user.created_at).toLocaleString(undefined, {
                       dateStyle: "medium",
                       timeStyle: "short",
                     })}
                   </td>
-                  <td>
-                    {!user.is_approved && (
-                      <button
-                        className="btn btn-approve btn-sm"
-                        disabled={approvingId === user.id}
-                        onClick={() => approve(user.id)}
-                        aria-label={`Approve ${user.first_name} ${user.last_name}`}
-                        aria-busy={approvingId === user.id}
-                      >
-                        {approvingId === user.id ? "Approving..." : "Approve"}
-                      </button>
-                    )}
-                    {!user.is_approved && (
-                      <button
-                        className="btn btn-delete btn-sm"
-                        disabled={approvingId === user.id}
-                        onClick={() => {
-                          if (!confirmDelete()) return;
-                          deleteUser(user.id);
-                        }}
-                        aria-label={`Deny ${user.first_name} ${user.last_name}`}
-                        aria-busy={approvingId === user.id}
-                      >
-                        {approvingId === user.id ? "Denying..." : "Deny"}
-                      </button>
-                    )}
-                  </td>
+                  {status === "pending" && (
+                    <td
+                      role="cell"
+                      data-label="Actions"
+                      className="button-group"
+                    >
+                      {!user.is_approved && (
+                        <button
+                          className="btn btn-approve btn-sm"
+                          disabled={approvingId === user.id}
+                          onClick={() => approve(user.id)}
+                          aria-label={`Approve ${user.first_name} ${user.last_name}`}
+                          aria-busy={approvingId === user.id}
+                        >
+                          {approvingId === user.id ? "Approving..." : "Approve"}
+                        </button>
+                      )}
+                      {!user.is_approved && (
+                        <button
+                          className="btn btn-delete btn-sm"
+                          disabled={approvingId === user.id}
+                          onClick={() => {
+                            if (!confirmDelete()) return;
+                            deleteUser(user.id);
+                          }}
+                          aria-label={`Deny ${user.first_name} ${user.last_name}`}
+                          aria-busy={approvingId === user.id}
+                        >
+                          {approvingId === user.id ? "Denying..." : "Deny"}
+                        </button>
+                      )}
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>

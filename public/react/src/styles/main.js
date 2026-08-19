@@ -27,11 +27,13 @@ import "./components/footer.css";
 
 // Page-level layout
 import "./layout/layout.css";
+import "./layout/admin-layout.css";
 
 // Feature/page-specific
 import "./features/home/home.css";
 import "./features/gallery/gallery-grid.css";
 import "./features/gallery/gallery.css";
 import "./features/comments/comments.css";
-import "./features/admin/admin-layout.css";
-import "./features/admin/admin-comments.css";
+
+//Admin pages
+import "./features/admin/admin-tables.css";
