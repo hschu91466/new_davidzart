@@ -183,21 +183,25 @@ const Comments = () => {
                       data-label="Actions"
                       className="comment-actions button-group"
                     >
-                      <button
-                        className="btn btn-approve btn-sm"
-                        onClick={() => handleApprove(comment.comment_id)}
-                        aria-label={`Approve comment by ${comment.name}`}
-                      >
-                        Approve
-                      </button>
+                      {!isApproved && (
+                        <button
+                          className="btn btn-approve btn-sm"
+                          onClick={() => handleApprove(comment.comment_id)}
+                          aria-label={`Approve comment by ${comment.name}`}
+                        >
+                          Approve
+                        </button>
+                      )}
 
-                      <button
-                        className="btn btn-spam btn-sm"
-                        onClick={() => handleSpam(comment.comment_id)}
-                        aria-label={`Mark as spam: comment by ${comment.name}`}
-                      >
-                        Spam
-                      </button>
+                      {!isSpam && (
+                        <button
+                          className="btn btn-spam btn-sm"
+                          onClick={() => handleSpam(comment.comment_id)}
+                          aria-label={`Mark as spam: comment by ${comment.name}`}
+                        >
+                          Spam
+                        </button>
+                      )}
 
                       <button
                         className="btn btn-delete btn-sm"

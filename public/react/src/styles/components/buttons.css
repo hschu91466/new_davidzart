@@ -66,8 +66,32 @@
 }
 
 .btn:disabled {
-  opacity: 0.5;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: var(--color-text-muted);
   cursor: not-allowed;
+}
+
+.btn-primary:disabled,
+.btn-tab:disabled {
+  color: var(--color-primary);
+}
+
+.btn-active:disabled {
+  color: var(--color-primary-light);
+}
+
+.btn-approve:disabled {
+  color: var(--color-status-approved);
+}
+
+.btn-spam:disabled {
+  color: var(--color-status-spam);
+}
+
+.btn-delete:disabled {
+  color: var(--color-status-danger);
 }
 
 /* Admin moderation action buttons (approve / spam / delete)

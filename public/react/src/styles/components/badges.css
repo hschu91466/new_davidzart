@@ -11,19 +11,19 @@
   display: inline-block;
   padding: 3px 8px;
   border-radius: 12px;
-  font-size: 12px;
-  font-weight: bold;
-  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  background: transparent;
 }
 
 .status-badge.pending {
-  background-color: var(--color-status-pending);
+  color: var(--color-status-pending);
 }
 
 .status-badge.approved {
-  background-color: var(--color-status-approved);
+  color: var(--color-status-approved);
 }
 
 .status-badge.spam {
-  background-color: var(--color-status-spam);
+  color: var(--color-status-spam);
 }

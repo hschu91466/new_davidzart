@@ -1,11 +1,12 @@
 import { BASE_URL } from "../../config";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 const HomeSlideshow = () => {
   const [images, setImages] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFading, setIsFading] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef(null);
 
   useEffect(() => {
     fetch(`${BASE_URL}/api/home-images.php`)
@@ -65,6 +66,26 @@ const HomeSlideshow = () => {
     if (e.key === "ArrowRight") nextSlide();
   };
 
+  const SWIPE_THRESHOLD = 50;
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+
+    if (deltaX > SWIPE_THRESHOLD) {
+      prevSlide();
+    } else if (deltaX < -SWIPE_THRESHOLD) {
+      nextSlide();
+    }
+
+    touchStartX.current = null;
+  };
+
   return (
     <div
       className="home-slideshow"
@@ -74,7 +95,11 @@ const HomeSlideshow = () => {
       onKeyDown={handleKeyDown}
     >
       <div className="home-slideshow-card">
-        <div className="home-slideshow-image-wrapper">
+        <div
+          className="home-slideshow-image-wrapper"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <img
             src={currentImage.image_url}
             alt={currentImage.title}

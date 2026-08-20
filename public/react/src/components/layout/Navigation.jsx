@@ -22,7 +22,11 @@ const Navigation = () => {
         >
           ☰
         </button>
-        <ul className={`nav-list ${menuOpen ? "open" : ""}`} id="nav-list">
+        <ul
+          className={`nav-list ${menuOpen ? "open" : ""}`}
+          id="nav-list"
+          onClick={() => setMenuOpen(false)}
+        >
           <li>
             <NavLink
               to="/"

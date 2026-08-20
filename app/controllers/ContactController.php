@@ -9,7 +9,7 @@ class ContactController
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
-    } 
+    }
 
     public function send(array $data)
     {
@@ -40,6 +40,14 @@ class ContactController
 
         $service = new ContactService();
         return $service->markRead($this->pdo, $id);
+    }
+
+    public function markSpam(array $data): array
+    {
+        $id = (int)$data['message_id'];
+
+        $service = new ContactService();
+        return $service->markSpam($this->pdo, $id);
     }
 
     public function delete(array $data): array

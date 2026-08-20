@@ -25,7 +25,7 @@ class ContactModel
         $pdo = db();
 
         $stmt = $pdo->query("
-        SELECT message_id, name, email, message, created_at, is_read
+        SELECT message_id, name, email, message, created_at, is_read, is_spam
         FROM contact_messages
         ORDER BY created_at DESC");
 
@@ -38,6 +38,17 @@ class ContactModel
         $stmt = $pdo->prepare("
         UPDATE contact_messages
         SET is_read = 1
+        WHERE message_id = :id");
+
+        return $stmt->execute([':id' => $id]);
+    }
+
+    public static function markAsSpam(PDO $pdo, int $id): bool
+    {
+
+        $stmt = $pdo->prepare("
+        UPDATE contact_messages
+        SET is_spam = 1
         WHERE message_id = :id");
 
         return $stmt->execute([':id' => $id]);

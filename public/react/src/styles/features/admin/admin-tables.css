@@ -6,6 +6,13 @@
    no JSX changes were needed for this merge.
    ============================================================ */
 
+/* Shared across all four tables — right-align the Status badge
+   column on desktop. Mobile card layouts override this per-page
+   with align-self: flex-end, so this only affects the table view. */
+td[data-label="Status"] {
+  text-align: right;
+}
+
 /* -------------------- MESSAGES -------------------- */
 /* ==========================================================================
    ADMIN — MESSAGES PAGE

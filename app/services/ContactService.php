@@ -36,9 +36,9 @@ class ContactService
     }
 
 
-    public function markRead(PDO $pdo, int $id ): array
+    public function markRead(PDO $pdo, int $id): array
     {
-        $success = ContactModel::markAsRead($pdo, $id );
+        $success = ContactModel::markAsRead($pdo, $id);
 
         return [
             "success" => $success,
@@ -47,7 +47,18 @@ class ContactService
     }
 
 
-    public function delete( PDO $pdo, int $id): array
+    public function markSpam(PDO $pdo, int $id): array
+    {
+        $success = ContactModel::markAsSpam($pdo, $id);
+
+        return [
+            "success" => $success,
+            "message" => $success ? "Marked as spam ✅" : "Failed ❌"
+        ];
+    }
+
+
+    public function delete(PDO $pdo, int $id): array
     {
         $success = ContactModel::deleteMessage($pdo, $id);
 

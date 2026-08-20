@@ -47,6 +47,11 @@
   opacity: 1;
 }
 
+.home-slideshow-image-wrapper .nav,
+.home-slideshow-controls-mobile .nav {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .home-slideshow-image-wrapper .nav.prev,
 .home-slideshow-image-wrapper .nav.next {
   position: absolute;

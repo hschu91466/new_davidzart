@@ -45,6 +45,20 @@ const Messages = () => {
     }
   };
 
+  const handleMarkSpam = async (id) => {
+    try {
+      const res = await axios.post("/api/contact/mark-spam.php", {
+        message_id: id,
+      });
+
+      if (res.data.success) {
+        setMessages((prev) => prev.filter((msg) => msg.message_id !== id));
+      }
+    } catch (error) {
+      console.error("Mark spam error:", error);
+    }
+  };
+
   const handleDelete = async (id) => {
     if (!window.confirm("Delete this message?")) return;
 
@@ -196,6 +210,14 @@ const Messages = () => {
                           Mark Read
                         </button>
                       )}
+
+                      <button
+                        className="btn btn-spam btn-sm"
+                        onClick={() => handleMarkSpam(msg.message_id)}
+                        aria-label={`Mark message from ${msg.name} as spam`}
+                      >
+                        Spam
+                      </button>
 
                       <button
                         className="btn btn-delete btn-sm"

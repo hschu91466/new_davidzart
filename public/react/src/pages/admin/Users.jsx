@@ -117,7 +117,7 @@ const Users = () => {
                 <th scope="col">Email</th>
                 <th scope="col">Status</th>
                 <th scope="col">Created</th>
-                {status === "pending" && <th scope="col">Actions</th>}
+                <th scope="col">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -145,39 +145,47 @@ const Users = () => {
                       timeStyle: "short",
                     })}
                   </td>
-                  {status === "pending" && (
-                    <td
-                      role="cell"
-                      data-label="Actions"
-                      className="button-group"
-                    >
-                      {!user.is_approved && (
-                        <button
-                          className="btn btn-approve btn-sm"
-                          disabled={approvingId === user.id}
-                          onClick={() => approve(user.id)}
-                          aria-label={`Approve ${user.first_name} ${user.last_name}`}
-                          aria-busy={approvingId === user.id}
-                        >
-                          {approvingId === user.id ? "Approving..." : "Approve"}
-                        </button>
-                      )}
-                      {!user.is_approved && (
-                        <button
-                          className="btn btn-delete btn-sm"
-                          disabled={approvingId === user.id}
-                          onClick={() => {
-                            if (!confirmDelete()) return;
-                            deleteUser(user.id);
-                          }}
-                          aria-label={`Deny ${user.first_name} ${user.last_name}`}
-                          aria-busy={approvingId === user.id}
-                        >
-                          {approvingId === user.id ? "Denying..." : "Deny"}
-                        </button>
-                      )}
-                    </td>
-                  )}
+                  <td role="cell" data-label="Actions" className="button-group">
+                    {!user.is_approved && (
+                      <button
+                        className="btn btn-approve btn-sm"
+                        disabled={approvingId === user.id}
+                        onClick={() => approve(user.id)}
+                        aria-label={`Approve ${user.first_name} ${user.last_name}`}
+                        aria-busy={approvingId === user.id}
+                      >
+                        {approvingId === user.id ? "Approving..." : "Approve"}
+                      </button>
+                    )}
+                    {!user.is_approved && (
+                      <button
+                        className="btn btn-delete btn-sm"
+                        disabled={approvingId === user.id}
+                        onClick={() => {
+                          if (!confirmDelete()) return;
+                          deleteUser(user.id);
+                        }}
+                        aria-label={`Deny ${user.first_name} ${user.last_name}`}
+                        aria-busy={approvingId === user.id}
+                      >
+                        {approvingId === user.id ? "Denying..." : "Deny"}
+                      </button>
+                    )}
+                    {!!user.is_approved && (
+                      <button
+                        className="btn btn-delete btn-sm"
+                        disabled={approvingId === user.id}
+                        onClick={() => {
+                          if (!confirmDelete()) return;
+                          deleteUser(user.id);
+                        }}
+                        aria-label={`Remove ${user.first_name} ${user.last_name}`}
+                        aria-busy={approvingId === user.id}
+                      >
+                        {approvingId === user.id ? "Removing..." : "Remove"}
+                      </button>
+                    )}
+                  </td>
                 </tr>
               ))}
             </tbody>
