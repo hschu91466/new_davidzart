@@ -16,6 +16,7 @@
   border: 1px solid var(--color-divider);
   background: var(--color-surface);
   cursor: pointer;
+  text-decoration: none;
   transition: all 0.2s ease;
 }
 
@@ -110,12 +111,4 @@
 .btn-delete {
   background: var(--color-status-danger);
   color: white;
-}
-
-.comment-actions button {
-  margin-right: 6px;
-  padding: 4px 8px;
-  border: none;
-  cursor: pointer;
-  border-radius: var(--radius-sm);
 }

@@ -106,11 +106,7 @@ const QuoteManager = () => {
     <div className="quotes-page">
       <h1>Quotes</h1>
 
-      <form
-        onSubmit={handleSubmit}
-        className="quote-form"
-        style={{ marginBottom: "1.5rem" }}
-      >
+      <form onSubmit={handleSubmit} className="quote-form">
         <textarea
           placeholder="Quote text"
           value={form.text}
@@ -154,8 +150,7 @@ const QuoteManager = () => {
       </form>
 
       <div
-        className="button-group"
-        style={{ marginBottom: "1rem" }}
+        className="button-group filter-tabs"
         role="tablist"
         aria-label="Filter quotes by status"
       >

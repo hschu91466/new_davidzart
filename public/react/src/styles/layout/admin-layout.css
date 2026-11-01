@@ -85,6 +85,8 @@
   color: var(--color-primary);
 }
 
+/* Admin Dashboard Console */
+
 @media (max-width: 639.98px) {
   .admin-layout {
     grid-template-columns: 1fr;
@@ -114,4 +116,119 @@
   .sidebar-toggle {
     display: block;
   }
+
+  .admin-dashboard-nav-hint {
+    display: none;
+  }
+
+  .admin-dashboard-links {
+    display: block;
+  }
+}
+
+.admin-dashboard-page {
+  padding: 1rem;
+}
+
+.admin-dashboard-page h1 {
+  margin-bottom: var(--space-2);
+}
+
+.admin-dashboard-nav-hint {
+  display: block;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.admin-dashboard-console {
+  margin-top: var(--space-4);
+}
+
+.admin-dashboard-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+}
+
+.admin-dashboard-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1 1 220px;
+  min-width: 220px;
+  padding: var(--space-3) var(--space-4);
+  background: color-mix(in srgb, var(--color-accent) 5%, var(--color-surface));
+  border: 1px solid var(--color-divider);
+  border-left: 5px solid var(--color-accent);
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    box-shadow 0.15s ease,
+    transform 0.15s ease;
+}
+
+.admin-dashboard-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.admin-dashboard-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.admin-dashboard-card-disabled {
+  background: var(--color-surface);
+  border-left-color: var(--color-divider);
+  color: var(--color-text-muted);
+  cursor: default;
+}
+
+.admin-dashboard-card-disabled:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+.admin-dashboard-count {
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-accent);
+}
+
+.admin-dashboard-card-disabled .admin-dashboard-count {
+  color: var(--color-text-muted);
+}
+
+.admin-dashboard-label {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+}
+
+/* Quick-links nav — mainly useful on mobile where the side nav is hidden */
+.admin-dashboard-links {
+  display: none;
+  margin-top: var(--space-6);
+}
+
+.admin-dashboard-links h2 {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-2);
+}
+.order-address {
+  white-space: pre-line;
+}
+.price-locked {
+  display: block;
+  cursor: not-allowed;
+}
+
+.price-locked input:disabled {
+  border: none;
+  background: transparent;
+  padding-left: 0;
+  color: inherit;
+  cursor: not-allowed;
+  opacity: 1;
 }

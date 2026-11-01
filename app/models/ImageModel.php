@@ -17,7 +17,9 @@ class ImageModel
             orientation,
             is_active,
             is_published,
-            sort_order            
+            sort_order,
+            price_cents,
+            is_sold            
             FROM images
             WHERE gallery_id = :gid AND is_active = 1
             ORDER BY sort_order ASC, image_id";
@@ -28,8 +30,10 @@ class ImageModel
 
     public static function getById(PDO $pdo, int $imageId): ?array
     {
-        $sql = "SELECT
+        $sql = "
+        SELECT
             image_id,
+            gallery_id,
             file_path,
             title,
             caption,
@@ -37,14 +41,19 @@ class ImageModel
             dimensions,
             year_created,
             orientation,
+            price_cents,
+            is_sold,
             is_active,
             is_published,
-            sort_order            
-            FROM images
-            WHERE image_id = :imgid; ";
+            sort_order
+        FROM images
+        WHERE image_id = :imgid
+    ";
+
         $stmt = $pdo->prepare($sql);
         $stmt->execute([':imgid' => $imageId]);
         $image = $stmt->fetch(PDO::FETCH_ASSOC);
+
         return $image ?: null;
     }
 
@@ -88,26 +97,27 @@ class ImageModel
 
     public static function update(PDO $pdo, array $data): bool
     {
-
-        $sql = "UPDATE images
-            SET 
-                title = :title,
-                caption = :caption,
-                year_created = :year_created,
-                medium = :medium,
-                dimensions = :dimensions
-            WHERE image_id = :image_id";
-
+        $sql = "
+        UPDATE images
+        SET title = :title,
+            caption = :caption,
+            year_created = :year_created,
+            medium = :medium,
+            dimensions = :dimensions,
+            price_cents = :price_cents
+        WHERE image_id = :image_id
+    ";
 
         $stmt = $pdo->prepare($sql);
 
         return $stmt->execute([
-            ':title' => $data['title'],
-            ':caption' => $data['caption'],
+            ':title'        => $data['title'],
+            ':caption'      => $data['caption'],
             ':year_created' => $data['year_created'],
-            ':image_id' => $data['image_id'],
-            ':medium' => $data['medium'],
-            ':dimensions' => $data['dimensions'],
+            ':medium'       => $data['medium'],
+            ':dimensions'   => $data['dimensions'],
+            ':price_cents'  => $data['price_cents'],
+            ':image_id'     => $data['image_id'],
         ]);
     }
 
@@ -191,5 +201,13 @@ class ImageModel
         }
 
         return true;
+    }
+
+    public static function markSold(PDO $pdo, int $imageId): bool
+    {
+        $sql = "UPDATE images SET is_sold = 1 WHERE image_id = :id AND is_sold = 0";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([':id' => $imageId]);
+        return $stmt->rowCount() === 1;
     }
 }

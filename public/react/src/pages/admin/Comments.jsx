@@ -84,8 +84,7 @@ const Comments = () => {
     <div className="admin-comments-page">
       <h1>Moderate Comments</h1>
       <div
-        className="button-group comments-tabs"
-        style={{ marginBottom: "1rem" }}
+        className="button-group filter-tabs"
         role="tablist"
         aria-label="Filter comments by status"
       >
@@ -181,7 +180,7 @@ const Comments = () => {
                     <td
                       role="cell"
                       data-label="Actions"
-                      className="comment-actions button-group"
+                      className="button-group"
                     >
                       {!isApproved && (
                         <button

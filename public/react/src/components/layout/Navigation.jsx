@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import CartLink from "../shop/CartLink";
 
 const Navigation = () => {
   const { user } = useContext(AuthContext);
@@ -74,7 +75,6 @@ const Navigation = () => {
               Galleries
             </NavLink>
           </li>
-
           {user?.role === "admin" && (
             <li>
               <NavLink
@@ -89,6 +89,9 @@ const Navigation = () => {
             </li>
           )}
         </ul>
+        <div className="cart">
+          <CartLink />
+        </div>
       </div>
     </nav>
   );

@@ -159,6 +159,7 @@ const Galleries = () => {
         year_created: img.year_created,
         medium: img.medium,
         dimensions: img.dimensions,
+        price: img.price,
       });
     } catch (error) {
       console.error(error);

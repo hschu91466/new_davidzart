@@ -27,7 +27,7 @@
 }
 
 .table tr:hover {
-  background: rgba(0, 0, 0, 0.03);
+  background: color-mix(in srgb, var(--color-accent) 5%, var(--color-surface));
 }
 
 .message-cell {
@@ -36,5 +36,9 @@
 }
 
 .row-unread {
-  background-color: #fff8e1; /* subtle highlight — consider tokenizing if reused across sites */
+  background-color: color-mix(
+    in srgb,
+    var(--color-status-pending) 12%,
+    var(--color-surface)
+  );
 }

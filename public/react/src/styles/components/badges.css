@@ -20,6 +20,14 @@
   color: var(--color-status-pending);
 }
 
+.status-badge.sold {
+color: #fff;
+background: red;
+margin: 0 1em;
+font-variant: small-caps;
+border-radius: 0;
+}
+
 .status-badge.approved {
   color: var(--color-status-approved);
 }

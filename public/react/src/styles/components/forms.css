@@ -153,6 +153,12 @@ select:focus {
   box-shadow: 0 0 0 1px rgba(76, 122, 45, 0.3);
 }
 
+input::placeholder,
+textarea::placeholder {
+  color: #ccc;
+  opacity: 1;
+}
+
 label {
   font-size: var(--fs-100);
   font-weight: 500;

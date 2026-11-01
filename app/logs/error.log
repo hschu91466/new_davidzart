@@ -1,20 +1,133 @@
-[19-Aug-2026 14:29:57 Europe/Berlin] SESSION CONTENT LOGIN:
-[19-Aug-2026 14:29:57 Europe/Berlin] Array
-(
-)
-
-[19-Aug-2026 14:30:04 Europe/Berlin] SESSION CONTENT LOGIN:
-[19-Aug-2026 14:30:04 Europe/Berlin] Array
-(
-)
-
-[20-Aug-2026 20:03:40 Europe/Berlin] SESSION CONTENT LOGIN:
-[20-Aug-2026 20:03:40 Europe/Berlin] Array
-(
-)
-
-[20-Aug-2026 20:14:13 Europe/Berlin] SESSION CONTENT LOGIN:
-[20-Aug-2026 20:14:13 Europe/Berlin] Array
-(
-)
-
+[22-Aug-2026 14:17:53 Europe/Berlin] DB connection failed: SQLSTATE[HY000] [2006] MySQL server has gone away
+[22-Aug-2026 14:17:53 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES) in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php:52
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php(52): PDO->__construct('mysql:host=127....', 'schu_web', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(51): db()
+#2 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php on line 52
+[22-Aug-2026 14:17:53 Europe/Berlin] DB connection failed: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES)
+[22-Aug-2026 14:17:53 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES) in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php:52
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php(52): PDO->__construct('mysql:host=127....', 'schu_web', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(51): db()
+#2 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php on line 52
+[22-Aug-2026 14:17:53 Europe/Berlin] DB connection failed: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES)
+[22-Aug-2026 14:17:53 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES) in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php:52
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php(52): PDO->__construct('mysql:host=127....', 'schu_web', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(51): db()
+#2 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php on line 52
+[22-Aug-2026 14:17:53 Europe/Berlin] DB connection failed: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES)
+[22-Aug-2026 14:17:53 Europe/Berlin] DB connection failed: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES)
+[22-Aug-2026 14:17:53 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES) in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php:52
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php(52): PDO->__construct('mysql:host=127....', 'schu_web', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(51): db()
+#2 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php on line 52
+[22-Aug-2026 14:17:53 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES) in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php:52
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php(52): PDO->__construct('mysql:host=127....', 'schu_web', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(51): db()
+#2 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php on line 52
+[22-Aug-2026 14:17:53 Europe/Berlin] DB connection failed: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES)
+[22-Aug-2026 14:17:53 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES) in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php:52
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php(52): PDO->__construct('mysql:host=127....', 'schu_web', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(51): db()
+#2 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php on line 52
+[14-Oct-2026 13:59:13 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers/../services/PaymentService.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php on line 7
+[14-Oct-2026 13:59:13 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers/../services/PaymentService.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php:7
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\orders\webhook.php(6): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php on line 7
+[14-Oct-2026 14:00:51 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers/../services/PaymentService.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php on line 7
+[14-Oct-2026 14:00:51 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers/../services/PaymentService.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php:7
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\orders\webhook.php(6): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php on line 7
+[14-Oct-2026 14:02:26 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers/../services/PaymentService.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php on line 7
+[14-Oct-2026 14:02:26 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers/../services/PaymentService.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php:7
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\orders\webhook.php(9): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php on line 7
+[14-Oct-2026 14:02:59 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers/../services/PaymentService.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php on line 7
+[14-Oct-2026 14:02:59 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers/../services/PaymentService.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php:7
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\orders\webhook.php(9): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php on line 7
+[14-Oct-2026 14:03:33 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers/../services/PaymentService.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php on line 7
+[14-Oct-2026 14:03:33 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers/../services/PaymentService.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php:7
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\orders\webhook.php(9): require_once()
+#1 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php on line 7
+[16-Oct-2026 14:42:44 Europe/Berlin] PHP Warning:  Undefined array key "is_sold" in C:\xampp\htdocs\Sites\production\davidschu_new\app\controllers\OrderController.php on line 36
+[17-Oct-2026 15:43:11 Europe/Berlin] DB connection failed: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES)
+[17-Oct-2026 15:43:11 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES) in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php:52
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php(52): PDO->__construct('mysql:host=127....', 'schu_web', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(51): db()
+#2 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php on line 52
+[17-Oct-2026 15:43:11 Europe/Berlin] DB connection failed: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES)
+[17-Oct-2026 15:43:11 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES) in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php:52
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php(52): PDO->__construct('mysql:host=127....', 'schu_web', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(51): db()
+#2 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php on line 52
+[17-Oct-2026 15:43:11 Europe/Berlin] DB connection failed: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES)
+[17-Oct-2026 15:43:11 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES) in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php:52
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php(52): PDO->__construct('mysql:host=127....', 'schu_web', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(51): db()
+#2 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php on line 52
+[17-Oct-2026 15:43:11 Europe/Berlin] DB connection failed: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES)
+[17-Oct-2026 15:43:11 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES) in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php:52
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php(52): PDO->__construct('mysql:host=127....', 'schu_web', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(51): db()
+#2 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php on line 52
+[17-Oct-2026 15:43:16 Europe/Berlin] DB connection failed: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES)
+[17-Oct-2026 15:43:16 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES) in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php:52
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php(52): PDO->__construct('mysql:host=127....', 'schu_web', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(51): db()
+#2 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\galleries.php(3): require_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php on line 52
+[17-Oct-2026 15:43:16 Europe/Berlin] DB connection failed: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES)
+[17-Oct-2026 15:43:16 Europe/Berlin] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [1045] Access denied for user 'schu_web'@'localhost' (using password: YES) in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php:52
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php(52): PDO->__construct('mysql:host=127....', 'schu_web', Object(SensitiveParameterValue), Array)
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(51): db()
+#2 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\galleries.php(3): require_once('C:\\xampp\\htdocs...')
+#3 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\database.php on line 52
+[17-Oct-2026 16:33:34 Europe/Berlin] PHP Parse error:  syntax error, unexpected token "}" in C:\xampp\htdocs\Sites\production\davidschu_new\app\models\OrderModel.php on line 125
+[17-Oct-2026 17:47:31 Europe/Berlin] PHP Warning:  Undefined array key "price_cents" in C:\xampp\htdocs\Sites\production\davidschu_new\app\models\ImageModel.php on line 121
+[17-Oct-2026 17:48:08 Europe/Berlin] PHP Warning:  Undefined array key "price_cents" in C:\xampp\htdocs\Sites\production\davidschu_new\app\models\ImageModel.php on line 121
+[17-Oct-2026 17:48:17 Europe/Berlin] PHP Warning:  Undefined array key "price_cents" in C:\xampp\htdocs\Sites\production\davidschu_new\app\models\ImageModel.php on line 121
+[17-Oct-2026 17:49:41 Europe/Berlin] PHP Warning:  Undefined array key "price_cents" in C:\xampp\htdocs\Sites\production\davidschu_new\app\models\ImageModel.php on line 119
+[17-Oct-2026 17:50:17 Europe/Berlin] PHP Warning:  Undefined array key "price_cents" in C:\xampp\htdocs\Sites\production\davidschu_new\app\models\ImageModel.php on line 119

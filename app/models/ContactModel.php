@@ -54,6 +54,18 @@ class ContactModel
         return $stmt->execute([':id' => $id]);
     }
 
+    public static function countUnread(PDO $pdo): int
+    {
+        $sql = "
+        SELECT COUNT(*) as total
+        FROM contact_messages
+        WHERE is_read = 0
+    ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        return (int)$stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    }
+
     public static function deleteMessage(PDO $pdo, int $id): bool
     {
         $sql = "DELETE FROM contact_messages WHERE message_id = :id";

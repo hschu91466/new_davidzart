@@ -13,6 +13,14 @@ td[data-label="Status"] {
   text-align: right;
 }
 
+/* Shared spacing for the filter tab row above each table — replaces
+   inline style={{ marginBottom: ... }} previously scattered across
+   Messages/Comments/Quotes, and adds the same spacing to Users,
+   which previously had none. */
+.filter-tabs {
+  margin-bottom: 1rem;
+}
+
 /* -------------------- MESSAGES -------------------- */
 /* ==========================================================================
    ADMIN — MESSAGES PAGE
@@ -154,47 +162,6 @@ td[data-label="Status"] {
   margin-bottom: var(--space-3);
 }
 
-/* ===== Tabs ===== */
-.comment-tabs {
-  margin-bottom: 1rem;
-}
-
-.comment-tabs button {
-  margin-right: var(--space-2);
-  padding: var(--space-3) var(--space-3);
-  border: 1px solid var(--color-divider);
-  background: var(--color-lt-gray);
-  cursor: pointer;
-  border-radius: var(--radius-sm);
-}
-
-.comment-tabs button.active {
-  background: var(--color-text);
-  color: white;
-  font-weight: bold;
-}
-
-/* ===== Table ===== */
-.comments-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-.comments-table th {
-  text-align: left;
-  padding: var(--space-2);
-  border-bottom: 2px solid var(--color-divider);
-}
-
-.comments-table td {
-  padding: var(--space-3);
-  border-bottom: 1px solid var(--color-divider);
-}
-
-.comments-table tr:hover {
-  background: rgba(0, 0, 0, 0.02);
-}
-
 /* Buttons (.btn-approve / .btn-spam / .btn-delete) and badges
    (.status-badge) now live in components/buttons.css and
    components/badges.css since they're shared, tokenized UI pieces —
@@ -312,6 +279,10 @@ td[data-label="Status"] {
 
 .quotes-page h1 {
   margin-bottom: var(--space-3);
+}
+
+.quote-form {
+  margin-bottom: 1.5rem;
 }
 
 #quotes-table {
@@ -497,6 +468,133 @@ td[data-label="Status"] {
   }
 
   .admin-users-page #users-table td[data-label="Actions"].button-group {
+    display: flex;
+    gap: var(--space-2);
+    flex-wrap: wrap;
+  }
+}
+
+/* -------------------- ORDERS -------------------- */
+/* ==========================================================================
+   ADMIN — ORDERS PAGE
+   Same responsive pattern as admin-messages.css: desktop keeps the
+   shared .table styles, mobile restructures into stacked cards.
+   ========================================================================== */
+
+.admin-orders-page {
+  padding: 1rem;
+}
+
+.admin-orders-page h1 {
+  margin-bottom: var(--space-3);
+}
+
+#orders-table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 0;
+}
+
+#orders-table th,
+#orders-table td {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Shipping address is stored with line breaks — show them */
+#orders-table .order-address {
+  white-space: pre-line;
+}
+
+@media (max-width: 639.98px) {
+  .admin-orders-page #orders-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+  }
+
+  .admin-orders-page #orders-table,
+  .admin-orders-page #orders-table tbody,
+  .admin-orders-page #orders-table tr,
+  .admin-orders-page #orders-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .admin-orders-page #orders-table tr {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-3);
+    margin-bottom: var(--space-3);
+    border: 1px solid var(--color-divider);
+    border-radius: var(--space-1);
+    background: var(--color-surface);
+  }
+
+  .admin-orders-page #orders-table td {
+    border: none;
+    padding: 0;
+  }
+
+  /* Status badge — top-right of the card */
+  .admin-orders-page #orders-table td[data-label="Status"] {
+    order: 0;
+    align-self: flex-end;
+    margin-bottom: var(--space-1);
+  }
+
+  /* Artwork — the "title" of the card */
+  .admin-orders-page #orders-table td[data-label="Artwork"] {
+    order: 1;
+    font-size: 1.1rem;
+    color: var(--color-text);
+    margin-bottom: var(--space-1);
+  }
+
+  /* Amount — accent line under the title */
+  .admin-orders-page #orders-table td[data-label="Amount"] {
+    order: 2;
+    font-weight: 600;
+    color: var(--color-accent);
+    margin-bottom: var(--space-2);
+  }
+
+  /* Customer name and email */
+  .admin-orders-page #orders-table td[data-label="Customer"] {
+    order: 3;
+    margin-bottom: var(--space-2);
+  }
+
+  /* Shipping address */
+  .admin-orders-page #orders-table td[data-label="Ship To"] {
+    order: 4;
+    font-size: 0.9rem;
+    line-height: 1.45;
+    margin-bottom: var(--space-2);
+  }
+
+  /* Order number and date — small and muted, last before actions */
+  .admin-orders-page #orders-table td[data-label="Order"] {
+    order: 5;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .admin-orders-page #orders-table td[data-label="Date"] {
+    order: 6;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-3);
+  }
+
+  .admin-orders-page #orders-table td[data-label="Actions"] {
+    order: 7;
+  }
+
+  .admin-orders-page #orders-table td[data-label="Actions"].button-group {
     display: flex;
     gap: var(--space-2);
     flex-wrap: wrap;

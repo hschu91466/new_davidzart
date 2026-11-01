@@ -77,7 +77,7 @@ const Users = () => {
     <div className="admin-users-page">
       <h1>Manage Users</h1>
       <div
-        className="button-group"
+        className="button-group filter-tabs"
         role="tablist"
         aria-label="Filter users by approval status"
       >

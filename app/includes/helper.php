@@ -105,3 +105,14 @@ function h(?string $s): string
 {
     return htmlspecialchars($s ?? '', ENT_QUOTES, 'UTF-8');
 }
+
+/**
+ * ---------------------------------------------------
+ * Stripe Shop Details
+ * ---------------------------------------------------
+ */
+
+function shop_enabled(): bool
+{
+    return ($_ENV['SHOP_ENABLED'] ?? 'false') === 'true';
+}

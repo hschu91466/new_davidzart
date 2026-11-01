@@ -4,3 +4,4 @@
 node_modules/
 dist/
 style-old.css
+vendor/

@@ -71,6 +71,20 @@ class UserModel
         return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
     }
 
+    public static function countByStatus(PDO $pdo, int $status): int
+    {
+        $sql = "
+        SELECT COUNT(*) as total
+        FROM users
+        WHERE is_approved = :status
+    ";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':status' => $status
+        ]);
+        return (int)$stmt->fetch(PDO::FETCH_ASSOC)['total'];
+    }
+
     public static function approve(PDO $pdo, int $userId, int $adminId): bool
     {
         $sql = "UPDATE users

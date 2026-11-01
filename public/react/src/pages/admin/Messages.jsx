@@ -98,8 +98,7 @@ const Messages = () => {
     <div className="messages-page">
       <h1>Contact Messages</h1>
       <div
-        className="button-group"
-        style={{ marginBottom: "1rem" }}
+        className="button-group filter-tabs"
         role="tablist"
         aria-label="Filter messages by status"
       >

@@ -19,6 +19,7 @@ class ImageController
 
     public function getShapedImagesForGallery(int $galleryId): array
     {
+
         $rows = ImageModel::getByGallery($this->pdo, $galleryId);
 
         if (!is_array($rows)) {
@@ -106,18 +107,39 @@ class ImageController
         }
 
         try {
-            $success = ImageModel::update($this->pdo, $data);
+            $existing = ImageModel::getById($this->pdo, (int)$imageId);
 
-            if ($success) {
+            if (!$existing) {
                 return [
-                    'success' => true,
-                    'message' => 'Image updated'
+                    'success' => false,
+                    'message' => 'Image not found'
                 ];
             }
 
+            if ($existing['is_sold']) {
+                $data['price_cents'] = $existing['price_cents'];
+            } else {
+                $priceInput = trim(str_replace([',', '$'], '', (string)($data['price'] ?? '')));
+
+                if (!array_key_exists('price', $data)) {
+                    $data['price_cents'] = $existing['price_cents'];
+                } elseif ($priceInput === '') {
+                    $data['price_cents'] = null;
+                } elseif (!is_numeric($priceInput) || (float)$priceInput < 0) {
+                    return [
+                        'success' => false,
+                        'message' => 'Price must be a positive number'
+                    ];
+                } else {
+                    $data['price_cents'] = (int)round((float)$priceInput * 100);
+                }
+            }
+
+            ImageModel::update($this->pdo, $data);
+
             return [
-                'success' => false,
-                'message' => 'Image not found'
+                'success' => true,
+                'message' => 'Image updated'
             ];
         } catch (Exception $e) {
             return [
@@ -299,6 +321,8 @@ class ImageController
     {
         $filePath = $row['file_path'] ?? '';
         $imageUrl = build_image_url($filePath);
+        $priceCents = isset($row['price_cents']) ? (int)$row['price_cents'] : null;
+        $isSold     = (bool)($row['is_sold'] ?? false);
 
         return [
             'id'           => (int)($row['image_id'] ?? 0),
@@ -309,6 +333,9 @@ class ImageController
             'caption'      => $row['caption'] ?? '',
             'year_created' => $row['year_created'] ?? '',
             'orientation'  => $row['orientation'] ?? null,
+            'price_cents' => $priceCents,
+            'is_sold'     => $isSold,
+            'can_buy'     => shop_enabled() && $priceCents > 0 && !$isSold
         ];
     }
     private function filterActiveBySlugs(array $actives, array $slugs): array

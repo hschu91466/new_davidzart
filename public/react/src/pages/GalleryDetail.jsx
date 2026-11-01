@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { BASE_URL, CDN_BASE } from "../config";
 import ImageCommentModal from "../components/comments/ImageCommentModal";
+import AddToCartButton from "../components/shop/AddToCartButton";
 
 function GalleryDetail() {
   const { slug } = useParams();
@@ -107,6 +108,7 @@ function GalleryDetail() {
                       <div className="image-year">{img.year_created}</div>
                     )}
                   </div>
+
                   <button
                     className="image-comment-btn"
                     onClick={() => toggleComments(img.id)}
@@ -116,6 +118,7 @@ function GalleryDetail() {
                   >
                     💬
                   </button>
+                  <AddToCartButton image={img} />
                 </div>
               </div>
             );

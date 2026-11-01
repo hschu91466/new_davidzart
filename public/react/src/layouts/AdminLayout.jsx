@@ -97,6 +97,14 @@ const AdminLayout = () => {
             </li>
             <li>
               <NavLink
+                to="/admin/orders"
+                className={({ isActive }) => (isActive ? "active" : "")}
+              >
+                Manage Orders
+              </NavLink>
+            </li>
+            {/* <li>
+              <NavLink
                 to="/admin/admin-checklist"
                 className={({ isActive }) => (isActive ? "active" : "")}
               >
@@ -110,7 +118,7 @@ const AdminLayout = () => {
               >
                 Public Review
               </NavLink>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </aside>

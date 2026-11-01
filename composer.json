@@ -1,7 +1,8 @@
 {
   "require": {
     "vlucas/phpdotenv": "^5.6",
-    "aws/aws-sdk-php": "^3.384"
+    "aws/aws-sdk-php": "^3.384",
+    "stripe/stripe-php": "^22.0"
   },
   "scripts": {
     "serve": "php -S localhost:8000 -t public",

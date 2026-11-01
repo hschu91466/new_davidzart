@@ -34,6 +34,7 @@ import "./features/home/home.css";
 import "./features/gallery/gallery-grid.css";
 import "./features/gallery/gallery.css";
 import "./features/comments/comments.css";
+import "./features/shop/shop.css";
 
 //Admin pages
 import "./features/admin/admin-tables.css";
