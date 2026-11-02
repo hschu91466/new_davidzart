@@ -42,7 +42,7 @@ $ROOT = dirname(__DIR__); // /app
 require_once $ROOT . '/config/database.php'; // db(), $pdo
 require_once $ROOT . '/includes/helper.php';
 require_once $ROOT . '/../vendor/autoload.php';
-
+// require_once __DIR__ . '/../includes/shop.php';        // SHOP: loads shop module
 
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../');
 $dotenv->load();

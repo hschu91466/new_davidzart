@@ -35,7 +35,7 @@ function build_image_url(string $file_path): string
  * ---------------------------------------------------
  */
 
-function json_response(array $payload, int $statusCode = 200): void
+function json_response(array $payload, int $statusCode = 200): never
 {
     http_response_code($statusCode);
     header('Content-Type: application/json; charset=utf-8');
