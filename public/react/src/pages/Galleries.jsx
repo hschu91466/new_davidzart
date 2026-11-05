@@ -16,7 +16,6 @@ function Galleries() {
         return res.json();
       })
       .then((data) => {
-        console.log("JSON:", data);
         setGalleries(data.galleries || []);
         setLoading(false);
       })

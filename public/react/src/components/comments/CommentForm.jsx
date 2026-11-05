@@ -36,7 +36,6 @@ const CommentForm = ({ contentId, onSuccess }) => {
       });
 
       const data = await response.json();
-      console.log("CREATE RESPONSE:", data);
 
       if (response.ok) {
         setMessage(

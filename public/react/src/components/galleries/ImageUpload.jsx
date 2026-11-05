@@ -75,7 +75,6 @@ const ImageUpload = ({ galleryId, onUploadSuccess }) => {
       setFile(null);
 
       if (onUploadSuccess) {
-        console.log("Calling refresh...");
         await onUploadSuccess();
       }
 

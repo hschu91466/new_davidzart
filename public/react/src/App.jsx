@@ -17,7 +17,6 @@ import AdminMessages from "./pages/admin/Messages";
 import AdminQuotes from "./pages/admin/Quotes";
 import TestingChecklist from "./pages/admin/TestingChecklist";
 import PublicSiteReview from "./pages/admin/PublicSiteReview";
-import Orders from "./pages/admin/Orders";
 //Auth pages
 import RegistryConf from "./pages/auth/RegistryConfirmation";
 import ChangePassword from "./pages/auth/ChangePassword";
@@ -26,14 +25,16 @@ import Register from "./pages/auth/Register";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import { AuthProvider } from "./context/AuthProvider";
 //Order pages
-import OrderSuccess from "./pages/shop/OrderSuccess";
-import { CartProvider } from "./context/CartProvider";
-import Cart from "./pages/shop/Cart";
+import OrderSuccess from "./shop/pages/OrderSuccess";
+import { CartProvider } from "./shop/context/CartProvider";
+import Cart from "./shop/pages/Cart";
+import Orders from "./shop/pages/admin/Orders";
 
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+        {/* SHOP: cart state for the whole app */}
         <CartProvider>
           <Routes>
             <Route element={<AppLayout />}>
@@ -43,8 +44,10 @@ function App() {
               <Route path="/galleries/:slug" element={<GalleryDetail />} />
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
+              {/* SHOP: public routes */}
               <Route path="/cart" element={<Cart />} />
               <Route path="/order-success" element={<OrderSuccess />} />
+              {/* SHOP: --- */}
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
               <Route path="/registryconfirmation" element={<RegistryConf />} />
@@ -72,7 +75,9 @@ function App() {
               <Route path="users" element={<AdminUsers />} />
               <Route path="messages" element={<AdminMessages />} />
               <Route path="quotes" element={<AdminQuotes />} />
+              {/* SHOP: admin route */}
               <Route path="orders" element={<Orders />} />
+              {/* SHOP: --- */}
               <Route
                 path="/admin/admin-checklist"
                 element={<TestingChecklist />}

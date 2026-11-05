@@ -4,20 +4,35 @@ declare(strict_types=1);
 
 class OrderModel
 {
-    public static function create(PDO $pdo, int $subtotalCents): int
+    public static function create(PDO $pdo, int $subtotalCents, string $releaseToken): int
     {
         $sql = "
-            INSERT INTO orders (subtotal_cents, shipping_cents, total_cents, status)
-            VALUES (:subtotal, 0, :total, 'pending')
-        ";
+        INSERT INTO orders (subtotal_cents, shipping_cents, total_cents, release_token, status)
+        VALUES (:subtotal, 0, :total, :release_token, 'pending')";
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([
-            ':subtotal' => $subtotalCents,
-            ':total'    => $subtotalCents
+            ':subtotal'      => $subtotalCents,
+            ':total'         => $subtotalCents,
+            ':release_token' => $releaseToken
         ]);
 
         return (int)$pdo->lastInsertId();
+    }
+
+    public static function getById(PDO $pdo, int $orderId): array|false
+    {
+        $sql = "
+        SELECT *
+        FROM orders
+        WHERE order_id = :order_id";
+
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':order_id' => $orderId
+        ]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public static function setSessionId(PDO $pdo, int $orderId, string $sessionId): void

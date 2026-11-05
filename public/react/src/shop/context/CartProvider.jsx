@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { CartContext } from "./cartContext";
+import "../styles/shop.css";
 
 const STORAGE_KEY = "cart";
+const CHECKOUT_KEY = "cart_checkout";
 
 const loadCart = () => {
   try {
@@ -12,10 +14,20 @@ const loadCart = () => {
   }
 };
 
+const loadCheckout = () => {
+  try {
+    const saved = localStorage.getItem(CHECKOUT_KEY);
+    return saved ? JSON.parse(saved) : null;
+  } catch {
+    return null;
+  }
+};
+
 const sameItem = (a, type, id) => a.item_type === type && a.item_id === id;
 
 export const CartProvider = ({ children }) => {
   const [items, setItems] = useState(loadCart);
+  const [pendingCheckout, setPendingCheckoutState] = useState(loadCheckout);
 
   useEffect(() => {
     try {
@@ -24,6 +36,22 @@ export const CartProvider = ({ children }) => {
       // Storage unavailable (private mode, etc.) — cart still works for this visit
     }
   }, [items]);
+
+  // Saved immediately (not in an effect), because checkout leaves the
+  // page for Stripe right after this is called.
+  const setPendingCheckout = (value) => {
+    setPendingCheckoutState(value);
+
+    try {
+      if (value) {
+        localStorage.setItem(CHECKOUT_KEY, JSON.stringify(value));
+      } else {
+        localStorage.removeItem(CHECKOUT_KEY);
+      }
+    } catch {
+      // Storage unavailable — release just won't happen
+    }
+  };
 
   const addItem = (item, quantity = 1) => {
     setItems((current) => {
@@ -68,7 +96,10 @@ export const CartProvider = ({ children }) => {
     setItems((current) => current.filter((i) => !sameItem(i, type, id)));
   };
 
-  const clearCart = () => setItems([]);
+  const clearCart = () => {
+    setItems([]);
+    setPendingCheckout(null);
+  };
 
   const isInCart = (type, id) => items.some((i) => sameItem(i, type, id));
 
@@ -90,6 +121,8 @@ export const CartProvider = ({ children }) => {
         isInCart,
         count,
         subtotalCents,
+        pendingCheckout,
+        setPendingCheckout,
       }}
     >
       {children}

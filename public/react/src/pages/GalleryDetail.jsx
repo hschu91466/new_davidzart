@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { BASE_URL, CDN_BASE } from "../config";
 import ImageCommentModal from "../components/comments/ImageCommentModal";
-import AddToCartButton from "../components/shop/AddToCartButton";
+import AddToCartButton from "../shop/components/AddToCartButton"; //Shop
 
 function GalleryDetail() {
   const { slug } = useParams();
@@ -51,7 +51,6 @@ function GalleryDetail() {
         Loading gallery…
       </p>
     );
-  console.log("Images:", data.images[currentIndex]);
 
   return (
     <div className="container py-4 gallery-detail">
@@ -118,8 +117,10 @@ function GalleryDetail() {
                   >
                     💬
                   </button>
-                  <AddToCartButton image={img} />
                 </div>
+                {/* SHOP: price and add to cart */}
+                <AddToCartButton item={img} itemType="image" />
+                {/* SHOP: --- */}
               </div>
             );
           })}

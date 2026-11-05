@@ -47,8 +47,7 @@ class ImageModel
             is_published,
             sort_order
         FROM images
-        WHERE image_id = :imgid
-    ";
+        WHERE image_id = :imgid";
 
         $stmt = $pdo->prepare($sql);
         $stmt->execute([':imgid' => $imageId]);
@@ -105,8 +104,7 @@ class ImageModel
             medium = :medium,
             dimensions = :dimensions,
             price_cents = :price_cents
-        WHERE image_id = :image_id
-    ";
+        WHERE image_id = :image_id";
 
         $stmt = $pdo->prepare($sql);
 
@@ -201,13 +199,5 @@ class ImageModel
         }
 
         return true;
-    }
-
-    public static function markSold(PDO $pdo, int $imageId): bool
-    {
-        $sql = "UPDATE images SET is_sold = 1 WHERE image_id = :id AND is_sold = 0";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([':id' => $imageId]);
-        return $stmt->rowCount() === 1;
     }
 }

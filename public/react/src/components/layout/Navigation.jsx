@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import CartLink from "../shop/CartLink";
+import CartLink from "../../shop/components/CartLink"; //Shop
 
 const Navigation = () => {
   const { user } = useContext(AuthContext);
@@ -89,6 +89,7 @@ const Navigation = () => {
             </li>
           )}
         </ul>
+        {/* SHOP: cart icon */}
         <div className="cart">
           <CartLink />
         </div>

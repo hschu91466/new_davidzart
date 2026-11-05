@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../models/CommentModel.php';
 require_once __DIR__ . '/../models/UserModel.php';
-require_once __DIR__ . '/../models/OrderModel.php';
 
 class DashboardController
 {

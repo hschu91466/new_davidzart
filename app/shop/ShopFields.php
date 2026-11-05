@@ -34,9 +34,7 @@ class ShopFields
      */
     public static function resolvePrice(array $data, array $existing): array
     {
-        $isSold = array_key_exists('quantity', $existing)
-            ? (int)$existing['quantity'] === 0
-            : (bool)($existing['is_sold'] ?? false);
+        $isSold = (bool)($existing['is_sold'] ?? false);
 
         if ($isSold || !array_key_exists('price', $data)) {
             return ['price_cents' => $existing['price_cents'] ?? null];

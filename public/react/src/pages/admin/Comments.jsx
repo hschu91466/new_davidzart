@@ -13,7 +13,7 @@ const Comments = () => {
         const res = await axios.get(
           `/api/comments/admin-list.php?status=${status}`,
         );
-        console.log("Comments response FULL:", res.data);
+
         if (res.data.ok) {
           setComments(res.data.comments);
         } else {

@@ -59,4 +59,22 @@ class PaymentService
             return null;
         }
     }
+
+    public static function expireSession(string $sessionId): bool
+    {
+        \Stripe\Stripe::setApiKey($_ENV['STRIPE_SECRET_KEY']);
+
+        $session = \Stripe\Checkout\Session::retrieve($sessionId);
+
+        if ($session->status === 'complete') {
+            // Already paid; the webhook will mark it paid. Do not cancel.
+            return false;
+        }
+
+        if ($session->status === 'open') {
+            $session->expire();
+        }
+
+        return true;
+    }
 }

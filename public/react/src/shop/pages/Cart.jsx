@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../../hooks/useCart";
-import { startCheckout } from "../../services/orders";
+import { useCart } from "../hooks/useCart";
+import { startCheckout } from "../services/orders";
 
 const formatPrice = (cents) =>
   new Intl.NumberFormat("en-US", {
@@ -10,7 +10,14 @@ const formatPrice = (cents) =>
   }).format(Number(cents) / 100);
 
 const Cart = () => {
-  const { items, removeItem, updateQuantity, subtotalCents } = useCart();
+  const {
+    items,
+    removeItem,
+    updateQuantity,
+    subtotalCents,
+    pendingCheckout,
+    setPendingCheckout,
+  } = useCart();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -25,9 +32,17 @@ const Cart = () => {
           item_id: item.item_id,
           quantity: item.quantity,
         })),
+        pendingCheckout
+          ? { order_id: pendingCheckout.order_id, token: pendingCheckout.token }
+          : null,
       );
 
       if (res.data.success) {
+        // Remember this checkout so a retry from this browser can release it
+        setPendingCheckout({
+          order_id: res.data.order_id,
+          token: res.data.release_token,
+        });
         window.location.href = res.data.url;
         return;
       }

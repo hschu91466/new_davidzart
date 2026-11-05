@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { listOrders, updateOrderStatus } from "../../services/orders";
+import "../../styles/admin-orders.css";
 
 const formatPrice = (cents) =>
   new Intl.NumberFormat("en-US", {

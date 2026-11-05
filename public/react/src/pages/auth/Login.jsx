@@ -46,8 +46,6 @@ const Login = () => {
 
       const data = await response.json();
 
-      console.log("LOGIN RESPONSE:", data);
-
       if (response.ok && !data.error) {
         setMessage("Login successful");
         setUser(data.user);

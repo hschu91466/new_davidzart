@@ -75,34 +75,10 @@
   display: block;
 }
 
-/* -------------------- CART (shop) -------------------- */
-.site-nav .nav-inner {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-  align-items: center;
-}
-
-.site-nav .nav-list {
-  grid-column: 2;
-}
-
-.site-nav .cart {
-  grid-column: 3;
-  justify-self: end;
-  display: flex;
-  align-items: center;
-}
-
 @media (max-width: 639.98px) {
   .site-nav .nav-inner {
     display: flex;
     position: relative;
-  }
-
-  .site-nav .cart {
-    position: absolute;
-    right: var(--space-4);
-    top: var(--space-4);
   }
 
   .nav-inner {

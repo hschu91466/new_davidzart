@@ -1,3 +1,6 @@
+// SHOP (at the top of the file)
+import PriceField from "../../shop/components/PriceField";
+
 const ImageCard = ({
   image,
   onChange,
@@ -9,16 +12,13 @@ const ImageCard = ({
 }) => {
   const isSaving = savingId === image.image_id;
   const isMoving = movingImageId === image.image_id;
-  const isSold = Number(image.is_sold) === 1;
 
   return (
     <div className="image-card">
       <img src={image.url} alt={image.title || "Image preview"} />
 
       <div className="form-group">
-        <label htmlFor={`title-${image.image_id}`}>
-          Title{isSold && <span className="status-badge sold">Sold</span>}
-        </label>
+        <label htmlFor={`title-${image.image_id}`}>Title</label>
         <input
           id={`title-${image.image_id}`}
           type="text"
@@ -65,27 +65,9 @@ const ImageCard = ({
           }
           placeholder="Dimensions"
         />
-        <label htmlFor={`price-${image.image_id}`}>Price (USD)</label>
-        <span
-          className={isSold ? "price-locked" : undefined}
-          title={
-            isSold ? "Price is locked because this piece has sold" : undefined
-          }
-        >
-          <input
-            id={`price-${image.image_id}`}
-            type="text"
-            inputMode="decimal"
-            value={
-              image.price ??
-              (image.price_cents ? String(image.price_cents / 100) : "")
-            }
-            onChange={(e) => onChange(image.image_id, "price", e.target.value)}
-            placeholder="Leave blank if not for sale"
-            disabled={isSold}
-            aria-label={isSold ? "Price (locked, piece has sold)" : undefined}
-          />
-        </span>
+        <label htmlFor={`title-${image.image_id}`}>Title</label>
+        {/* SHOP: price */}
+        <PriceField item={image} idKey="image_id" onChange={onChange} />
 
         <div className="form-actions">
           <button

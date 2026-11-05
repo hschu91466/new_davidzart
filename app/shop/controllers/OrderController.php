@@ -32,6 +32,7 @@ class OrderController
         try {
             $lineItems = [];
             $subtotal = 0;
+            $this->releasePrevious($data['release'] ?? null);
 
             foreach ($requested as $request) {
                 $item = $this->loadItem($request['item_type'], $request['item_id']);
@@ -65,9 +66,11 @@ class OrderController
                 $subtotal += $item['unit_price_cents'] * $item['quantity'];
             }
 
+            $releaseToken = bin2hex(random_bytes(16));
+
             $this->pdo->beginTransaction();
 
-            $orderId = OrderModel::create($this->pdo, $subtotal);
+            $orderId = OrderModel::create($this->pdo, $subtotal, $releaseToken);
 
             foreach ($lineItems as $item) {
                 OrderItemModel::create($this->pdo, $orderId, $item);
@@ -84,7 +87,12 @@ class OrderController
 
             OrderModel::setSessionId($this->pdo, $orderId, $session['id']);
 
-            return ['success' => true, 'url' => $session['url']];
+            return [
+                'success'       => true,
+                'url'           => $session['url'],
+                'order_id'      => $orderId,
+                'release_token' => $releaseToken,
+            ];
         } catch (Throwable $e) {
             if ($this->pdo->inTransaction()) {
                 $this->pdo->rollBack();
@@ -256,6 +264,45 @@ class OrderController
 
         if ($class) {
             $class::fulfill($this->pdo, (int)$item['item_id'], (int)$item['quantity']);
+        }
+    }
+
+    private function releasePrevious(mixed $release): void
+    {
+        if (!is_array($release)) {
+            return;
+        }
+
+        $orderId = (int)($release['order_id'] ?? 0);
+        $token   = (string)($release['token'] ?? '');
+
+        if ($orderId <= 0 || $token === '') {
+            return;
+        }
+
+        try {
+            $order = OrderModel::getById($this->pdo, $orderId);
+
+            if (
+                !$order
+                || $order['status'] !== 'pending'
+                || empty($order['release_token'])
+                || !hash_equals($order['release_token'], $token)
+            ) {
+                return;
+            }
+
+            if (
+                $order['stripe_session_id']
+                && !PaymentService::expireSession($order['stripe_session_id'])
+            ) {
+                return;
+            }
+
+            OrderModel::updateStatus($this->pdo, $orderId, 'cancelled');
+        } catch (Throwable $e) {
+            // Releasing is best effort. If it fails, checkout continues and
+            // the normal 30-minute hold check decides what happens.
         }
     }
 }

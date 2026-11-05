@@ -8,6 +8,7 @@
 
 .buy-price {
   font-weight: 600;
+  margin-right: var(--space-3, 1rem);
 }
 
 .buy-error {
@@ -105,17 +106,42 @@
   line-height: 1;
 }
 
-/* .cart {
+/* -------------------- CART (shop) -------------------- */
+.site-nav .nav-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.site-nav .nav-list {
+  grid-column: 2;
+}
+
+.site-nav .cart {
+  grid-column: 3;
+  justify-self: end;
   display: flex;
   align-items: center;
-  padding: 0 1em;
 }
 
 @media (max-width: 639.98px) {
-  .cart {
+  .site-nav .nav-inner {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-left: auto;
-    padding: 0 1em;
+    gap: var(--space-3);
   }
-} */
+
+  .site-nav .nav-toggle {
+    order: 1;
+  }
+
+  .site-nav .nav-list {
+    order: 2;
+  }
+
+  .site-nav .cart {
+    order: 3;
+    position: static;
+  }
+}

@@ -2,6 +2,8 @@ import { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "../../services/axios.js";
 import { Link } from "react-router-dom";
+// SHOP
+import { useOrdersToShip } from "../../shop/hooks/useOrdersToShip";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
@@ -10,8 +12,9 @@ const Dashboard = () => {
   const [pendingUsers, setPendingUsers] = useState(0);
   const [unreadMessages, setUnreadMessages] = useState(0);
   const [galleryCount, setGalleryCount] = useState(0);
-  const [pendingOrders, setPendingOrders] = useState(0);
   const [loading, setLoading] = useState(true);
+  // SHOP: orders waiting to ship
+  const ordersToShip = useOrdersToShip();
 
   useEffect(() => {
     const loadCounts = async () => {
@@ -26,7 +29,6 @@ const Dashboard = () => {
         setPendingUsers(dashboardRes.data?.pending_users ?? 0);
         setUnreadMessages(dashboardRes.data?.unread_messages ?? 0);
         setGalleryCount(galleriesRes.data?.galleries?.length ?? 0);
-        setPendingOrders(dashboardRes.data?.orders_to_ship ?? 0);
 
         setLoading(false);
       } catch (error) {
@@ -90,13 +92,16 @@ const Dashboard = () => {
               <span className="admin-dashboard-count">{galleryCount}</span>
               <span className="admin-dashboard-label">Galleries</span>
             </Link>
+            {/* SHOP: orders to ship */}
             <Link
               to="/admin/orders"
               className="admin-dashboard-card"
-              aria-label="View Pending Orders"
+              aria-label="View orders to ship"
             >
-              <span className="admin-dashboard-count">{pendingOrders}</span>
-              <span className="admin-dashboard-label">Pending Orders</span>
+              <span className="admin-dashboard-count">
+                {ordersToShip ?? "–"}
+              </span>
+              <span className="admin-dashboard-label">Orders to Ship</span>
             </Link>
           </div>
         )}
@@ -121,6 +126,6 @@ const Dashboard = () => {
       </nav>
     </div>
   );
-};
+};;
 
 export default Dashboard;

@@ -13,8 +13,6 @@ export const AuthProvider = ({ children }) => {
       try {
         const data = await getSession();
 
-        console.log("SESSION DATA:", data);
-
         if (data.ok && data.user) {
           setUser(data.user); // logged in
         } else {

@@ -116,24 +116,19 @@ class ImageController
                 ];
             }
 
-            if ($existing['is_sold']) {
-                $data['price_cents'] = $existing['price_cents'];
-            } else {
-                $priceInput = trim(str_replace([',', '$'], '', (string)($data['price'] ?? '')));
+            // SHOP: resolve price from admin input (locked if sold)
+            $price = ShopFields::resolvePrice($data, $existing);
 
-                if (!array_key_exists('price', $data)) {
-                    $data['price_cents'] = $existing['price_cents'];
-                } elseif ($priceInput === '') {
-                    $data['price_cents'] = null;
-                } elseif (!is_numeric($priceInput) || (float)$priceInput < 0) {
-                    return [
-                        'success' => false,
-                        'message' => 'Price must be a positive number'
-                    ];
-                } else {
-                    $data['price_cents'] = (int)round((float)$priceInput * 100);
-                }
+            if (isset($price['error'])) {
+                return [
+                    'success' => false,
+                    'message' => $price['error']
+                ];
             }
+
+            $data['price_cents'] = $price['price_cents'];
+
+            // SHOP: end
 
             ImageModel::update($this->pdo, $data);
 
@@ -321,8 +316,6 @@ class ImageController
     {
         $filePath = $row['file_path'] ?? '';
         $imageUrl = build_image_url($filePath);
-        $priceCents = isset($row['price_cents']) ? (int)$row['price_cents'] : null;
-        $isSold     = (bool)($row['is_sold'] ?? false);
 
         return [
             'id'           => (int)($row['image_id'] ?? 0),
@@ -333,9 +326,8 @@ class ImageController
             'caption'      => $row['caption'] ?? '',
             'year_created' => $row['year_created'] ?? '',
             'orientation'  => $row['orientation'] ?? null,
-            'price_cents' => $priceCents,
-            'is_sold'     => $isSold,
-            'can_buy'     => shop_enabled() && $priceCents > 0 && !$isSold
+            // SHOP: price, sold status, and buy fields
+            ...(class_exists('ShopFields') ? ShopFields::fromRow($row) : []),
         ];
     }
     private function filterActiveBySlugs(array $actives, array $slugs): array
