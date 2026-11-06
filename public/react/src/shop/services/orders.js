@@ -1,5 +1,15 @@
 import axios from "../../services/axios";
 
+export const getShopSettings = () => {
+  return axios.get("/api/orders/settings.php");
+};
+
+export const updateShopSettings = (storeOpen) => {
+  return axios.post("/api/orders/settings-update.php", {
+    store_open: storeOpen,
+  });
+};
+
 export const startCheckout = (items, release = null) => {
   return axios.post("/api/orders/checkout.php", { items, release });
 };

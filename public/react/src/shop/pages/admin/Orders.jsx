@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { listOrders, updateOrderStatus } from "../../services/orders";
+import StoreStatusBar from "../../components/StoreStatusBar";
 import "../../styles/admin-orders.css";
 
 const formatPrice = (cents) =>
@@ -101,6 +102,8 @@ const Orders = () => {
   return (
     <div className="admin-orders-page">
       <h1>Orders</h1>
+
+      <StoreStatusBar />
 
       <div
         className="button-group filter-tabs"

@@ -1,3 +1,10 @@
+/* ==========================================================================
+   SHOP — PUBLIC AND SHARED STYLES
+   Loaded by shop/context/CartProvider.jsx. Uses the site's tokens
+   (tokens.css); no site CSS files need editing.
+   ========================================================================== */
+
+/* -------------------- ADD TO CART -------------------- */
 .buy-box {
   display: flex;
   align-items: center;
@@ -18,16 +25,7 @@
   font-size: 0.9rem;
 }
 
-.order-success {
-  max-width: 600px;
-  margin: var(--space-3) auto;
-  text-align: center;
-}
-
-.order-success .btn {
-  margin-top: var(--space-3);
-}
-
+/* -------------------- CART PAGE -------------------- */
 .cart-page {
   max-width: 800px;
   margin: var(--space-3) auto;
@@ -75,11 +73,22 @@
   color: var(--color-text-muted);
 }
 
+/* -------------------- THANK YOU PAGE -------------------- */
+.order-success {
+  max-width: 600px;
+  margin: var(--space-3) auto;
+  text-align: center;
+}
+
+.order-success .btn {
+  margin-top: var(--space-3);
+}
+
+/* -------------------- NAV CART ICON -------------------- */
 .cart-link {
   position: relative;
   display: inline-flex;
   align-items: center;
-  margin-left: auto;
   padding: var(--space-1);
 }
 
@@ -106,7 +115,9 @@
   line-height: 1;
 }
 
-/* -------------------- CART (shop) -------------------- */
+/* -------------------- NAV CART PLACEMENT -------------------- */
+/* Desktop: links centered, cart on the right.
+   Mobile: menu button, links, then cart. */
 .site-nav .nav-inner {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -144,4 +155,46 @@
     order: 3;
     position: static;
   }
+}
+
+/* -------------------- ADMIN PRICE FIELD -------------------- */
+.price-locked {
+  display: block;
+  cursor: not-allowed;
+}
+
+.price-locked input:disabled {
+  border: none;
+  background: transparent;
+  padding-left: 0;
+  color: inherit;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+/* -------------------- STATUS BADGES -------------------- */
+.status-badge.paid,
+.status-badge.store-open,
+.status-badge.mode-live {
+  background: var(--color-status-success, #2e7d32);
+  color: #fff;
+}
+
+.status-badge.shipped {
+  background: var(--color-accent, #1565c0);
+  color: #fff;
+}
+
+.status-badge.pending,
+.status-badge.mode-test,
+.status-badge.mode-not-set {
+  background: var(--color-status-warning, #f9a825);
+  color: #222;
+}
+
+.status-badge.cancelled,
+.status-badge.sold,
+.status-badge.store-closed {
+  background: var(--color-status-danger, #c62828);
+  color: #fff;
 }

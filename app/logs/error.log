@@ -480,3 +480,518 @@ Stack trace:
 (
 )
 
+[05-Nov-2026 14:42:43 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:43 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\orders\counts.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:43 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:43 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\comments\admin-counts.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:43 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:43 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\admin\dashboard-counts.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:43 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:43 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\galleries\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:43 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:43 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\orders\counts.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:44 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:44 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\comments\admin-counts.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:44 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:44 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\admin\dashboard-counts.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:44 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:44 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\galleries\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:45 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:45 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\orders\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:45 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:42:45 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\orders\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:43:56 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:43:56 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\galleries\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:43:56 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:43:56 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\galleries\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:06 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:06 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:06 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:06 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:34 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:34 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:34 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:34 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:34 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:34 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:34 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:34 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:34 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:34 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:35 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:35 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:41 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:41 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:41 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:41 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:41 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:41 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:41 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:41 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:41 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:41 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:41 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:44:41 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:45:11 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:45:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:45:11 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:45:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:45:11 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:45:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:45:11 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:45:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:45:11 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:45:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:45:11 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:45:11 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:05 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:05 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:06 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:06 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:06 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:06 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:06 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:06 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:32 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:32 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:32 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:32 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:33 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:33 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:33 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:33 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:33 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:33 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:33 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:47:33 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:48:24 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:48:24 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\orders\webhook.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:49:33 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:49:33 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\orders\webhook.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:26 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:26 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:26 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:26 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:26 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:26 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:26 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:26 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:26 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:26 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:26 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:26 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:47 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:47 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:47 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:47 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:47 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:47 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:48 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:48 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:48 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:48 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:48 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:51:48 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:54:12 Europe/Berlin] PHP Warning:  Undefined array key "REQUEST_METHOD" in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php on line 21
+[05-Nov-2026 14:54:13 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:54:13 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 Command line code(1): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:55:28 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:55:28 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:55:28 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:55:28 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:55:29 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:55:29 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\quotes\list.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:55:29 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:55:29 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:55:29 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:55:29 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:55:29 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:55:29 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:55:42 Europe/Berlin] PHP Warning:  Undefined array key "REQUEST_METHOD" in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php on line 21
+[05-Nov-2026 14:55:42 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:55:42 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 Command line code(1): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:59:16 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:59:16 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\orders\webhook.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:59:51 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 14:59:51 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\home-images.php(10): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 15:01:14 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 15:01:14 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\auth\me.php(5): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 15:02:50 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 15:02:50 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 C:\xampp\htdocs\Sites\production\davidschu_new\public\api\galleries.php(3): require_once('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 15:03:49 Europe/Berlin] PHP Warning:  Undefined array key "REQUEST_METHOD" in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php on line 21
+[05-Nov-2026 15:03:49 Europe/Berlin] PHP Warning:  require_once(C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php): Failed to open stream: No such file or directory in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 15:03:49 Europe/Berlin] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\xampp\htdocs\Sites\production\davidschu_new\app\shop/models/ShopSettingModel.php' (include_path='C:\xampp\php\PEAR') in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php:16
+Stack trace:
+#0 C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php(48): require_once()
+#1 Command line code(1): require('C:\\xampp\\htdocs...')
+#2 {main}
+  thrown in C:\xampp\htdocs\Sites\production\davidschu_new\app\shop\shop.php on line 16
+[05-Nov-2026 21:41:02 Europe/Berlin] PHP Warning:  Undefined array key "REQUEST_METHOD" in C:\xampp\htdocs\Sites\production\davidschu_new\app\config\bootstrap.php on line 21
